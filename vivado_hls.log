@@ -1,0 +1,253 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source D:/Xilinx/Vivado/2020.1/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Khye' on host 'purpy' (Windows NT_amd64 version 6.2) on Tue Jul 27 19:44:16 +1000 2021
+INFO: [HLS 200-10] In directory 'D:/UNSW/21T2/COMP4601/Project'
+Sourcing Tcl script 'setup.tcl'
+INFO: [HLS 200-10] Opening and resetting project 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build'.
+INFO: [HLS 200-10] Adding design file './hls-src/huffman.h' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_canonize_tree.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_create_tree.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_filter.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_compute_bit_length.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_encoding.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_sort.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_create_codeword.cpp' to the project
+INFO: [HLS 200-10] Adding design file './hls-src/huffman_truncate_tree.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file './tests/huffman_encoding_test.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file './tests/huffman.random256.txt' to the project
+INFO: [HLS 200-10] Adding test bench file './tests/huffman.random256.golden' to the project
+INFO: [HLS 200-10] Opening and resetting solution 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../tests/huffman_encoding_test.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_canonize_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_filter.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_compute_bit_length.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_encoding.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_sort.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_codeword.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_truncate_tree.cpp in debug mode
+   Generating csim.exe
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../tests/huffman.h:1,
+                 from ../../../../tests/huffman_encoding_test.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../tests/huffman.h:1,
+                 from ../../../../tests/huffman_encoding_test.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_canonize_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_canonize_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_create_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_create_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_filter.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_filter.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_compute_bit_length.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_compute_bit_length.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_encoding.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_encoding.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_sort.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_sort.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_create_codeword.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_create_codeword.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_truncate_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined
+ #define __GMP_LIBGMP_DLL  0
+ 
+In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
+                 from D:/Xilinx/Vivado/2020.1/include/hls_half.h:44,
+                 from D:/Xilinx/Vivado/2020.1/include/etc/ap_private.h:90,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_common.h:641,
+                 from D:/Xilinx/Vivado/2020.1/include/ap_int.h:54,
+                 from ../../../../hls-src/huffman.h:1,
+                 from ../../../../hls-src/huffman_truncate_tree.cpp:1:
+D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+ #define __GMP_LIBGMP_DLL 1
+ 
+dos2unix: converting file huffman.random256.out to Unix format...
+dos2unix: converting file huffman.random256.golden to Unix format...
+Starting canonical Huffman encoding testbench
+Start reading file [huffman.random256.txt]
+61 codewords with length 7
+104 codewords with length 8
+43 codewords with length 9
+28 codewords with length 10
+10 codewords with length 11
+2 codewords with length 12
+2 codewords with length 13
+3 codewords with length 14
+1 codewords with length 15
+2 codewords with length 16
+Here
+***************Comparing against output data*************** 
+
+*******************************************
+ PASS: The output matches the golden output
+*******************************************
+Ending canonical Huffman encoding testbench
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [Common 17-206] Exiting vivado_hls at Tue Jul 27 19:44:28 2021...
