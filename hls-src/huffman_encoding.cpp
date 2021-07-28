@@ -9,14 +9,14 @@ void huffman_encoding(
 /*
  * Create an new AXI-LITE bus as control bus
  * */
-#pragma HLS INTERFACE s_axilite port=return
+// #pragma HLS INTERFACE s_axilite port=return
 
 /*
  * Create an AXI bus for data transferring
  * */
-#pragma HLS INTERFACE s_axilite port=symbol_histogram
-#pragma HLS INTERFACE s_axilite port=encoding
-#pragma HLS INTERFACE s_axilite port=num_nonzero_symbols
+// #pragma HLS INTERFACE s_axilite port=symbol_histogram
+// #pragma HLS INTERFACE s_axilite port=encoding
+// #pragma HLS INTERFACE s_axilite port=num_nonzero_symbols
 
 #pragma HLS DATAFLOW
 
