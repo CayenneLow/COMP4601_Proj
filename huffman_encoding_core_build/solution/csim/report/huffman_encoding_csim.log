@@ -1,0 +1,33 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../tests/huffman_encoding_test.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_canonize_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_filter.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_compute_bit_length.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_encoding.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_sort.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_codeword.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_truncate_tree.cpp in debug mode
+   Generating csim.exe
+Starting canonical Huffman encoding testbench
+Start reading file [huffman.random256.txt]
+61 codewords with length 7
+104 codewords with length 8
+43 codewords with length 9
+28 codewords with length 10
+10 codewords with length 11
+2 codewords with length 12
+2 codewords with length 13
+3 codewords with length 14
+1 codewords with length 15
+2 codewords with length 16
+
+***************Comparing against output data*************** 
+
+*******************************************
+ PASS: The output matches the golden output
+*******************************************
+Ending canonical Huffman encoding testbench
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************
