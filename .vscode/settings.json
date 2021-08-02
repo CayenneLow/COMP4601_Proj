@@ -2,6 +2,11 @@
   "files.associations": {
     "*.html": "html",
     "system_error": "cpp",
-    "xtr1common": "cpp"
+    "xtr1common": "cpp",
+    "ostream": "cpp",
+    "map": "cpp",
+    "iostream": "cpp",
+    "xtree": "cpp",
+    "utility": "cpp"
   }
 }

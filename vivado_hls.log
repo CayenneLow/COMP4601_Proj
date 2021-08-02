@@ -6,10 +6,10 @@
 
 source D:/Xilinx/Vivado/2020.1/scripts/vivado_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user 'Khye' on host 'purpy' (Windows NT_amd64 version 6.2) on Wed Jul 28 11:24:46 +1000 2021
+INFO: [HLS 200-10] For user 'Khye' on host 'purpy' (Windows NT_amd64 version 6.2) on Sun Aug 01 19:33:32 +1000 2021
 INFO: [HLS 200-10] In directory 'D:/UNSW/21T2/COMP4601/Project'
 Sourcing Tcl script 'setup.tcl'
-INFO: [HLS 200-10] Creating and opening project 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build'.
+INFO: [HLS 200-10] Opening and resetting project 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build'.
 INFO: [HLS 200-10] Adding design file './hls-src/huffman.h' to the project
 INFO: [HLS 200-10] Adding design file './hls-src/huffman_canonize_tree.cpp' to the project
 INFO: [HLS 200-10] Adding design file './hls-src/huffman_create_tree.cpp' to the project
@@ -22,7 +22,7 @@ INFO: [HLS 200-10] Adding design file './hls-src/huffman_truncate_tree.cpp' to t
 INFO: [HLS 200-10] Adding test bench file './tests/huffman_encoding_test.cpp' to the project
 INFO: [HLS 200-10] Adding test bench file './tests/huffman.random256.txt' to the project
 INFO: [HLS 200-10] Adding test bench file './tests/huffman.random256.golden' to the project
-INFO: [HLS 200-10] Creating and opening solution 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution'.
+INFO: [HLS 200-10] Opening and resetting solution 'D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution'.
 INFO: [HLS 200-10] Cleaning up the solution database.
 INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
@@ -227,10 +227,267 @@ In file included from D:/Xilinx/Vivado/2020.1/include/hls_fpo.h:186:0,
 D:/Xilinx/Vivado/2020.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
  #define __GMP_LIBGMP_DLL 1
  
-dos2unix: converting file huffman.random256.out to Unix format...
-dos2unix: converting file huffman.random256.golden to Unix format...
 Starting canonical Huffman encoding testbench
 Start reading file [huffman.random256.txt]
+file value for   (ascii value: 0) = 33
+file value for  (ascii value: 1) = 482d
+file value for  (ascii value: 2) = 18c8
+file value for  (ascii value: 3) = 678e
+file value for  (ascii value: 4) = 4aeb
+file value for  (ascii value: 5) = 3d76
+file value for  (ascii value: 6) = 2ce0
+file value for  (ascii value: 7) = 72b8
+file value for  (ascii value: 8) = 695c
+file value for 	 (ascii value: 9) = 5f9a
+file value for 
+ (ascii value: 10) = 1653
+file value for  (ascii value: 11) = 6dfb
+file value for  (ascii value: 12) = 5afb
+file value for  (ascii value: 13) = 41c5
+file value for  (ascii value: 14) = 26f3
+file value for  (ascii value: 15) = 1f5
+file value for  (ascii value: 16) = bbd
+file value for  (ascii value: 17) = 2eb0
+file value for  (ascii value: 18) = 12e5
+file value for  (ascii value: 19) = 1546
+file value for  (ascii value: 20) = 7e91
+file value for  (ascii value: 21) = 3916
+file value for  (ascii value: 22) = f48
+file value for  (ascii value: 23) = a3
+file value for  (ascii value: 24) = 12e
+file value for  (ascii value: 25) = 3068
+file value for  (ascii value: 26) = 4417
+file value for  (ascii value: 27) = 4926
+file value for  (ascii value: 28) = 4d10
+file value for  (ascii value: 29) = 4dc1
+file value for  (ascii value: 30) = 1551
+file value for  (ascii value: 31) = 54e8
+file value for   (ascii value: 32) = 39bd
+file value for ! (ascii value: 33) = 2d1c
+file value for " (ascii value: 34) = 757
+file value for # (ascii value: 35) = 4dd2
+file value for $ (ascii value: 36) = 644d
+file value for % (ascii value: 37) = 66c5
+file value for & (ascii value: 38) = 4295
+file value for ' (ascii value: 39) = 26b0
+file value for ( (ascii value: 40) = 7029
+file value for ) (ascii value: 41) = 5d0d
+file value for * (ascii value: 42) = 7a64
+file value for + (ascii value: 43) = 7687
+file value for , (ascii value: 44) = 4513
+file value for - (ascii value: 45) = 1242
+file value for . (ascii value: 46) = 3b2f
+file value for / (ascii value: 47) = 1e29
+file value for 0 (ascii value: 48) = 6e67
+file value for 1 (ascii value: 49) = 1ade
+file value for 2 (ascii value: 50) = 63d5
+file value for 3 (ascii value: 51) = 6c06
+file value for 4 (ascii value: 52) = 7fa0
+file value for 5 (ascii value: 53) = 7fff
+file value for 6 (ascii value: 54) = 4e4f
+file value for 7 (ascii value: 55) = 3245
+file value for 8 (ascii value: 56) = 221d
+file value for 9 (ascii value: 57) = 2617
+file value for : (ascii value: 58) = 6b93
+file value for ; (ascii value: 59) = 314
+file value for < (ascii value: 60) = 3026
+file value for = (ascii value: 61) = be5
+file value for > (ascii value: 62) = 56b8
+file value for ? (ascii value: 63) = 73c
+file value for @ (ascii value: 64) = 12a
+file value for A (ascii value: 65) = 75a4
+file value for B (ascii value: 66) = 235a
+file value for C (ascii value: 67) = 22f8
+file value for D (ascii value: 68) = 4b4a
+file value for E (ascii value: 69) = 5882
+file value for F (ascii value: 70) = 6b40
+file value for G (ascii value: 71) = 5d07
+file value for H (ascii value: 72) = 3e1c
+file value for I (ascii value: 73) = 1a53
+file value for J (ascii value: 74) = 5f3c
+file value for K (ascii value: 75) = 3c00
+file value for L (ascii value: 76) = 3aa8
+file value for M (ascii value: 77) = 7987
+file value for N (ascii value: 78) = 5f53
+file value for O (ascii value: 79) = de6
+file value for P (ascii value: 80) = 4cb7
+file value for Q (ascii value: 81) = 3159
+file value for R (ascii value: 82) = 5e1e
+file value for S (ascii value: 83) = 4dfc
+file value for T (ascii value: 84) = 494e
+file value for U (ascii value: 85) = 2e4a
+file value for V (ascii value: 86) = 1370
+file value for W (ascii value: 87) = 1cda
+file value for X (ascii value: 88) = 3675
+file value for Y (ascii value: 89) = 66ce
+file value for Z (ascii value: 90) = 423a
+file value for [ (ascii value: 91) = 7ec1
+file value for \ (ascii value: 92) = 603c
+file value for ] (ascii value: 93) = 2c45
+file value for ^ (ascii value: 94) = 15ab
+file value for _ (ascii value: 95) = 542c
+file value for ` (ascii value: 96) = 3f00
+file value for a (ascii value: 97) = 82c
+file value for b (ascii value: 98) = 599b
+file value for c (ascii value: 99) = 40a7
+file value for d (ascii value: 100) = 12eb
+file value for e (ascii value: 101) = 7995
+file value for f (ascii value: 102) = 1229
+file value for g (ascii value: 103) = 73e4
+file value for h (ascii value: 104) = 58ba
+file value for i (ascii value: 105) = 26d4
+file value for j (ascii value: 106) = 36a3
+file value for k (ascii value: 107) = 90c
+file value for l (ascii value: 108) = 7bc3
+file value for m (ascii value: 109) = 577c
+file value for n (ascii value: 110) = 13a7
+file value for o (ascii value: 111) = 7053
+file value for p (ascii value: 112) = 6936
+file value for q (ascii value: 113) = 4a8a
+file value for r (ascii value: 114) = 1888
+file value for s (ascii value: 115) = 16cf
+file value for t (ascii value: 116) = 68a3
+file value for u (ascii value: 117) = 3cdf
+file value for v (ascii value: 118) = 13f3
+file value for w (ascii value: 119) = 408a
+file value for x (ascii value: 120) = 5dbc
+file value for y (ascii value: 121) = 33f4
+file value for z (ascii value: 122) = 23d3
+file value for { (ascii value: 123) = 48d6
+file value for | (ascii value: 124) = 575d
+file value for } (ascii value: 125) = 60c9
+file value for ~ (ascii value: 126) = 5c71
+file value for  (ascii value: 127) = 3ce0
+file value for Ä (ascii value: 128) = fc9
+file value for Å (ascii value: 129) = 2f1e
+file value for Ç (ascii value: 130) = 6ae0
+file value for É (ascii value: 131) = 488
+file value for Ñ (ascii value: 132) = 4237
+file value for Ö (ascii value: 133) = 54e6
+file value for Ü (ascii value: 134) = 3698
+file value for á (ascii value: 135) = d70
+file value for à (ascii value: 136) = 798d
+file value for â (ascii value: 137) = 75f9
+file value for ä (ascii value: 138) = 4661
+file value for ã (ascii value: 139) = 2c53
+file value for å (ascii value: 140) = 3c6b
+file value for ç (ascii value: 141) = 3009
+file value for é (ascii value: 142) = 6c73
+file value for è (ascii value: 143) = 2899
+file value for ê (ascii value: 144) = 3a6b
+file value for ë (ascii value: 145) = 22d7
+file value for í (ascii value: 146) = 7ddb
+file value for ì (ascii value: 147) = 2628
+file value for î (ascii value: 148) = 5ea7
+file value for ï (ascii value: 149) = 48a6
+file value for ñ (ascii value: 150) = 1920
+file value for ó (ascii value: 151) = 617c
+file value for ò (ascii value: 152) = 6b7c
+file value for ô (ascii value: 153) = 32f0
+file value for ö (ascii value: 154) = 4027
+file value for õ (ascii value: 155) = 71fa
+file value for ú (ascii value: 156) = 38e
+file value for ù (ascii value: 157) = 7f59
+file value for û (ascii value: 158) = 4954
+file value for ü (ascii value: 159) = 681
+file value for † (ascii value: 160) = 440c
+file value for ° (ascii value: 161) = 18e1
+file value for ¢ (ascii value: 162) = 6bf2
+file value for £ (ascii value: 163) = 5043
+file value for § (ascii value: 164) = 5436
+file value for • (ascii value: 165) = 195d
+file value for ¶ (ascii value: 166) = 6bd5
+file value for ß (ascii value: 167) = fd3
+file value for ® (ascii value: 168) = e1c
+file value for © (ascii value: 169) = 5f28
+file value for ™ (ascii value: 170) = 283d
+file value for ´ (ascii value: 171) = 787e
+file value for ¨ (ascii value: 172) = 24a8
+file value for ≠ (ascii value: 173) = 2b16
+file value for Æ (ascii value: 174) = 11fe
+file value for Ø (ascii value: 175) = 5ddf
+file value for ∞ (ascii value: 176) = 6ade
+file value for ± (ascii value: 177) = 5aa9
+file value for ≤ (ascii value: 178) = 4cde
+file value for ≥ (ascii value: 179) = 5fae
+file value for ¥ (ascii value: 180) = 2063
+file value for µ (ascii value: 181) = 1288
+file value for ∂ (ascii value: 182) = 3f
+file value for ∑ (ascii value: 183) = 7d9
+file value for ∏ (ascii value: 184) = 673c
+file value for π (ascii value: 185) = 6d2c
+file value for ∫ (ascii value: 186) = 1afe
+file value for ª (ascii value: 187) = ed6
+file value for º (ascii value: 188) = 46d9
+file value for Ω (ascii value: 189) = 1dd
+file value for æ (ascii value: 190) = e9a
+file value for ø (ascii valuedos2unix: converting file huffman.random256.out to Unix format...
+dos2unix: converting file huffman.random256.golden to Unix format...
+: 191) = 3a37
+file value for ¿ (ascii value: 192) = 6052
+file value for ¡ (ascii value: 193) = 57dd
+file value for ¬ (ascii value: 194) = 4599
+file value for √ (ascii value: 195) = 97f
+file value for ƒ (ascii value: 196) = 37f0
+file value for ≈ (ascii value: 197) = 19e3
+file value for ∆ (ascii value: 198) = 5927
+file value for « (ascii value: 199) = 2534
+file value for » (ascii value: 200) = 37ef
+file value for … (ascii value: 201) = 1dca
+file value for   (ascii value: 202) = 4a01
+file value for À (ascii value: 203) = 4435
+file value for Ã (ascii value: 204) = 5082
+file value for Õ (ascii value: 205) = 148b
+file value for Œ (ascii value: 206) = 4091
+file value for œ (ascii value: 207) = 7b4e
+file value for – (ascii value: 208) = 5918
+file value for — (ascii value: 209) = 7669
+file value for “ (ascii value: 210) = 185a
+file value for ” (ascii value: 211) = 2b0a
+file value for ‘ (ascii value: 212) = 16de
+file value for ’ (ascii value: 213) = 7f6b
+file value for ÷ (ascii value: 214) = 3a97
+file value for ◊ (ascii value: 215) = 7fc8
+file value for ÿ (ascii value: 216) = c85
+file value for Ÿ (ascii value: 217) = 500f
+file value for ⁄ (ascii value: 218) = c1f
+file value for € (ascii value: 219) = 3811
+file value for ‹ (ascii value: 220) = 7745
+file value for › (ascii value: 221) = 63d
+file value for ﬁ (ascii value: 222) = 728c
+file value for ﬂ (ascii value: 223) = 2529
+file value for ‡ (ascii value: 224) = 1d22
+file value for · (ascii value: 225) = 627a
+file value for ‚ (ascii value: 226) = 349c
+file value for „ (ascii value: 227) = 19e4
+file value for ‰ (ascii value: 228) = 506e
+file value for Â (ascii value: 229) = 4d5e
+file value for Ê (ascii value: 230) = 39d8
+file value for Á (ascii value: 231) = 3bbb
+file value for Ë (ascii value: 232) = 4c8f
+file value for È (ascii value: 233) = 5148
+file value for Í (ascii value: 234) = 6d73
+file value for Î (ascii value: 235) = 6a1f
+file value for Ï (ascii value: 236) = 5002
+file value for Ì (ascii value: 237) = 5c50
+file value for Ó (ascii value: 238) = 4874
+file value for Ô (ascii value: 239) = 300e
+file value for  (ascii value: 240) = 17a0
+file value for Ò (ascii value: 241) = 5e7d
+file value for Ú (ascii value: 242) = 4718
+file value for Û (ascii value: 243) = 73e3
+file value for Ù (ascii value: 244) = 1f20
+file value for ı (ascii value: 245) = 1839
+file value for ˆ (ascii value: 246) = 4d71
+file value for ˜ (ascii value: 247) = 5972
+file value for ¯ (ascii value: 248) = 4ade
+file value for ˘ (ascii value: 249) = 2d01
+file value for ˙ (ascii value: 250) = 3f54
+file value for ˚ (ascii value: 251) = a54
+file value for ¸ (ascii value: 252) = 5eda
+file value for ˝ (ascii value: 253) = 4e61
+file value for ˛ (ascii value: 254) = 4f72
+file value for ˇ (ascii value: 255) = 5880
 61 codewords with length 7
 104 codewords with length 8
 43 codewords with length 9
@@ -250,4 +507,4 @@ Start reading file [huffman.random256.txt]
 Ending canonical Huffman encoding testbench
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [Common 17-206] Exiting vivado_hls at Wed Jul 28 11:24:59 2021...
+INFO: [Common 17-206] Exiting vivado_hls at Sun Aug  1 19:33:44 2021...

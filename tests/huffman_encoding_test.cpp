@@ -14,6 +14,10 @@ void file_to_array(const char *filename, ap_uint<16> *&array, int array_length) 
     int     count = 0;
     array = (ap_uint<16> *) malloc(array_length*sizeof(ap_uint<16>));
 
+
+    // This loop goes line by line of huffman.random256.txt and stores in array.
+    // The array mapping is as follows: Index = Ascii Character, Value = Frequency.
+    // Hence, in this case, ASCII character 0 has a frequency of 0x33.
     while(1) {
         int eof_check = fscanf(file, "%x", &file_value);
         if(eof_check == EOF) break;

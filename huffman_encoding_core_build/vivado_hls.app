@@ -1,7 +1,11 @@
-<AutoPilot:project xmlns:AutoPilot="com.autoesl.autopilot.project" projectType="C/C++" name="huffman_encoding_core_build" top="huffman_encoding">
-    <includePaths/>
-    <libraryFlag/>
-    <files>
+<project xmlns="com.autoesl.autopilot.project" name="huffman_encoding_core_build" top="huffman_encoding">
+    <libraryPaths/>
+    <Simulation argv="">
+        <SimFlow name="csim" ldflags="" mflags="" csimMode="0" lastCsimMode="0" setup="false" optimizeCompile="false" clean="false"/>
+    </Simulation>
+    <includePaths xmlns=""/>
+    <libraryFlag xmlns=""/>
+    <files xmlns="">
         <file name="../../tests/huffman.random256.txt" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
         <file name="../../tests/huffman.random256.golden" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
         <file name="../../tests/huffman_encoding_test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
@@ -15,11 +19,8 @@
         <file name="./hls-src/huffman_create_codeword.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
         <file name="./hls-src/huffman_truncate_tree.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
-    <solutions>
+    <solutions xmlns="">
         <solution name="solution" status=""/>
     </solutions>
-    <Simulation argv="">
-        <SimFlow name="csim" setup="false" optimizeCompile="false" clean="false" ldflags="" mflags=""/>
-    </Simulation>
-</AutoPilot:project>
+</project>
 

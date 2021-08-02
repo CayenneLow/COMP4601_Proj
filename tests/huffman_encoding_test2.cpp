@@ -45,6 +45,8 @@ int main() {
     PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE];
     huffman_encoding(in, encoding, &num_nonzero_symbols);
 
+
+    // This for loop is asserting that the canonical table has no duplicate canonical codes
     std::set<std::pair<Codeword, CodewordLength> > unique_set;
     for (int i = 0 ; i < INPUT_SYMBOL_SIZE; i++) {
         // Get the lowest CODEWORD_LENGTH_BITS bits.
@@ -61,6 +63,8 @@ int main() {
         assert(unique_set.count(std::make_pair(cw, length)) == 0);
         unique_set.insert(std::make_pair(cw, length));
     }
+
+
     // Check that we have a prefix code.
     for (int i = 0 ; i < INPUT_SYMBOL_SIZE; i++) {
         // Get the lowest CODEWORD_LENGTH_BITS bits.

@@ -1,7 +1,7 @@
-INFO-FLOW: Workspace D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution opened at Wed Jul 28 11:24:46 +1000 2021
+INFO-FLOW: Workspace D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution opened at Sun Aug 01 19:33:33 +1000 2021
 Execute     set_part xc7z020clg484-1 
 Execute       ap_part_info -name xc7z020clg484-1 -data single -quiet 
-Command       ap_part_info done; 0.286 sec.
+Command       ap_part_info done; 0.29 sec.
 Execute       ap_part_info -name xc7z020clg484-1 -data info 
 Execute       add_library xilinx/zynq/zynq:xc7z020:-clg484:-1 
 Execute         get_default_platform 
@@ -47,8 +47,8 @@ Execute             source D:/Xilinx/Vivado/2020.1/common/technology/xilinx/ip/x
 Command             ap_source done; 0.101 sec.
 Execute             source D:/Xilinx/Vivado/2020.1/common/technology/xilinx/ip/xfir.gen 
 Execute             source D:/Xilinx/Vivado/2020.1/common/technology/xilinx/common/dsp48.gen 
-Command           ap_source done; 0.138 sec.
-Command         ap_source done; 0.138 sec.
+Command           ap_source done; 0.139 sec.
+Command         ap_source done; 0.139 sec.
 Execute         ap_part_info -data single -name xc7z020-clg484-1 
 Execute         ap_part_info -name xc7z020-clg484-1 -data resources 
 Execute         ap_part_info -name xc7z020-clg484-1 -data info 
@@ -56,7 +56,7 @@ Execute         ap_part_info -name xc7z020-clg484-1 -data info
 Execute         config_chip_info -quiet -resource {SLICE 13300} {LUT 53200} {FF 106400} {DSP48E 220} {BRAM 280} {URAM 0} 
 Execute         ap_part_info -name xc7z020-clg484-1 -data info 
 Execute         config_chip_info -quiet -speed slow 
-Command       add_library done; 0.169 sec.
+Command       add_library done; 0.173 sec.
 Execute       add_library xilinx/zynq/zynq_fpv6 
 Execute         get_default_platform 
 Execute         open_platform DefaultPlatform 
@@ -74,7 +74,7 @@ Execute           source D:/Xilinx/Vivado/2020.1/common/technology/xilinx/common
 INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
 Execute       ap_part_info -name xc7z020-clg484-1 -data info 
 Execute       get_default_platform 
-Command     set_part done; 0.548 sec.
+Command     set_part done; 0.576 sec.
 Execute     create_clock -period 10 
 Execute       config_clock -quiet -name default -period 10 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
@@ -107,8 +107,8 @@ Execute       is_encrypted D:/UNSW/21T2/COMP4601/Project/hls-src/huffman_truncat
 Execute       is_xip D:/UNSW/21T2/COMP4601/Project/hls-src/huffman_truncate_tree.cpp 
 Execute       ap_part_info -name xc7z020-clg484-1 -data info 
 Execute       source run_sim.tcl 
-Command       ap_source done; 0.262 sec.
+Command       ap_source done; 0.175 sec.
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-Command     csim_design done; 11.617 sec.
+Command     csim_design done; 10.944 sec.
 Execute     cleanup_all 
