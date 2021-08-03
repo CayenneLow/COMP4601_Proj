@@ -20,6 +20,7 @@ init_bits:
   // Iterate across the symbols from lowest frequency to highest
   // Assign them largest bit length to smallest
 
+
   int k = 0;
 process_symbols:
   for(length = TREE_DEPTH; length >= 0; length--) {
@@ -35,7 +36,7 @@ process_symbols:
 
 
 
-/* BASE LOOP
+  /*
 process_symbols:
   for(int k = 0; k < num_symbols; k++) {
     if (count == 0) {
@@ -53,5 +54,5 @@ process_symbols:
     symbol_bits[val] = length; //assign symbol k to have length bits
     count--; //keep assigning i bits until we have counted off n symbols
   }
-  */
+	*/
 }

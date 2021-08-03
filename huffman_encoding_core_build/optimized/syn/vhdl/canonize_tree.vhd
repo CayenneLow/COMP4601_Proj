@@ -863,8 +863,8 @@ architecture behav of canonize_tree is
     signal ap_CS_fsm_state127 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state127 : signal is "none";
     signal zext_ln544_fu_2975_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal sext_ln29_fu_2997_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal sext_ln30_fu_3007_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal sext_ln30_fu_2997_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal sext_ln31_fu_3007_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_block_state1 : BOOLEAN;
     signal trunc_ln209_fu_3012_p1 : STD_LOGIC_VECTOR (4 downto 0);
     signal ap_NS_fsm : STD_LOGIC_VECTOR (131 downto 0);
@@ -1547,11 +1547,11 @@ begin
     icmp_ln891_fu_3002_p2 <= "1" when (unsigned(k_fu_2991_p2) < unsigned(val_assign_loc_read_reg_3028)) else "0";
     k_fu_2991_p2 <= std_logic_vector(unsigned(ap_const_lv32_1) + unsigned(ap_phi_mux_k_1_i_i_phi_fu_2944_p4));
     length_V_fu_3022_p2 <= std_logic_vector(unsigned(t_V_reg_2917) + unsigned(ap_const_lv32_FFFFFFFF));
-        sext_ln29_fu_2997_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(ap_phi_mux_k_1_i_i_phi_fu_2944_p4),64));
+        sext_ln30_fu_2997_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(ap_phi_mux_k_1_i_i_phi_fu_2944_p4),64));
 
-        sext_ln30_fu_3007_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(sorted_value_V_q0),64));
+        sext_ln31_fu_3007_p1 <= std_logic_vector(IEEE.numeric_std.resize(signed(sorted_value_V_q0),64));
 
-    sorted_value_V_address0 <= sext_ln29_fu_2997_p1(8 - 1 downto 0);
+    sorted_value_V_address0 <= sext_ln30_fu_2997_p1(8 - 1 downto 0);
 
     sorted_value_V_ce0_assign_proc : process(ap_CS_fsm_pp0_stage0, ap_block_pp0_stage0_11001, ap_enable_reg_pp0_iter0)
     begin
@@ -1563,10 +1563,10 @@ begin
     end process;
 
 
-    symbol_bits_V_address0_assign_proc : process(ap_CS_fsm_state1, ap_CS_fsm_state128, ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, ap_block_pp0_stage0, ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state4, ap_CS_fsm_state5, ap_CS_fsm_state6, ap_CS_fsm_state7, ap_CS_fsm_state8, ap_CS_fsm_state9, ap_CS_fsm_state10, ap_CS_fsm_state11, ap_CS_fsm_state12, ap_CS_fsm_state13, ap_CS_fsm_state14, ap_CS_fsm_state15, ap_CS_fsm_state16, ap_CS_fsm_state17, ap_CS_fsm_state18, ap_CS_fsm_state19, ap_CS_fsm_state20, ap_CS_fsm_state21, ap_CS_fsm_state22, ap_CS_fsm_state23, ap_CS_fsm_state24, ap_CS_fsm_state25, ap_CS_fsm_state26, ap_CS_fsm_state27, ap_CS_fsm_state28, ap_CS_fsm_state29, ap_CS_fsm_state30, ap_CS_fsm_state31, ap_CS_fsm_state32, ap_CS_fsm_state33, ap_CS_fsm_state34, ap_CS_fsm_state35, ap_CS_fsm_state36, ap_CS_fsm_state37, ap_CS_fsm_state38, ap_CS_fsm_state39, ap_CS_fsm_state40, ap_CS_fsm_state41, ap_CS_fsm_state42, ap_CS_fsm_state43, ap_CS_fsm_state44, ap_CS_fsm_state45, ap_CS_fsm_state46, ap_CS_fsm_state47, ap_CS_fsm_state48, ap_CS_fsm_state49, ap_CS_fsm_state50, ap_CS_fsm_state51, ap_CS_fsm_state52, ap_CS_fsm_state53, ap_CS_fsm_state54, ap_CS_fsm_state55, ap_CS_fsm_state56, ap_CS_fsm_state57, ap_CS_fsm_state58, ap_CS_fsm_state59, ap_CS_fsm_state60, ap_CS_fsm_state61, ap_CS_fsm_state62, ap_CS_fsm_state63, ap_CS_fsm_state64, ap_CS_fsm_state65, ap_CS_fsm_state66, ap_CS_fsm_state67, ap_CS_fsm_state68, ap_CS_fsm_state69, ap_CS_fsm_state70, ap_CS_fsm_state71, ap_CS_fsm_state72, ap_CS_fsm_state73, ap_CS_fsm_state74, ap_CS_fsm_state75, ap_CS_fsm_state76, ap_CS_fsm_state77, ap_CS_fsm_state78, ap_CS_fsm_state79, ap_CS_fsm_state80, ap_CS_fsm_state81, ap_CS_fsm_state82, ap_CS_fsm_state83, ap_CS_fsm_state84, ap_CS_fsm_state85, ap_CS_fsm_state86, ap_CS_fsm_state87, ap_CS_fsm_state88, ap_CS_fsm_state89, ap_CS_fsm_state90, ap_CS_fsm_state91, ap_CS_fsm_state92, ap_CS_fsm_state93, ap_CS_fsm_state94, ap_CS_fsm_state95, ap_CS_fsm_state96, ap_CS_fsm_state97, ap_CS_fsm_state98, ap_CS_fsm_state99, ap_CS_fsm_state100, ap_CS_fsm_state101, ap_CS_fsm_state102, ap_CS_fsm_state103, ap_CS_fsm_state104, ap_CS_fsm_state105, ap_CS_fsm_state106, ap_CS_fsm_state107, ap_CS_fsm_state108, ap_CS_fsm_state109, ap_CS_fsm_state110, ap_CS_fsm_state111, ap_CS_fsm_state112, ap_CS_fsm_state113, ap_CS_fsm_state114, ap_CS_fsm_state115, ap_CS_fsm_state116, ap_CS_fsm_state117, ap_CS_fsm_state118, ap_CS_fsm_state119, ap_CS_fsm_state120, ap_CS_fsm_state121, ap_CS_fsm_state122, ap_CS_fsm_state123, ap_CS_fsm_state124, ap_CS_fsm_state125, ap_CS_fsm_state126, ap_CS_fsm_state127, sext_ln30_fu_3007_p1)
+    symbol_bits_V_address0_assign_proc : process(ap_CS_fsm_state1, ap_CS_fsm_state128, ap_CS_fsm_pp0_stage0, ap_enable_reg_pp0_iter1, ap_block_pp0_stage0, ap_CS_fsm_state2, ap_CS_fsm_state3, ap_CS_fsm_state4, ap_CS_fsm_state5, ap_CS_fsm_state6, ap_CS_fsm_state7, ap_CS_fsm_state8, ap_CS_fsm_state9, ap_CS_fsm_state10, ap_CS_fsm_state11, ap_CS_fsm_state12, ap_CS_fsm_state13, ap_CS_fsm_state14, ap_CS_fsm_state15, ap_CS_fsm_state16, ap_CS_fsm_state17, ap_CS_fsm_state18, ap_CS_fsm_state19, ap_CS_fsm_state20, ap_CS_fsm_state21, ap_CS_fsm_state22, ap_CS_fsm_state23, ap_CS_fsm_state24, ap_CS_fsm_state25, ap_CS_fsm_state26, ap_CS_fsm_state27, ap_CS_fsm_state28, ap_CS_fsm_state29, ap_CS_fsm_state30, ap_CS_fsm_state31, ap_CS_fsm_state32, ap_CS_fsm_state33, ap_CS_fsm_state34, ap_CS_fsm_state35, ap_CS_fsm_state36, ap_CS_fsm_state37, ap_CS_fsm_state38, ap_CS_fsm_state39, ap_CS_fsm_state40, ap_CS_fsm_state41, ap_CS_fsm_state42, ap_CS_fsm_state43, ap_CS_fsm_state44, ap_CS_fsm_state45, ap_CS_fsm_state46, ap_CS_fsm_state47, ap_CS_fsm_state48, ap_CS_fsm_state49, ap_CS_fsm_state50, ap_CS_fsm_state51, ap_CS_fsm_state52, ap_CS_fsm_state53, ap_CS_fsm_state54, ap_CS_fsm_state55, ap_CS_fsm_state56, ap_CS_fsm_state57, ap_CS_fsm_state58, ap_CS_fsm_state59, ap_CS_fsm_state60, ap_CS_fsm_state61, ap_CS_fsm_state62, ap_CS_fsm_state63, ap_CS_fsm_state64, ap_CS_fsm_state65, ap_CS_fsm_state66, ap_CS_fsm_state67, ap_CS_fsm_state68, ap_CS_fsm_state69, ap_CS_fsm_state70, ap_CS_fsm_state71, ap_CS_fsm_state72, ap_CS_fsm_state73, ap_CS_fsm_state74, ap_CS_fsm_state75, ap_CS_fsm_state76, ap_CS_fsm_state77, ap_CS_fsm_state78, ap_CS_fsm_state79, ap_CS_fsm_state80, ap_CS_fsm_state81, ap_CS_fsm_state82, ap_CS_fsm_state83, ap_CS_fsm_state84, ap_CS_fsm_state85, ap_CS_fsm_state86, ap_CS_fsm_state87, ap_CS_fsm_state88, ap_CS_fsm_state89, ap_CS_fsm_state90, ap_CS_fsm_state91, ap_CS_fsm_state92, ap_CS_fsm_state93, ap_CS_fsm_state94, ap_CS_fsm_state95, ap_CS_fsm_state96, ap_CS_fsm_state97, ap_CS_fsm_state98, ap_CS_fsm_state99, ap_CS_fsm_state100, ap_CS_fsm_state101, ap_CS_fsm_state102, ap_CS_fsm_state103, ap_CS_fsm_state104, ap_CS_fsm_state105, ap_CS_fsm_state106, ap_CS_fsm_state107, ap_CS_fsm_state108, ap_CS_fsm_state109, ap_CS_fsm_state110, ap_CS_fsm_state111, ap_CS_fsm_state112, ap_CS_fsm_state113, ap_CS_fsm_state114, ap_CS_fsm_state115, ap_CS_fsm_state116, ap_CS_fsm_state117, ap_CS_fsm_state118, ap_CS_fsm_state119, ap_CS_fsm_state120, ap_CS_fsm_state121, ap_CS_fsm_state122, ap_CS_fsm_state123, ap_CS_fsm_state124, ap_CS_fsm_state125, ap_CS_fsm_state126, ap_CS_fsm_state127, sext_ln31_fu_3007_p1)
     begin
         if (((ap_const_boolean_0 = ap_block_pp0_stage0) and (ap_enable_reg_pp0_iter1 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp0_stage0))) then 
-            symbol_bits_V_address0 <= sext_ln30_fu_3007_p1(8 - 1 downto 0);
+            symbol_bits_V_address0 <= sext_ln31_fu_3007_p1(8 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state128)) then 
             symbol_bits_V_address0 <= ap_const_lv64_FE(8 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state127)) then 

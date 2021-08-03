@@ -1,29 +1,11 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../hls-src/huffman_encoding.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_canonize_tree.cpp in debug mode
    Generating csim.exe
 Starting canonical Huffman encoding testbench
 Start reading file [huffman.random256.txt]
-61 codewords with length 7
-104 codewords with length 8
-43 codewords with length 9
-28 codewords with length 10
-10 codewords with length 11
-2 codewords with length 12
-2 codewords with length 13
-3 codewords with length 14
-1 codewords with length 15
-2 codewords with length 16
-61 codewords with length(TRUNCATED) 7
-104 codewords with length(TRUNCATED) 8
-43 codewords with length(TRUNCATED) 9
-28 codewords with length(TRUNCATED) 10
-10 codewords with length(TRUNCATED) 11
-2 codewords with length(TRUNCATED) 12
-2 codewords with length(TRUNCATED) 13
-3 codewords with length(TRUNCATED) 14
-1 codewords with length(TRUNCATED) 15
-2 codewords with length(TRUNCATED) 16
+Average nanoseconds over 10000 runs:  1196588
+Average microseconds over 10000 runs: 1196
 
 ***************Comparing against output data*************** 
 

@@ -7208,16 +7208,17 @@ _ssdm_Unroll(0,0,0, "");
 
 
 
+
   int k = 0;
 process_symbols:
   for(length = TREE_DEPTH; length >= 0; length--) {
 _ssdm_op_SpecLoopTripCount(64, 64, 64, "");
-# 25 "./hls-src/huffman_canonize_tree.cpp"
+# 26 "./hls-src/huffman_canonize_tree.cpp"
 
     count = codeword_length_histogram[length];
     canonize_tree_label0:for(int i = 0; i < count; i++) {
 _ssdm_op_SpecLoopTripCount(25, 25, 25, "");
-# 27 "./hls-src/huffman_canonize_tree.cpp"
+# 28 "./hls-src/huffman_canonize_tree.cpp"
 
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
  int val = (int) sorted[k++].value;
@@ -7226,5 +7227,5 @@ _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
     }
     if (k >= num_symbols) break;
   }
-# 57 "./hls-src/huffman_canonize_tree.cpp"
+# 58 "./hls-src/huffman_canonize_tree.cpp"
 }

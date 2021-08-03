@@ -15,12 +15,11 @@
 namespace ap_rtl {
 
 struct truncate_tree : public sc_module {
-    // Port declarations 24
+    // Port declarations 23
     sc_in_clk ap_clk;
     sc_in< sc_logic > ap_rst;
     sc_in< sc_logic > ap_start;
     sc_out< sc_logic > ap_done;
-    sc_in< sc_logic > ap_continue;
     sc_out< sc_logic > ap_idle;
     sc_out< sc_logic > ap_ready;
     sc_out< sc_lv<6> > input_length_histogram_V_address0;
@@ -50,7 +49,6 @@ struct truncate_tree : public sc_module {
 
     sc_trace_file* mVcdFile;
 
-    sc_signal< sc_logic > ap_done_reg;
     sc_signal< sc_lv<16> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;
     sc_signal< sc_lv<32> > reg_206;
@@ -86,7 +84,6 @@ struct truncate_tree : public sc_module {
     sc_signal< sc_lv<64> > zext_ln45_reg_442;
     sc_signal< sc_lv<1> > icmp_ln44_fu_340_p2;
     sc_signal< sc_lv<7> > i_0_reg_153;
-    sc_signal< bool > ap_block_state1;
     sc_signal< sc_logic > ap_CS_fsm_state3;
     sc_signal< sc_lv<6> > i1_0_reg_164;
     sc_signal< sc_lv<32> > t_V_reg_175;
@@ -179,7 +176,6 @@ struct truncate_tree : public sc_module {
     void thread_ap_CS_fsm_state7();
     void thread_ap_CS_fsm_state8();
     void thread_ap_CS_fsm_state9();
-    void thread_ap_block_state1();
     void thread_ap_done();
     void thread_ap_idle();
     void thread_ap_ready();

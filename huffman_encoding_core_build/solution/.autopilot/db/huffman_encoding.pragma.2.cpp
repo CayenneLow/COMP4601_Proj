@@ -7190,10 +7190,8 @@ void huffman_encoding(
                Symbol symbol_histogram[INPUT_SYMBOL_SIZE],
                PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
                int *num_nonzero_symbols) {_ssdm_SpecArrayDimSize(symbol_histogram, 256);_ssdm_SpecArrayDimSize(encoding, 256);
-# 21 "./hls-src/huffman_encoding.cpp"
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
-
- Symbol filtered[INPUT_SYMBOL_SIZE];
+# 23 "./hls-src/huffman_encoding.cpp"
+  Symbol filtered[INPUT_SYMBOL_SIZE];
   Symbol sorted[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy1[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy2[INPUT_SYMBOL_SIZE];

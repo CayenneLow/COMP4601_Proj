@@ -7198,8 +7198,8 @@ void create_tree (
     (void) ((!!(num_symbols > 0)) || (_assert("num_symbols > 0","./hls-src/huffman_create_tree.cpp",13),0));
     (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_create_tree.cpp",14),0));
     for(int i = 0; i < (num_symbols-1); i++) {
-_ssdm_op_SpecPipeline(5, 1, 1, 0, "");
- Frequency node_freq = 0;
+
+        Frequency node_freq = 0;
 
 
 

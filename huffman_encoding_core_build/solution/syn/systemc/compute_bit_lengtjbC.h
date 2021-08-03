@@ -18,9 +18,9 @@ using namespace sc_dt;
 
 struct compute_bit_lengtjbC_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 32;
-  static const unsigned AddressRange = 64;
-  static const unsigned AddressWidth = 6;
+  static const unsigned DataWidth = 6;
+  static const unsigned AddressRange = 255;
+  static const unsigned AddressWidth = 8;
 
 //latency = 1
 //input_reg = 1
@@ -75,9 +75,9 @@ void prc_write_0()
 SC_MODULE(compute_bit_lengtjbC) {
 
 
-static const unsigned DataWidth = 32;
-static const unsigned AddressRange = 64;
-static const unsigned AddressWidth = 6;
+static const unsigned DataWidth = 6;
+static const unsigned AddressRange = 255;
+static const unsigned AddressWidth = 8;
 
 sc_core::sc_in <sc_lv<AddressWidth> > address0;
 sc_core::sc_in<sc_logic> ce0;

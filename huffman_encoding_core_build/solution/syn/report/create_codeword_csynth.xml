@@ -21,27 +21,35 @@
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>1080</Best-caseLatency>
-<Average-caseLatency>1080</Average-caseLatency>
-<Worst-caseLatency>1080</Worst-caseLatency>
-<Best-caseRealTimeLatency>10.800 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>10.800 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>10.800 us</Worst-caseRealTimeLatency>
-<Interval-min>1080</Interval-min>
-<Interval-max>1080</Interval-max>
+<Best-caseLatency>822</Best-caseLatency>
+<Average-caseLatency>1078</Average-caseLatency>
+<Worst-caseLatency>1078</Worst-caseLatency>
+<Best-caseRealTimeLatency>8.220 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>10.780 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>10.780 us</Worst-caseRealTimeLatency>
+<Interval-min>822</Interval-min>
+<Interval-max>1078</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
 <first_codewords>
 <TripCount>26</TripCount>
 <Latency>52</Latency>
-<PipelineII>2</PipelineII>
-<PipelineDepth>2</PipelineDepth>
+<IterationLatency>2</IterationLatency>
 </first_codewords>
 <assign_codewords>
 <TripCount>256</TripCount>
-<Latency>1024</Latency>
-<PipelineII>4</PipelineII>
-<PipelineDepth>4</PipelineDepth>
+<Latency>
+<range>
+<min>768</min>
+<max>1024</max>
+</range>
+</Latency>
+<IterationLatency>
+<range>
+<min>3</min>
+<max>4</max>
+</range>
+</IterationLatency>
 </assign_codewords>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
@@ -49,8 +57,8 @@
 <AreaEstimates>
 <Resources>
 <BRAM_18K>0</BRAM_18K>
-<FF>130</FF>
-<LUT>530</LUT>
+<FF>126</FF>
+<LUT>536</LUT>
 <URAM>0</URAM>
 <DSP48E>0</DSP48E>
 </Resources>
@@ -105,17 +113,6 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>ap_continue</name>
-<Object>create_codeword</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>

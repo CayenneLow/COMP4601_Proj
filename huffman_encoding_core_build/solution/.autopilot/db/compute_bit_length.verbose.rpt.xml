@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'compute_bit_length'" level="0">
-<item name = "Date">Tue Aug  3 12:44:37 2021
+<item name = "Date">Tue Aug  3 15:22:57 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">828, 828, 8.280 us, 8.280 us, 828, 828, none</column>
+<column name="">1078, 1331, 10.780 us, 13.310 us, 1078, 1331, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,8 +35,8 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- init_histogram">64, 64, 1, 1, 1, 64, yes</column>
-<column name="- traverse_tree">760, 760, 5, 3, 3, 253, yes</column>
+<column name="- init_histogram">64, 64, 1, -, -, 64, no</column>
+<column name="- traverse_tree">1012, 1265, 4 ~ 5, -, -, 253, no</column>
 </table>
 </item>
 </section>
@@ -49,12 +49,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 237, -</column>
+<column name="Expression">-, -, 0, 235, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">2, -, 0, 0, 0</column>
-<column name="Multiplexer">-, -, -, 185, -</column>
-<column name="Register">-, -, 194, -, -</column>
+<column name="Multiplexer">-, -, -, 140, -</column>
+<column name="Register">-, -, 126, -, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
 <specialColumn name="Utilization (%)">~0, 0, ~0, ~0, 0</specialColumn>
 </table>
@@ -71,8 +71,8 @@
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
 <keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
-<column name="child_depth_V_U">compute_bit_lengtibs, 1, 0, 0, 0, 255, 6, 1, 1530</column>
-<column name="internal_length_hist_U">compute_bit_lengtjbC, 1, 0, 0, 0, 64, 32, 1, 2048</column>
+<column name="child_depth_V_U">compute_bit_lengtjbC, 1, 0, 0, 0, 255, 6, 1, 1530</column>
+<column name="internal_length_hist_U">compute_bit_lengtkbM, 1, 0, 0, 0, 64, 32, 1, 2048</column>
 </table>
 </item>
 <item name = "FIFO"><table name="" hasTotal="1">
@@ -81,54 +81,42 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="add_ln19_fu_270_p2">+, 0, 0, 39, 32, 3</column>
-<column name="count_V_1_fu_339_p2">+, 0, 0, 39, 32, 32</column>
-<column name="i_5_fu_259_p2">+, 0, 0, 15, 7, 1</column>
-<column name="i_6_fu_329_p2">+, 0, 0, 39, 32, 2</column>
-<column name="i_fu_280_p2">+, 0, 0, 39, 32, 3</column>
-<column name="length_V_fu_317_p2">+, 0, 0, 15, 6, 1</column>
-<column name="icmp_ln14_fu_253_p2">icmp, 0, 0, 11, 7, 8</column>
-<column name="icmp_ln883_1_fu_311_p2">icmp, 0, 0, 18, 32, 2</column>
-<column name="icmp_ln883_fu_305_p2">icmp, 0, 0, 18, 32, 2</column>
-<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
-<column name="ap_enable_pp1">xor, 0, 0, 2, 1, 2</column>
+<column name="add_ln19_fu_222_p2">+, 0, 0, 39, 32, 3</column>
+<column name="count_V_2_fu_283_p2">+, 0, 0, 39, 32, 32</column>
+<column name="i_7_fu_211_p2">+, 0, 0, 15, 7, 1</column>
+<column name="i_8_fu_290_p2">+, 0, 0, 39, 32, 2</column>
+<column name="i_fu_232_p2">+, 0, 0, 39, 32, 3</column>
+<column name="length_V_fu_255_p2">+, 0, 0, 15, 6, 1</column>
+<column name="icmp_ln14_fu_205_p2">icmp, 0, 0, 11, 7, 8</column>
+<column name="icmp_ln883_1_fu_268_p2">icmp, 0, 0, 18, 32, 2</column>
+<column name="icmp_ln883_fu_262_p2">icmp, 0, 0, 18, 32, 2</column>
+<column name="ap_condition_158">or, 0, 0, 2, 1, 1</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
 <column name="ap_NS_fsm">41, 8, 1, 8</column>
-<column name="ap_done">9, 2, 1, 2</column>
-<column name="ap_enable_reg_pp1_iter1">9, 2, 1, 2</column>
-<column name="ap_phi_mux_i2_0_i_i_phi_fu_233_p4">9, 2, 32, 64</column>
-<column name="ap_phi_reg_pp1_iter1_op2_assign_reg_240">9, 2, 2, 4</column>
 <column name="child_depth_V_address0">21, 4, 8, 32</column>
 <column name="child_depth_V_d0">15, 3, 6, 18</column>
-<column name="i2_0_i_i_reg_230">9, 2, 32, 64</column>
-<column name="i_0_i_i_reg_219">9, 2, 7, 14</column>
+<column name="i2_0_reg_182">9, 2, 32, 64</column>
+<column name="i_0_reg_171">9, 2, 7, 14</column>
 <column name="internal_length_hist_address0">21, 4, 6, 24</column>
 <column name="internal_length_hist_d0">15, 3, 32, 96</column>
-<column name="val_assign_loc_blk_n">9, 2, 1, 2</column>
-<column name="val_assign_loc_out_blk_n">9, 2, 1, 2</column>
+<column name="op2_assign_reg_192">9, 2, 2, 4</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
 <column name="ap_CS_fsm">7, 0, 7, 0</column>
-<column name="ap_done_reg">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp1_iter0">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp1_iter1">1, 0, 1, 0</column>
-<column name="ap_phi_reg_pp1_iter1_op2_assign_reg_240">2, 0, 2, 0</column>
-<column name="count_V_reg_417">32, 0, 32, 0</column>
-<column name="i2_0_i_i_reg_230">32, 0, 32, 0</column>
-<column name="i_0_i_i_reg_219">7, 0, 7, 0</column>
-<column name="i_6_reg_412">32, 0, 32, 0</column>
-<column name="icmp_ln883_1_reg_398">1, 0, 1, 0</column>
-<column name="icmp_ln883_reg_394">1, 0, 1, 0</column>
-<column name="internal_length_hist_2_reg_407">6, 0, 6, 0</column>
-<column name="tmp_reg_365">1, 0, 1, 0</column>
-<column name="val_assign_loc_read_reg_346">32, 0, 32, 0</column>
-<column name="zext_ln24_reg_369">32, 0, 64, 32</column>
-<column name="zext_ln544_8_reg_402">6, 0, 64, 58</column>
+<column name="count_V_reg_363">32, 0, 32, 0</column>
+<column name="i2_0_reg_182">32, 0, 32, 0</column>
+<column name="i_0_reg_171">7, 0, 7, 0</column>
+<column name="icmp_ln883_1_reg_349">1, 0, 1, 0</column>
+<column name="icmp_ln883_reg_345">1, 0, 1, 0</column>
+<column name="internal_length_hist_2_reg_358">6, 0, 6, 0</column>
+<column name="op2_assign_reg_192">2, 0, 2, 0</column>
+<column name="zext_ln24_reg_318">32, 0, 64, 32</column>
+<column name="zext_ln544_9_reg_353">6, 0, 64, 58</column>
 </table>
 </item>
 </section>
@@ -142,7 +130,6 @@
 <column name="ap_rst">in, 1, ap_ctrl_hs, compute_bit_length, return value</column>
 <column name="ap_start">in, 1, ap_ctrl_hs, compute_bit_length, return value</column>
 <column name="ap_done">out, 1, ap_ctrl_hs, compute_bit_length, return value</column>
-<column name="ap_continue">in, 1, ap_ctrl_hs, compute_bit_length, return value</column>
 <column name="ap_idle">out, 1, ap_ctrl_hs, compute_bit_length, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, compute_bit_length, return value</column>
 <column name="parent_V_address0">out, 8, ap_memory, parent_V, array</column>
@@ -154,16 +141,11 @@
 <column name="right_V_address0">out, 8, ap_memory, right_V, array</column>
 <column name="right_V_ce0">out, 1, ap_memory, right_V, array</column>
 <column name="right_V_q0">in, 32, ap_memory, right_V, array</column>
-<column name="val_assign_loc_dout">in, 32, ap_fifo, val_assign_loc, pointer</column>
-<column name="val_assign_loc_empty_n">in, 1, ap_fifo, val_assign_loc, pointer</column>
-<column name="val_assign_loc_read">out, 1, ap_fifo, val_assign_loc, pointer</column>
+<column name="num_symbols">in, 32, ap_none, num_symbols, scalar</column>
 <column name="length_histogram_V_address0">out, 6, ap_memory, length_histogram_V, array</column>
 <column name="length_histogram_V_ce0">out, 1, ap_memory, length_histogram_V, array</column>
 <column name="length_histogram_V_we0">out, 1, ap_memory, length_histogram_V, array</column>
 <column name="length_histogram_V_d0">out, 32, ap_memory, length_histogram_V, array</column>
-<column name="val_assign_loc_out_din">out, 32, ap_fifo, val_assign_loc_out, pointer</column>
-<column name="val_assign_loc_out_full_n">in, 1, ap_fifo, val_assign_loc_out, pointer</column>
-<column name="val_assign_loc_out_write">out, 1, ap_fifo, val_assign_loc_out, pointer</column>
 </table>
 </item>
 </section>

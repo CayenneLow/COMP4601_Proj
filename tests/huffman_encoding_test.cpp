@@ -1,6 +1,9 @@
 #include "huffman.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <chrono>
+using namespace std::chrono;
+#include <iostream>
 
 void file_to_array(const char *filename, ap_uint<16> *&array, int array_length) {
     printf("Start reading file [%s]\n", filename);
@@ -45,7 +48,28 @@ int main() {
 
     int num_nonzero_symbols;
     PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE];
-    huffman_encoding(in, encoding, &num_nonzero_symbols);
+    //huffman_encoding(in, encoding, &num_nonzero_symbols);
+
+    long long nanoAvg = 0;
+    long microAvg = 0;
+    int runs = 10000;
+    for (int i = 0; i < runs; i++) {
+        auto start = steady_clock::now();
+        huffman_encoding(in, encoding, &num_nonzero_symbols);
+        auto end = steady_clock::now();
+
+        nanoseconds nanoDuration = duration_cast<nanoseconds>(end - start);
+        nanoAvg += nanoDuration.count();
+        // std::cout << "\n(Software) elapsed time: " << nanoDuration.count() << "nanoseconds \n";
+
+        microseconds microDuration = duration_cast<microseconds>(end - start);
+        microAvg += microDuration.count();
+        // std::cout << "(Software) elapsed time: " << microDuration.count() << "microseconds \n";
+    }
+    std::cout << "Average nanoseconds over " << runs << " runs:  " << nanoAvg/runs << "\n";
+    std::cout << "Average microseconds over " << runs << " runs: " << microAvg/runs << "\n";
+
+
     output_file = fopen("huffman.random256.out", "w");
     for(int i = 0; i < INPUT_SYMBOL_SIZE; i++)
         fprintf(output_file, "%d, %x\n", i, (unsigned int) encoding[i]);

@@ -2,170 +2,111 @@
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2020.1 (64-bit)
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // ==============================================================
+#ifndef __huffman_encoding_tde_H__
+#define __huffman_encoding_tde_H__
 
-#ifndef _huffman_encoding_tde_H_
-#define _huffman_encoding_tde_H_
 
 #include <systemc>
+using namespace sc_core;
+using namespace sc_dt;
+
+
+
+
 #include <iostream>
 #include <fstream>
 
-#include "huffman_encoding_tde_memcore.h"
+struct huffman_encoding_tde_ram : public sc_core::sc_module {
+
+  static const unsigned DataWidth = 31;
+  static const unsigned AddressRange = 255;
+  static const unsigned AddressWidth = 8;
+
+//latency = 1
+//input_reg = 1
+//output_reg = 0
+sc_core::sc_in <sc_lv<AddressWidth> > address0;
+sc_core::sc_in <sc_logic> ce0;
+sc_core::sc_out <sc_lv<DataWidth> > q0;
+sc_core::sc_in<sc_logic> we0;
+sc_core::sc_in<sc_lv<DataWidth> > d0;
+sc_core::sc_in<sc_logic> reset;
+sc_core::sc_in<bool> clk;
+
+
+sc_lv<DataWidth> ram[AddressRange];
+
+
+   SC_CTOR(huffman_encoding_tde_ram) {
+
+
+SC_METHOD(prc_write_0);
+  sensitive<<clk.pos();
+   }
+
+
+void prc_write_0()
+{
+    if (ce0.read() == sc_dt::Log_1) 
+    {
+        if (we0.read() == sc_dt::Log_1) 
+        {
+           if(address0.read().is_01() && address0.read().to_uint()<AddressRange)
+           {
+              ram[address0.read().to_uint()] = d0.read(); 
+              q0 = d0.read();
+           }
+           else
+              q0 = sc_lv<DataWidth>();
+        }
+        else {
+            if(address0.read().is_01() && address0.read().to_uint()<AddressRange)
+              q0 = ram[address0.read().to_uint()];
+            else
+              q0 = sc_lv<DataWidth>();
+        }
+    }
+}
+
+
+}; //endmodule
+
 
 SC_MODULE(huffman_encoding_tde) {
-    static const unsigned int DataWidth    = 32;
-    static const unsigned int AddressRange = 32;
-    static const unsigned int AddressWidth = 8;
-    static const unsigned int BufferCount  = 2;
-    static const unsigned int IndexWidth   = 1;
 
-    // system signals
-    sc_core::sc_in_clk clk;
-    sc_core::sc_in< sc_dt::sc_logic > reset;
 
-    // initiator
-    sc_core::sc_in<  sc_dt::sc_logic >            i_ce;
-    sc_core::sc_in<  sc_dt::sc_logic >            i_write;
-    sc_core::sc_out< sc_dt::sc_logic >            i_full_n;
-    sc_core::sc_in<  sc_dt::sc_logic >            i_ce0;
-    sc_core::sc_in<  sc_dt::sc_logic           >        i_we0;
-    sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > i_address0;
-    sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    i_d0;
-    sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    i_q0;
+static const unsigned DataWidth = 31;
+static const unsigned AddressRange = 255;
+static const unsigned AddressWidth = 8;
 
-    // target
-    sc_core::sc_in<  sc_dt::sc_logic >            t_ce;
-    sc_core::sc_in<  sc_dt::sc_logic >            t_read;
-    sc_core::sc_out< sc_dt::sc_logic >            t_empty_n;
-    sc_core::sc_in<  sc_dt::sc_logic >            t_ce0;
-    sc_core::sc_in<  sc_dt::sc_logic           >        t_we0;
-    sc_core::sc_in<  sc_dt::sc_lv<AddressWidth> > t_address0;
-    sc_core::sc_in<  sc_dt::sc_lv<DataWidth> >    t_d0;
-    sc_core::sc_out< sc_dt::sc_lv<DataWidth> >    t_q0;
+sc_core::sc_in <sc_lv<AddressWidth> > address0;
+sc_core::sc_in<sc_logic> ce0;
+sc_core::sc_out <sc_lv<DataWidth> > q0;
+sc_core::sc_in<sc_logic> we0;
+sc_core::sc_in<sc_lv<DataWidth> > d0;
+sc_core::sc_in<sc_logic> reset;
+sc_core::sc_in<bool> clk;
 
-protected:
-    // control/status
-    sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   iptr;     // initiator index
-    sc_core::sc_signal< sc_dt::sc_uint<IndexWidth> >   tptr;     // target index
-    sc_core::sc_signal< sc_dt::sc_uint<IndexWidth+1> > count;    // count of written buffers
-    sc_core::sc_signal< sc_dt::sc_logic >              full_n;   // whether all buffers are written
-    sc_core::sc_signal< sc_dt::sc_logic >              empty_n;  // whether none of the buffers is written
-    sc_core::sc_signal< sc_dt::sc_logic >              push_buf; // finish writing a buffer
-    sc_core::sc_signal< sc_dt::sc_logic >              pop_buf;  // finish reading a buffer
 
-    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth+IndexWidth> > memcore_iaddr;
-    sc_core::sc_signal< sc_dt::sc_lv<AddressWidth+IndexWidth> > memcore_taddr;
+huffman_encoding_tde_ram* meminst;
 
-    huffman_encoding_tde_memcore* huffman_encoding_tde_memcore_U;
 
-    void proc_memcore_addr();
+SC_CTOR(huffman_encoding_tde) {
+meminst = new huffman_encoding_tde_ram("huffman_encoding_tde_ram");
+meminst->address0(address0);
+meminst->ce0(ce0);
+meminst->q0(q0);
+meminst->we0(we0);
+meminst->d0(d0);
 
-    void proc_i_full_n();
-    void proc_t_empty_n();
 
-    // control/status
-    void proc_push_buf();
-    void proc_pop_buf();
-    void proc_iptr();
-    void proc_tptr();
-    void proc_count();
-    void proc_full_n();
-    void proc_empty_n();
+meminst->reset(reset);
+meminst->clk(clk);
+}
+~huffman_encoding_tde() {
+    delete meminst;
+}
 
-    sc_core::sc_trace_file* m_trace_file;
 
-public:
-    ~huffman_encoding_tde();
-    SC_CTOR(huffman_encoding_tde) : m_trace_file(0) {
-        SC_METHOD(proc_memcore_addr);
-        sensitive << i_address0 << t_address0 << iptr << tptr;
-
-        huffman_encoding_tde_memcore_U = new huffman_encoding_tde_memcore("huffman_encoding_tde_memcore_U");
-        huffman_encoding_tde_memcore_U->clk      ( clk );
-        huffman_encoding_tde_memcore_U->reset    ( reset );
-        huffman_encoding_tde_memcore_U->ce0      ( i_ce0 );
-        huffman_encoding_tde_memcore_U->we0      ( i_we0 );
-        huffman_encoding_tde_memcore_U->address0 ( memcore_iaddr );
-        huffman_encoding_tde_memcore_U->d0       ( i_d0 );
-        huffman_encoding_tde_memcore_U->q0       ( i_q0 );
-
-        huffman_encoding_tde_memcore_U->ce1      ( t_ce0 );
-        huffman_encoding_tde_memcore_U->we1      ( t_we0 );
-        huffman_encoding_tde_memcore_U->address1 ( memcore_taddr );
-        huffman_encoding_tde_memcore_U->d1       ( t_d0 );
-        huffman_encoding_tde_memcore_U->q1       ( t_q0 );
-
-        // power-on initialization
-        iptr    = 0;
-        tptr    = 0;
-        count   = 0;
-        full_n  = SC_LOGIC_1;
-        empty_n = SC_LOGIC_0;
-
-        // output
-        SC_METHOD(proc_i_full_n);
-        sensitive << full_n;
-
-        SC_METHOD(proc_t_empty_n);
-        sensitive << empty_n;
-
-        // control/status
-        SC_METHOD(proc_push_buf);
-        sensitive << i_ce << i_write << full_n;
-
-        SC_METHOD(proc_pop_buf);
-        sensitive << t_ce << t_read << empty_n;
-
-        SC_METHOD(proc_iptr);
-        sensitive << clk.pos();
-
-        SC_METHOD(proc_tptr);
-        sensitive << clk.pos();
-
-        SC_METHOD(proc_count);
-        sensitive << clk.pos();
-
-        SC_METHOD(proc_full_n);
-        sensitive << clk.pos();
-
-        SC_METHOD(proc_empty_n);
-        sensitive << clk.pos();
-
-        // Trace Begin.
-        const char* dump_vcd = std::getenv("AP_WRITE_VCD");
-        if (dump_vcd) {
-            m_trace_file = sc_create_vcd_trace_file( "huffman_encoding_tde.trace");
-            // ports
-            sc_trace(m_trace_file, clk,        "(port)clk");
-            sc_trace(m_trace_file, reset,      "(port)reset");
-            sc_trace(m_trace_file, i_write,    "(port)i_write");
-            sc_trace(m_trace_file, i_full_n,   "(port)i_full_n");
-            sc_trace(m_trace_file, i_ce0,      "(port)i_ce0");
-            sc_trace(m_trace_file, i_we0,      "(port)i_we0");
-            sc_trace(m_trace_file, i_address0, "(port)i_address0");
-            sc_trace(m_trace_file, i_d0,       "(port)i_d0");
-            sc_trace(m_trace_file, i_q0,       "(port)i_q0");
-            sc_trace(m_trace_file, t_read,     "(port)t_read");
-            sc_trace(m_trace_file, t_empty_n,  "(port)t_empty_n");
-            sc_trace(m_trace_file, t_ce0,      "(port)t_ce0");
-            sc_trace(m_trace_file, t_we0,      "(port)t_we0");
-            sc_trace(m_trace_file, t_address0, "(port)t_address0");
-            sc_trace(m_trace_file, t_d0,       "(port)t_d0");
-            sc_trace(m_trace_file, t_q0,       "(port)t_q0");
-            // control/status
-            sc_trace(m_trace_file, iptr,     "iptr");
-            sc_trace(m_trace_file, tptr,     "tptr");
-            sc_trace(m_trace_file, count,    "count");
-            sc_trace(m_trace_file, full_n,   "full_n");
-            sc_trace(m_trace_file, empty_n,  "empty_n");
-            sc_trace(m_trace_file, push_buf, "push_buf");
-            sc_trace(m_trace_file, pop_buf,  "pop_buf");
-            sc_trace(m_trace_file, memcore_iaddr,  "memcore_iaddr");
-            sc_trace(m_trace_file, memcore_taddr,  "memcore_taddr");
-        } // Trace End.
-
-    }
-};
-
+};//endmodule
 #endif
-

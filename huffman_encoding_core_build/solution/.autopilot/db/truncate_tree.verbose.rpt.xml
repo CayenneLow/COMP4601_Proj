@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'truncate_tree'" level="0">
-<item name = "Date">Tue Aug  3 12:44:38 2021
+<item name = "Date">Tue Aug  3 15:22:57 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -52,12 +52,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 390, -</column>
+<column name="Expression">-, -, 0, 388, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">-, -, -, -, -</column>
-<column name="Multiplexer">-, -, -, 259, -</column>
-<column name="Register">-, -, 256, -, -</column>
+<column name="Multiplexer">-, -, -, 250, -</column>
+<column name="Register">-, -, 255, -, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
 <specialColumn name="Utilization (%)">0, 0, ~0, 1, 0</specialColumn>
 </table>
@@ -97,13 +97,11 @@
 <column name="icmp_ln16_fu_238_p2">icmp, 0, 0, 11, 6, 5</column>
 <column name="icmp_ln44_fu_340_p2">icmp, 0, 0, 11, 7, 8</column>
 <column name="icmp_ln879_fu_260_p2">icmp, 0, 0, 18, 32, 5</column>
-<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
 <column name="ap_NS_fsm">85, 17, 1, 17</column>
-<column name="ap_done">9, 2, 1, 2</column>
 <column name="i1_0_reg_164">9, 2, 6, 12</column>
 <column name="i2_0_reg_186">9, 2, 7, 14</column>
 <column name="i_0_reg_153">9, 2, 7, 14</column>
@@ -120,7 +118,6 @@
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
 <column name="ap_CS_fsm">16, 0, 16, 0</column>
-<column name="ap_done_reg">1, 0, 1, 0</column>
 <column name="i1_0_reg_164">6, 0, 6, 0</column>
 <column name="i2_0_reg_186">7, 0, 7, 0</column>
 <column name="i_0_reg_153">7, 0, 7, 0</column>
@@ -152,7 +149,6 @@
 <column name="ap_rst">in, 1, ap_ctrl_hs, truncate_tree, return value</column>
 <column name="ap_start">in, 1, ap_ctrl_hs, truncate_tree, return value</column>
 <column name="ap_done">out, 1, ap_ctrl_hs, truncate_tree, return value</column>
-<column name="ap_continue">in, 1, ap_ctrl_hs, truncate_tree, return value</column>
 <column name="ap_idle">out, 1, ap_ctrl_hs, truncate_tree, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, truncate_tree, return value</column>
 <column name="input_length_histogram_V_address0">out, 6, ap_memory, input_length_histogram_V, array</column>

@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'truncate_tree'
 ================================================================
-* Date:           Tue Aug  3 12:44:38 2021
+* Date:           Tue Aug  3 15:22:57 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -58,14 +58,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    390|    -|
+|Expression       |        -|      -|       0|    388|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        -|      -|       -|      -|    -|
-|Multiplexer      |        -|      -|       -|    259|    -|
-|Register         |        -|      -|     256|      -|    -|
+|Multiplexer      |        -|      -|       -|    250|    -|
+|Register         |        -|      -|     255|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        0|      0|     256|    649|    0|
+|Total            |        0|      0|     255|    638|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -104,9 +104,8 @@
     |icmp_ln16_fu_238_p2    |   icmp   |      0|  0|  11|           6|           5|
     |icmp_ln44_fu_340_p2    |   icmp   |      0|  0|  11|           7|           8|
     |icmp_ln879_fu_260_p2   |   icmp   |      0|  0|  18|          32|           5|
-    |ap_block_state1        |    or    |      0|  0|   2|           1|           1|
     +-----------------------+----------+-------+---+----+------------+------------+
-    |Total                  |          |      0|  0| 390|         330|          44|
+    |Total                  |          |      0|  0| 388|         329|          43|
     +-----------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
@@ -114,7 +113,6 @@
     |                 Name                | LUT| Input Size| Bits| Total Bits|
     +-------------------------------------+----+-----------+-----+-----------+
     |ap_NS_fsm                            |  85|         17|    1|         17|
-    |ap_done                              |   9|          2|    1|          2|
     |i1_0_reg_164                         |   9|          2|    6|         12|
     |i2_0_reg_186                         |   9|          2|    7|         14|
     |i_0_reg_153                          |   9|          2|    7|         14|
@@ -127,7 +125,7 @@
     |reg_211                              |   9|          2|   32|         64|
     |t_V_reg_175                          |   9|          2|   32|         64|
     +-------------------------------------+----+-----------+-----+-----------+
-    |Total                                | 259|         52|  226|        637|
+    |Total                                | 250|         50|  225|        635|
     +-------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
@@ -135,7 +133,6 @@
     |              Name              | FF | LUT| Bits| Const Bits|
     +--------------------------------+----+----+-----+-----------+
     |ap_CS_fsm                       |  16|   0|   16|          0|
-    |ap_done_reg                     |   1|   0|    1|          0|
     |i1_0_reg_164                    |   6|   0|    6|          0|
     |i2_0_reg_186                    |   7|   0|    7|          0|
     |i_0_reg_153                     |   7|   0|    7|          0|
@@ -155,7 +152,7 @@
     |zext_ln11_reg_365               |   7|   0|   64|         57|
     |zext_ln45_reg_442               |   7|   0|   64|         57|
     +--------------------------------+----+----+-----+-----------+
-    |Total                           | 256|   0|  370|        114|
+    |Total                           | 255|   0|  369|        114|
     +--------------------------------+----+----+-----+-----------+
 
 
@@ -171,7 +168,6 @@
 |ap_rst                               |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |ap_start                             |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |ap_done                              | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
-|ap_continue                          |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |ap_idle                              | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |ap_ready                             | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
 |input_length_histogram_V_address0    | out |    6|  ap_memory |  input_length_histogram_V  |     array    |
@@ -204,7 +200,7 @@ ExposeGlobal: 0
 IsTopModel: 0
 ResetActiveHigh: 1
 IsCombinational: 2
-IsDatapathOnly: 0
+IsDatapathOnly: 2
 HasWiredReturn: 1
 HasMFsm: 0
 HasVarLatency: 1
@@ -295,7 +291,7 @@ ST_6 : Operation 54 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoop
 ST_6 : Operation 55 [1/1] (2.47ns)   --->   "%icmp_ln879 = icmp eq i32 %j_V_2_load, 27" [./hls-src/huffman_truncate_tree.cpp:21]   --->   Operation 55 'icmp' 'icmp_ln879' <Predicate = (!icmp_ln883)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 56 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879, label %hls_label_0.preheader, label %reorder_end" [./hls-src/huffman_truncate_tree.cpp:21]   --->   Operation 56 'br' <Predicate = (!icmp_ln883)> <Delay = 0.00>
 ST_6 : Operation 57 [1/1] (1.76ns)   --->   "br label %hls_label_0" [./hls-src/huffman_truncate_tree.cpp:23]   --->   Operation 57 'br' <Predicate = (!icmp_ln883 & icmp_ln879)> <Delay = 1.76>
-ST_6 : Operation 58 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str1, i32 %tmp)" [./hls-src/huffman_truncate_tree.cpp:39]   --->   Operation 58 'specregionend' 'empty_7' <Predicate = (icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 58 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str1, i32 %tmp)" [./hls-src/huffman_truncate_tree.cpp:39]   --->   Operation 58 'specregionend' 'empty_6' <Predicate = (icmp_ln883)> <Delay = 0.00>
 ST_6 : Operation 59 [1/1] (0.00ns)   --->   "br label %.preheader180" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 59 'br' <Predicate = (icmp_ln883)> <Delay = 0.00>
 
 State 7 <SV = 5> <Delay = 5.80>
@@ -351,7 +347,7 @@ ST_14 : Operation 94 [1/1] (2.55ns)   --->   "%add_ln700_1 = add i32 %output_len
 ST_14 : Operation 95 [1/1] (3.25ns)   --->   "store i32 %add_ln700_1, i32* %output_length_histog_2, align 4" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 95 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
 ST_14 : Operation 96 [1/1] (2.55ns)   --->   "%add_ln701_1 = add i32 %output_length_histog_11, -2" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 96 'add' 'add_ln701_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.59> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_14 : Operation 97 [1/1] (3.25ns)   --->   "store i32 %add_ln701_1, i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 97 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_14 : Operation 98 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([8 x i8]* @p_str2, i32 %tmp_1)" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 98 'specregionend' 'empty_6' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 98 [1/1] (0.00ns)   --->   "%empty_5 = call i32 (...)* @_ssdm_op_SpecRegionEnd([8 x i8]* @p_str2, i32 %tmp_1)" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 98 'specregionend' 'empty_5' <Predicate = true> <Delay = 0.00>
 ST_14 : Operation 99 [1/1] (0.00ns)   --->   "br label %3" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 99 'br' <Predicate = true> <Delay = 0.00>
 
 State 15 <SV = 3> <Delay = 3.25>
@@ -384,9 +380,9 @@ STG Binding:
 - Is pipelined: 0
 - Is top level: 0
 Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
-Port [ input_length_histogram_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=1; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
-Port [ output_length_histogram1_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=2; type=1; pingpong=1; private_global=0; MemPort=[22]; IO mode=ap_memory:ce=0
-Port [ output_length_histogram2_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=1; pingpong=1; private_global=0; MemPort=[03]; IO mode=ap_memory:ce=0
+Port [ input_length_histogram_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ output_length_histogram1_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=2; type=1; pingpong=0; private_global=0; MemPort=[22]; IO mode=ap_memory:ce=0
+Port [ output_length_histogram2_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=1; pingpong=0; private_global=0; MemPort=[03]; IO mode=ap_memory:ce=0
 ---------------- STG Properties END ------------------
 
 ---------------- Datapath Model BEGIN ----------------
@@ -432,7 +428,7 @@ speclooptripcount_ln20  (speclooptripcount) [ 00000000000000000]
 icmp_ln879              (icmp             ) [ 00001111111111100]
 br_ln21                 (br               ) [ 00000000000000000]
 br_ln23                 (br               ) [ 00001111111111100]
-empty_7                 (specregionend    ) [ 00000000000000000]
+empty_6                 (specregionend    ) [ 00000000000000000]
 br_ln16                 (br               ) [ 00101111111111100]
 t_V                     (phi              ) [ 00000001000000000]
 j_V                     (add              ) [ 00001111111111100]
@@ -467,7 +463,7 @@ add_ln700_1             (add              ) [ 00000000000000000]
 store_ln32              (store            ) [ 00000000000000000]
 add_ln701_1             (add              ) [ 00000000000000000]
 store_ln33              (store            ) [ 00000000000000000]
-empty_6                 (specregionend    ) [ 00000000000000000]
+empty_5                 (specregionend    ) [ 00000000000000000]
 br_ln38                 (br               ) [ 00000000000000000]
 i2_0                    (phi              ) [ 00000000000000010]
 icmp_ln44               (icmp             ) [ 00000000000000011]

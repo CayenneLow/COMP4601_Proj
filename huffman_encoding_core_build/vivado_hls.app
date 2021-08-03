@@ -20,8 +20,8 @@
         <SimFlow name="csim" ldflags="" mflags="" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <solutions xmlns="">
-        <solution name="solution" status="active"/>
-        <solution name="optimized" status="inactive"/>
+        <solution name="solution" status="inactive"/>
+        <solution name="optimized" status="active"/>
     </solutions>
 </project>
 

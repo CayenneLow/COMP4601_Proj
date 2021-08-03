@@ -7195,30 +7195,30 @@ void sort(
                  Symbol out[INPUT_SYMBOL_SIZE]) {_ssdm_SpecArrayDimSize(in, 256);_ssdm_SpecArrayDimSize(out, 256);
     Symbol previous_sorting[INPUT_SYMBOL_SIZE], sorting[INPUT_SYMBOL_SIZE];
     ap_uint<SYMBOL_BITS> digit_histogram[RADIX], digit_location[RADIX];
-#pragma HLS ARRAY_PARTITION variable=&digit_location complete dim=1
-#pragma HLS ARRAY_PARTITION variable=&digit_histogram complete dim=1
- Digit current_digit[INPUT_SYMBOL_SIZE];
+
+
+    Digit current_digit[INPUT_SYMBOL_SIZE];
 
     (void) ((!!(num_symbols >= 0)) || (_assert("num_symbols >= 0","./hls-src/huffman_sort.cpp",17),0));
     (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_sort.cpp",18),0));
  copy_in_to_sorting:
     for(int j = 0; j < num_symbols; j++) {
-#pragma HLS PIPELINE II=1
- sorting[j] = in[j];
+
+        sorting[j] = in[j];
     }
 
  radix_sort:
     for(int shift = 0; shift < 32; shift += BITS_PER_LOOP) {
     init_histogram:
         for(int i = 0; i < RADIX; i++) {
-#pragma HLS pipeline II=1
- digit_histogram[i] = 0;
+
+            digit_histogram[i] = 0;
         }
 
     compute_histogram:
         for(int j = 0; j < num_symbols; j++) {
-#pragma HLS PIPELINE II=1
- Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1);
+
+            Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1);
             current_digit[j] = digit;
             digit_histogram[digit]++;
             previous_sorting[j] = sorting[j];
@@ -7227,13 +7227,13 @@ void sort(
         digit_location[0] = 0;
     find_digit_location:
         for(int i = 1; i < RADIX; i++)
-#pragma HLS PIPELINE II=1
- digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
+
+            digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
 
     re_sort:
         for(int j = 0; j < num_symbols; j++) {
-#pragma HLS PIPELINE II=1
- Digit digit = current_digit[j];
+
+            Digit digit = current_digit[j];
             sorting[digit_location[digit]] = previous_sorting[j];
             out[digit_location[digit]] = previous_sorting[j];
             digit_location[digit]++;

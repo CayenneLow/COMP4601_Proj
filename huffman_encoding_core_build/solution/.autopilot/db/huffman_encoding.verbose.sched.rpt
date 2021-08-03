@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Tue Aug  3 12:44:34 2021
+* Date:           Tue Aug  3 15:22:56 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -20,24 +20,33 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  | 10.00 ns | 8.661 ns |   1.25 ns  |
+    |ap_clk  | 10.00 ns | 8.333 ns |   1.25 ns  |
     +--------+----------+----------+------------+
 
 + Latency: 
     * Summary: 
-    +---------+---------+-----------+-----------+------+------+----------+
-    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
-    |   min   |   max   |    min    |    max    |  min |  max |   Type   |
-    +---------+---------+-----------+-----------+------+------+----------+
-    |     4382|     9893| 43.820 us | 98.930 us |  1340|  4708| dataflow |
-    +---------+---------+-----------+-----------+------+------+----------+
+    +---------+---------+-----------+----------+------+-------+---------+
+    |  Latency (cycles) |  Latency (absolute)  |   Interval   | Pipeline|
+    |   min   |   max   |    min    |    max   |  min |  max  |   Type  |
+    +---------+---------+-----------+----------+------+-------+---------+
+    |     5197|    23730| 51.970 us | 0.237 ms |  5197|  23730|   none  |
+    +---------+---------+-----------+----------+------+-------+---------+
 
     + Detail: 
         * Instance: 
         N/A
 
         * Loop: 
-        N/A
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |                      |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
+        |       Loop Name      |   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |- Loop 1              |      768|      768|         3|          -|          -|      256|    no    |
+        |- copy_sorted         |      512|      512|         2|          -|          -|      256|    no    |
+        |- init_bits           |      256|      256|         1|          -|          -|      256|    no    |
+        |- process_symbols     |        0|     2048|   3 ~ 8  |          -|          -| 0 ~ 256 |    no    |
+        | + process_symbols.1  |        3|        5|         2|          -|          -|  1 ~ 2  |    no    |
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
 
 ============================================================
 + Verbose Summary: Synthesis Manager
@@ -49,7 +58,7 @@ ExposeGlobal: 0
 ============================================================
 IsTopModel: 1
 ResetActiveHigh: 1
-IsCombinational: 2
+IsCombinational: 0
 IsDatapathOnly: 0
 HasWiredReturn: 1
 HasMFsm: 0
@@ -65,118 +74,203 @@ IsGatedGlobalClock: 0
 ============================================================
 + Verbose Summary: Schedule
 ============================================================
-* Number of FSM states : 16
+* Number of FSM states : 18
 * Pipeline : 0
-* Dataflow Pipeline: 1
-  DF-Pipeline-0: Size = 16, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 }
+* Dataflow Pipeline: 0
 
 * FSM state transitions: 
 1 --> 2 
-2 --> 3 
+2 --> 3 5 
 3 --> 4 
-4 --> 5 
+4 --> 2 
 5 --> 6 
-6 --> 7 
-7 --> 8 
+6 --> 7 8 
+7 --> 6 
 8 --> 9 
 9 --> 10 
 10 --> 11 
 11 --> 12 
 12 --> 13 
-13 --> 14 
-14 --> 15 
+13 --> 13 14 
+14 --> 18 16 15 
 15 --> 16 
-16 --> 
+16 --> 15 17 
+17 --> 14 
+18 --> 
 
 * FSM state operations: 
 
-State 1 <SV = 0> <Delay = 0.00>
-ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%val_assign_loc_c19 = alloca i32, align 4"   --->   Operation 17 'alloca' 'val_assign_loc_c19' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%val_assign_loc_c18 = alloca i32, align 4"   --->   Operation 18 'alloca' 'val_assign_loc_c18' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%val_assign_loc_c17 = alloca i32, align 4"   --->   Operation 19 'alloca' 'val_assign_loc_c17' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%val_assign_loc_c = alloca i32, align 4"   --->   Operation 20 'alloca' 'val_assign_loc_c' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%n_c16 = alloca i32, align 4"   --->   Operation 21 'alloca' 'n_c16' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%n_c = alloca i32, align 4"   --->   Operation 22 'alloca' 'n_c' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%filtered_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 23 'alloca' 'filtered_value_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%filtered_frequency_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 24 'alloca' 'filtered_frequency_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%sorted_0 = alloca [256 x i32], align 4"   --->   Operation 25 'alloca' 'sorted_0' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%sorted_1 = alloca [256 x i32], align 4"   --->   Operation 26 'alloca' 'sorted_1' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%sorted_copy1_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 27 'alloca' 'sorted_copy1_value_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%sorted_copy1_frequen = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 28 'alloca' 'sorted_copy1_frequen' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:26]   --->   Operation 29 'alloca' 'sorted_copy2_value_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%parent_V = alloca [255 x i31], align 4" [./hls-src/huffman_encoding.cpp:27]   --->   Operation 30 'alloca' 'parent_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%left_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:28]   --->   Operation 31 'alloca' 'left_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%right_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:29]   --->   Operation 32 'alloca' 'right_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%length_histogram_V = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:35]   --->   Operation 33 'alloca' 'length_histogram_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%truncated_length_his = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:36]   --->   Operation 34 'alloca' 'truncated_length_his' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%truncated_length_his_1 = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:37]   --->   Operation 35 'alloca' 'truncated_length_his_1' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%symbol_bits_V = alloca [256 x i5], align 1" [./hls-src/huffman_encoding.cpp:38]   --->   Operation 36 'alloca' 'symbol_bits_V' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 37 [2/2] (0.00ns)   --->   "call fastcc void @filter([256 x i32]* nocapture %symbol_histogram_value_V, [256 x i32]* nocapture %symbol_histogram_frequency_V, [256 x i32]* nocapture %filtered_value_V, [256 x i32]* nocapture %filtered_frequency_V, i32* %n_c) noinline" [./hls-src/huffman_encoding.cpp:32]   --->   Operation 37 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%t_V_4 = alloca i32"   --->   Operation 19 'alloca' 't_V_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_value_V), !map !148"   --->   Operation 20 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_frequency_V), !map !154"   --->   Operation 21 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %encoding_V), !map !158"   --->   Operation 22 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %num_nonzero_symbols), !map !162"   --->   Operation 23 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([17 x i8]* @huffman_encoding_str) nounwind"   --->   Operation 24 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%filtered_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 25 'alloca' 'filtered_value_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%filtered_frequency_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 26 'alloca' 'filtered_frequency_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%sorted_0 = alloca [256 x i32], align 4"   --->   Operation 27 'alloca' 'sorted_0' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%sorted_1 = alloca [256 x i32], align 4"   --->   Operation 28 'alloca' 'sorted_1' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%sorted_copy1_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 29 'alloca' 'sorted_copy1_value_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%sorted_copy1_frequen = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 30 'alloca' 'sorted_copy1_frequen' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:26]   --->   Operation 31 'alloca' 'sorted_copy2_value_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%parent_V = alloca [255 x i31], align 4" [./hls-src/huffman_encoding.cpp:27]   --->   Operation 32 'alloca' 'parent_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%left_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:28]   --->   Operation 33 'alloca' 'left_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%right_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:29]   --->   Operation 34 'alloca' 'right_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%length_histogram_V = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:35]   --->   Operation 35 'alloca' 'length_histogram_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%truncated_length_his = alloca [64 x i32], align 4"   --->   Operation 36 'alloca' 'truncated_length_his' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%truncated_length_his_1 = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:37]   --->   Operation 37 'alloca' 'truncated_length_his_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%symbol_bits_V = alloca [256 x i5], align 1" [./hls-src/huffman_encoding.cpp:38]   --->   Operation 38 'alloca' 'symbol_bits_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_1 : Operation 39 [1/1] (1.76ns)   --->   "store i32 0, i32* %t_V_4" [./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32]   --->   Operation 39 'store' <Predicate = true> <Delay = 1.76>
+ST_1 : Operation 40 [1/1] (1.76ns)   --->   "br label %._crit_edge.i" [./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32]   --->   Operation 40 'br' <Predicate = true> <Delay = 1.76>
 
-State 2 <SV = 1> <Delay = 0.00>
-ST_2 : Operation 38 [1/2] (0.00ns)   --->   "call fastcc void @filter([256 x i32]* nocapture %symbol_histogram_value_V, [256 x i32]* nocapture %symbol_histogram_frequency_V, [256 x i32]* nocapture %filtered_value_V, [256 x i32]* nocapture %filtered_frequency_V, i32* %n_c) noinline" [./hls-src/huffman_encoding.cpp:32]   --->   Operation 38 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 2 <SV = 1> <Delay = 3.25>
+ST_2 : Operation 41 [1/1] (0.00ns)   --->   "%i_0_i = phi i9 [ 0, %arrayctor.loop1.preheader ], [ %i_4, %._crit_edge.i.backedge ]"   --->   Operation 41 'phi' 'i_0_i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 42 [1/1] (1.66ns)   --->   "%icmp_ln10 = icmp eq i9 %i_0_i, -256" [./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32]   --->   Operation 42 'icmp' 'icmp_ln10' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 43 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 44 [1/1] (1.82ns)   --->   "%i_4 = add i9 %i_0_i, 1" [./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32]   --->   Operation 44 'add' 'i_4' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 45 [1/1] (0.00ns)   --->   "br i1 %icmp_ln10, label %filter.exit, label %0" [./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32]   --->   Operation 45 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 46 [1/1] (0.00ns)   --->   "%zext_ln12 = zext i9 %i_0_i to i64" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 46 'zext' 'zext_ln12' <Predicate = (!icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 47 [1/1] (0.00ns)   --->   "%symbol_histogram_fre = getelementptr [256 x i32]* %symbol_histogram_frequency_V, i64 0, i64 %zext_ln12" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 47 'getelementptr' 'symbol_histogram_fre' <Predicate = (!icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 48 [2/2] (3.25ns)   --->   "%symbol_histogram_fre_1 = load i32* %symbol_histogram_fre, align 4" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 48 'load' 'symbol_histogram_fre_1' <Predicate = (!icmp_ln10)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_2 : Operation 49 [1/1] (0.00ns)   --->   "%t_V_4_load_1 = load i32* %t_V_4" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 49 'load' 't_V_4_load_1' <Predicate = (icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 50 [2/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32 %t_V_4_load_1, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 50 'call' <Predicate = (icmp_ln10)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 3 <SV = 2> <Delay = 0.00>
-ST_3 : Operation 39 [2/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32* nocapture %n_c, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1, i32* %n_c16)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 39 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 3 <SV = 2> <Delay = 5.72>
+ST_3 : Operation 51 [1/2] (3.25ns)   --->   "%symbol_histogram_fre_1 = load i32* %symbol_histogram_fre, align 4" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 51 'load' 'symbol_histogram_fre_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_3 : Operation 52 [1/1] (2.47ns)   --->   "%icmp_ln883 = icmp eq i32 %symbol_histogram_fre_1, 0" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 52 'icmp' 'icmp_ln883' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 53 [1/1] (0.00ns)   --->   "br i1 %icmp_ln883, label %._crit_edge.i.backedge, label %1" [./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32]   --->   Operation 53 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 54 [1/1] (0.00ns)   --->   "%symbol_histogram_val = getelementptr [256 x i32]* %symbol_histogram_value_V, i64 0, i64 %zext_ln12" [./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32]   --->   Operation 54 'getelementptr' 'symbol_histogram_val' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_3 : Operation 55 [2/2] (3.25ns)   --->   "%symbol_histogram_val_1 = load i32* %symbol_histogram_val, align 4" [./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32]   --->   Operation 55 'load' 'symbol_histogram_val_1' <Predicate = (!icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
 
-State 4 <SV = 3> <Delay = 0.00>
-ST_4 : Operation 40 [1/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32* nocapture %n_c, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1, i32* %n_c16)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 40 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 4 <SV = 3> <Delay = 6.50>
+ST_4 : Operation 56 [1/1] (0.00ns)   --->   "%t_V_4_load = load i32* %t_V_4" [./hls-src/huffman_filter.cpp:15->./hls-src/huffman_encoding.cpp:32]   --->   Operation 56 'load' 't_V_4_load' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_4 : Operation 57 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %t_V_4_load to i64" [./hls-src/huffman_filter.cpp:13->./hls-src/huffman_encoding.cpp:32]   --->   Operation 57 'zext' 'zext_ln544' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_4 : Operation 58 [1/1] (0.00ns)   --->   "%filtered_frequency_V_1 = getelementptr [256 x i32]* %filtered_frequency_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_filter.cpp:13->./hls-src/huffman_encoding.cpp:32]   --->   Operation 58 'getelementptr' 'filtered_frequency_V_1' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_4 : Operation 59 [1/1] (3.25ns)   --->   "store i32 %symbol_histogram_fre_1, i32* %filtered_frequency_V_1, align 4" [./hls-src/huffman_filter.cpp:13->./hls-src/huffman_encoding.cpp:32]   --->   Operation 59 'store' <Predicate = (!icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_4 : Operation 60 [1/2] (3.25ns)   --->   "%symbol_histogram_val_1 = load i32* %symbol_histogram_val, align 4" [./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32]   --->   Operation 60 'load' 'symbol_histogram_val_1' <Predicate = (!icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_4 : Operation 61 [1/1] (0.00ns)   --->   "%filtered_value_V_add = getelementptr [256 x i32]* %filtered_value_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32]   --->   Operation 61 'getelementptr' 'filtered_value_V_add' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_4 : Operation 62 [1/1] (3.25ns)   --->   "store i32 %symbol_histogram_val_1, i32* %filtered_value_V_add, align 4" [./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32]   --->   Operation 62 'store' <Predicate = (!icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_4 : Operation 63 [1/1] (2.55ns)   --->   "%j_V = add i32 %t_V_4_load, 1" [./hls-src/huffman_filter.cpp:15->./hls-src/huffman_encoding.cpp:32]   --->   Operation 63 'add' 'j_V' <Predicate = (!icmp_ln883)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 64 [1/1] (1.76ns)   --->   "store i32 %j_V, i32* %t_V_4" [./hls-src/huffman_filter.cpp:16->./hls-src/huffman_encoding.cpp:32]   --->   Operation 64 'store' <Predicate = (!icmp_ln883)> <Delay = 1.76>
+ST_4 : Operation 65 [1/1] (0.00ns)   --->   "br label %._crit_edge.i.backedge" [./hls-src/huffman_filter.cpp:16->./hls-src/huffman_encoding.cpp:32]   --->   Operation 65 'br' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_4 : Operation 66 [1/1] (0.00ns)   --->   "br label %._crit_edge.i"   --->   Operation 66 'br' <Predicate = true> <Delay = 0.00>
 
-State 5 <SV = 4> <Delay = 0.00>
-ST_5 : Operation 41 [2/2] (0.00ns)   --->   "call fastcc void @Loop_copy_sorted_pro(i32* nocapture %n_c16, [256 x i32]* %sorted_0, [256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_1, [256 x i32]* %sorted_copy1_frequen, [256 x i32]* %sorted_copy2_value_V, i32* %val_assign_loc_c, i32* %val_assign_loc_c17)"   --->   Operation 41 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 5 <SV = 2> <Delay = 1.76>
+ST_5 : Operation 67 [1/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32 %t_V_4_load_1, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 67 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 68 [1/1] (1.76ns)   --->   "br label %.preheader" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 68 'br' <Predicate = true> <Delay = 1.76>
 
-State 6 <SV = 5> <Delay = 0.00>
-ST_6 : Operation 42 [1/2] (0.00ns)   --->   "call fastcc void @Loop_copy_sorted_pro(i32* nocapture %n_c16, [256 x i32]* %sorted_0, [256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_1, [256 x i32]* %sorted_copy1_frequen, [256 x i32]* %sorted_copy2_value_V, i32* %val_assign_loc_c, i32* %val_assign_loc_c17)"   --->   Operation 42 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 6 <SV = 3> <Delay = 3.25>
+ST_6 : Operation 69 [1/1] (0.00ns)   --->   "%i_0 = phi i31 [ %i, %copy_sorted ], [ 0, %filter.exit ]"   --->   Operation 69 'phi' 'i_0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 70 [1/1] (0.00ns)   --->   "%t_V_4_load_2 = load i32* %t_V_4" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 70 'load' 't_V_4_load_2' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 71 [1/1] (0.00ns)   --->   "%zext_ln42 = zext i31 %i_0 to i32" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 71 'zext' 'zext_ln42' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 72 [1/1] (2.47ns)   --->   "%icmp_ln42 = icmp slt i32 %zext_ln42, %t_V_4_load_2" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 72 'icmp' 'icmp_ln42' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 73 [1/1] (2.52ns)   --->   "%i = add i31 %i_0, 1" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 73 'add' 'i' <Predicate = true> <Delay = 2.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 74 [1/1] (0.00ns)   --->   "br i1 %icmp_ln42, label %copy_sorted, label %2" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 74 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 75 [1/1] (0.00ns)   --->   "%zext_ln43 = zext i31 %i_0 to i64" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 75 'zext' 'zext_ln43' <Predicate = (icmp_ln42)> <Delay = 0.00>
+ST_6 : Operation 76 [1/1] (0.00ns)   --->   "%sorted_0_addr = getelementptr [256 x i32]* %sorted_0, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 76 'getelementptr' 'sorted_0_addr' <Predicate = (icmp_ln42)> <Delay = 0.00>
+ST_6 : Operation 77 [2/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 77 'load' 'sorted_0_load' <Predicate = (icmp_ln42)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_6 : Operation 78 [1/1] (0.00ns)   --->   "%sorted_1_addr = getelementptr [256 x i32]* %sorted_1, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 78 'getelementptr' 'sorted_1_addr' <Predicate = (icmp_ln42)> <Delay = 0.00>
+ST_6 : Operation 79 [2/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 79 'load' 'previous_frequency' <Predicate = (icmp_ln42)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_6 : Operation 80 [2/2] (2.55ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32 %t_V_4_load_2, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 80 'call' <Predicate = (!icmp_ln42)> <Delay = 2.55> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 7 <SV = 6> <Delay = 0.00>
-ST_7 : Operation 43 [2/2] (0.00ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32* nocapture %val_assign_loc_c, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* %val_assign_loc_c18)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 43 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 7 <SV = 4> <Delay = 6.50>
+ST_7 : Operation 81 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str32) nounwind" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 81 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 82 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str32)" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 82 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 83 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 256, i32 256, i32 256, [1 x i8]* @p_str133) nounwind" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 83 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 84 [1/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 84 'load' 'sorted_0_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_7 : Operation 85 [1/1] (0.00ns)   --->   "%sorted_copy1_value_V_1 = getelementptr [256 x i32]* %sorted_copy1_value_V, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 85 'getelementptr' 'sorted_copy1_value_V_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 86 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy1_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 86 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_7 : Operation 87 [1/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 87 'load' 'previous_frequency' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_7 : Operation 88 [1/1] (0.00ns)   --->   "%sorted_copy1_frequen_1 = getelementptr [256 x i32]* %sorted_copy1_frequen, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 88 'getelementptr' 'sorted_copy1_frequen_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 89 [1/1] (3.25ns)   --->   "store i32 %previous_frequency, i32* %sorted_copy1_frequen_1, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 89 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_7 : Operation 90 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V_1 = getelementptr [256 x i32]* %sorted_copy2_value_V, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:45]   --->   Operation 90 'getelementptr' 'sorted_copy2_value_V_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 91 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy2_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:45]   --->   Operation 91 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_7 : Operation 92 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str32, i32 %tmp)" [./hls-src/huffman_encoding.cpp:50]   --->   Operation 92 'specregionend' 'empty' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 93 [1/1] (0.00ns)   --->   "br label %.preheader" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 93 'br' <Predicate = true> <Delay = 0.00>
 
-State 8 <SV = 7> <Delay = 0.00>
-ST_8 : Operation 44 [1/2] (0.00ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32* nocapture %val_assign_loc_c, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* %val_assign_loc_c18)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 44 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 8 <SV = 4> <Delay = 0.00>
+ST_8 : Operation 94 [1/2] (0.00ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32 %t_V_4_load_2, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 94 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 9 <SV = 8> <Delay = 0.00>
-ST_9 : Operation 45 [2/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* nocapture %val_assign_loc_c18, [64 x i32]* %length_histogram_V, i32* %val_assign_loc_c19)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 45 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 9 <SV = 5> <Delay = 0.00>
+ST_9 : Operation 95 [2/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32 %t_V_4_load_2, [64 x i32]* %length_histogram_V)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 95 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 10 <SV = 9> <Delay = 0.00>
-ST_10 : Operation 46 [1/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* nocapture %val_assign_loc_c18, [64 x i32]* %length_histogram_V, i32* %val_assign_loc_c19)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 46 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 10 <SV = 6> <Delay = 0.00>
+ST_10 : Operation 96 [1/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32 %t_V_4_load_2, [64 x i32]* %length_histogram_V)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 96 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 11 <SV = 10> <Delay = 0.00>
-ST_11 : Operation 47 [2/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his, [64 x i32]* %truncated_length_his_1)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 47 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 11 <SV = 7> <Delay = 0.00>
+ST_11 : Operation 97 [2/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his, [64 x i32]* %truncated_length_his_1)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 97 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
-State 12 <SV = 11> <Delay = 0.00>
-ST_12 : Operation 48 [1/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his, [64 x i32]* %truncated_length_his_1)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 48 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 12 <SV = 8> <Delay = 1.76>
+ST_12 : Operation 98 [1/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his, [64 x i32]* %truncated_length_his_1)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 98 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_12 : Operation 99 [1/1] (1.76ns)   --->   "br label %._crit_edge.i2" [./hls-src/huffman_canonize_tree.cpp:10->./hls-src/huffman_encoding.cpp:71]   --->   Operation 99 'br' <Predicate = true> <Delay = 1.76>
 
-State 13 <SV = 12> <Delay = 0.00>
-ST_13 : Operation 49 [2/2] (0.00ns)   --->   "call fastcc void @canonize_tree([256 x i32]* %sorted_copy2_value_V, i32* nocapture %val_assign_loc_c19, [64 x i32]* %truncated_length_his, [256 x i5]* %symbol_bits_V)" [./hls-src/huffman_encoding.cpp:71]   --->   Operation 49 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 13 <SV = 9> <Delay = 3.25>
+ST_13 : Operation 100 [1/1] (0.00ns)   --->   "%i_0_i1 = phi i9 [ %i_5, %3 ], [ 0, %2 ]"   --->   Operation 100 'phi' 'i_0_i1' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 101 [1/1] (1.66ns)   --->   "%icmp_ln13 = icmp eq i9 %i_0_i1, -256" [./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71]   --->   Operation 101 'icmp' 'icmp_ln13' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 102 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 102 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 103 [1/1] (1.82ns)   --->   "%i_5 = add i9 %i_0_i1, 1" [./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71]   --->   Operation 103 'add' 'i_5' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 104 [1/1] (0.00ns)   --->   "br i1 %icmp_ln13, label %.preheader124.i.preheader, label %3" [./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71]   --->   Operation 104 'br' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 105 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([10 x i8]* @p_str277) nounwind" [./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71]   --->   Operation 105 'specloopname' <Predicate = (!icmp_ln13)> <Delay = 0.00>
+ST_13 : Operation 106 [1/1] (0.00ns)   --->   "%zext_ln14 = zext i9 %i_0_i1 to i64" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 106 'zext' 'zext_ln14' <Predicate = (!icmp_ln13)> <Delay = 0.00>
+ST_13 : Operation 107 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %zext_ln14" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 107 'getelementptr' 'symbol_bits_V_addr' <Predicate = (!icmp_ln13)> <Delay = 0.00>
+ST_13 : Operation 108 [1/1] (3.25ns)   --->   "store i5 0, i5* %symbol_bits_V_addr, align 1" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 108 'store' <Predicate = (!icmp_ln13)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_13 : Operation 109 [1/1] (0.00ns)   --->   "br label %._crit_edge.i2" [./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71]   --->   Operation 109 'br' <Predicate = (!icmp_ln13)> <Delay = 0.00>
+ST_13 : Operation 110 [1/1] (0.00ns)   --->   "%length_V_1 = alloca i32"   --->   Operation 110 'alloca' 'length_V_1' <Predicate = (icmp_ln13)> <Delay = 0.00>
+ST_13 : Operation 111 [1/1] (1.76ns)   --->   "store i32 64, i32* %length_V_1" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 111 'store' <Predicate = (icmp_ln13)> <Delay = 1.76>
+ST_13 : Operation 112 [1/1] (1.76ns)   --->   "br label %.preheader124.i" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 112 'br' <Predicate = (icmp_ln13)> <Delay = 1.76>
 
-State 14 <SV = 13> <Delay = 0.00>
-ST_14 : Operation 50 [1/2] (0.00ns)   --->   "call fastcc void @canonize_tree([256 x i32]* %sorted_copy2_value_V, i32* nocapture %val_assign_loc_c19, [64 x i32]* %truncated_length_his, [256 x i5]* %symbol_bits_V)" [./hls-src/huffman_encoding.cpp:71]   --->   Operation 50 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 14 <SV = 10> <Delay = 4.24>
+ST_14 : Operation 113 [1/1] (0.00ns)   --->   "%p_066_0_i = phi i32 [ %count_V_1, %.loopexit.i ], [ 0, %.preheader124.i.preheader ]"   --->   Operation 113 'phi' 'p_066_0_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 114 [1/1] (0.00ns)   --->   "%i_op_assign = phi i32 [ %k, %.loopexit.i ], [ 0, %.preheader124.i.preheader ]"   --->   Operation 114 'phi' 'i_op_assign' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 115 [1/1] (0.00ns)   --->   "%t_V_4_load_3 = load i32* %t_V_4" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 115 'load' 't_V_4_load_3' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 116 [1/1] (2.47ns)   --->   "%icmp_ln41 = icmp eq i32 %i_op_assign, %t_V_4_load_3" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 116 'icmp' 'icmp_ln41' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 117 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 256, i64 0)"   --->   Operation 117 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 118 [1/1] (2.55ns)   --->   "%k = add nsw i32 %i_op_assign, 1" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 118 'add' 'k' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 119 [1/1] (0.00ns)   --->   "br i1 %icmp_ln41, label %canonize_tree.exit, label %4" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 119 'br' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 120 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str378) nounwind" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 120 'specloopname' <Predicate = (!icmp_ln41)> <Delay = 0.00>
+ST_14 : Operation 121 [1/1] (2.47ns)   --->   "%icmp_ln879 = icmp eq i32 %p_066_0_i, 0" [./hls-src/huffman_canonize_tree.cpp:42->./hls-src/huffman_encoding.cpp:71]   --->   Operation 121 'icmp' 'icmp_ln879' <Predicate = (!icmp_ln41)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 122 [1/1] (1.76ns)   --->   "br i1 %icmp_ln879, label %hls_label_0.preheader, label %.loopexit.i" [./hls-src/huffman_canonize_tree.cpp:42->./hls-src/huffman_encoding.cpp:71]   --->   Operation 122 'br' <Predicate = (!icmp_ln41)> <Delay = 1.76>
+ST_14 : Operation 123 [1/1] (0.00ns)   --->   "br label %hls_label_0" [./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71]   --->   Operation 123 'br' <Predicate = (!icmp_ln41 & icmp_ln879)> <Delay = 0.00>
+ST_14 : Operation 124 [2/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [64 x i32]* %truncated_length_his_1, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 124 'call' <Predicate = (icmp_ln41)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_14 : Operation 125 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i32P(i32* %num_nonzero_symbols, i32 %t_V_4_load_3)" [./hls-src/huffman_encoding.cpp:74]   --->   Operation 125 'write' <Predicate = (icmp_ln41)> <Delay = 0.00>
 
-State 15 <SV = 14> <Delay = 0.00>
-ST_15 : Operation 51 [2/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [64 x i32]* %truncated_length_his_1, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 51 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+State 15 <SV = 11> <Delay = 5.80>
+ST_15 : Operation 126 [1/1] (0.00ns)   --->   "%t_V = load i32* %length_V_1" [./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71]   --->   Operation 126 'load' 't_V' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 127 [1/1] (2.55ns)   --->   "%length_V = add i32 %t_V, -1" [./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71]   --->   Operation 127 'add' 'length_V' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 128 [1/1] (0.00ns)   --->   "%zext_ln544_5 = zext i32 %length_V to i64" [./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71]   --->   Operation 128 'zext' 'zext_ln544_5' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 129 [1/1] (0.00ns)   --->   "%truncated_length_his_2 = getelementptr [64 x i32]* %truncated_length_his, i64 0, i64 %zext_ln544_5" [./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71]   --->   Operation 129 'getelementptr' 'truncated_length_his_2' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 130 [2/2] (3.25ns)   --->   "%count_V = load i32* %truncated_length_his_2, align 4" [./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71]   --->   Operation 130 'load' 'count_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
 
-State 16 <SV = 15> <Delay = 0.00>
-ST_16 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecDataflowPipeline(i32 -1, i32 0, [1 x i8]* @p_str34) nounwind" [./hls-src/huffman_encoding.cpp:21]   --->   Operation 52 'specdataflowpipeline' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 53 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_value_V), !map !148"   --->   Operation 53 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 54 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_frequency_V), !map !154"   --->   Operation 54 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 55 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %encoding_V), !map !158"   --->   Operation 55 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 56 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %num_nonzero_symbols), !map !162"   --->   Operation 56 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 57 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([17 x i8]* @huffman_encoding_str) nounwind"   --->   Operation 57 'spectopmodule' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 58 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecChannel([4 x i8]* @n_c_str, i32 1, [1 x i8]* @p_str56, [1 x i8]* @p_str56, i32 2, i32 0, i32* %n_c, i32* %n_c)"   --->   Operation 58 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 59 [1/1] (0.00ns)   --->   "%empty_15 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %n_c, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str57, i32 0, i32 0, [1 x i8]* @p_str59, [1 x i8]* @p_str60, [1 x i8]* @p_str61, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str62, [1 x i8]* @p_str63)"   --->   Operation 59 'specinterface' 'empty_15' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 60 [1/1] (0.00ns)   --->   "%empty_16 = call i32 (...)* @_ssdm_op_SpecChannel([6 x i8]* @n_c16_str, i32 1, [1 x i8]* @p_str75, [1 x i8]* @p_str75, i32 2, i32 0, i32* %n_c16, i32* %n_c16)"   --->   Operation 60 'specchannel' 'empty_16' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 61 [1/1] (0.00ns)   --->   "%empty_17 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %n_c16, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str76, i32 0, i32 0, [1 x i8]* @p_str77, [1 x i8]* @p_str78, [1 x i8]* @p_str79, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str80, [1 x i8]* @p_str81)"   --->   Operation 61 'specinterface' 'empty_17' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 62 [1/1] (0.00ns)   --->   "%empty_18 = call i32 (...)* @_ssdm_op_SpecChannel([17 x i8]* @val_OC_assign_OC_loc_3, i32 1, [1 x i8]* @p_str98, [1 x i8]* @p_str98, i32 2, i32 0, i32* %val_assign_loc_c, i32* %val_assign_loc_c)"   --->   Operation 62 'specchannel' 'empty_18' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 63 [1/1] (0.00ns)   --->   "%empty_19 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str99, i32 0, i32 0, [1 x i8]* @p_str100, [1 x i8]* @p_str101, [1 x i8]* @p_str102, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str103, [1 x i8]* @p_str104)"   --->   Operation 63 'specinterface' 'empty_19' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 64 [1/1] (0.00ns)   --->   "%empty_20 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc_2, i32 1, [1 x i8]* @p_str105, [1 x i8]* @p_str105, i32 2, i32 0, i32* %val_assign_loc_c17, i32* %val_assign_loc_c17)"   --->   Operation 64 'specchannel' 'empty_20' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 65 [1/1] (0.00ns)   --->   "%empty_21 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c17, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str106, i32 0, i32 0, [1 x i8]* @p_str107, [1 x i8]* @p_str108, [1 x i8]* @p_str109, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str110, [1 x i8]* @p_str111)"   --->   Operation 65 'specinterface' 'empty_21' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 66 [1/1] (0.00ns)   --->   "%empty_22 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc_1, i32 1, [1 x i8]* @p_str124, [1 x i8]* @p_str124, i32 2, i32 0, i32* %val_assign_loc_c18, i32* %val_assign_loc_c18)"   --->   Operation 66 'specchannel' 'empty_22' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 67 [1/1] (0.00ns)   --->   "%empty_23 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c18, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str125, i32 0, i32 0, [1 x i8]* @p_str126, [1 x i8]* @p_str127, [1 x i8]* @p_str128, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str129, [1 x i8]* @p_str130)"   --->   Operation 67 'specinterface' 'empty_23' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 68 [1/1] (0.00ns)   --->   "%empty_24 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc, i32 1, [1 x i8]* @p_str143, [1 x i8]* @p_str143, i32 3, i32 0, i32* %val_assign_loc_c19, i32* %val_assign_loc_c19)"   --->   Operation 68 'specchannel' 'empty_24' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 69 [1/1] (0.00ns)   --->   "%empty_25 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c19, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str144, i32 0, i32 0, [1 x i8]* @p_str145, [1 x i8]* @p_str146, [1 x i8]* @p_str147, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str148, [1 x i8]* @p_str149)"   --->   Operation 69 'specinterface' 'empty_25' <Predicate = true> <Delay = 0.00>
-ST_16 : Operation 70 [1/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [64 x i32]* %truncated_length_his_1, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 70 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_16 : Operation 71 [1/1] (0.00ns)   --->   "call fastcc void @Block__proc(i32* nocapture %val_assign_loc_c17, i32* %num_nonzero_symbols)"   --->   Operation 71 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_16 : Operation 72 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_encoding.cpp:75]   --->   Operation 72 'ret' <Predicate = true> <Delay = 0.00>
+State 16 <SV = 12> <Delay = 5.72>
+ST_16 : Operation 131 [1/1] (0.00ns)   --->   "%tmp_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str479)" [./hls-src/huffman_canonize_tree.cpp:44->./hls-src/huffman_encoding.cpp:71]   --->   Operation 131 'specregionbegin' 'tmp_i' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 132 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 1, i32 2, i32 1, [1 x i8]* @p_str580) nounwind" [./hls-src/huffman_canonize_tree.cpp:45->./hls-src/huffman_encoding.cpp:71]   --->   Operation 132 'speclooptripcount' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 133 [1/2] (3.25ns)   --->   "%count_V = load i32* %truncated_length_his_2, align 4" [./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71]   --->   Operation 133 'load' 'count_V' <Predicate = (icmp_ln879)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_16 : Operation 134 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str479, i32 %tmp_i)" [./hls-src/huffman_canonize_tree.cpp:49->./hls-src/huffman_encoding.cpp:71]   --->   Operation 134 'specregionend' 'empty_7' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 135 [1/1] (2.47ns)   --->   "%icmp_ln879_2 = icmp eq i32 %count_V, 0" [./hls-src/huffman_canonize_tree.cpp:50->./hls-src/huffman_encoding.cpp:71]   --->   Operation 135 'icmp' 'icmp_ln879_2' <Predicate = (icmp_ln879)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 136 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_2, label %hls_label_0.hls_label_0_crit_edge, label %.loopexit.i.loopexit" [./hls-src/huffman_canonize_tree.cpp:50->./hls-src/huffman_encoding.cpp:71]   --->   Operation 136 'br' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 137 [1/1] (1.76ns)   --->   "store i32 %length_V, i32* %length_V_1" [./hls-src/huffman_canonize_tree.cpp:50->./hls-src/huffman_encoding.cpp:71]   --->   Operation 137 'store' <Predicate = (icmp_ln879 & icmp_ln879_2)> <Delay = 1.76>
+ST_16 : Operation 138 [1/1] (0.00ns)   --->   "br label %hls_label_0" [./hls-src/huffman_canonize_tree.cpp:50->./hls-src/huffman_encoding.cpp:71]   --->   Operation 138 'br' <Predicate = (icmp_ln879 & icmp_ln879_2)> <Delay = 0.00>
+ST_16 : Operation 139 [1/1] (1.76ns)   --->   "store i32 %length_V, i32* %length_V_1" [./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71]   --->   Operation 139 'store' <Predicate = (icmp_ln879 & !icmp_ln879_2)> <Delay = 1.76>
+ST_16 : Operation 140 [1/1] (1.76ns)   --->   "br label %.loopexit.i"   --->   Operation 140 'br' <Predicate = (icmp_ln879 & !icmp_ln879_2)> <Delay = 1.76>
+ST_16 : Operation 141 [1/1] (0.00ns)   --->   "%zext_ln53 = zext i32 %i_op_assign to i64" [./hls-src/huffman_canonize_tree.cpp:53->./hls-src/huffman_encoding.cpp:71]   --->   Operation 141 'zext' 'zext_ln53' <Predicate = (!icmp_ln879_2) | (!icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 142 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V_2 = getelementptr [256 x i32]* %sorted_copy2_value_V, i64 0, i64 %zext_ln53" [./hls-src/huffman_canonize_tree.cpp:53->./hls-src/huffman_encoding.cpp:71]   --->   Operation 142 'getelementptr' 'sorted_copy2_value_V_2' <Predicate = (!icmp_ln879_2) | (!icmp_ln879)> <Delay = 0.00>
+ST_16 : Operation 143 [2/2] (3.25ns)   --->   "%val = load i32* %sorted_copy2_value_V_2, align 4" [./hls-src/huffman_canonize_tree.cpp:53->./hls-src/huffman_encoding.cpp:71]   --->   Operation 143 'load' 'val' <Predicate = (!icmp_ln879_2) | (!icmp_ln879)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+
+State 17 <SV = 13> <Delay = 6.50>
+ST_17 : Operation 144 [1/1] (0.00ns) (grouped into LUT with out node count_V_1)   --->   "%t_V_3 = phi i32 [ %p_066_0_i, %4 ], [ %count_V, %.loopexit.i.loopexit ]"   --->   Operation 144 'phi' 't_V_3' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 145 [1/1] (0.00ns)   --->   "%length_V_1_load = load i32* %length_V_1" [./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71]   --->   Operation 145 'load' 'length_V_1_load' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 146 [1/2] (3.25ns)   --->   "%val = load i32* %sorted_copy2_value_V_2, align 4" [./hls-src/huffman_canonize_tree.cpp:53->./hls-src/huffman_encoding.cpp:71]   --->   Operation 146 'load' 'val' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_17 : Operation 147 [1/1] (0.00ns)   --->   "%sext_ln54 = sext i32 %val to i64" [./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71]   --->   Operation 147 'sext' 'sext_ln54' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 148 [1/1] (0.00ns)   --->   "%trunc_ln209 = trunc i32 %length_V_1_load to i5" [./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71]   --->   Operation 148 'trunc' 'trunc_ln209' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 149 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr_1 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %sext_ln54" [./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71]   --->   Operation 149 'getelementptr' 'symbol_bits_V_addr_1' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 150 [1/1] (3.25ns)   --->   "store i5 %trunc_ln209, i5* %symbol_bits_V_addr_1, align 1" [./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71]   --->   Operation 150 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 5> <Depth = 256> <RAM>
+ST_17 : Operation 151 [1/1] (2.55ns) (out node of the LUT)   --->   "%count_V_1 = add i32 -1, %t_V_3" [./hls-src/huffman_canonize_tree.cpp:55->./hls-src/huffman_encoding.cpp:71]   --->   Operation 151 'add' 'count_V_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 152 [1/1] (0.00ns)   --->   "br label %.preheader124.i" [./hls-src/huffman_canonize_tree.cpp:41->./hls-src/huffman_encoding.cpp:71]   --->   Operation 152 'br' <Predicate = true> <Delay = 0.00>
+
+State 18 <SV = 11> <Delay = 0.00>
+ST_18 : Operation 153 [1/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [64 x i32]* %truncated_length_his_1, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 153 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_18 : Operation 154 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_encoding.cpp:75]   --->   Operation 154 'ret' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -184,26 +278,41 @@ ST_16 : Operation 72 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_encod
 ============================================================
 Target clock period: 10ns, clock uncertainty: 1.25ns.
 
- <State 1>: 0ns
+ <State 1>: 1.77ns
 The critical path consists of the following:
+	'alloca' operation ('val') [5]  (0 ns)
+	'store' operation ('store_ln10', ./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32) of constant 0 on local variable 'val' [25]  (1.77 ns)
 
- <State 2>: 0ns
+ <State 2>: 3.25ns
 The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_filter.cpp:10->./hls-src/huffman_encoding.cpp:32) [28]  (0 ns)
+	'getelementptr' operation ('symbol_histogram_fre', ./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32) [35]  (0 ns)
+	'load' operation ('symbol_histogram_fre_1', ./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32) on array 'symbol_histogram_frequency_V' [36]  (3.25 ns)
 
- <State 3>: 0ns
+ <State 3>: 5.73ns
 The critical path consists of the following:
+	'load' operation ('symbol_histogram_fre_1', ./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32) on array 'symbol_histogram_frequency_V' [36]  (3.25 ns)
+	'icmp' operation ('icmp_ln883', ./hls-src/huffman_filter.cpp:12->./hls-src/huffman_encoding.cpp:32) [37]  (2.47 ns)
 
- <State 4>: 0ns
+ <State 4>: 6.51ns
 The critical path consists of the following:
+	'load' operation ('symbol_histogram_val_1', ./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32) on array 'symbol_histogram_value_V' [45]  (3.25 ns)
+	'store' operation ('store_ln14', ./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32) of variable 'symbol_histogram_val_1', ./hls-src/huffman_filter.cpp:14->./hls-src/huffman_encoding.cpp:32 on array 'filtered.value.V', ./hls-src/huffman_encoding.cpp:23 [47]  (3.25 ns)
 
- <State 5>: 0ns
+ <State 5>: 1.77ns
 The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_encoding.cpp:42) [58]  (1.77 ns)
 
- <State 6>: 0ns
+ <State 6>: 3.25ns
 The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_encoding.cpp:42) [58]  (0 ns)
+	'getelementptr' operation ('sorted_0_addr', ./hls-src/huffman_encoding.cpp:43) [69]  (0 ns)
+	'load' operation ('sorted_0_load', ./hls-src/huffman_encoding.cpp:43) on array 'sorted_0' [70]  (3.25 ns)
 
- <State 7>: 0ns
+ <State 7>: 6.51ns
 The critical path consists of the following:
+	'load' operation ('sorted_0_load', ./hls-src/huffman_encoding.cpp:43) on array 'sorted_0' [70]  (3.25 ns)
+	'store' operation ('store_ln43', ./hls-src/huffman_encoding.cpp:43) of variable 'sorted_0_load', ./hls-src/huffman_encoding.cpp:43 on array 'sorted_copy1.value.V', ./hls-src/huffman_encoding.cpp:25 [72]  (3.25 ns)
 
  <State 8>: 0ns
 The critical path consists of the following:
@@ -217,19 +326,41 @@ The critical path consists of the following:
  <State 11>: 0ns
 The critical path consists of the following:
 
- <State 12>: 0ns
+ <State 12>: 1.77ns
 The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71) [87]  (1.77 ns)
 
- <State 13>: 0ns
+ <State 13>: 3.25ns
 The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_canonize_tree.cpp:13->./hls-src/huffman_encoding.cpp:71) [87]  (0 ns)
+	'getelementptr' operation ('symbol_bits_V_addr', ./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71) [95]  (0 ns)
+	'store' operation ('store_ln14', ./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71) of constant 0 on array 'symbol_bits.V', ./hls-src/huffman_encoding.cpp:38 [96]  (3.25 ns)
 
- <State 14>: 0ns
+ <State 14>: 4.24ns
 The critical path consists of the following:
+	'phi' operation ('count.V') with incoming values : ('count.V', ./hls-src/huffman_canonize_tree.cpp:55->./hls-src/huffman_encoding.cpp:71) [103]  (0 ns)
+	'icmp' operation ('icmp_ln879', ./hls-src/huffman_canonize_tree.cpp:42->./hls-src/huffman_encoding.cpp:71) [112]  (2.47 ns)
+	multiplexor before 'phi' operation ('count.V') with incoming values : ('count.V', ./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71) ('count.V', ./hls-src/huffman_canonize_tree.cpp:55->./hls-src/huffman_encoding.cpp:71) [134]  (1.77 ns)
 
- <State 15>: 0ns
+ <State 15>: 5.81ns
 The critical path consists of the following:
+	'load' operation ('t.V', ./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71) on local variable 'length.V' [117]  (0 ns)
+	'add' operation ('length.V', ./hls-src/huffman_canonize_tree.cpp:46->./hls-src/huffman_encoding.cpp:71) [120]  (2.55 ns)
+	'getelementptr' operation ('truncated_length_his_2', ./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71) [122]  (0 ns)
+	'load' operation ('count.V', ./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71) on array 'truncated_length_his' [123]  (3.25 ns)
 
- <State 16>: 0ns
+ <State 16>: 5.73ns
+The critical path consists of the following:
+	'load' operation ('count.V', ./hls-src/huffman_canonize_tree.cpp:48->./hls-src/huffman_encoding.cpp:71) on array 'truncated_length_his' [123]  (3.25 ns)
+	'icmp' operation ('icmp_ln879_2', ./hls-src/huffman_canonize_tree.cpp:50->./hls-src/huffman_encoding.cpp:71) [125]  (2.47 ns)
+
+ <State 17>: 6.51ns
+The critical path consists of the following:
+	'load' operation ('val', ./hls-src/huffman_canonize_tree.cpp:53->./hls-src/huffman_encoding.cpp:71) on array 'sorted_copy2.value.V', ./hls-src/huffman_encoding.cpp:26 [138]  (3.25 ns)
+	'getelementptr' operation ('symbol_bits_V_addr_1', ./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71) [141]  (0 ns)
+	'store' operation ('store_ln54', ./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71) of variable 'trunc_ln209', ./hls-src/huffman_canonize_tree.cpp:54->./hls-src/huffman_encoding.cpp:71 on array 'symbol_bits.V', ./hls-src/huffman_encoding.cpp:38 [142]  (3.25 ns)
+
+ <State 18>: 0ns
 The critical path consists of the following:
 
 
@@ -257,6 +388,8 @@ N/A
 	State 14
 	State 15
 	State 16
+	State 17
+	State 18
 
 
 ============================================================

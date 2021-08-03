@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'sort'
 ================================================================
-* Date:           Tue Aug  3 12:44:35 2021
+* Date:           Tue Aug  3 15:22:57 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -25,29 +25,29 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+-----------+-----+------+---------+
-    |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
-    |   min   |   max   |    min   |    max    | min |  max |   Type  |
-    +---------+---------+----------+-----------+-----+------+---------+
-    |      355|     4707| 3.550 us | 47.070 us |  355|  4707|   none  |
-    +---------+---------+----------+-----------+-----+------+---------+
+    +---------+---------+----------+----------+-----+-------+---------+
+    |  Latency (cycles) |  Latency (absolute) |   Interval  | Pipeline|
+    |   min   |   max   |    min   |    max   | min |  max  |   Type  |
+    +---------+---------+----------+----------+-----+-------+---------+
+    |      410|    15258| 4.100 us | 0.153 ms |  410|  15258|   none  |
+    +---------+---------+----------+----------+-----+-------+---------+
 
     + Detail: 
         * Instance: 
         N/A
 
         * Loop: 
-        +------------------------+---------+---------+----------+-----------+-----------+---------+----------+
-        |                        |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
-        |        Loop Name       |   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
-        +------------------------+---------+---------+----------+-----------+-----------+---------+----------+
-        |- copy_in_to_sorting    |        0|      256|         2|          1|          1| 0 ~ 256 |    yes   |
-        |- radix_sort            |      352|     4448| 44 ~ 556 |          -|          -|        8|    no    |
-        | + init_histogram       |       16|       16|         1|          1|          1|       16|    yes   |
-        | + compute_histogram    |        2|      258|         3|          1|          1| 0 ~ 256 |    yes   |
-        | + find_digit_location  |       15|       15|         1|          1|          1|       15|    yes   |
-        | + re_sort              |        2|      258|         3|          1|          1| 0 ~ 256 |    yes   |
-        +------------------------+---------+---------+----------+-----------+-----------+---------+----------+
+        +------------------------+---------+---------+-----------+-----------+-----------+---------+----------+
+        |                        |  Latency (cycles) | Iteration |  Initiation Interval  |   Trip  |          |
+        |        Loop Name       |   min   |   max   |  Latency  |  achieved |   target  |  Count  | Pipelined|
+        +------------------------+---------+---------+-----------+-----------+-----------+---------+----------+
+        |- copy_in_to_sorting    |        0|      512|          2|          -|          -| 0 ~ 256 |    no    |
+        |- radix_sort            |      408|    14744| 51 ~ 1843 |          -|          -|        8|    no    |
+        | + init_histogram       |       16|       16|          1|          -|          -|       16|    no    |
+        | + compute_histogram    |        0|     1024|          4|          -|          -| 0 ~ 256 |    no    |
+        | + find_digit_location  |       30|       30|          2|          -|          -|       15|    no    |
+        | + re_sort              |        0|      768|          3|          -|          -| 0 ~ 256 |    no    |
+        +------------------------+---------+---------+-----------+-----------+-----------+---------+----------+
 
 
 
@@ -59,365 +59,119 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    468|    -|
+|Expression       |        -|      -|       0|    471|    -|
 |FIFO             |        -|      -|       -|      -|    -|
-|Instance         |        -|      -|       0|    195|    -|
-|Memory           |        5|      -|       0|      0|    0|
-|Multiplexer      |        -|      -|       -|   1864|    -|
-|Register         |        -|      -|    3320|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        5|      -|     128|     16|    0|
+|Multiplexer      |        -|      -|       -|    329|    -|
+|Register         |        -|      -|     336|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        5|      0|    3320|   2527|    0|
+|Total            |        5|      0|     464|    816|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
-|Utilization (%)  |        1|      0|       3|      4|    0|
+|Utilization (%)  |        1|      0|   ~0   |      1|    0|
 +-----------------+---------+-------+--------+-------+-----+
 
 + Detail: 
     * Instance: 
-    +-------------------------+----------------------+---------+-------+---+----+-----+
-    |         Instance        |        Module        | BRAM_18K| DSP48E| FF| LUT| URAM|
-    +-------------------------+----------------------+---------+-------+---+----+-----+
-    |huffman_encoding_g8j_U6  |huffman_encoding_g8j  |        0|      0|  0|  65|    0|
-    |huffman_encoding_g8j_U7  |huffman_encoding_g8j  |        0|      0|  0|  65|    0|
-    |huffman_encoding_g8j_U8  |huffman_encoding_g8j  |        0|      0|  0|  65|    0|
-    +-------------------------+----------------------+---------+-------+---+----+-----+
-    |Total                    |                      |        0|      0|  0| 195|    0|
-    +-------------------------+----------------------+---------+-------+---+----+-----+
+    N/A
 
     * DSP48E: 
     N/A
 
     * Memory: 
-    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
-    |         Memory         |        Module        | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
-    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
-    |current_digit_V_U       |sort_current_digifYi  |        1|  0|   0|    0|   256|    4|     1|         1024|
-    |previous_sorting_val_U  |sort_previous_sorbkb  |        1|  0|   0|    0|   256|   32|     1|         8192|
-    |previous_sorting_fre_U  |sort_previous_sorbkb  |        1|  0|   0|    0|   256|   32|     1|         8192|
-    |sorting_value_V_U       |sort_previous_sorbkb  |        1|  0|   0|    0|   256|   32|     1|         8192|
-    |sorting_frequency_V_U   |sort_previous_sorbkb  |        1|  0|   0|    0|   256|   32|     1|         8192|
-    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
-    |Total                   |                      |        5|  0|   0|    0|  1280|  132|     5|        33792|
-    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    +------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
+    |         Memory         |        Module        | BRAM_18K| FF | LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
+    |current_digit_V_U       |sort_current_digihbi  |        1|   0|   0|    0|   256|    4|     1|         1024|
+    |digit_histogram_V_U     |sort_digit_histogfYi  |        0|  64|   8|    0|    16|   32|     1|          512|
+    |digit_location_V_U      |sort_digit_histogfYi  |        0|  64|   8|    0|    16|   32|     1|          512|
+    |previous_sorting_val_U  |sort_previous_sorbkb  |        1|   0|   0|    0|   256|   32|     1|         8192|
+    |previous_sorting_fre_U  |sort_previous_sorbkb  |        1|   0|   0|    0|   256|   32|     1|         8192|
+    |sorting_value_V_U       |sort_previous_sorbkb  |        1|   0|   0|    0|   256|   32|     1|         8192|
+    |sorting_frequency_V_U   |sort_previous_sorbkb  |        1|   0|   0|    0|   256|   32|     1|         8192|
+    +------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
+    |Total                   |                      |        5| 128|  16|    0|  1312|  196|     7|        34816|
+    +------------------------+----------------------+---------+----+----+-----+------+-----+------+-------------+
 
     * FIFO: 
     N/A
 
     * Expression: 
-    +--------------------------------+----------+-------+---+-----+------------+------------+
-    |          Variable Name         | Operation| DSP48E| FF| LUT | Bitwidth P0| Bitwidth P1|
-    +--------------------------------+----------+-------+---+-----+------------+------------+
-    |digit_histogram_0_V_fu_5031_p2  |     +    |      0|  0|   39|           1|          32|
-    |digit_location_0_V_fu_5189_p2   |     +    |      0|  0|   39|          32|           1|
-    |digit_location_1_V_fu_5101_p2   |     +    |      0|  0|   39|          32|          32|
-    |i_3_fu_5122_p2                  |     +    |      0|  0|   15|           5|           1|
-    |i_fu_4958_p2                    |     +    |      0|  0|   15|           5|           1|
-    |j_1_fu_4973_p2                  |     +    |      0|  0|   39|          32|           1|
-    |j_2_fu_5133_p2                  |     +    |      0|  0|   39|          32|           1|
-    |j_fu_4928_p2                    |     +    |      0|  0|   39|          32|           1|
-    |shift_fu_5211_p2                |     +    |      0|  0|   15|           6|           3|
-    |icmp_ln20_fu_4923_p2            |   icmp   |      0|  0|   18|          32|          32|
-    |icmp_ln28_fu_4952_p2            |   icmp   |      0|  0|   11|           5|           6|
-    |icmp_ln34_fu_4968_p2            |   icmp   |      0|  0|   18|          32|          32|
-    |icmp_ln44_fu_5053_p2            |   icmp   |      0|  0|   11|           5|           6|
-    |icmp_ln49_fu_5128_p2            |   icmp   |      0|  0|   18|          32|          32|
-    |lshr_ln1503_fu_4985_p2          |   lshr   |      0|  0|  101|          32|          32|
-    |ap_block_state1                 |    or    |      0|  0|    2|           1|           1|
-    |ap_condition_1249               |    or    |      0|  0|    2|           1|           1|
-    |ap_enable_pp0                   |    xor   |      0|  0|    2|           1|           2|
-    |ap_enable_pp2                   |    xor   |      0|  0|    2|           1|           2|
-    |ap_enable_pp4                   |    xor   |      0|  0|    2|           1|           2|
-    |ap_enable_reg_pp0_iter1         |    xor   |      0|  0|    2|           2|           1|
-    +--------------------------------+----------+-------+---+-----+------------+------------+
-    |Total                           |          |      0|  0|  468|         322|         222|
-    +--------------------------------+----------+-------+---+-----+------------+------------+
+    +-----------------------+----------+-------+---+-----+------------+------------+
+    |     Variable Name     | Operation| DSP48E| FF| LUT | Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+-------+---+-----+------------+------------+
+    |add_ln209_fu_501_p2    |     +    |      0|  0|   39|          32|          32|
+    |add_ln46_fu_484_p2     |     +    |      0|  0|   15|           5|           2|
+    |add_ln700_3_fu_549_p2  |     +    |      0|  0|   39|          32|           1|
+    |add_ln700_fu_471_p2    |     +    |      0|  0|   39|           1|          32|
+    |i_3_fu_508_p2          |     +    |      0|  0|   15|           5|           1|
+    |i_fu_431_p2            |     +    |      0|  0|   15|           5|           1|
+    |j_1_fu_447_p2          |     +    |      0|  0|   39|          32|           1|
+    |j_2_fu_519_p2          |     +    |      0|  0|   39|          32|           1|
+    |j_fu_401_p2            |     +    |      0|  0|   39|          32|           1|
+    |shift_fu_530_p2        |     +    |      0|  0|   15|           6|           3|
+    |icmp_ln20_fu_396_p2    |   icmp   |      0|  0|   18|          32|          32|
+    |icmp_ln28_fu_425_p2    |   icmp   |      0|  0|   11|           5|           6|
+    |icmp_ln34_fu_442_p2    |   icmp   |      0|  0|   18|          32|          32|
+    |icmp_ln44_fu_478_p2    |   icmp   |      0|  0|   11|           5|           6|
+    |icmp_ln49_fu_514_p2    |   icmp   |      0|  0|   18|          32|          32|
+    |lshr_ln1503_fu_458_p2  |   lshr   |      0|  0|  101|          32|          32|
+    +-----------------------+----------+-------+---+-----+------------+------------+
+    |Total                  |          |      0|  0|  471|         320|         215|
+    +-----------------------+----------+-------+---+-----+------------+------------+
 
     * Multiplexer: 
-    +---------------------------------------------------+----+-----------+-----+-----------+
-    |                        Name                       | LUT| Input Size| Bits| Total Bits|
-    +---------------------------------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                                          |  56|         13|    1|         13|
-    |ap_done                                            |   9|          2|    1|          2|
-    |ap_enable_reg_pp0_iter1                            |  15|          3|    1|          3|
-    |ap_enable_reg_pp2_iter2                            |   9|          2|    1|          2|
-    |ap_enable_reg_pp4_iter2                            |   9|          2|    1|          2|
-    |ap_phi_mux_digit_histogram_0_V_21_phi_fu_1748_p32  |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_0_V_4_phi_fu_2816_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_10_2_phi_fu_1198_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_10_4_phi_fu_2276_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_11_2_phi_fu_1143_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_11_4_phi_fu_2222_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_12_2_phi_fu_1088_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_12_4_phi_fu_2168_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_13_2_phi_fu_1033_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_13_4_phi_fu_2114_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_14_2_phi_fu_978_p32     |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_14_4_phi_fu_2060_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_15_2_phi_fu_923_p32     |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_15_4_phi_fu_2006_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_1_V_2_phi_fu_1693_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_1_V_4_phi_fu_2762_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_2_V_2_phi_fu_1638_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_2_V_4_phi_fu_2708_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_3_V_2_phi_fu_1583_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_3_V_4_phi_fu_2654_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_4_V_2_phi_fu_1528_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_4_V_4_phi_fu_2600_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_5_V_2_phi_fu_1473_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_5_V_4_phi_fu_2546_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_6_V_2_phi_fu_1418_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_6_V_4_phi_fu_2492_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_7_V_2_phi_fu_1363_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_7_V_4_phi_fu_2438_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_8_V_2_phi_fu_1308_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_8_V_4_phi_fu_2384_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_9_V_2_phi_fu_1253_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_histogram_9_V_4_phi_fu_2330_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_0_V_1_phi_fu_4873_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_10_V_2_phi_fu_3351_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_10_V_4_phi_fu_4333_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_11_V_2_phi_fu_3300_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_11_V_4_phi_fu_4279_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_12_V_2_phi_fu_3249_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_12_V_4_phi_fu_4225_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_13_V_2_phi_fu_3198_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_13_V_4_phi_fu_4171_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_14_V_2_phi_fu_3147_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_14_V_4_phi_fu_4117_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_15_V_2_phi_fu_3096_p30   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_15_V_4_phi_fu_4063_p32   |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_1_V_2_phi_fu_3810_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_1_V_4_phi_fu_4819_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_2_V_2_phi_fu_3759_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_2_V_4_phi_fu_4765_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_3_V_2_phi_fu_3708_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_3_V_4_phi_fu_4711_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_4_V_2_phi_fu_3657_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_4_V_4_phi_fu_4657_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_5_V_2_phi_fu_3606_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_5_V_4_phi_fu_4603_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_6_V_2_phi_fu_3555_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_6_V_4_phi_fu_4549_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_7_V_2_phi_fu_3504_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_7_V_4_phi_fu_4495_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_8_V_2_phi_fu_3453_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_8_V_4_phi_fu_4441_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_9_V_2_phi_fu_3402_p30    |  15|          3|   32|         96|
-    |ap_phi_mux_digit_location_9_V_4_phi_fu_4387_p32    |  15|          3|   32|         96|
-    |ap_phi_mux_phi_ln215_phi_fu_3045_p30               |  65|         16|   32|        512|
-    |current_digit_V_address0                           |  15|          3|    8|         24|
-    |digit_histogram_0_V_1_reg_897                      |   9|          2|   32|         64|
-    |digit_histogram_0_V_3_reg_1990                     |   9|          2|   32|         64|
-    |digit_histogram_10_1_reg_787                       |   9|          2|   32|         64|
-    |digit_histogram_10_3_reg_1870                      |   9|          2|   32|         64|
-    |digit_histogram_11_1_reg_776                       |   9|          2|   32|         64|
-    |digit_histogram_11_3_reg_1858                      |   9|          2|   32|         64|
-    |digit_histogram_12_1_reg_765                       |   9|          2|   32|         64|
-    |digit_histogram_12_3_reg_1846                      |   9|          2|   32|         64|
-    |digit_histogram_13_1_reg_754                       |   9|          2|   32|         64|
-    |digit_histogram_13_3_reg_1834                      |   9|          2|   32|         64|
-    |digit_histogram_14_1_reg_743                       |   9|          2|   32|         64|
-    |digit_histogram_14_3_reg_1822                      |   9|          2|   32|         64|
-    |digit_histogram_15_1_reg_732                       |   9|          2|   32|         64|
-    |digit_histogram_15_3_reg_1810                      |   9|          2|   32|         64|
-    |digit_histogram_1_V_1_reg_886                      |   9|          2|   32|         64|
-    |digit_histogram_1_V_3_reg_1978                     |   9|          2|   32|         64|
-    |digit_histogram_2_V_1_reg_875                      |   9|          2|   32|         64|
-    |digit_histogram_2_V_3_reg_1966                     |   9|          2|   32|         64|
-    |digit_histogram_3_V_1_reg_864                      |   9|          2|   32|         64|
-    |digit_histogram_3_V_3_reg_1954                     |   9|          2|   32|         64|
-    |digit_histogram_4_V_1_reg_853                      |   9|          2|   32|         64|
-    |digit_histogram_4_V_3_reg_1942                     |   9|          2|   32|         64|
-    |digit_histogram_5_V_1_reg_842                      |   9|          2|   32|         64|
-    |digit_histogram_5_V_3_reg_1930                     |   9|          2|   32|         64|
-    |digit_histogram_6_V_1_reg_831                      |   9|          2|   32|         64|
-    |digit_histogram_6_V_3_reg_1918                     |   9|          2|   32|         64|
-    |digit_histogram_7_V_1_reg_820                      |   9|          2|   32|         64|
-    |digit_histogram_7_V_3_reg_1906                     |   9|          2|   32|         64|
-    |digit_histogram_8_V_1_reg_809                      |   9|          2|   32|         64|
-    |digit_histogram_8_V_3_reg_1894                     |   9|          2|   32|         64|
-    |digit_histogram_9_V_1_reg_798                      |   9|          2|   32|         64|
-    |digit_histogram_9_V_3_reg_1882                     |   9|          2|   32|         64|
-    |digit_location_0_V_s_reg_4048                      |   9|          2|   32|         64|
-    |digit_location_10_V_1_reg_2921                     |   9|          2|   32|         64|
-    |digit_location_10_V_3_reg_3928                     |   9|          2|   32|         64|
-    |digit_location_11_V_1_reg_2910                     |   9|          2|   32|         64|
-    |digit_location_11_V_3_reg_3916                     |   9|          2|   32|         64|
-    |digit_location_12_V_1_reg_2899                     |   9|          2|   32|         64|
-    |digit_location_12_V_3_reg_3904                     |   9|          2|   32|         64|
-    |digit_location_13_V_1_reg_2888                     |   9|          2|   32|         64|
-    |digit_location_13_V_3_reg_3892                     |   9|          2|   32|         64|
-    |digit_location_14_V_1_reg_2877                     |   9|          2|   32|         64|
-    |digit_location_14_V_3_reg_3880                     |   9|          2|   32|         64|
-    |digit_location_15_V_1_reg_2866                     |   9|          2|   32|         64|
-    |digit_location_15_V_3_reg_3868                     |   9|          2|   32|         64|
-    |digit_location_1_V_1_reg_3020                      |   9|          2|   32|         64|
-    |digit_location_1_V_32_reg_4036                     |   9|          2|   32|         64|
-    |digit_location_2_V_1_reg_3009                      |   9|          2|   32|         64|
-    |digit_location_2_V_3_reg_4024                      |   9|          2|   32|         64|
-    |digit_location_3_V_1_reg_2998                      |   9|          2|   32|         64|
-    |digit_location_3_V_3_reg_4012                      |   9|          2|   32|         64|
-    |digit_location_4_V_1_reg_2987                      |   9|          2|   32|         64|
-    |digit_location_4_V_3_reg_4000                      |   9|          2|   32|         64|
-    |digit_location_5_V_1_reg_2976                      |   9|          2|   32|         64|
-    |digit_location_5_V_3_reg_3988                      |   9|          2|   32|         64|
-    |digit_location_6_V_1_reg_2965                      |   9|          2|   32|         64|
-    |digit_location_6_V_3_reg_3976                      |   9|          2|   32|         64|
-    |digit_location_7_V_1_reg_2954                      |   9|          2|   32|         64|
-    |digit_location_7_V_3_reg_3964                      |   9|          2|   32|         64|
-    |digit_location_8_V_1_reg_2943                      |   9|          2|   32|         64|
-    |digit_location_8_V_3_reg_3952                      |   9|          2|   32|         64|
-    |digit_location_9_V_1_reg_2932                      |   9|          2|   32|         64|
-    |digit_location_9_V_3_reg_3940                      |   9|          2|   32|         64|
-    |i6_0_i_i_reg_3031                                  |   9|          2|    5|         10|
-    |i_0_i_i_reg_908                                    |   9|          2|    5|         10|
-    |j5_0_i_i_reg_1799                                  |   9|          2|   32|         64|
-    |j7_0_i_i_reg_3857                                  |   9|          2|   32|         64|
-    |j_0_i_i_reg_337                                    |   9|          2|   32|         64|
-    |n_blk_n                                            |   9|          2|    1|          2|
-    |n_out_blk_n                                        |   9|          2|    1|          2|
-    |op2_assign_reg_720                                 |   9|          2|    6|         12|
-    |previous_sorting_fre_address0                      |  15|          3|    8|         24|
-    |previous_sorting_val_address0                      |  15|          3|    8|         24|
-    |sorting_frequency_V_address0                       |  21|          4|    8|         32|
-    |sorting_frequency_V_d0                             |  15|          3|   32|         96|
-    |sorting_value_V_address0                           |  21|          4|    8|         32|
-    |sorting_value_V_d0                                 |  15|          3|   32|         96|
-    +---------------------------------------------------+----+-----------+-----+-----------+
-    |Total                                              |1864|        392| 4287|      11170|
-    +---------------------------------------------------+----+-----------+-----+-----------+
+    +-------------------------------+----+-----------+-----+-----------+
+    |              Name             | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                      |  62|         15|    1|         15|
+    |current_digit_V_address0       |  15|          3|    8|         24|
+    |digit_histogram_V_address0     |  27|          5|    4|         20|
+    |digit_histogram_V_d0           |  15|          3|   32|         96|
+    |digit_location_V_address0      |  33|          6|    4|         24|
+    |digit_location_V_d0            |  21|          4|   32|        128|
+    |i6_0_reg_373                   |   9|          2|    5|         10|
+    |i_0_reg_351                    |   9|          2|    5|         10|
+    |j5_0_reg_362                   |   9|          2|   32|         64|
+    |j7_0_reg_385                   |   9|          2|   32|         64|
+    |j_0_reg_328                    |   9|          2|   32|         64|
+    |op2_assign_reg_339             |   9|          2|    6|         12|
+    |previous_sorting_fre_address0  |  15|          3|    8|         24|
+    |previous_sorting_val_address0  |  15|          3|    8|         24|
+    |sorting_frequency_V_address0   |  21|          4|    8|         32|
+    |sorting_frequency_V_d0         |  15|          3|   32|         96|
+    |sorting_value_V_address0       |  21|          4|    8|         32|
+    |sorting_value_V_d0             |  15|          3|   32|         96|
+    +-------------------------------+----+-----------+-----+-----------+
+    |Total                          | 329|         68|  289|        835|
+    +-------------------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +----------------------------------+----+----+-----+-----------+
-    |               Name               | FF | LUT| Bits| Const Bits|
-    +----------------------------------+----+----+-----+-----------+
-    |ap_CS_fsm                         |  12|   0|   12|          0|
-    |ap_done_reg                       |   1|   0|    1|          0|
-    |ap_enable_reg_pp0_iter0           |   1|   0|    1|          0|
-    |ap_enable_reg_pp0_iter1           |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter0           |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter1           |   1|   0|    1|          0|
-    |ap_enable_reg_pp2_iter2           |   1|   0|    1|          0|
-    |ap_enable_reg_pp4_iter0           |   1|   0|    1|          0|
-    |ap_enable_reg_pp4_iter1           |   1|   0|    1|          0|
-    |ap_enable_reg_pp4_iter2           |   1|   0|    1|          0|
-    |digit_V_1_reg_5332                |   4|   0|    4|          0|
-    |digit_V_reg_5295                  |   4|   0|    4|          0|
-    |digit_histogram_0_V_1_reg_897     |  32|   0|   32|          0|
-    |digit_histogram_0_V_2_reg_708     |  32|   0|   32|          0|
-    |digit_histogram_0_V_3_reg_1990    |  32|   0|   32|          0|
-    |digit_histogram_10_1_reg_787      |  32|   0|   32|          0|
-    |digit_histogram_10_3_reg_1870     |  32|   0|   32|          0|
-    |digit_histogram_10_s_reg_588      |  32|   0|   32|          0|
-    |digit_histogram_11_1_reg_776      |  32|   0|   32|          0|
-    |digit_histogram_11_3_reg_1858     |  32|   0|   32|          0|
-    |digit_histogram_11_s_reg_576      |  32|   0|   32|          0|
-    |digit_histogram_12_1_reg_765      |  32|   0|   32|          0|
-    |digit_histogram_12_3_reg_1846     |  32|   0|   32|          0|
-    |digit_histogram_12_s_reg_564      |  32|   0|   32|          0|
-    |digit_histogram_13_1_reg_754      |  32|   0|   32|          0|
-    |digit_histogram_13_3_reg_1834     |  32|   0|   32|          0|
-    |digit_histogram_13_s_reg_552      |  32|   0|   32|          0|
-    |digit_histogram_14_1_reg_743      |  32|   0|   32|          0|
-    |digit_histogram_14_3_reg_1822     |  32|   0|   32|          0|
-    |digit_histogram_14_s_reg_540      |  32|   0|   32|          0|
-    |digit_histogram_15_1_reg_732      |  32|   0|   32|          0|
-    |digit_histogram_15_3_reg_1810     |  32|   0|   32|          0|
-    |digit_histogram_15_s_reg_528      |  32|   0|   32|          0|
-    |digit_histogram_1_V_1_reg_886     |  32|   0|   32|          0|
-    |digit_histogram_1_V_3_reg_1978    |  32|   0|   32|          0|
-    |digit_histogram_1_V_reg_696       |  32|   0|   32|          0|
-    |digit_histogram_2_V_1_reg_875     |  32|   0|   32|          0|
-    |digit_histogram_2_V_3_reg_1966    |  32|   0|   32|          0|
-    |digit_histogram_2_V_reg_684       |  32|   0|   32|          0|
-    |digit_histogram_3_V_1_reg_864     |  32|   0|   32|          0|
-    |digit_histogram_3_V_3_reg_1954    |  32|   0|   32|          0|
-    |digit_histogram_3_V_reg_672       |  32|   0|   32|          0|
-    |digit_histogram_4_V_1_reg_853     |  32|   0|   32|          0|
-    |digit_histogram_4_V_3_reg_1942    |  32|   0|   32|          0|
-    |digit_histogram_4_V_reg_660       |  32|   0|   32|          0|
-    |digit_histogram_5_V_1_reg_842     |  32|   0|   32|          0|
-    |digit_histogram_5_V_3_reg_1930    |  32|   0|   32|          0|
-    |digit_histogram_5_V_reg_648       |  32|   0|   32|          0|
-    |digit_histogram_6_V_1_reg_831     |  32|   0|   32|          0|
-    |digit_histogram_6_V_3_reg_1918    |  32|   0|   32|          0|
-    |digit_histogram_6_V_reg_636       |  32|   0|   32|          0|
-    |digit_histogram_7_V_1_reg_820     |  32|   0|   32|          0|
-    |digit_histogram_7_V_3_reg_1906    |  32|   0|   32|          0|
-    |digit_histogram_7_V_reg_624       |  32|   0|   32|          0|
-    |digit_histogram_8_V_1_reg_809     |  32|   0|   32|          0|
-    |digit_histogram_8_V_3_reg_1894    |  32|   0|   32|          0|
-    |digit_histogram_8_V_reg_612       |  32|   0|   32|          0|
-    |digit_histogram_9_V_1_reg_798     |  32|   0|   32|          0|
-    |digit_histogram_9_V_3_reg_1882    |  32|   0|   32|          0|
-    |digit_histogram_9_V_reg_600       |  32|   0|   32|          0|
-    |digit_location_0_V_s_reg_4048     |  32|   0|   32|          0|
-    |digit_location_10_V_1_reg_2921    |  32|   0|   32|          0|
-    |digit_location_10_V_3_reg_3928    |  32|   0|   32|          0|
-    |digit_location_10_V_reg_408       |  32|   0|   32|          0|
-    |digit_location_11_V_1_reg_2910    |  32|   0|   32|          0|
-    |digit_location_11_V_3_reg_3916    |  32|   0|   32|          0|
-    |digit_location_11_V_reg_396       |  32|   0|   32|          0|
-    |digit_location_12_V_1_reg_2899    |  32|   0|   32|          0|
-    |digit_location_12_V_3_reg_3904    |  32|   0|   32|          0|
-    |digit_location_12_V_reg_384       |  32|   0|   32|          0|
-    |digit_location_13_V_1_reg_2888    |  32|   0|   32|          0|
-    |digit_location_13_V_3_reg_3892    |  32|   0|   32|          0|
-    |digit_location_13_V_reg_372       |  32|   0|   32|          0|
-    |digit_location_14_V_1_reg_2877    |  32|   0|   32|          0|
-    |digit_location_14_V_3_reg_3880    |  32|   0|   32|          0|
-    |digit_location_14_V_reg_360       |  32|   0|   32|          0|
-    |digit_location_15_V_1_reg_2866    |  32|   0|   32|          0|
-    |digit_location_15_V_3_reg_3868    |  32|   0|   32|          0|
-    |digit_location_15_V_reg_348       |  32|   0|   32|          0|
-    |digit_location_1_V_1_reg_3020     |  32|   0|   32|          0|
-    |digit_location_1_V_32_reg_4036    |  32|   0|   32|          0|
-    |digit_location_1_V_s_reg_516      |  32|   0|   32|          0|
-    |digit_location_2_V_1_reg_3009     |  32|   0|   32|          0|
-    |digit_location_2_V_3_reg_4024     |  32|   0|   32|          0|
-    |digit_location_2_V_s_reg_504      |  32|   0|   32|          0|
-    |digit_location_3_V_1_reg_2998     |  32|   0|   32|          0|
-    |digit_location_3_V_3_reg_4012     |  32|   0|   32|          0|
-    |digit_location_3_V_s_reg_492      |  32|   0|   32|          0|
-    |digit_location_4_V_1_reg_2987     |  32|   0|   32|          0|
-    |digit_location_4_V_3_reg_4000     |  32|   0|   32|          0|
-    |digit_location_4_V_s_reg_480      |  32|   0|   32|          0|
-    |digit_location_5_V_1_reg_2976     |  32|   0|   32|          0|
-    |digit_location_5_V_3_reg_3988     |  32|   0|   32|          0|
-    |digit_location_5_V_s_reg_468      |  32|   0|   32|          0|
-    |digit_location_6_V_1_reg_2965     |  32|   0|   32|          0|
-    |digit_location_6_V_3_reg_3976     |  32|   0|   32|          0|
-    |digit_location_6_V_s_reg_456      |  32|   0|   32|          0|
-    |digit_location_7_V_1_reg_2954     |  32|   0|   32|          0|
-    |digit_location_7_V_3_reg_3964     |  32|   0|   32|          0|
-    |digit_location_7_V_s_reg_444      |  32|   0|   32|          0|
-    |digit_location_8_V_1_reg_2943     |  32|   0|   32|          0|
-    |digit_location_8_V_3_reg_3952     |  32|   0|   32|          0|
-    |digit_location_8_V_s_reg_432      |  32|   0|   32|          0|
-    |digit_location_9_V_1_reg_2932     |  32|   0|   32|          0|
-    |digit_location_9_V_3_reg_3940     |  32|   0|   32|          0|
-    |digit_location_9_V_s_reg_420      |  32|   0|   32|          0|
-    |i6_0_i_i_reg_3031                 |   5|   0|    5|          0|
-    |i_0_i_i_reg_908                   |   5|   0|    5|          0|
-    |icmp_ln20_reg_5224                |   1|   0|    1|          0|
-    |icmp_ln34_reg_5269                |   1|   0|    1|          0|
-    |icmp_ln34_reg_5269_pp2_iter1_reg  |   1|   0|    1|          0|
-    |icmp_ln49_reg_5312                |   1|   0|    1|          0|
-    |icmp_ln49_reg_5312_pp4_iter1_reg  |   1|   0|    1|          0|
-    |j5_0_i_i_reg_1799                 |  32|   0|   32|          0|
-    |j7_0_i_i_reg_3857                 |  32|   0|   32|          0|
-    |j_0_i_i_reg_337                   |  32|   0|   32|          0|
-    |n_read_reg_5217                   |  32|   0|   32|          0|
-    |op2_assign_reg_720                |   6|   0|    6|          0|
-    |zext_ln22_reg_5233                |  32|   0|   64|         32|
-    |zext_ln26_reg_5253                |   6|   0|   32|         26|
-    |zext_ln36_reg_5278                |  32|   0|   64|         32|
-    |zext_ln36_reg_5278_pp2_iter1_reg  |  32|   0|   64|         32|
-    |zext_ln51_reg_5321                |  32|   0|   64|         32|
-    +----------------------------------+----+----+-----+-----------+
-    |Total                             |3320|   0| 3474|        154|
-    +----------------------------------+----+----+-----+-----------+
+    +--------------------------------+----+----+-----+-----------+
+    |              Name              | FF | LUT| Bits| Const Bits|
+    +--------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                       |  14|   0|   14|          0|
+    |digit_V_reg_629                 |   4|   0|    4|          0|
+    |digit_histogram_V_ad_1_reg_640  |   4|   0|    4|          0|
+    |digit_location_V_add_3_reg_687  |   4|   0|    4|          0|
+    |i6_0_reg_373                    |   5|   0|    5|          0|
+    |i_0_reg_351                     |   5|   0|    5|          0|
+    |j5_0_reg_362                    |  32|   0|   32|          0|
+    |j7_0_reg_385                    |  32|   0|   32|          0|
+    |j_0_reg_328                     |  32|   0|   32|          0|
+    |j_1_reg_611                     |  32|   0|   32|          0|
+    |j_2_reg_666                     |  32|   0|   32|          0|
+    |j_reg_566                       |  32|   0|   32|          0|
+    |op2_assign_reg_339              |   6|   0|    6|          0|
+    |zext_ln22_reg_571               |  32|   0|   64|         32|
+    |zext_ln26_reg_592               |   6|   0|   32|         26|
+    |zext_ln36_reg_616               |  32|   0|   64|         32|
+    |zext_ln51_reg_671               |  32|   0|   64|         32|
+    +--------------------------------+----+----+-----+-----------+
+    |Total                           | 336|   0|  458|        122|
+    +--------------------------------+----+----+-----+-----------+
 
 
 
@@ -432,7 +186,6 @@
 |ap_rst                    |  in |    1| ap_ctrl_hs |       sort      | return value |
 |ap_start                  |  in |    1| ap_ctrl_hs |       sort      | return value |
 |ap_done                   | out |    1| ap_ctrl_hs |       sort      | return value |
-|ap_continue               |  in |    1| ap_ctrl_hs |       sort      | return value |
 |ap_idle                   | out |    1| ap_ctrl_hs |       sort      | return value |
 |ap_ready                  | out |    1| ap_ctrl_hs |       sort      | return value |
 |in_value_V_address0       | out |    8|  ap_memory |    in_value_V   |     array    |
@@ -441,9 +194,7 @@
 |in_frequency_V_address0   | out |    8|  ap_memory |  in_frequency_V |     array    |
 |in_frequency_V_ce0        | out |    1|  ap_memory |  in_frequency_V |     array    |
 |in_frequency_V_q0         |  in |   32|  ap_memory |  in_frequency_V |     array    |
-|n_dout                    |  in |   32|   ap_fifo  |        n        |    pointer   |
-|n_empty_n                 |  in |    1|   ap_fifo  |        n        |    pointer   |
-|n_read                    | out |    1|   ap_fifo  |        n        |    pointer   |
+|num_symbols               |  in |   32|   ap_none  |   num_symbols   |    scalar    |
 |out_value_V_address0      | out |    8|  ap_memory |   out_value_V   |     array    |
 |out_value_V_ce0           | out |    1|  ap_memory |   out_value_V   |     array    |
 |out_value_V_we0           | out |    1|  ap_memory |   out_value_V   |     array    |
@@ -452,8 +203,5 @@
 |out_frequency_V_ce0       | out |    1|  ap_memory | out_frequency_V |     array    |
 |out_frequency_V_we0       | out |    1|  ap_memory | out_frequency_V |     array    |
 |out_frequency_V_d0        | out |   32|  ap_memory | out_frequency_V |     array    |
-|n_out_din                 | out |   32|   ap_fifo  |      n_out      |    pointer   |
-|n_out_full_n              |  in |    1|   ap_fifo  |      n_out      |    pointer   |
-|n_out_write               | out |    1|   ap_fifo  |      n_out      |    pointer   |
 +--------------------------+-----+-----+------------+-----------------+--------------+
 

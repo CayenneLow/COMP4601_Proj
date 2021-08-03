@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'canonize_tree'
 ================================================================
-* Date:           Tue Aug  3 13:09:58 2021
+* Date:           Tue Aug  3 15:38:36 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -1118,55 +1118,55 @@ ST_128 : Operation 644 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr_254 = getele
 ST_128 : Operation 645 [1/1] (3.25ns)   --->   "store i5 0, i5* %symbol_bits_V_addr_254, align 1" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 645 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
 ST_128 : Operation 646 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr_255 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 255" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 646 'getelementptr' 'symbol_bits_V_addr_255' <Predicate = true> <Delay = 0.00>
 ST_128 : Operation 647 [1/1] (3.25ns)   --->   "store i5 0, i5* %symbol_bits_V_addr_255, align 1" [./hls-src/huffman_canonize_tree.cpp:14->./hls-src/huffman_encoding.cpp:71]   --->   Operation 647 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_128 : Operation 648 [1/1] (1.76ns)   --->   "br label %process_symbols_begin" [./hls-src/huffman_canonize_tree.cpp:25->./hls-src/huffman_encoding.cpp:71]   --->   Operation 648 'br' <Predicate = true> <Delay = 1.76>
+ST_128 : Operation 648 [1/1] (1.76ns)   --->   "br label %process_symbols_begin" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 648 'br' <Predicate = true> <Delay = 1.76>
 
 State 129 <SV = 128> <Delay = 3.25>
 ST_129 : Operation 649 [1/1] (0.00ns)   --->   "%t_V = phi i32 [ %length_V, %process_symbols_end ], [ 64, %entry ]"   --->   Operation 649 'phi' 't_V' <Predicate = true> <Delay = 0.00>
-ST_129 : Operation 650 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %t_V to i64" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 650 'zext' 'zext_ln544' <Predicate = true> <Delay = 0.00>
-ST_129 : Operation 651 [1/1] (0.00ns)   --->   "%codeword_length_hist = getelementptr [64 x i32]* %codeword_length_histogram_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 651 'getelementptr' 'codeword_length_hist' <Predicate = true> <Delay = 0.00>
-ST_129 : Operation 652 [2/2] (3.25ns)   --->   "%count_V = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 652 'load' 'count_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_129 : Operation 650 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %t_V to i64" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 650 'zext' 'zext_ln544' <Predicate = true> <Delay = 0.00>
+ST_129 : Operation 651 [1/1] (0.00ns)   --->   "%codeword_length_hist = getelementptr [64 x i32]* %codeword_length_histogram_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 651 'getelementptr' 'codeword_length_hist' <Predicate = true> <Delay = 0.00>
+ST_129 : Operation 652 [2/2] (3.25ns)   --->   "%count_V = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 652 'load' 'count_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
 
 State 130 <SV = 129> <Delay = 3.25>
-ST_130 : Operation 653 [1/1] (0.00ns)   --->   "%k_0_i_i = phi i32 [ %i_op_assign_1, %process_symbols_end ], [ 0, %entry ]" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 653 'phi' 'k_0_i_i' <Predicate = true> <Delay = 0.00>
-ST_130 : Operation 654 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str485) nounwind" [./hls-src/huffman_canonize_tree.cpp:25->./hls-src/huffman_encoding.cpp:71]   --->   Operation 654 'specloopname' <Predicate = true> <Delay = 0.00>
-ST_130 : Operation 655 [1/1] (0.00ns)   --->   "%tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([16 x i8]* @p_str485)" [./hls-src/huffman_canonize_tree.cpp:25->./hls-src/huffman_encoding.cpp:71]   --->   Operation 655 'specregionbegin' 'tmp_i_i' <Predicate = true> <Delay = 0.00>
-ST_130 : Operation 656 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 64, i32 64, i32 64, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 656 'speclooptripcount' <Predicate = true> <Delay = 0.00>
-ST_130 : Operation 657 [1/2] (3.25ns)   --->   "%count_V = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 657 'load' 'count_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_130 : Operation 658 [1/1] (1.76ns)   --->   "br label %0" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 658 'br' <Predicate = true> <Delay = 1.76>
+ST_130 : Operation 653 [1/1] (0.00ns)   --->   "%k_0_i_i = phi i32 [ %i_op_assign_1, %process_symbols_end ], [ 0, %entry ]" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 653 'phi' 'k_0_i_i' <Predicate = true> <Delay = 0.00>
+ST_130 : Operation 654 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str485) nounwind" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 654 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_130 : Operation 655 [1/1] (0.00ns)   --->   "%tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([16 x i8]* @p_str485)" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 655 'specregionbegin' 'tmp_i_i' <Predicate = true> <Delay = 0.00>
+ST_130 : Operation 656 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 64, i32 64, i32 64, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 656 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_130 : Operation 657 [1/2] (3.25ns)   --->   "%count_V = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 657 'load' 'count_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_130 : Operation 658 [1/1] (1.76ns)   --->   "br label %0" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 658 'br' <Predicate = true> <Delay = 1.76>
 
 State 131 <SV = 130> <Delay = 5.02>
 ST_131 : Operation 659 [1/1] (0.00ns)   --->   "%k_1_i_i = phi i32 [ %k_0_i_i, %process_symbols_begin ], [ %k, %canonize_tree_label0_end ]"   --->   Operation 659 'phi' 'k_1_i_i' <Predicate = true> <Delay = 0.00>
 ST_131 : Operation 660 [1/1] (0.00ns)   --->   "%i_op_assign = phi i32 [ 0, %process_symbols_begin ], [ %i, %canonize_tree_label0_end ]"   --->   Operation 660 'phi' 'i_op_assign' <Predicate = true> <Delay = 0.00>
-ST_131 : Operation 661 [1/1] (2.47ns)   --->   "%icmp_ln887 = icmp ult i32 %i_op_assign, %count_V" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 661 'icmp' 'icmp_ln887' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_131 : Operation 662 [1/1] (2.55ns)   --->   "%i = add nsw i32 %i_op_assign, 1" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 662 'add' 'i' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_131 : Operation 663 [1/1] (1.76ns)   --->   "br i1 %icmp_ln887, label %canonize_tree_label0_begin, label %.loopexit.i.i" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 663 'br' <Predicate = true> <Delay = 1.76>
-ST_131 : Operation 664 [1/1] (0.00ns)   --->   "%tmp_14_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([21 x i8]* @p_str586)" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 664 'specregionbegin' 'tmp_14_i_i' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_131 : Operation 665 [1/1] (2.55ns)   --->   "%k = add nsw i32 1, %k_1_i_i" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 665 'add' 'k' <Predicate = (icmp_ln887)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_131 : Operation 666 [1/1] (0.00ns)   --->   "%sext_ln29 = sext i32 %k_1_i_i to i64" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 666 'sext' 'sext_ln29' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_131 : Operation 667 [1/1] (0.00ns)   --->   "%sorted_value_V_addr = getelementptr [256 x i32]* %sorted_value_V, i64 0, i64 %sext_ln29" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 667 'getelementptr' 'sorted_value_V_addr' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_131 : Operation 668 [2/2] (3.25ns)   --->   "%val = load i32* %sorted_value_V_addr, align 4" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 668 'load' 'val' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_131 : Operation 669 [1/1] (2.47ns)   --->   "%icmp_ln891 = icmp ult i32 %k, %val_assign_loc_read" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 669 'icmp' 'icmp_ln891' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_131 : Operation 670 [1/1] (0.00ns)   --->   "%empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd([21 x i8]* @p_str586, i32 %tmp_14_i_i)" [./hls-src/huffman_canonize_tree.cpp:32->./hls-src/huffman_encoding.cpp:71]   --->   Operation 670 'specregionend' 'empty_33' <Predicate = (icmp_ln887 & icmp_ln891)> <Delay = 0.00>
-ST_131 : Operation 671 [1/1] (0.00ns)   --->   "br label %0" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 671 'br' <Predicate = (icmp_ln887 & icmp_ln891)> <Delay = 0.00>
+ST_131 : Operation 661 [1/1] (2.47ns)   --->   "%icmp_ln887 = icmp ult i32 %i_op_assign, %count_V" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 661 'icmp' 'icmp_ln887' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_131 : Operation 662 [1/1] (2.55ns)   --->   "%i = add nsw i32 %i_op_assign, 1" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 662 'add' 'i' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_131 : Operation 663 [1/1] (1.76ns)   --->   "br i1 %icmp_ln887, label %canonize_tree_label0_begin, label %.loopexit.i.i" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 663 'br' <Predicate = true> <Delay = 1.76>
+ST_131 : Operation 664 [1/1] (0.00ns)   --->   "%tmp_14_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([21 x i8]* @p_str586)" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 664 'specregionbegin' 'tmp_14_i_i' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_131 : Operation 665 [1/1] (2.55ns)   --->   "%k = add nsw i32 1, %k_1_i_i" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 665 'add' 'k' <Predicate = (icmp_ln887)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_131 : Operation 666 [1/1] (0.00ns)   --->   "%sext_ln30 = sext i32 %k_1_i_i to i64" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 666 'sext' 'sext_ln30' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_131 : Operation 667 [1/1] (0.00ns)   --->   "%sorted_value_V_addr = getelementptr [256 x i32]* %sorted_value_V, i64 0, i64 %sext_ln30" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 667 'getelementptr' 'sorted_value_V_addr' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_131 : Operation 668 [2/2] (3.25ns)   --->   "%val = load i32* %sorted_value_V_addr, align 4" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 668 'load' 'val' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_131 : Operation 669 [1/1] (2.47ns)   --->   "%icmp_ln891 = icmp ult i32 %k, %val_assign_loc_read" [./hls-src/huffman_canonize_tree.cpp:32->./hls-src/huffman_encoding.cpp:71]   --->   Operation 669 'icmp' 'icmp_ln891' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_131 : Operation 670 [1/1] (0.00ns)   --->   "%empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd([21 x i8]* @p_str586, i32 %tmp_14_i_i)" [./hls-src/huffman_canonize_tree.cpp:33->./hls-src/huffman_encoding.cpp:71]   --->   Operation 670 'specregionend' 'empty_33' <Predicate = (icmp_ln887 & icmp_ln891)> <Delay = 0.00>
+ST_131 : Operation 671 [1/1] (0.00ns)   --->   "br label %0" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 671 'br' <Predicate = (icmp_ln887 & icmp_ln891)> <Delay = 0.00>
 
 State 132 <SV = 131> <Delay = 6.50>
-ST_132 : Operation 672 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @p_str586) nounwind" [./hls-src/huffman_canonize_tree.cpp:27->./hls-src/huffman_encoding.cpp:71]   --->   Operation 672 'specloopname' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 673 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 25, i32 25, i32 25, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 673 'speclooptripcount' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 674 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 674 'specpipeline' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 675 [1/2] (3.25ns)   --->   "%val = load i32* %sorted_value_V_addr, align 4" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 675 'load' 'val' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_132 : Operation 676 [1/1] (0.00ns)   --->   "%sext_ln30 = sext i32 %val to i64" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 676 'sext' 'sext_ln30' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 677 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr_256 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %sext_ln30" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 677 'getelementptr' 'symbol_bits_V_addr_256' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 678 [1/1] (0.00ns)   --->   "%trunc_ln209 = trunc i32 %t_V to i5" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 678 'trunc' 'trunc_ln209' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_132 : Operation 679 [1/1] (3.25ns)   --->   "store i5 %trunc_ln209, i5* %symbol_bits_V_addr_256, align 1" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 679 'store' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
-ST_132 : Operation 680 [1/1] (1.76ns)   --->   "br i1 %icmp_ln891, label %canonize_tree_label0_end, label %.loopexit.i.i" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 680 'br' <Predicate = (icmp_ln887)> <Delay = 1.76>
+ST_132 : Operation 672 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @p_str586) nounwind" [./hls-src/huffman_canonize_tree.cpp:28->./hls-src/huffman_encoding.cpp:71]   --->   Operation 672 'specloopname' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 673 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 25, i32 25, i32 25, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 673 'speclooptripcount' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 674 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str384) nounwind" [./hls-src/huffman_canonize_tree.cpp:29->./hls-src/huffman_encoding.cpp:71]   --->   Operation 674 'specpipeline' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 675 [1/2] (3.25ns)   --->   "%val = load i32* %sorted_value_V_addr, align 4" [./hls-src/huffman_canonize_tree.cpp:30->./hls-src/huffman_encoding.cpp:71]   --->   Operation 675 'load' 'val' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_132 : Operation 676 [1/1] (0.00ns)   --->   "%sext_ln31 = sext i32 %val to i64" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 676 'sext' 'sext_ln31' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 677 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr_256 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %sext_ln31" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 677 'getelementptr' 'symbol_bits_V_addr_256' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 678 [1/1] (0.00ns)   --->   "%trunc_ln209 = trunc i32 %t_V to i5" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 678 'trunc' 'trunc_ln209' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_132 : Operation 679 [1/1] (3.25ns)   --->   "store i5 %trunc_ln209, i5* %symbol_bits_V_addr_256, align 1" [./hls-src/huffman_canonize_tree.cpp:31->./hls-src/huffman_encoding.cpp:71]   --->   Operation 679 'store' <Predicate = (icmp_ln887)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_132 : Operation 680 [1/1] (1.76ns)   --->   "br i1 %icmp_ln891, label %canonize_tree_label0_end, label %.loopexit.i.i" [./hls-src/huffman_canonize_tree.cpp:32->./hls-src/huffman_encoding.cpp:71]   --->   Operation 680 'br' <Predicate = (icmp_ln887)> <Delay = 1.76>
 
 State 133 <SV = 132> <Delay = 2.55>
 ST_133 : Operation 681 [1/1] (0.00ns)   --->   "%i_op_assign_1 = phi i32 [ %k_1_i_i, %0 ], [ %k, %canonize_tree_label0_begin ]"   --->   Operation 681 'phi' 'i_op_assign_1' <Predicate = true> <Delay = 0.00>
-ST_133 : Operation 682 [1/1] (2.47ns)   --->   "%icmp_ln891_1 = icmp ult i32 %i_op_assign_1, %val_assign_loc_read" [./hls-src/huffman_canonize_tree.cpp:33->./hls-src/huffman_encoding.cpp:71]   --->   Operation 682 'icmp' 'icmp_ln891_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_133 : Operation 683 [1/1] (0.00ns)   --->   "br i1 %icmp_ln891_1, label %process_symbols_end, label %.exit" [./hls-src/huffman_canonize_tree.cpp:33->./hls-src/huffman_encoding.cpp:71]   --->   Operation 683 'br' <Predicate = true> <Delay = 0.00>
-ST_133 : Operation 684 [1/1] (0.00ns)   --->   "%empty_34 = call i32 (...)* @_ssdm_op_SpecRegionEnd([16 x i8]* @p_str485, i32 %tmp_i_i)" [./hls-src/huffman_canonize_tree.cpp:34->./hls-src/huffman_encoding.cpp:71]   --->   Operation 684 'specregionend' 'empty_34' <Predicate = (icmp_ln891_1)> <Delay = 0.00>
-ST_133 : Operation 685 [1/1] (2.55ns)   --->   "%length_V = add i32 %t_V, -1" [./hls-src/huffman_canonize_tree.cpp:25->./hls-src/huffman_encoding.cpp:71]   --->   Operation 685 'add' 'length_V' <Predicate = (icmp_ln891_1)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_133 : Operation 686 [1/1] (0.00ns)   --->   "br label %process_symbols_begin" [./hls-src/huffman_canonize_tree.cpp:25->./hls-src/huffman_encoding.cpp:71]   --->   Operation 686 'br' <Predicate = (icmp_ln891_1)> <Delay = 0.00>
+ST_133 : Operation 682 [1/1] (2.47ns)   --->   "%icmp_ln891_1 = icmp ult i32 %i_op_assign_1, %val_assign_loc_read" [./hls-src/huffman_canonize_tree.cpp:34->./hls-src/huffman_encoding.cpp:71]   --->   Operation 682 'icmp' 'icmp_ln891_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_133 : Operation 683 [1/1] (0.00ns)   --->   "br i1 %icmp_ln891_1, label %process_symbols_end, label %.exit" [./hls-src/huffman_canonize_tree.cpp:34->./hls-src/huffman_encoding.cpp:71]   --->   Operation 683 'br' <Predicate = true> <Delay = 0.00>
+ST_133 : Operation 684 [1/1] (0.00ns)   --->   "%empty_34 = call i32 (...)* @_ssdm_op_SpecRegionEnd([16 x i8]* @p_str485, i32 %tmp_i_i)" [./hls-src/huffman_canonize_tree.cpp:35->./hls-src/huffman_encoding.cpp:71]   --->   Operation 684 'specregionend' 'empty_34' <Predicate = (icmp_ln891_1)> <Delay = 0.00>
+ST_133 : Operation 685 [1/1] (2.55ns)   --->   "%length_V = add i32 %t_V, -1" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 685 'add' 'length_V' <Predicate = (icmp_ln891_1)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_133 : Operation 686 [1/1] (0.00ns)   --->   "br label %process_symbols_begin" [./hls-src/huffman_canonize_tree.cpp:26->./hls-src/huffman_encoding.cpp:71]   --->   Operation 686 'br' <Predicate = (icmp_ln891_1)> <Delay = 0.00>
 ST_133 : Operation 687 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 687 'ret' <Predicate = (!icmp_ln891_1)> <Delay = 0.00>
 
 
@@ -1705,43 +1705,43 @@ symbol_bits_V_addr_254 (getelementptr    ) [ 00000000000000000000000000000000000
 store_ln14             (store            ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 symbol_bits_V_addr_255 (getelementptr    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 store_ln14             (store            ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-br_ln25                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111]
+br_ln26                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111]
 t_V                    (phi              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 zext_ln544             (zext             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 codeword_length_hist   (getelementptr    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000]
 k_0_i_i                (phi              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011110]
-specloopname_ln25      (specloopname     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+specloopname_ln26      (specloopname     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 tmp_i_i                (specregionbegin  ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111]
-speclooptripcount_ln26 (speclooptripcount) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+speclooptripcount_ln27 (speclooptripcount) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 count_V                (load             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110]
-br_ln27                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
+br_ln28                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 k_1_i_i                (phi              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111]
 i_op_assign            (phi              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110]
 icmp_ln887             (icmp             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 i                      (add              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
-br_ln27                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
+br_ln28                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 tmp_14_i_i             (specregionbegin  ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 k                      (add              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
-sext_ln29              (sext             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+sext_ln30              (sext             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 sorted_value_V_addr    (getelementptr    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110]
 icmp_ln891             (icmp             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 empty_33               (specregionend    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-br_ln27                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
-specloopname_ln27      (specloopname     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-speclooptripcount_ln28 (speclooptripcount) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-specpipeline_ln28      (specpipeline     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+br_ln28                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
+specloopname_ln28      (specloopname     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+speclooptripcount_ln29 (speclooptripcount) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+specpipeline_ln29      (specpipeline     ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 val                    (load             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-sext_ln30              (sext             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+sext_ln31              (sext             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 symbol_bits_V_addr_256 (getelementptr    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 trunc_ln209            (trunc            ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-store_ln30             (store            ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
-br_ln31                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
+store_ln31             (store            ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+br_ln32                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
 i_op_assign_1          (phi              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111001]
 icmp_ln891_1           (icmp             ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111]
-br_ln33                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
+br_ln34                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 empty_34               (specregionend    ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 length_V               (add              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111]
-br_ln25                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111]
+br_ln26                (br               ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111]
 ret_ln0                (ret              ) [ 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]
 </LifeTime>
 
@@ -4318,7 +4318,7 @@ ret_ln0                (ret              ) [ 00000000000000000000000000000000000
 </pin_list>
 <bind>
 <opcode="store(28) " fcode="store"/>
-<opset="store_ln14/1 store_ln14/1 store_ln14/2 store_ln14/2 store_ln14/3 store_ln14/3 store_ln14/4 store_ln14/4 store_ln14/5 store_ln14/5 store_ln14/6 store_ln14/6 store_ln14/7 store_ln14/7 store_ln14/8 store_ln14/8 store_ln14/9 store_ln14/9 store_ln14/10 store_ln14/10 store_ln14/11 store_ln14/11 store_ln14/12 store_ln14/12 store_ln14/13 store_ln14/13 store_ln14/14 store_ln14/14 store_ln14/15 store_ln14/15 store_ln14/16 store_ln14/16 store_ln14/17 store_ln14/17 store_ln14/18 store_ln14/18 store_ln14/19 store_ln14/19 store_ln14/20 store_ln14/20 store_ln14/21 store_ln14/21 store_ln14/22 store_ln14/22 store_ln14/23 store_ln14/23 store_ln14/24 store_ln14/24 store_ln14/25 store_ln14/25 store_ln14/26 store_ln14/26 store_ln14/27 store_ln14/27 store_ln14/28 store_ln14/28 store_ln14/29 store_ln14/29 store_ln14/30 store_ln14/30 store_ln14/31 store_ln14/31 store_ln14/32 store_ln14/32 store_ln14/33 store_ln14/33 store_ln14/34 store_ln14/34 store_ln14/35 store_ln14/35 store_ln14/36 store_ln14/36 store_ln14/37 store_ln14/37 store_ln14/38 store_ln14/38 store_ln14/39 store_ln14/39 store_ln14/40 store_ln14/40 store_ln14/41 store_ln14/41 store_ln14/42 store_ln14/42 store_ln14/43 store_ln14/43 store_ln14/44 store_ln14/44 store_ln14/45 store_ln14/45 store_ln14/46 store_ln14/46 store_ln14/47 store_ln14/47 store_ln14/48 store_ln14/48 store_ln14/49 store_ln14/49 store_ln14/50 store_ln14/50 store_ln14/51 store_ln14/51 store_ln14/52 store_ln14/52 store_ln14/53 store_ln14/53 store_ln14/54 store_ln14/54 store_ln14/55 store_ln14/55 store_ln14/56 store_ln14/56 store_ln14/57 store_ln14/57 store_ln14/58 store_ln14/58 store_ln14/59 store_ln14/59 store_ln14/60 store_ln14/60 store_ln14/61 store_ln14/61 store_ln14/62 store_ln14/62 store_ln14/63 store_ln14/63 store_ln14/64 store_ln14/64 store_ln14/65 store_ln14/65 store_ln14/66 store_ln14/66 store_ln14/67 store_ln14/67 store_ln14/68 store_ln14/68 store_ln14/69 store_ln14/69 store_ln14/70 store_ln14/70 store_ln14/71 store_ln14/71 store_ln14/72 store_ln14/72 store_ln14/73 store_ln14/73 store_ln14/74 store_ln14/74 store_ln14/75 store_ln14/75 store_ln14/76 store_ln14/76 store_ln14/77 store_ln14/77 store_ln14/78 store_ln14/78 store_ln14/79 store_ln14/79 store_ln14/80 store_ln14/80 store_ln14/81 store_ln14/81 store_ln14/82 store_ln14/82 store_ln14/83 store_ln14/83 store_ln14/84 store_ln14/84 store_ln14/85 store_ln14/85 store_ln14/86 store_ln14/86 store_ln14/87 store_ln14/87 store_ln14/88 store_ln14/88 store_ln14/89 store_ln14/89 store_ln14/90 store_ln14/90 store_ln14/91 store_ln14/91 store_ln14/92 store_ln14/92 store_ln14/93 store_ln14/93 store_ln14/94 store_ln14/94 store_ln14/95 store_ln14/95 store_ln14/96 store_ln14/96 store_ln14/97 store_ln14/97 store_ln14/98 store_ln14/98 store_ln14/99 store_ln14/99 store_ln14/100 store_ln14/100 store_ln14/101 store_ln14/101 store_ln14/102 store_ln14/102 store_ln14/103 store_ln14/103 store_ln14/104 store_ln14/104 store_ln14/105 store_ln14/105 store_ln14/106 store_ln14/106 store_ln14/107 store_ln14/107 store_ln14/108 store_ln14/108 store_ln14/109 store_ln14/109 store_ln14/110 store_ln14/110 store_ln14/111 store_ln14/111 store_ln14/112 store_ln14/112 store_ln14/113 store_ln14/113 store_ln14/114 store_ln14/114 store_ln14/115 store_ln14/115 store_ln14/116 store_ln14/116 store_ln14/117 store_ln14/117 store_ln14/118 store_ln14/118 store_ln14/119 store_ln14/119 store_ln14/120 store_ln14/120 store_ln14/121 store_ln14/121 store_ln14/122 store_ln14/122 store_ln14/123 store_ln14/123 store_ln14/124 store_ln14/124 store_ln14/125 store_ln14/125 store_ln14/126 store_ln14/126 store_ln14/127 store_ln14/127 store_ln14/128 store_ln14/128 store_ln30/132 "/>
+<opset="store_ln14/1 store_ln14/1 store_ln14/2 store_ln14/2 store_ln14/3 store_ln14/3 store_ln14/4 store_ln14/4 store_ln14/5 store_ln14/5 store_ln14/6 store_ln14/6 store_ln14/7 store_ln14/7 store_ln14/8 store_ln14/8 store_ln14/9 store_ln14/9 store_ln14/10 store_ln14/10 store_ln14/11 store_ln14/11 store_ln14/12 store_ln14/12 store_ln14/13 store_ln14/13 store_ln14/14 store_ln14/14 store_ln14/15 store_ln14/15 store_ln14/16 store_ln14/16 store_ln14/17 store_ln14/17 store_ln14/18 store_ln14/18 store_ln14/19 store_ln14/19 store_ln14/20 store_ln14/20 store_ln14/21 store_ln14/21 store_ln14/22 store_ln14/22 store_ln14/23 store_ln14/23 store_ln14/24 store_ln14/24 store_ln14/25 store_ln14/25 store_ln14/26 store_ln14/26 store_ln14/27 store_ln14/27 store_ln14/28 store_ln14/28 store_ln14/29 store_ln14/29 store_ln14/30 store_ln14/30 store_ln14/31 store_ln14/31 store_ln14/32 store_ln14/32 store_ln14/33 store_ln14/33 store_ln14/34 store_ln14/34 store_ln14/35 store_ln14/35 store_ln14/36 store_ln14/36 store_ln14/37 store_ln14/37 store_ln14/38 store_ln14/38 store_ln14/39 store_ln14/39 store_ln14/40 store_ln14/40 store_ln14/41 store_ln14/41 store_ln14/42 store_ln14/42 store_ln14/43 store_ln14/43 store_ln14/44 store_ln14/44 store_ln14/45 store_ln14/45 store_ln14/46 store_ln14/46 store_ln14/47 store_ln14/47 store_ln14/48 store_ln14/48 store_ln14/49 store_ln14/49 store_ln14/50 store_ln14/50 store_ln14/51 store_ln14/51 store_ln14/52 store_ln14/52 store_ln14/53 store_ln14/53 store_ln14/54 store_ln14/54 store_ln14/55 store_ln14/55 store_ln14/56 store_ln14/56 store_ln14/57 store_ln14/57 store_ln14/58 store_ln14/58 store_ln14/59 store_ln14/59 store_ln14/60 store_ln14/60 store_ln14/61 store_ln14/61 store_ln14/62 store_ln14/62 store_ln14/63 store_ln14/63 store_ln14/64 store_ln14/64 store_ln14/65 store_ln14/65 store_ln14/66 store_ln14/66 store_ln14/67 store_ln14/67 store_ln14/68 store_ln14/68 store_ln14/69 store_ln14/69 store_ln14/70 store_ln14/70 store_ln14/71 store_ln14/71 store_ln14/72 store_ln14/72 store_ln14/73 store_ln14/73 store_ln14/74 store_ln14/74 store_ln14/75 store_ln14/75 store_ln14/76 store_ln14/76 store_ln14/77 store_ln14/77 store_ln14/78 store_ln14/78 store_ln14/79 store_ln14/79 store_ln14/80 store_ln14/80 store_ln14/81 store_ln14/81 store_ln14/82 store_ln14/82 store_ln14/83 store_ln14/83 store_ln14/84 store_ln14/84 store_ln14/85 store_ln14/85 store_ln14/86 store_ln14/86 store_ln14/87 store_ln14/87 store_ln14/88 store_ln14/88 store_ln14/89 store_ln14/89 store_ln14/90 store_ln14/90 store_ln14/91 store_ln14/91 store_ln14/92 store_ln14/92 store_ln14/93 store_ln14/93 store_ln14/94 store_ln14/94 store_ln14/95 store_ln14/95 store_ln14/96 store_ln14/96 store_ln14/97 store_ln14/97 store_ln14/98 store_ln14/98 store_ln14/99 store_ln14/99 store_ln14/100 store_ln14/100 store_ln14/101 store_ln14/101 store_ln14/102 store_ln14/102 store_ln14/103 store_ln14/103 store_ln14/104 store_ln14/104 store_ln14/105 store_ln14/105 store_ln14/106 store_ln14/106 store_ln14/107 store_ln14/107 store_ln14/108 store_ln14/108 store_ln14/109 store_ln14/109 store_ln14/110 store_ln14/110 store_ln14/111 store_ln14/111 store_ln14/112 store_ln14/112 store_ln14/113 store_ln14/113 store_ln14/114 store_ln14/114 store_ln14/115 store_ln14/115 store_ln14/116 store_ln14/116 store_ln14/117 store_ln14/117 store_ln14/118 store_ln14/118 store_ln14/119 store_ln14/119 store_ln14/120 store_ln14/120 store_ln14/121 store_ln14/121 store_ln14/122 store_ln14/122 store_ln14/123 store_ln14/123 store_ln14/124 store_ln14/124 store_ln14/125 store_ln14/125 store_ln14/126 store_ln14/126 store_ln14/127 store_ln14/127 store_ln14/128 store_ln14/128 store_ln31/132 "/>
 </bind>
 </comp>
 
@@ -7869,14 +7869,14 @@ ret_ln0                (ret              ) [ 00000000000000000000000000000000000
 </bind>
 </comp>
 
-<comp id="2997" class="1004" name="sext_ln29_fu_2997">
+<comp id="2997" class="1004" name="sext_ln30_fu_2997">
 <pin_list>
 <pin id="2998" dir="0" index="0" bw="32" slack="0"/>
 <pin id="2999" dir="1" index="1" bw="64" slack="0"/>
 </pin_list>
 <bind>
 <opcode="sext(35) " fcode="sext"/>
-<opset="sext_ln29/131 "/>
+<opset="sext_ln30/131 "/>
 </bind>
 </comp>
 
@@ -7892,14 +7892,14 @@ ret_ln0                (ret              ) [ 00000000000000000000000000000000000
 </bind>
 </comp>
 
-<comp id="3007" class="1004" name="sext_ln30_fu_3007">
+<comp id="3007" class="1004" name="sext_ln31_fu_3007">
 <pin_list>
 <pin id="3008" dir="0" index="0" bw="32" slack="0"/>
 <pin id="3009" dir="1" index="1" bw="64" slack="0"/>
 </pin_list>
 <bind>
 <opcode="sext(35) " fcode="sext"/>
-<opset="sext_ln30/132 "/>
+<opset="sext_ln31/132 "/>
 </bind>
 </comp>
 
@@ -10606,20 +10606,20 @@ ret_ln0                (ret              ) [ 00000000000000000000000000000000000
 	State 131
 		icmp_ln887 : 1
 		i : 1
-		br_ln27 : 2
+		br_ln28 : 2
 		k : 1
-		sext_ln29 : 1
+		sext_ln30 : 1
 		sorted_value_V_addr : 2
 		val : 3
 		icmp_ln891 : 2
 		empty_33 : 1
 	State 132
-		sext_ln30 : 1
+		sext_ln31 : 1
 		symbol_bits_V_addr_256 : 2
-		store_ln30 : 3
+		store_ln31 : 3
 	State 133
 		icmp_ln891_1 : 1
-		br_ln33 : 2
+		br_ln34 : 2
 
 
 ============================================================
@@ -10642,8 +10642,8 @@ ret_ln0                (ret              ) [ 00000000000000000000000000000000000
 |----------|---------------------------------|---------|---------|
 |   zext   |        zext_ln544_fu_2975       |    0    |    0    |
 |----------|---------------------------------|---------|---------|
-|   sext   |        sext_ln29_fu_2997        |    0    |    0    |
-|          |        sext_ln30_fu_3007        |    0    |    0    |
+|   sext   |        sext_ln30_fu_2997        |    0    |    0    |
+|          |        sext_ln31_fu_3007        |    0    |    0    |
 |----------|---------------------------------|---------|---------|
 |   trunc  |       trunc_ln209_fu_3012       |    0    |    0    |
 |----------|---------------------------------|---------|---------|

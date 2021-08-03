@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'create_tree'
 ================================================================
-* Date:           Tue Aug  3 12:44:33 2021
+* Date:           Tue Aug  3 15:22:55 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  | 10.00 ns | 8.661 ns |   1.25 ns  |
+    |ap_clk  | 10.00 ns | 7.575 ns |   1.25 ns  |
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |   Latency (absolute)  |  Interval  | Pipeline|
     |   min   |   max   |    min    |    max    | min |  max |   Type  |
     +---------+---------+-----------+-----------+-----+------+---------+
-    |        2|     1022| 20.000 ns | 10.220 us |    2|  1022|   none  |
+    |        1|     1021| 10.000 ns | 10.210 us |    1|  1021|   none  |
     +---------+---------+-----------+-----------+-----+------+---------+
 
     + Detail: 
@@ -41,7 +41,7 @@
         |          |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
         | Loop Name|   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
         +----------+---------+---------+----------+-----------+-----------+---------+----------+
-        |- Loop 1  |        0|     1020|         4|          4|          5| 0 ~ 255 |    yes   |
+        |- Loop 1  |        0|     1020|         4|          -|          -| 0 ~ 255 |    no    |
         +----------+---------+---------+----------+-----------+-----------+---------+----------+
 
 ============================================================
@@ -54,7 +54,7 @@ ExposeGlobal: 0
 ============================================================
 IsTopModel: 0
 ResetActiveHigh: 1
-IsCombinational: 2
+IsCombinational: 0
 IsDatapathOnly: 0
 HasWiredReturn: 1
 HasMFsm: 0
@@ -66,135 +66,122 @@ IsDontTouch: 0
 HasImplIP: 0
 IsGatedGlobalClock: 0
 
-+ Individual pipeline summary: 
-  * Pipeline-0: initiation interval (II) = 4, depth = 4
-
 
 ============================================================
 + Verbose Summary: Schedule
 ============================================================
-* Number of FSM states : 6
-* Pipeline : 1
-  Pipeline-0 : II = 4, D = 4, States = { 2 3 4 5 }
+* Number of FSM states : 5
+* Pipeline : 0
 * Dataflow Pipeline: 0
 
 * FSM state transitions: 
 1 --> 2 
-2 --> 6 3 
+2 --> 3 
 3 --> 4 
 4 --> 5 
 5 --> 2 
-6 --> 
 
 * FSM state operations: 
 
-State 1 <SV = 0> <Delay = 7.26>
-ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%frequency_V = alloca [255 x i32], align 4" [./hls-src/huffman_create_tree.cpp:9->./hls-src/huffman_encoding.cpp:52]   --->   Operation 7 'alloca' 'frequency_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str113, i32 0, i32 0, [1 x i8]* @p_str114, [1 x i8]* @p_str115, [1 x i8]* @p_str116, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str117, [11 x i8]* @ScalarProp_str)"   --->   Operation 8 'specinterface' 'empty' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 9 [1/1] (3.63ns)   --->   "%val_assign_loc_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %val_assign_loc)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 9 'read' 'val_assign_loc_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%empty_27 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str118, i32 0, i32 0, [1 x i8]* @p_str120, [1 x i8]* @p_str121, [1 x i8]* @p_str122, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str123, [11 x i8]* @ScalarProp_str)"   --->   Operation 10 'specinterface' 'empty_27' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 11 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %val_assign_loc_out, i32 %val_assign_loc_read)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 11 'write' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 12 [1/1] (2.55ns)   --->   "%add_ln15 = add nsw i32 %val_assign_loc_read, -1" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 12 'add' 'add_ln15' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_1 : Operation 13 [1/1] (1.76ns)   --->   "br label %0" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 13 'br' <Predicate = true> <Delay = 1.76>
+State 1 <SV = 0> <Delay = 2.55>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%num_symbols_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %num_symbols)"   --->   Operation 6 'read' 'num_symbols_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%frequency_V = alloca [255 x i32], align 4" [./hls-src/huffman_create_tree.cpp:9]   --->   Operation 7 'alloca' 'frequency_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_1 : Operation 8 [1/1] (2.55ns)   --->   "%add_ln15 = add nsw i32 %num_symbols_read, -1" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 8 'add' 'add_ln15' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 9 [1/1] (1.76ns)   --->   "br label %._crit_edge414" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 9 'br' <Predicate = true> <Delay = 1.76>
 
-State 2 <SV = 1> <Delay = 3.45>
-ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%t_V_3 = phi i32 [ 0, %entry ], [ %p_0168_2_i_i, %hls_label_0_end ]" [./hls-src/huffman_create_tree.cpp:36->./hls-src/huffman_encoding.cpp:52]   --->   Operation 14 'phi' 't_V_3' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 15 [1/1] (0.00ns)   --->   "%t_V = phi i32 [ 0, %entry ], [ %p_094_2_i_i, %hls_label_0_end ]" [./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52]   --->   Operation 15 'phi' 't_V' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 16 [1/1] (0.00ns)   --->   "%op2_assign = phi i31 [ 0, %entry ], [ %i, %hls_label_0_end ]"   --->   Operation 16 'phi' 'op2_assign' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%zext_ln15 = zext i31 %op2_assign to i32" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 17 'zext' 'zext_ln15' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 18 [1/1] (2.47ns)   --->   "%icmp_ln15 = icmp slt i32 %zext_ln15, %add_ln15" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 18 'icmp' 'icmp_ln15' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 255, i64 0)"   --->   Operation 19 'speclooptripcount' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 20 [1/1] (2.52ns)   --->   "%i = add i31 %op2_assign, 1" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 20 'add' 'i' <Predicate = true> <Delay = 2.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %icmp_ln15, label %hls_label_0_begin, label %.exit" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 21 'br' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %t_V_3 to i64" [./hls-src/huffman_create_tree.cpp:24->./hls-src/huffman_encoding.cpp:52]   --->   Operation 22 'zext' 'zext_ln544' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_2 : Operation 23 [1/1] (0.00ns)   --->   "%frequency_V_addr = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_create_tree.cpp:24->./hls-src/huffman_encoding.cpp:52]   --->   Operation 23 'getelementptr' 'frequency_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_2 : Operation 24 [2/2] (3.25ns)   --->   "%intermediate_freq_V_2 = load i32* %frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:24->./hls-src/huffman_encoding.cpp:52]   --->   Operation 24 'load' 'intermediate_freq_V_2' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%zext_ln544_3 = zext i32 %t_V to i64" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 25 'zext' 'zext_ln544_3' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%in_value_V_addr = getelementptr [256 x i32]* %in_value_V, i64 0, i64 %zext_ln544_3" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 26 'getelementptr' 'in_value_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_2 : Operation 27 [2/2] (3.25ns)   --->   "%in_value_V_load = load i32* %in_value_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 27 'load' 'in_value_V_load' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%in_frequency_V_addr = getelementptr [256 x i32]* %in_frequency_V, i64 0, i64 %zext_ln544_3" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 28 'getelementptr' 'in_frequency_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_2 : Operation 29 [2/2] (3.25ns)   --->   "%node_freq_V_1 = load i32* %in_frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 29 'load' 'node_freq_V_1' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+State 2 <SV = 1> <Delay = 3.25>
+ST_2 : Operation 10 [1/1] (0.00ns)   --->   "%t_V_3 = phi i32 [ 0, %._crit_edge ], [ %t_V_3_be, %._crit_edge414.backedge ]" [./hls-src/huffman_create_tree.cpp:36]   --->   Operation 10 'phi' 't_V_3' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 11 [1/1] (0.00ns)   --->   "%t_V = phi i32 [ 0, %._crit_edge ], [ %t_V_be, %._crit_edge414.backedge ]" [./hls-src/huffman_create_tree.cpp:46]   --->   Operation 11 'phi' 't_V' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "%op2_assign = phi i31 [ 0, %._crit_edge ], [ %i, %._crit_edge414.backedge ]"   --->   Operation 12 'phi' 'op2_assign' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%zext_ln15 = zext i31 %op2_assign to i32" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 13 'zext' 'zext_ln15' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 14 [1/1] (2.47ns)   --->   "%icmp_ln15 = icmp slt i32 %zext_ln15, %add_ln15" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 14 'icmp' 'icmp_ln15' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 255, i64 0)"   --->   Operation 15 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 16 [1/1] (2.52ns)   --->   "%i = add i31 %op2_assign, 1" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 16 'add' 'i' <Predicate = true> <Delay = 2.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "br i1 %icmp_ln15, label %._crit_edge404, label %4" [./hls-src/huffman_create_tree.cpp:15]   --->   Operation 17 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "%zext_ln544_5 = zext i32 %t_V_3 to i64" [./hls-src/huffman_create_tree.cpp:24]   --->   Operation 18 'zext' 'zext_ln544_5' <Predicate = (icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%frequency_V_addr = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln544_5" [./hls-src/huffman_create_tree.cpp:24]   --->   Operation 19 'getelementptr' 'frequency_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 20 [2/2] (3.25ns)   --->   "%intermediate_freq_V_2 = load i32* %frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:24]   --->   Operation 20 'load' 'intermediate_freq_V_2' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%zext_ln544_6 = zext i32 %t_V to i64" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 21 'zext' 'zext_ln544_6' <Predicate = (icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%in_value_V_addr = getelementptr [256 x i32]* %in_value_V, i64 0, i64 %zext_ln544_6" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 22 'getelementptr' 'in_value_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 23 [2/2] (3.25ns)   --->   "%in_value_V_load = load i32* %in_value_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 23 'load' 'in_value_V_load' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%in_frequency_V_addr = getelementptr [256 x i32]* %in_frequency_V, i64 0, i64 %zext_ln544_6" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 24 'getelementptr' 'in_frequency_V_addr' <Predicate = (icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 25 [2/2] (3.25ns)   --->   "%node_freq_V_1 = load i32* %in_frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 25 'load' 'node_freq_V_1' <Predicate = (icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %t_V_3 to i64" [./hls-src/huffman_create_tree.cpp:58]   --->   Operation 26 'zext' 'zext_ln544' <Predicate = (!icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%parent_V_addr = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_create_tree.cpp:58]   --->   Operation 27 'getelementptr' 'parent_V_addr' <Predicate = (!icmp_ln15)> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (3.25ns)   --->   "store i31 0, i31* %parent_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:58]   --->   Operation 28 'store' <Predicate = (!icmp_ln15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_create_tree.cpp:59]   --->   Operation 29 'ret' <Predicate = (!icmp_ln15)> <Delay = 0.00>
 
-State 3 <SV = 2> <Delay = 8.66>
-ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str369)" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 30 'specregionbegin' 'tmp_i_i' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 31 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 5, i32 1, i32 1, i32 0, [1 x i8]* @p_str470) nounwind" [./hls-src/huffman_create_tree.cpp:16->./hls-src/huffman_encoding.cpp:52]   --->   Operation 31 'specpipeline' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 32 [1/1] (2.47ns)   --->   "%icmp_ln887 = icmp ult i32 %t_V, %val_assign_loc_read" [./hls-src/huffman_create_tree.cpp:23->./hls-src/huffman_encoding.cpp:52]   --->   Operation 32 'icmp' 'icmp_ln887' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 33 [1/2] (3.25ns)   --->   "%intermediate_freq_V_2 = load i32* %frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:24->./hls-src/huffman_encoding.cpp:52]   --->   Operation 33 'load' 'intermediate_freq_V_2' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 34 [1/2] (3.25ns)   --->   "%in_value_V_load = load i32* %in_value_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 34 'load' 'in_value_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 35 [1/2] (3.25ns)   --->   "%node_freq_V_1 = load i32* %in_frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25->./hls-src/huffman_encoding.cpp:52]   --->   Operation 35 'load' 'node_freq_V_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 36 [1/1] (0.00ns)   --->   "br i1 %icmp_ln887, label %1, label %2" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 36 'br' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 37 [1/1] (2.47ns)   --->   "%icmp_ln879_2 = icmp eq i32 %t_V_3, %zext_ln15" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 37 'icmp' 'icmp_ln879_2' <Predicate = (!icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 38 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_2, label %._crit_edge405.i.i, label %._crit_edge406.i.i" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 38 'br' <Predicate = (!icmp_ln887)> <Delay = 0.00>
-ST_3 : Operation 39 [1/1] (2.47ns)   --->   "%icmp_ln26 = icmp ult i32 %intermediate_freq_V_2, %node_freq_V_1" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 39 'icmp' 'icmp_ln26' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 40 [1/1] (2.47ns)   --->   "%icmp_ln879 = icmp ne i32 %t_V_3, %zext_ln15" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 40 'icmp' 'icmp_ln879' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 41 [1/1] (0.97ns)   --->   "%and_ln26 = and i1 %icmp_ln26, %icmp_ln879" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 41 'and' 'and_ln26' <Predicate = (icmp_ln887)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 42 [1/1] (0.00ns)   --->   "br i1 %and_ln26, label %._crit_edge406.i.i, label %._crit_edge405.i.i" [./hls-src/huffman_create_tree.cpp:26->./hls-src/huffman_encoding.cpp:52]   --->   Operation 42 'br' <Predicate = (icmp_ln887)> <Delay = 0.00>
-ST_3 : Operation 43 [1/1] (0.00ns)   --->   "%zext_ln28 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:28->./hls-src/huffman_encoding.cpp:52]   --->   Operation 43 'zext' 'zext_ln28' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 0.00>
-ST_3 : Operation 44 [1/1] (0.00ns)   --->   "%left_V_addr = getelementptr [255 x i32]* %left_V, i64 0, i64 %zext_ln28" [./hls-src/huffman_create_tree.cpp:28->./hls-src/huffman_encoding.cpp:52]   --->   Operation 44 'getelementptr' 'left_V_addr' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 0.00>
-ST_3 : Operation 45 [1/1] (3.25ns)   --->   "store i32 %in_value_V_load, i32* %left_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:28->./hls-src/huffman_encoding.cpp:52]   --->   Operation 45 'store' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 46 [1/1] (2.55ns)   --->   "%in_count_V = add i32 %t_V, 1" [./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52]   --->   Operation 46 'add' 'in_count_V' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 47 [1/1] (1.76ns)   --->   "br label %._crit_edge409.i.i" [./hls-src/huffman_create_tree.cpp:31->./hls-src/huffman_encoding.cpp:52]   --->   Operation 47 'br' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 1.76>
-ST_3 : Operation 48 [1/1] (0.00ns)   --->   "%zext_ln33 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:33->./hls-src/huffman_encoding.cpp:52]   --->   Operation 48 'zext' 'zext_ln33' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
-ST_3 : Operation 49 [1/1] (0.00ns)   --->   "%left_V_addr_1 = getelementptr [255 x i32]* %left_V, i64 0, i64 %zext_ln33" [./hls-src/huffman_create_tree.cpp:33->./hls-src/huffman_encoding.cpp:52]   --->   Operation 49 'getelementptr' 'left_V_addr_1' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
-ST_3 : Operation 50 [1/1] (3.25ns)   --->   "store i32 -1, i32* %left_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:33->./hls-src/huffman_encoding.cpp:52]   --->   Operation 50 'store' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 51 [1/1] (0.00ns)   --->   "%parent_V_addr_1 = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_create_tree.cpp:35->./hls-src/huffman_encoding.cpp:52]   --->   Operation 51 'getelementptr' 'parent_V_addr_1' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
-ST_3 : Operation 52 [1/1] (3.25ns)   --->   "store i31 %op2_assign, i31* %parent_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:35->./hls-src/huffman_encoding.cpp:52]   --->   Operation 52 'store' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 53 [1/1] (2.55ns)   --->   "%tree_count_V = add i32 %t_V_3, 1" [./hls-src/huffman_create_tree.cpp:36->./hls-src/huffman_encoding.cpp:52]   --->   Operation 53 'add' 'tree_count_V' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 54 [1/1] (1.76ns)   --->   "br label %._crit_edge409.i.i"   --->   Operation 54 'br' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 1.76>
-ST_3 : Operation 55 [1/1] (0.00ns)   --->   "%t_V_5 = phi i32 [ %t_V_3, %._crit_edge405.i.i ], [ %tree_count_V, %._crit_edge406.i.i ]"   --->   Operation 55 'phi' 't_V_5' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 56 [1/1] (0.00ns)   --->   "%t_V_4 = phi i32 [ %in_count_V, %._crit_edge405.i.i ], [ %t_V, %._crit_edge406.i.i ]"   --->   Operation 56 'phi' 't_V_4' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 57 [1/1] (2.47ns)   --->   "%icmp_ln887_1 = icmp ult i32 %t_V_4, %val_assign_loc_read" [./hls-src/huffman_create_tree.cpp:39->./hls-src/huffman_encoding.cpp:52]   --->   Operation 57 'icmp' 'icmp_ln887_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 58 [1/1] (0.00ns)   --->   "%zext_ln544_5 = zext i32 %t_V_5 to i64" [./hls-src/huffman_create_tree.cpp:40->./hls-src/huffman_encoding.cpp:52]   --->   Operation 58 'zext' 'zext_ln544_5' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%frequency_V_addr_1 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln544_5" [./hls-src/huffman_create_tree.cpp:40->./hls-src/huffman_encoding.cpp:52]   --->   Operation 59 'getelementptr' 'frequency_V_addr_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 60 [2/2] (3.25ns)   --->   "%intermediate_freq_V = load i32* %frequency_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:40->./hls-src/huffman_encoding.cpp:52]   --->   Operation 60 'load' 'intermediate_freq_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 61 [1/1] (0.00ns)   --->   "%zext_ln544_6 = zext i32 %t_V_4 to i64" [./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 61 'zext' 'zext_ln544_6' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 62 [1/1] (0.00ns)   --->   "%in_value_V_addr_1 = getelementptr [256 x i32]* %in_value_V, i64 0, i64 %zext_ln544_6" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 62 'getelementptr' 'in_value_V_addr_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 63 [2/2] (3.25ns)   --->   "%in_value_V_load_1 = load i32* %in_value_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 63 'load' 'in_value_V_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_3 : Operation 64 [1/1] (0.00ns)   --->   "%in_frequency_V_addr_1 = getelementptr [256 x i32]* %in_frequency_V, i64 0, i64 %zext_ln544_6" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 64 'getelementptr' 'in_frequency_V_addr_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 65 [2/2] (3.25ns)   --->   "%in_frequency_V_load = load i32* %in_frequency_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 65 'load' 'in_frequency_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+State 3 <SV = 2> <Delay = 7.57>
+ST_3 : Operation 30 [1/1] (2.47ns)   --->   "%icmp_ln887 = icmp ult i32 %t_V, %num_symbols_read" [./hls-src/huffman_create_tree.cpp:23]   --->   Operation 30 'icmp' 'icmp_ln887' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 31 [1/2] (3.25ns)   --->   "%intermediate_freq_V_2 = load i32* %frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:24]   --->   Operation 31 'load' 'intermediate_freq_V_2' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 32 [1/2] (3.25ns)   --->   "%in_value_V_load = load i32* %in_value_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 32 'load' 'in_value_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 33 [1/2] (3.25ns)   --->   "%node_freq_V_1 = load i32* %in_frequency_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:25]   --->   Operation 33 'load' 'node_freq_V_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "br i1 %icmp_ln887, label %0, label %1" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 35 [1/1] (2.47ns)   --->   "%icmp_ln879_2 = icmp eq i32 %t_V_3, %zext_ln15" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 35 'icmp' 'icmp_ln879_2' <Predicate = (!icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 36 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_2, label %._crit_edge405, label %._crit_edge406" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 36 'br' <Predicate = (!icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 37 [1/1] (2.47ns)   --->   "%icmp_ln26 = icmp ult i32 %intermediate_freq_V_2, %node_freq_V_1" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 37 'icmp' 'icmp_ln26' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 38 [1/1] (2.47ns)   --->   "%icmp_ln879 = icmp ne i32 %t_V_3, %zext_ln15" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 38 'icmp' 'icmp_ln879' <Predicate = (icmp_ln887)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 39 [1/1] (0.97ns)   --->   "%and_ln26 = and i1 %icmp_ln26, %icmp_ln879" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 39 'and' 'and_ln26' <Predicate = (icmp_ln887)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 40 [1/1] (0.00ns)   --->   "br i1 %and_ln26, label %._crit_edge406, label %._crit_edge405" [./hls-src/huffman_create_tree.cpp:26]   --->   Operation 40 'br' <Predicate = (icmp_ln887)> <Delay = 0.00>
+ST_3 : Operation 41 [1/1] (0.00ns)   --->   "%zext_ln28 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:28]   --->   Operation 41 'zext' 'zext_ln28' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 0.00>
+ST_3 : Operation 42 [1/1] (0.00ns)   --->   "%left_V_addr = getelementptr [255 x i32]* %left_V, i64 0, i64 %zext_ln28" [./hls-src/huffman_create_tree.cpp:28]   --->   Operation 42 'getelementptr' 'left_V_addr' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 0.00>
+ST_3 : Operation 43 [1/1] (3.25ns)   --->   "store i32 %in_value_V_load, i32* %left_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:28]   --->   Operation 43 'store' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 44 [1/1] (2.55ns)   --->   "%in_count_V = add i32 %t_V, 1" [./hls-src/huffman_create_tree.cpp:30]   --->   Operation 44 'add' 'in_count_V' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 45 [1/1] (1.76ns)   --->   "br label %._crit_edge409" [./hls-src/huffman_create_tree.cpp:31]   --->   Operation 45 'br' <Predicate = (icmp_ln887 & !and_ln26) | (!icmp_ln887 & icmp_ln879_2)> <Delay = 1.76>
+ST_3 : Operation 46 [1/1] (0.00ns)   --->   "%zext_ln33 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:33]   --->   Operation 46 'zext' 'zext_ln33' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
+ST_3 : Operation 47 [1/1] (0.00ns)   --->   "%left_V_addr_1 = getelementptr [255 x i32]* %left_V, i64 0, i64 %zext_ln33" [./hls-src/huffman_create_tree.cpp:33]   --->   Operation 47 'getelementptr' 'left_V_addr_1' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
+ST_3 : Operation 48 [1/1] (3.25ns)   --->   "store i32 -1, i32* %left_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:33]   --->   Operation 48 'store' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 49 [1/1] (0.00ns)   --->   "%parent_V_addr_1 = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544_5" [./hls-src/huffman_create_tree.cpp:35]   --->   Operation 49 'getelementptr' 'parent_V_addr_1' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 0.00>
+ST_3 : Operation 50 [1/1] (3.25ns)   --->   "store i31 %op2_assign, i31* %parent_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:35]   --->   Operation 50 'store' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 51 [1/1] (2.55ns)   --->   "%tree_count_V = add i32 %t_V_3, 1" [./hls-src/huffman_create_tree.cpp:36]   --->   Operation 51 'add' 'tree_count_V' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 52 [1/1] (1.76ns)   --->   "br label %._crit_edge409"   --->   Operation 52 'br' <Predicate = (icmp_ln887 & and_ln26) | (!icmp_ln887 & !icmp_ln879_2)> <Delay = 1.76>
+ST_3 : Operation 53 [1/1] (0.00ns)   --->   "%t_V_5 = phi i32 [ %t_V_3, %._crit_edge405 ], [ %tree_count_V, %._crit_edge406 ]"   --->   Operation 53 'phi' 't_V_5' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 54 [1/1] (0.00ns)   --->   "%t_V_4 = phi i32 [ %in_count_V, %._crit_edge405 ], [ %t_V, %._crit_edge406 ]"   --->   Operation 54 'phi' 't_V_4' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 55 [1/1] (2.47ns)   --->   "%icmp_ln887_1 = icmp ult i32 %t_V_4, %num_symbols_read" [./hls-src/huffman_create_tree.cpp:39]   --->   Operation 55 'icmp' 'icmp_ln887_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 56 [1/1] (0.00ns)   --->   "%zext_ln544_7 = zext i32 %t_V_5 to i64" [./hls-src/huffman_create_tree.cpp:40]   --->   Operation 56 'zext' 'zext_ln544_7' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "%frequency_V_addr_1 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln544_7" [./hls-src/huffman_create_tree.cpp:40]   --->   Operation 57 'getelementptr' 'frequency_V_addr_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 58 [2/2] (3.25ns)   --->   "%intermediate_freq_V = load i32* %frequency_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:40]   --->   Operation 58 'load' 'intermediate_freq_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%zext_ln544_8 = zext i32 %t_V_4 to i64" [./hls-src/huffman_create_tree.cpp:41]   --->   Operation 59 'zext' 'zext_ln544_8' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 60 [1/1] (0.00ns)   --->   "%in_value_V_addr_1 = getelementptr [256 x i32]* %in_value_V, i64 0, i64 %zext_ln544_8" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 60 'getelementptr' 'in_value_V_addr_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 61 [2/2] (3.25ns)   --->   "%in_value_V_load_1 = load i32* %in_value_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 61 'load' 'in_value_V_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_3 : Operation 62 [1/1] (0.00ns)   --->   "%in_frequency_V_addr_1 = getelementptr [256 x i32]* %in_frequency_V, i64 0, i64 %zext_ln544_8" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 62 'getelementptr' 'in_frequency_V_addr_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 63 [2/2] (3.25ns)   --->   "%in_frequency_V_load = load i32* %in_frequency_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 63 'load' 'in_frequency_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
 
-State 4 <SV = 3> <Delay = 8.66>
-ST_4 : Operation 66 [1/1] (0.00ns)   --->   "%p_090_0_i_i = phi i32 [ %node_freq_V_1, %._crit_edge405.i.i ], [ %intermediate_freq_V_2, %._crit_edge406.i.i ]"   --->   Operation 66 'phi' 'p_090_0_i_i' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 67 [1/2] (3.25ns)   --->   "%intermediate_freq_V = load i32* %frequency_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:40->./hls-src/huffman_encoding.cpp:52]   --->   Operation 67 'load' 'intermediate_freq_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_4 : Operation 68 [1/2] (3.25ns)   --->   "%in_value_V_load_1 = load i32* %in_value_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 68 'load' 'in_value_V_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_4 : Operation 69 [1/2] (3.25ns)   --->   "%in_frequency_V_load = load i32* %in_frequency_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52]   --->   Operation 69 'load' 'in_frequency_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_4 : Operation 70 [1/1] (0.00ns)   --->   "br i1 %icmp_ln887_1, label %3, label %4" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 70 'br' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 71 [1/1] (2.47ns)   --->   "%icmp_ln879_4 = icmp eq i32 %t_V_5, %zext_ln15" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 71 'icmp' 'icmp_ln879_4' <Predicate = (!icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 72 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_4, label %._crit_edge410.i.i, label %._crit_edge411.i.i" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 72 'br' <Predicate = (!icmp_ln887_1)> <Delay = 0.00>
-ST_4 : Operation 73 [1/1] (2.47ns)   --->   "%icmp_ln42 = icmp ult i32 %intermediate_freq_V, %in_frequency_V_load" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 73 'icmp' 'icmp_ln42' <Predicate = (icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 74 [1/1] (2.47ns)   --->   "%icmp_ln879_3 = icmp ne i32 %t_V_5, %zext_ln15" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 74 'icmp' 'icmp_ln879_3' <Predicate = (icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 75 [1/1] (0.97ns)   --->   "%and_ln42 = and i1 %icmp_ln42, %icmp_ln879_3" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 75 'and' 'and_ln42' <Predicate = (icmp_ln887_1)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 76 [1/1] (0.00ns)   --->   "br i1 %and_ln42, label %._crit_edge411.i.i, label %._crit_edge410.i.i" [./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52]   --->   Operation 76 'br' <Predicate = (icmp_ln887_1)> <Delay = 0.00>
-ST_4 : Operation 77 [1/1] (0.00ns)   --->   "%zext_ln44 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:44->./hls-src/huffman_encoding.cpp:52]   --->   Operation 77 'zext' 'zext_ln44' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
-ST_4 : Operation 78 [1/1] (0.00ns)   --->   "%right_V_addr = getelementptr [255 x i32]* %right_V, i64 0, i64 %zext_ln44" [./hls-src/huffman_create_tree.cpp:44->./hls-src/huffman_encoding.cpp:52]   --->   Operation 78 'getelementptr' 'right_V_addr' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
-ST_4 : Operation 79 [1/1] (3.25ns)   --->   "store i32 %in_value_V_load_1, i32* %right_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:44->./hls-src/huffman_encoding.cpp:52]   --->   Operation 79 'store' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_4 : Operation 80 [1/1] (2.55ns)   --->   "%add_ln209 = add i32 %in_frequency_V_load, %p_090_0_i_i" [./hls-src/huffman_create_tree.cpp:45->./hls-src/huffman_encoding.cpp:52]   --->   Operation 80 'add' 'add_ln209' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 81 [1/1] (0.00ns)   --->   "%zext_ln49 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:49->./hls-src/huffman_encoding.cpp:52]   --->   Operation 81 'zext' 'zext_ln49' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
-ST_4 : Operation 82 [1/1] (0.00ns)   --->   "%right_V_addr_1 = getelementptr [255 x i32]* %right_V, i64 0, i64 %zext_ln49" [./hls-src/huffman_create_tree.cpp:49->./hls-src/huffman_encoding.cpp:52]   --->   Operation 82 'getelementptr' 'right_V_addr_1' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
-ST_4 : Operation 83 [1/1] (3.25ns)   --->   "store i32 -1, i32* %right_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:49->./hls-src/huffman_encoding.cpp:52]   --->   Operation 83 'store' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_4 : Operation 84 [1/1] (2.55ns)   --->   "%add_ln209_1 = add i32 %intermediate_freq_V, %p_090_0_i_i" [./hls-src/huffman_create_tree.cpp:50->./hls-src/huffman_encoding.cpp:52]   --->   Operation 84 'add' 'add_ln209_1' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 85 [1/1] (0.00ns)   --->   "%parent_V_addr_2 = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544_5" [./hls-src/huffman_create_tree.cpp:51->./hls-src/huffman_encoding.cpp:52]   --->   Operation 85 'getelementptr' 'parent_V_addr_2' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
-ST_4 : Operation 86 [1/1] (3.25ns)   --->   "store i31 %op2_assign, i31* %parent_V_addr_2, align 4" [./hls-src/huffman_create_tree.cpp:51->./hls-src/huffman_encoding.cpp:52]   --->   Operation 86 'store' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+State 4 <SV = 3> <Delay = 6.70>
+ST_4 : Operation 64 [1/1] (0.00ns)   --->   "%p_090_0 = phi i32 [ %node_freq_V_1, %._crit_edge405 ], [ %intermediate_freq_V_2, %._crit_edge406 ]"   --->   Operation 64 'phi' 'p_090_0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 65 [1/2] (3.25ns)   --->   "%intermediate_freq_V = load i32* %frequency_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:40]   --->   Operation 65 'load' 'intermediate_freq_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_4 : Operation 66 [1/2] (3.25ns)   --->   "%in_value_V_load_1 = load i32* %in_value_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 66 'load' 'in_value_V_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_4 : Operation 67 [1/2] (3.25ns)   --->   "%in_frequency_V_load = load i32* %in_frequency_V_addr_1, align 4" [./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41]   --->   Operation 67 'load' 'in_frequency_V_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_4 : Operation 68 [1/1] (0.00ns)   --->   "br i1 %icmp_ln887_1, label %2, label %3" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 68 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 69 [1/1] (2.47ns)   --->   "%icmp_ln879_4 = icmp eq i32 %t_V_5, %zext_ln15" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 69 'icmp' 'icmp_ln879_4' <Predicate = (!icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 70 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_4, label %._crit_edge410, label %._crit_edge411" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 70 'br' <Predicate = (!icmp_ln887_1)> <Delay = 0.00>
+ST_4 : Operation 71 [1/1] (2.47ns)   --->   "%icmp_ln42 = icmp ult i32 %intermediate_freq_V, %in_frequency_V_load" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 71 'icmp' 'icmp_ln42' <Predicate = (icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 72 [1/1] (2.47ns)   --->   "%icmp_ln879_3 = icmp ne i32 %t_V_5, %zext_ln15" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 72 'icmp' 'icmp_ln879_3' <Predicate = (icmp_ln887_1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 73 [1/1] (0.97ns)   --->   "%and_ln42 = and i1 %icmp_ln42, %icmp_ln879_3" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 73 'and' 'and_ln42' <Predicate = (icmp_ln887_1)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 74 [1/1] (0.00ns)   --->   "br i1 %and_ln42, label %._crit_edge411, label %._crit_edge410" [./hls-src/huffman_create_tree.cpp:42]   --->   Operation 74 'br' <Predicate = (icmp_ln887_1)> <Delay = 0.00>
+ST_4 : Operation 75 [1/1] (2.55ns)   --->   "%add_ln209 = add i32 %in_frequency_V_load, %p_090_0" [./hls-src/huffman_create_tree.cpp:45]   --->   Operation 75 'add' 'add_ln209' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 76 [1/1] (2.55ns)   --->   "%add_ln209_1 = add i32 %intermediate_freq_V, %p_090_0" [./hls-src/huffman_create_tree.cpp:50]   --->   Operation 76 'add' 'add_ln209_1' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 77 [1/1] (0.00ns)   --->   "%parent_V_addr_2 = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544_7" [./hls-src/huffman_create_tree.cpp:51]   --->   Operation 77 'getelementptr' 'parent_V_addr_2' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
+ST_4 : Operation 78 [1/1] (3.25ns)   --->   "store i31 %op2_assign, i31* %parent_V_addr_2, align 4" [./hls-src/huffman_create_tree.cpp:51]   --->   Operation 78 'store' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
 
 State 5 <SV = 4> <Delay = 4.32>
-ST_5 : Operation 87 [1/1] (0.00ns)   --->   "%frequency_V_addr_2 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln44" [./hls-src/huffman_create_tree.cpp:45->./hls-src/huffman_encoding.cpp:52]   --->   Operation 87 'getelementptr' 'frequency_V_addr_2' <Predicate = (icmp_ln15 & icmp_ln887_1 & !and_ln42) | (icmp_ln15 & !icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
-ST_5 : Operation 88 [1/1] (3.25ns)   --->   "store i32 %add_ln209, i32* %frequency_V_addr_2, align 4" [./hls-src/huffman_create_tree.cpp:45->./hls-src/huffman_encoding.cpp:52]   --->   Operation 88 'store' <Predicate = (icmp_ln15 & icmp_ln887_1 & !and_ln42) | (icmp_ln15 & !icmp_ln887_1 & icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_5 : Operation 89 [1/1] (2.55ns)   --->   "%in_count_V_1 = add i32 %t_V_4, 1" [./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52]   --->   Operation 89 'add' 'in_count_V_1' <Predicate = (icmp_ln15 & icmp_ln887_1 & !and_ln42) | (icmp_ln15 & !icmp_ln887_1 & icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 90 [1/1] (1.76ns)   --->   "br label %hls_label_0_end" [./hls-src/huffman_create_tree.cpp:47->./hls-src/huffman_encoding.cpp:52]   --->   Operation 90 'br' <Predicate = (icmp_ln15 & icmp_ln887_1 & !and_ln42) | (icmp_ln15 & !icmp_ln887_1 & icmp_ln879_4)> <Delay = 1.76>
-ST_5 : Operation 91 [1/1] (0.00ns)   --->   "%frequency_V_addr_3 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln49" [./hls-src/huffman_create_tree.cpp:50->./hls-src/huffman_encoding.cpp:52]   --->   Operation 91 'getelementptr' 'frequency_V_addr_3' <Predicate = (icmp_ln15 & icmp_ln887_1 & and_ln42) | (icmp_ln15 & !icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
-ST_5 : Operation 92 [1/1] (3.25ns)   --->   "store i32 %add_ln209_1, i32* %frequency_V_addr_3, align 4" [./hls-src/huffman_create_tree.cpp:50->./hls-src/huffman_encoding.cpp:52]   --->   Operation 92 'store' <Predicate = (icmp_ln15 & icmp_ln887_1 & and_ln42) | (icmp_ln15 & !icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_5 : Operation 93 [1/1] (2.55ns)   --->   "%tree_count_V_1 = add i32 %t_V_5, 1" [./hls-src/huffman_create_tree.cpp:52->./hls-src/huffman_encoding.cpp:52]   --->   Operation 93 'add' 'tree_count_V_1' <Predicate = (icmp_ln15 & icmp_ln887_1 & and_ln42) | (icmp_ln15 & !icmp_ln887_1 & !icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 94 [1/1] (1.76ns)   --->   "br label %hls_label_0_end"   --->   Operation 94 'br' <Predicate = (icmp_ln15 & icmp_ln887_1 & and_ln42) | (icmp_ln15 & !icmp_ln887_1 & !icmp_ln879_4)> <Delay = 1.76>
-ST_5 : Operation 95 [1/1] (0.00ns)   --->   "%p_0168_2_i_i = phi i32 [ %t_V_5, %._crit_edge410.i.i ], [ %tree_count_V_1, %._crit_edge411.i.i ]"   --->   Operation 95 'phi' 'p_0168_2_i_i' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_5 : Operation 96 [1/1] (0.00ns)   --->   "%p_094_2_i_i = phi i32 [ %in_count_V_1, %._crit_edge410.i.i ], [ %t_V_4, %._crit_edge411.i.i ]"   --->   Operation 96 'phi' 'p_094_2_i_i' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_5 : Operation 97 [1/1] (0.00ns)   --->   "%empty_28 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str369, i32 %tmp_i_i)" [./hls-src/huffman_create_tree.cpp:56->./hls-src/huffman_encoding.cpp:52]   --->   Operation 97 'specregionend' 'empty_28' <Predicate = (icmp_ln15)> <Delay = 0.00>
-ST_5 : Operation 98 [1/1] (0.00ns)   --->   "br label %0" [./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52]   --->   Operation 98 'br' <Predicate = (icmp_ln15)> <Delay = 0.00>
-
-State 6 <SV = 2> <Delay = 3.25>
-ST_6 : Operation 99 [1/1] (0.00ns)   --->   "%zext_ln544_4 = zext i32 %t_V_3 to i64" [./hls-src/huffman_create_tree.cpp:58->./hls-src/huffman_encoding.cpp:52]   --->   Operation 99 'zext' 'zext_ln544_4' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 100 [1/1] (0.00ns)   --->   "%parent_V_addr = getelementptr [255 x i31]* %parent_V, i64 0, i64 %zext_ln544_4" [./hls-src/huffman_create_tree.cpp:58->./hls-src/huffman_encoding.cpp:52]   --->   Operation 100 'getelementptr' 'parent_V_addr' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 101 [1/1] (3.25ns)   --->   "store i31 0, i31* %parent_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:58->./hls-src/huffman_encoding.cpp:52]   --->   Operation 101 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
-ST_6 : Operation 102 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 102 'ret' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 79 [1/1] (0.00ns)   --->   "%zext_ln44 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:44]   --->   Operation 79 'zext' 'zext_ln44' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 80 [1/1] (0.00ns)   --->   "%right_V_addr = getelementptr [255 x i32]* %right_V, i64 0, i64 %zext_ln44" [./hls-src/huffman_create_tree.cpp:44]   --->   Operation 80 'getelementptr' 'right_V_addr' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 81 [1/1] (3.25ns)   --->   "store i32 %in_value_V_load_1, i32* %right_V_addr, align 4" [./hls-src/huffman_create_tree.cpp:44]   --->   Operation 81 'store' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_5 : Operation 82 [1/1] (0.00ns)   --->   "%frequency_V_addr_2 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln44" [./hls-src/huffman_create_tree.cpp:45]   --->   Operation 82 'getelementptr' 'frequency_V_addr_2' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 83 [1/1] (3.25ns)   --->   "store i32 %add_ln209, i32* %frequency_V_addr_2, align 4" [./hls-src/huffman_create_tree.cpp:45]   --->   Operation 83 'store' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_5 : Operation 84 [1/1] (2.55ns)   --->   "%in_count_V_1 = add i32 %t_V_4, 1" [./hls-src/huffman_create_tree.cpp:46]   --->   Operation 84 'add' 'in_count_V_1' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 85 [1/1] (1.76ns)   --->   "br label %._crit_edge414.backedge" [./hls-src/huffman_create_tree.cpp:47]   --->   Operation 85 'br' <Predicate = (icmp_ln887_1 & !and_ln42) | (!icmp_ln887_1 & icmp_ln879_4)> <Delay = 1.76>
+ST_5 : Operation 86 [1/1] (0.00ns)   --->   "%zext_ln49 = zext i31 %op2_assign to i64" [./hls-src/huffman_create_tree.cpp:49]   --->   Operation 86 'zext' 'zext_ln49' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 87 [1/1] (0.00ns)   --->   "%right_V_addr_1 = getelementptr [255 x i32]* %right_V, i64 0, i64 %zext_ln49" [./hls-src/huffman_create_tree.cpp:49]   --->   Operation 87 'getelementptr' 'right_V_addr_1' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 88 [1/1] (3.25ns)   --->   "store i32 -1, i32* %right_V_addr_1, align 4" [./hls-src/huffman_create_tree.cpp:49]   --->   Operation 88 'store' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_5 : Operation 89 [1/1] (0.00ns)   --->   "%frequency_V_addr_3 = getelementptr [255 x i32]* %frequency_V, i64 0, i64 %zext_ln49" [./hls-src/huffman_create_tree.cpp:50]   --->   Operation 89 'getelementptr' 'frequency_V_addr_3' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 0.00>
+ST_5 : Operation 90 [1/1] (3.25ns)   --->   "store i32 %add_ln209_1, i32* %frequency_V_addr_3, align 4" [./hls-src/huffman_create_tree.cpp:50]   --->   Operation 90 'store' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 31> <Depth = 255> <RAM>
+ST_5 : Operation 91 [1/1] (2.55ns)   --->   "%tree_count_V_1 = add i32 %t_V_5, 1" [./hls-src/huffman_create_tree.cpp:52]   --->   Operation 91 'add' 'tree_count_V_1' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 92 [1/1] (1.76ns)   --->   "br label %._crit_edge414.backedge"   --->   Operation 92 'br' <Predicate = (icmp_ln887_1 & and_ln42) | (!icmp_ln887_1 & !icmp_ln879_4)> <Delay = 1.76>
+ST_5 : Operation 93 [1/1] (0.00ns)   --->   "%t_V_3_be = phi i32 [ %t_V_5, %._crit_edge410 ], [ %tree_count_V_1, %._crit_edge411 ]"   --->   Operation 93 'phi' 't_V_3_be' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 94 [1/1] (0.00ns)   --->   "%t_V_be = phi i32 [ %in_count_V_1, %._crit_edge410 ], [ %t_V_4, %._crit_edge411 ]"   --->   Operation 94 'phi' 't_V_be' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 95 [1/1] (0.00ns)   --->   "br label %._crit_edge414"   --->   Operation 95 'br' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -202,42 +189,36 @@ ST_6 : Operation 102 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 102 '
 ============================================================
 Target clock period: 10ns, clock uncertainty: 1.25ns.
 
- <State 1>: 7.27ns
+ <State 1>: 2.55ns
 The critical path consists of the following:
-	fifo read on port 'val_assign_loc' (./hls-src/huffman_encoding.cpp:52) [10]  (3.63 ns)
-	fifo write on port 'val_assign_loc_out' (./hls-src/huffman_encoding.cpp:52) [12]  (3.63 ns)
+	wire read on port 'num_symbols' [7]  (0 ns)
+	'add' operation ('add_ln15', ./hls-src/huffman_create_tree.cpp:15) [9]  (2.55 ns)
 
- <State 2>: 3.45ns
+ <State 2>: 3.25ns
 The critical path consists of the following:
-	'icmp' operation ('icmp_ln15', ./hls-src/huffman_create_tree.cpp:15->./hls-src/huffman_encoding.cpp:52) [20]  (2.47 ns)
-	blocking operation 0.978 ns on control path)
+	'phi' operation ('t.V', ./hls-src/huffman_create_tree.cpp:36) with incoming values : ('tree_count.V', ./hls-src/huffman_create_tree.cpp:36) ('tree_count.V', ./hls-src/huffman_create_tree.cpp:52) [12]  (0 ns)
+	'getelementptr' operation ('parent_V_addr', ./hls-src/huffman_create_tree.cpp:58) [101]  (0 ns)
+	'store' operation ('store_ln58', ./hls-src/huffman_create_tree.cpp:58) of constant 0 on array 'parent_V' [102]  (3.25 ns)
 
- <State 3>: 8.66ns
+ <State 3>: 7.57ns
 The critical path consists of the following:
-	'add' operation ('in_count.V', ./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52) [49]  (2.55 ns)
-	multiplexor before 'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52) [61]  (1.77 ns)
-	'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52) [61]  (0 ns)
-	'getelementptr' operation ('in_value_V_addr_1', ./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52) [68]  (0 ns)
-	'load' operation ('in_value_V_load_1', ./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41->./hls-src/huffman_encoding.cpp:52) on array 'in_value_V' [69]  (3.25 ns)
-	blocking operation 1.09 ns on control path)
+	'add' operation ('in_count.V', ./hls-src/huffman_create_tree.cpp:30) [43]  (2.55 ns)
+	multiplexor before 'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46) [55]  (1.77 ns)
+	'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46) [55]  (0 ns)
+	'getelementptr' operation ('in_value_V_addr_1', ./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41) [62]  (0 ns)
+	'load' operation ('in_value_V_load_1', ./hls-src/huffman.h:30->./hls-src/huffman_create_tree.cpp:41) on array 'in_value_V' [63]  (3.25 ns)
 
- <State 4>: 8.66ns
+ <State 4>: 6.71ns
 The critical path consists of the following:
-	'load' operation ('intermediate_freq.V', ./hls-src/huffman_create_tree.cpp:40->./hls-src/huffman_encoding.cpp:52) on array 'frequency.V', ./hls-src/huffman_create_tree.cpp:9->./hls-src/huffman_encoding.cpp:52 [66]  (3.25 ns)
-	'icmp' operation ('icmp_ln42', ./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52) [77]  (2.47 ns)
-	'and' operation ('and_ln42', ./hls-src/huffman_create_tree.cpp:42->./hls-src/huffman_encoding.cpp:52) [79]  (0.978 ns)
-	blocking operation 1.96 ns on control path)
+	'load' operation ('intermediate_freq.V', ./hls-src/huffman_create_tree.cpp:40) on array 'frequency.V', ./hls-src/huffman_create_tree.cpp:9 [60]  (3.25 ns)
+	'icmp' operation ('icmp_ln42', ./hls-src/huffman_create_tree.cpp:42) [71]  (2.47 ns)
+	'and' operation ('and_ln42', ./hls-src/huffman_create_tree.cpp:42) [73]  (0.978 ns)
 
  <State 5>: 4.32ns
 The critical path consists of the following:
-	'add' operation ('in_count.V', ./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52) [88]  (2.55 ns)
-	multiplexor before 'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52) [103]  (1.77 ns)
-	'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30->./hls-src/huffman_encoding.cpp:52) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46->./hls-src/huffman_encoding.cpp:52) [103]  (0 ns)
-
- <State 6>: 3.25ns
-The critical path consists of the following:
-	'getelementptr' operation ('parent_V_addr', ./hls-src/huffman_create_tree.cpp:58->./hls-src/huffman_encoding.cpp:52) [108]  (0 ns)
-	'store' operation ('store_ln58', ./hls-src/huffman_create_tree.cpp:58->./hls-src/huffman_encoding.cpp:52) of constant 0 on array 'parent_V' [109]  (3.25 ns)
+	'add' operation ('in_count.V', ./hls-src/huffman_create_tree.cpp:46) [82]  (2.55 ns)
+	multiplexor before 'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46) [97]  (1.77 ns)
+	'phi' operation ('in_count.V') with incoming values : ('in_count.V', ./hls-src/huffman_create_tree.cpp:30) ('in_count.V', ./hls-src/huffman_create_tree.cpp:46) [97]  (0 ns)
 
 
 ============================================================
@@ -253,7 +234,6 @@ N/A
 	State 3
 	State 4
 	State 5
-	State 6
 
 
 ============================================================

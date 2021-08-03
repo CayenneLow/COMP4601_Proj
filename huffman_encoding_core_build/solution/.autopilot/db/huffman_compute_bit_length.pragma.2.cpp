@@ -7197,8 +7197,8 @@ void compute_bit_length (
     ap_uint<SYMBOL_BITS> internal_length_histogram[TREE_DEPTH];
  init_histogram:
     for(int i = 0; i < TREE_DEPTH; i++) {
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- internal_length_histogram[i] = 0;
+
+        internal_length_histogram[i] = 0;
     }
 
     child_depth[num_symbols-2] = 1;
@@ -7208,8 +7208,8 @@ traverse_tree:
 _ssdm_op_SpecLoopTripCount(253, 253, 253, "");
 # 22 "./hls-src/huffman_compute_bit_length.cpp"
 
-_ssdm_op_SpecPipeline(3, 1, 1, 0, "");
- ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
+
+        ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
         child_depth[i] = length;
         if(left[i] != INTERNAL_NODE || right[i] != INTERNAL_NODE){
             int children;

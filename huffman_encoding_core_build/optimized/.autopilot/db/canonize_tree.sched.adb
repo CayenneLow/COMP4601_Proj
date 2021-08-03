@@ -29108,10 +29108,10 @@
 					<Obj>
 						<type>0</type>
 						<id>519</id>
-						<name>_ln25</name>
+						<name>_ln26</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>25</lineNumber>
+						<lineNumber>26</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29126,7 +29126,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>25</second>
+										<second>26</second>
 									</item>
 									<item>
 										<first>
@@ -29203,7 +29203,7 @@
 						<name>k_0_i_i</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>29</lineNumber>
+						<lineNumber>30</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29218,7 +29218,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>29</second>
+										<second>30</second>
 									</item>
 									<item>
 										<first>
@@ -29261,7 +29261,7 @@
 						<name>zext_ln544</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>26</lineNumber>
+						<lineNumber>27</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29276,7 +29276,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>26</second>
+										<second>27</second>
 									</item>
 									<item>
 										<first>
@@ -29316,7 +29316,7 @@
 						<name>codeword_length_hist</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>26</lineNumber>
+						<lineNumber>27</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29331,7 +29331,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>26</second>
+										<second>27</second>
 									</item>
 									<item>
 										<first>
@@ -29373,7 +29373,7 @@
 						<name>count_V</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>26</lineNumber>
+						<lineNumber>27</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29388,7 +29388,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>26</second>
+										<second>27</second>
 									</item>
 									<item>
 										<first>
@@ -29425,10 +29425,10 @@
 					<Obj>
 						<type>0</type>
 						<id>529</id>
-						<name>_ln27</name>
+						<name>_ln28</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>27</lineNumber>
+						<lineNumber>28</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29443,7 +29443,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>27</second>
+										<second>28</second>
 									</item>
 									<item>
 										<first>
@@ -29557,7 +29557,7 @@
 						<name>icmp_ln887</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>27</lineNumber>
+						<lineNumber>28</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29572,7 +29572,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>27</second>
+										<second>28</second>
 									</item>
 									<item>
 										<first>
@@ -29613,7 +29613,7 @@
 						<name>i</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>27</lineNumber>
+						<lineNumber>28</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29628,7 +29628,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>27</second>
+										<second>28</second>
 									</item>
 									<item>
 										<first>
@@ -29666,10 +29666,10 @@
 					<Obj>
 						<type>0</type>
 						<id>535</id>
-						<name>_ln27</name>
+						<name>_ln28</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>27</lineNumber>
+						<lineNumber>28</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29684,7 +29684,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>27</second>
+										<second>28</second>
 									</item>
 									<item>
 										<first>
@@ -29726,7 +29726,7 @@
 						<name>k</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>29</lineNumber>
+						<lineNumber>30</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29741,7 +29741,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>29</second>
+										<second>30</second>
 									</item>
 									<item>
 										<first>
@@ -29779,10 +29779,10 @@
 					<Obj>
 						<type>0</type>
 						<id>542</id>
-						<name>sext_ln29</name>
+						<name>sext_ln30</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>29</lineNumber>
+						<lineNumber>30</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29797,7 +29797,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>29</second>
+										<second>30</second>
 									</item>
 									<item>
 										<first>
@@ -29837,7 +29837,7 @@
 						<name>sorted_value_V_addr</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>29</lineNumber>
+						<lineNumber>30</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29852,7 +29852,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>29</second>
+										<second>30</second>
 									</item>
 									<item>
 										<first>
@@ -29894,7 +29894,7 @@
 						<name>val</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>29</lineNumber>
+						<lineNumber>30</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29909,7 +29909,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>29</second>
+										<second>30</second>
 									</item>
 									<item>
 										<first>
@@ -29946,10 +29946,10 @@
 					<Obj>
 						<type>0</type>
 						<id>545</id>
-						<name>sext_ln30</name>
+						<name>sext_ln31</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>30</lineNumber>
+						<lineNumber>31</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -29964,7 +29964,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>30</second>
+										<second>31</second>
 									</item>
 									<item>
 										<first>
@@ -30004,7 +30004,7 @@
 						<name>symbol_bits_V_addr_256</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>30</lineNumber>
+						<lineNumber>31</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30019,7 +30019,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>30</second>
+										<second>31</second>
 									</item>
 									<item>
 										<first>
@@ -30061,7 +30061,7 @@
 						<name>trunc_ln209</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>30</lineNumber>
+						<lineNumber>31</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30076,7 +30076,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>30</second>
+										<second>31</second>
 									</item>
 									<item>
 										<first>
@@ -30113,10 +30113,10 @@
 					<Obj>
 						<type>0</type>
 						<id>548</id>
-						<name>symbol_bits_V_addr_256_write_ln30</name>
+						<name>symbol_bits_V_addr_256_write_ln31</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>30</lineNumber>
+						<lineNumber>31</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30131,7 +30131,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>30</second>
+										<second>31</second>
 									</item>
 									<item>
 										<first>
@@ -30172,7 +30172,7 @@
 						<name>icmp_ln891</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>31</lineNumber>
+						<lineNumber>32</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30187,7 +30187,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>31</second>
+										<second>32</second>
 									</item>
 									<item>
 										<first>
@@ -30225,10 +30225,10 @@
 					<Obj>
 						<type>0</type>
 						<id>550</id>
-						<name>_ln31</name>
+						<name>_ln32</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>31</lineNumber>
+						<lineNumber>32</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30243,7 +30243,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>31</second>
+										<second>32</second>
 									</item>
 									<item>
 										<first>
@@ -30282,10 +30282,10 @@
 					<Obj>
 						<type>0</type>
 						<id>553</id>
-						<name>_ln27</name>
+						<name>_ln28</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>27</lineNumber>
+						<lineNumber>28</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30300,7 +30300,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>27</second>
+										<second>28</second>
 									</item>
 									<item>
 										<first>
@@ -30377,7 +30377,7 @@
 						<name>icmp_ln891_1</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>33</lineNumber>
+						<lineNumber>34</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30392,7 +30392,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>33</second>
+										<second>34</second>
 									</item>
 									<item>
 										<first>
@@ -30430,10 +30430,10 @@
 					<Obj>
 						<type>0</type>
 						<id>557</id>
-						<name>_ln33</name>
+						<name>_ln34</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>33</lineNumber>
+						<lineNumber>34</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30448,7 +30448,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>33</second>
+										<second>34</second>
 									</item>
 									<item>
 										<first>
@@ -30490,7 +30490,7 @@
 						<name>length_V</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>25</lineNumber>
+						<lineNumber>26</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30505,7 +30505,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>25</second>
+										<second>26</second>
 									</item>
 									<item>
 										<first>
@@ -30543,10 +30543,10 @@
 					<Obj>
 						<type>0</type>
 						<id>561</id>
-						<name>_ln25</name>
+						<name>_ln26</name>
 						<fileName>./hls-src/huffman_canonize_tree.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>25</lineNumber>
+						<lineNumber>26</lineNumber>
 						<contextFuncName>canonize_tree</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -30561,7 +30561,7 @@
 											<first>./hls-src/huffman_canonize_tree.cpp</first>
 											<second>canonize_tree</second>
 										</first>
-										<second>25</second>
+										<second>26</second>
 									</item>
 									<item>
 										<first>

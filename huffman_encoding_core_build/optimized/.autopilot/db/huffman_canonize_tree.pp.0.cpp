@@ -7208,16 +7208,17 @@ init_bits:
 
 
 
+
   int k = 0;
 process_symbols:
   for(length = TREE_DEPTH; length >= 0; length--) {
 #pragma HLS LOOP_TRIPCOUNT min=64 max=64 avg=64
-# 25 "./hls-src/huffman_canonize_tree.cpp"
+# 26 "./hls-src/huffman_canonize_tree.cpp"
 
     count = codeword_length_histogram[length];
     canonize_tree_label0:for(int i = 0; i < count; i++) {
 #pragma HLS LOOP_TRIPCOUNT min=25 max=25 avg=25
-# 27 "./hls-src/huffman_canonize_tree.cpp"
+# 28 "./hls-src/huffman_canonize_tree.cpp"
 
 #pragma HLS pipeline II=1
  int val = (int) sorted[k++].value;
@@ -7226,5 +7227,5 @@ process_symbols:
     }
     if (k >= num_symbols) break;
   }
-# 57 "./hls-src/huffman_canonize_tree.cpp"
+# 58 "./hls-src/huffman_canonize_tree.cpp"
 }

@@ -12,7 +12,6 @@ module truncate_tree (
         ap_rst,
         ap_start,
         ap_done,
-        ap_continue,
         ap_idle,
         ap_ready,
         input_length_histogram_V_address0,
@@ -55,7 +54,6 @@ input   ap_clk;
 input   ap_rst;
 input   ap_start;
 output   ap_done;
-input   ap_continue;
 output   ap_idle;
 output   ap_ready;
 output  [5:0] input_length_histogram_V_address0;
@@ -91,7 +89,6 @@ reg[31:0] output_length_histogram1_V_d1;
 reg output_length_histogram2_V_ce0;
 reg output_length_histogram2_V_we0;
 
-reg    ap_done_reg;
 (* fsm_encoding = "none" *) reg   [15:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg   [31:0] reg_206;
@@ -127,7 +124,6 @@ wire   [63:0] zext_ln45_fu_352_p1;
 reg   [63:0] zext_ln45_reg_442;
 wire   [0:0] icmp_ln44_fu_340_p2;
 reg   [6:0] i_0_reg_153;
-reg    ap_block_state1;
 wire    ap_CS_fsm_state3;
 reg   [5:0] i1_0_reg_164;
 reg   [31:0] t_V_reg_175;
@@ -155,7 +151,6 @@ reg   [15:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
-#0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 16'd1;
 end
 
@@ -164,18 +159,6 @@ always @ (posedge ap_clk) begin
         ap_CS_fsm <= ap_ST_fsm_state1;
     end else begin
         ap_CS_fsm <= ap_NS_fsm;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_done_reg <= 1'b0;
-    end else begin
-        if ((ap_continue == 1'b1)) begin
-            ap_done_reg <= 1'b0;
-        end else if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
-            ap_done_reg <= 1'b1;
-        end
     end
 end
 
@@ -198,7 +181,7 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state3)) begin
         i_0_reg_153 <= i_reg_360;
-    end else if ((~((ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+    end else if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
         i_0_reg_153 <= 7'd0;
     end
 end
@@ -289,10 +272,10 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+    if ((((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) | ((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15)))) begin
         ap_done = 1'b1;
     end else begin
-        ap_done = ap_done_reg;
+        ap_done = 1'b0;
     end
 end
 
@@ -423,7 +406,7 @@ end
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+            if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
@@ -541,10 +524,6 @@ assign ap_CS_fsm_state7 = ap_CS_fsm[32'd6];
 assign ap_CS_fsm_state8 = ap_CS_fsm[32'd7];
 
 assign ap_CS_fsm_state9 = ap_CS_fsm[32'd8];
-
-always @ (*) begin
-    ap_block_state1 = ((ap_start == 1'b0) | (ap_done_reg == 1'b1));
-end
 
 assign grp_fu_197_p2 = ((output_length_histogram1_V_q0 == 32'd0) ? 1'b1 : 1'b0);
 

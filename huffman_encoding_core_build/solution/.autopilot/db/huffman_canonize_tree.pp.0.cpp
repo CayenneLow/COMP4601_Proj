@@ -7201,9 +7201,7 @@ init_bits:
 
   ap_uint<SYMBOL_BITS> length = TREE_DEPTH;
   ap_uint<SYMBOL_BITS> count = 0;
-
-
-
+# 40 "./hls-src/huffman_canonize_tree.cpp"
 process_symbols:
   for(int k = 0; k < num_symbols; k++) {
     if (count == 0) {
@@ -7221,4 +7219,5 @@ process_symbols:
     symbol_bits[val] = length;
     count--;
   }
+
 }

@@ -211,8 +211,8 @@ struct canonize_tree : public sc_module {
     sc_signal< sc_logic > ap_CS_fsm_state126;
     sc_signal< sc_logic > ap_CS_fsm_state127;
     sc_signal< sc_lv<64> > zext_ln544_fu_2975_p1;
-    sc_signal< sc_lv<64> > sext_ln29_fu_2997_p1;
-    sc_signal< sc_lv<64> > sext_ln30_fu_3007_p1;
+    sc_signal< sc_lv<64> > sext_ln30_fu_2997_p1;
+    sc_signal< sc_lv<64> > sext_ln31_fu_3007_p1;
     sc_signal< bool > ap_block_state1;
     sc_signal< sc_lv<5> > trunc_ln209_fu_3012_p1;
     sc_signal< sc_lv<132> > ap_NS_fsm;
@@ -903,8 +903,8 @@ struct canonize_tree : public sc_module {
     void thread_icmp_ln891_fu_3002_p2();
     void thread_k_fu_2991_p2();
     void thread_length_V_fu_3022_p2();
-    void thread_sext_ln29_fu_2997_p1();
-    void thread_sext_ln30_fu_3007_p1();
+    void thread_sext_ln30_fu_2997_p1();
+    void thread_sext_ln31_fu_3007_p1();
     void thread_sorted_value_V_address0();
     void thread_sorted_value_V_ce0();
     void thread_symbol_bits_V_address0();

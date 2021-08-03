@@ -6458,11 +6458,11 @@ void filter(
                Symbol out[INPUT_SYMBOL_SIZE],
                int *n) {_ssdm_SpecArrayDimSize(in, 256);_ssdm_SpecArrayDimSize(out, 256);
 
-_ssdm_InlineSelf(2, "");
- ap_uint<SYMBOL_BITS> j=0;
+
+  ap_uint<SYMBOL_BITS> j=0;
   for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- if(in[i].frequency != 0) {
+
+    if(in[i].frequency != 0) {
       out[j].frequency = in[i].frequency;
       out[j].value = in[i].value;
       j++;

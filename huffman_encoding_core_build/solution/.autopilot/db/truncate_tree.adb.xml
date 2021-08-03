@@ -813,10 +813,10 @@ hls_label_0.preheader:0  br label %hls_label_0
 
 <Node id="89" bw="32" op_0_bw="32" op_1_bw="0" op_2_bw="32">
 <![CDATA[
-move_nodes_end:0  %empty_7 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str1, i32 %tmp)
+move_nodes_end:0  %empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str1, i32 %tmp)
 
 ]]></Node>
-<StgValue><ssdm name="empty_7"/></StgValue>
+<StgValue><ssdm name="empty_6"/></StgValue>
 </operation>
 
 <operation id="59" st_id="6" stage="1" lat="1">
@@ -1448,10 +1448,10 @@ reorder_end:18  store i32 %add_ln701_1, i32* %output_length_histog_1, align 4
 
 <Node id="85" bw="32" op_0_bw="32" op_1_bw="0" op_2_bw="32">
 <![CDATA[
-reorder_end:20  %empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([8 x i8]* @p_str2, i32 %tmp_1)
+reorder_end:20  %empty_5 = call i32 (...)* @_ssdm_op_SpecRegionEnd([8 x i8]* @p_str2, i32 %tmp_1)
 
 ]]></Node>
-<StgValue><ssdm name="empty_6"/></StgValue>
+<StgValue><ssdm name="empty_5"/></StgValue>
 </operation>
 
 <operation id="99" st_id="14" stage="1" lat="1">
@@ -1871,11 +1871,11 @@ reorder_end:22  br label %3
 </dataflow>
 <dataflow id="231" from="icmp_ln879" to="br_ln21" fromId="55" toId="56">
 </dataflow>
-<dataflow id="233" from="_ssdm_op_SpecRegionEnd" to="empty_7" fromId="232" toId="58">
+<dataflow id="233" from="_ssdm_op_SpecRegionEnd" to="empty_6" fromId="232" toId="58">
 </dataflow>
-<dataflow id="234" from="p_str1" to="empty_7" fromId="195" toId="58">
+<dataflow id="234" from="p_str1" to="empty_6" fromId="195" toId="58">
 </dataflow>
-<dataflow id="235" from="tmp" to="empty_7" fromId="39" toId="58">
+<dataflow id="235" from="tmp" to="empty_6" fromId="39" toId="58">
 </dataflow>
 <dataflow id="236" from="j_V" to="t_V" fromId="61" toId="60">
 <BackEdge/>
@@ -2023,11 +2023,11 @@ reorder_end:22  br label %3
 </dataflow>
 <dataflow id="307" from="output_length_histog_1" to="store_ln33" fromId="41" toId="97">
 </dataflow>
-<dataflow id="308" from="_ssdm_op_SpecRegionEnd" to="empty_6" fromId="232" toId="98">
+<dataflow id="308" from="_ssdm_op_SpecRegionEnd" to="empty_5" fromId="232" toId="98">
 </dataflow>
-<dataflow id="309" from="p_str2" to="empty_6" fromId="218" toId="98">
+<dataflow id="309" from="p_str2" to="empty_5" fromId="218" toId="98">
 </dataflow>
-<dataflow id="310" from="tmp_1" to="empty_6" fromId="53" toId="98">
+<dataflow id="310" from="tmp_1" to="empty_5" fromId="53" toId="98">
 </dataflow>
 <dataflow id="311" from="i_2" to="i2_0" fromId="103" toId="100">
 <BackEdge/>

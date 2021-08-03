@@ -10,9 +10,9 @@ use ieee.std_logic_unsigned.all;
 entity compute_bit_lengtjbC_ram is 
     generic(
             MEM_TYPE    : string := "block"; 
-            DWIDTH     : integer := 32; 
-            AWIDTH     : integer := 6; 
-            MEM_SIZE    : integer := 64
+            DWIDTH     : integer := 6; 
+            AWIDTH     : integer := 8; 
+            MEM_SIZE    : integer := 255
     ); 
     port (
           addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
@@ -71,9 +71,9 @@ use IEEE.std_logic_1164.all;
 
 entity compute_bit_lengtjbC is
     generic (
-        DataWidth : INTEGER := 32;
-        AddressRange : INTEGER := 64;
-        AddressWidth : INTEGER := 6);
+        DataWidth : INTEGER := 6;
+        AddressRange : INTEGER := 255;
+        AddressWidth : INTEGER := 8);
     port (
         reset : IN STD_LOGIC;
         clk : IN STD_LOGIC;

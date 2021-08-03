@@ -125,12 +125,9 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_ap_CS_fsm_state9);
     sensitive << ( ap_CS_fsm );
 
-    SC_METHOD(thread_ap_block_state1);
-    sensitive << ( ap_start );
-    sensitive << ( ap_done_reg );
-
     SC_METHOD(thread_ap_done);
-    sensitive << ( ap_done_reg );
+    sensitive << ( ap_start );
+    sensitive << ( ap_CS_fsm_state1 );
     sensitive << ( ap_CS_fsm_state15 );
     sensitive << ( icmp_ln44_fu_340_p2 );
 
@@ -294,7 +291,6 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
 
     SC_METHOD(thread_ap_NS_fsm);
     sensitive << ( ap_start );
-    sensitive << ( ap_done_reg );
     sensitive << ( ap_CS_fsm );
     sensitive << ( ap_CS_fsm_state1 );
     sensitive << ( ap_CS_fsm_state2 );
@@ -309,7 +305,6 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sensitive << ( icmp_ln44_fu_340_p2 );
     sensitive << ( ap_CS_fsm_state8 );
 
-    ap_done_reg = SC_LOGIC_0;
     ap_CS_fsm = "0000000000000001";
     static int apTFileNum = 0;
     stringstream apTFilenSS;
@@ -323,7 +318,6 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, ap_rst, "(port)ap_rst");
     sc_trace(mVcdFile, ap_start, "(port)ap_start");
     sc_trace(mVcdFile, ap_done, "(port)ap_done");
-    sc_trace(mVcdFile, ap_continue, "(port)ap_continue");
     sc_trace(mVcdFile, ap_idle, "(port)ap_idle");
     sc_trace(mVcdFile, ap_ready, "(port)ap_ready");
     sc_trace(mVcdFile, input_length_histogram_V_address0, "(port)input_length_histogram_V_address0");
@@ -345,7 +339,6 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, output_length_histogram2_V_d0, "(port)output_length_histogram2_V_d0");
 #endif
 #ifdef __HLS_TRACE_LEVEL_INT__
-    sc_trace(mVcdFile, ap_done_reg, "ap_done_reg");
     sc_trace(mVcdFile, ap_CS_fsm, "ap_CS_fsm");
     sc_trace(mVcdFile, ap_CS_fsm_state1, "ap_CS_fsm_state1");
     sc_trace(mVcdFile, reg_206, "reg_206");
@@ -381,7 +374,6 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, zext_ln45_reg_442, "zext_ln45_reg_442");
     sc_trace(mVcdFile, icmp_ln44_fu_340_p2, "icmp_ln44_fu_340_p2");
     sc_trace(mVcdFile, i_0_reg_153, "i_0_reg_153");
-    sc_trace(mVcdFile, ap_block_state1, "ap_block_state1");
     sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
     sc_trace(mVcdFile, i1_0_reg_164, "i1_0_reg_164");
     sc_trace(mVcdFile, t_V_reg_175, "t_V_reg_175");
@@ -423,16 +415,6 @@ void truncate_tree::thread_ap_clk_no_reset_() {
     } else {
         ap_CS_fsm = ap_NS_fsm.read();
     }
-    if ( ap_rst.read() == ap_const_logic_1) {
-        ap_done_reg = ap_const_logic_0;
-    } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, ap_continue.read())) {
-            ap_done_reg = ap_const_logic_0;
-        } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state15.read()) && 
-                    esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln44_fu_340_p2.read()))) {
-            ap_done_reg = ap_const_logic_1;
-        }
-    }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
          esl_seteq<1,1,1>(icmp_ln10_fu_216_p2.read(), ap_const_lv1_1))) {
         i1_0_reg_164 = ap_const_lv6_3F;
@@ -449,7 +431,7 @@ void truncate_tree::thread_ap_clk_no_reset_() {
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         i_0_reg_153 = i_reg_360.read();
     } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
-                !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1)))) {
+                esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_1))) {
         i_0_reg_153 = ap_const_lv7_0;
     }
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state9.read())) {
@@ -590,16 +572,14 @@ void truncate_tree::thread_ap_CS_fsm_state9() {
     ap_CS_fsm_state9 = ap_CS_fsm.read()[8];
 }
 
-void truncate_tree::thread_ap_block_state1() {
-    ap_block_state1 = (esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1));
-}
-
 void truncate_tree::thread_ap_done() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state15.read()) && 
-         esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln44_fu_340_p2.read()))) {
+    if (((esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && 
+          esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) || 
+         (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state15.read()) && 
+          esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln44_fu_340_p2.read())))) {
         ap_done = ap_const_logic_1;
     } else {
-        ap_done = ap_done_reg.read();
+        ap_done = ap_const_logic_0;
     }
 }
 
@@ -836,7 +816,7 @@ void truncate_tree::thread_zext_ln544_fu_272_p1() {
 void truncate_tree::thread_ap_NS_fsm() {
     switch (ap_CS_fsm.read().to_uint64()) {
         case 1 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && !(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) || esl_seteq<1,1,1>(ap_done_reg.read(), ap_const_logic_1)))) {
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_1))) {
                 ap_NS_fsm = ap_ST_fsm_state2;
             } else {
                 ap_NS_fsm = ap_ST_fsm_state1;

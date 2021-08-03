@@ -8922,7 +8922,7 @@ entry:513  store i5 0, i5* %symbol_bits_V_addr_255, align 1
 entry:514  br label %process_symbols_begin
 
 ]]></Node>
-<StgValue><ssdm name="br_ln25"/></StgValue>
+<StgValue><ssdm name="br_ln26"/></StgValue>
 </operation>
 </state>
 
@@ -9018,7 +9018,7 @@ process_symbols_begin:1  %k_0_i_i = phi i32 [ %i_op_assign_1, %process_symbols_e
 process_symbols_begin:2  call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str485) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specloopname_ln25"/></StgValue>
+<StgValue><ssdm name="specloopname_ln26"/></StgValue>
 </operation>
 
 <operation id="655" st_id="130" stage="1" lat="1">
@@ -9048,7 +9048,7 @@ process_symbols_begin:3  %tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([1
 process_symbols_begin:4  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 64, i32 64, i32 64, [1 x i8]* @p_str384) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="speclooptripcount_ln26"/></StgValue>
+<StgValue><ssdm name="speclooptripcount_ln27"/></StgValue>
 </operation>
 
 <operation id="657" st_id="130" stage="1" lat="2">
@@ -9078,7 +9078,7 @@ process_symbols_begin:7  %count_V = load i32* %codeword_length_hist, align 4
 process_symbols_begin:8  br label %0
 
 ]]></Node>
-<StgValue><ssdm name="br_ln27"/></StgValue>
+<StgValue><ssdm name="br_ln28"/></StgValue>
 </operation>
 </state>
 
@@ -9156,7 +9156,7 @@ process_symbols_begin:8  br label %0
 :4  br i1 %icmp_ln887, label %canonize_tree_label0_begin, label %.loopexit.i.i
 
 ]]></Node>
-<StgValue><ssdm name="br_ln27"/></StgValue>
+<StgValue><ssdm name="br_ln28"/></StgValue>
 </operation>
 
 <operation id="664" st_id="131" stage="1" lat="1">
@@ -9201,10 +9201,10 @@ canonize_tree_label0_begin:4  %k = add nsw i32 1, %k_1_i_i
 
 <Node id="542" bw="64" op_0_bw="32">
 <![CDATA[
-canonize_tree_label0_begin:5  %sext_ln29 = sext i32 %k_1_i_i to i64
+canonize_tree_label0_begin:5  %sext_ln30 = sext i32 %k_1_i_i to i64
 
 ]]></Node>
-<StgValue><ssdm name="sext_ln29"/></StgValue>
+<StgValue><ssdm name="sext_ln30"/></StgValue>
 </operation>
 
 <operation id="667" st_id="131" stage="1" lat="1">
@@ -9217,7 +9217,7 @@ canonize_tree_label0_begin:5  %sext_ln29 = sext i32 %k_1_i_i to i64
 
 <Node id="543" bw="8" op_0_bw="32" op_1_bw="64" op_2_bw="64">
 <![CDATA[
-canonize_tree_label0_begin:6  %sorted_value_V_addr = getelementptr [256 x i32]* %sorted_value_V, i64 0, i64 %sext_ln29
+canonize_tree_label0_begin:6  %sorted_value_V_addr = getelementptr [256 x i32]* %sorted_value_V, i64 0, i64 %sext_ln30
 
 ]]></Node>
 <StgValue><ssdm name="sorted_value_V_addr"/></StgValue>
@@ -9286,7 +9286,7 @@ canonize_tree_label0_end:0  %empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd(
 canonize_tree_label0_end:1  br label %0
 
 ]]></Node>
-<StgValue><ssdm name="br_ln27"/></StgValue>
+<StgValue><ssdm name="br_ln28"/></StgValue>
 </operation>
 </state>
 
@@ -9305,7 +9305,7 @@ canonize_tree_label0_end:1  br label %0
 canonize_tree_label0_begin:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @p_str586) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specloopname_ln27"/></StgValue>
+<StgValue><ssdm name="specloopname_ln28"/></StgValue>
 </operation>
 
 <operation id="673" st_id="132" stage="1" lat="1">
@@ -9321,7 +9321,7 @@ canonize_tree_label0_begin:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]*
 canonize_tree_label0_begin:2  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 25, i32 25, i32 25, [1 x i8]* @p_str384) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="speclooptripcount_ln28"/></StgValue>
+<StgValue><ssdm name="speclooptripcount_ln29"/></StgValue>
 </operation>
 
 <operation id="674" st_id="132" stage="1" lat="1">
@@ -9337,7 +9337,7 @@ canonize_tree_label0_begin:2  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 2
 canonize_tree_label0_begin:3  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str384) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specpipeline_ln28"/></StgValue>
+<StgValue><ssdm name="specpipeline_ln29"/></StgValue>
 </operation>
 
 <operation id="675" st_id="132" stage="1" lat="2">
@@ -9366,10 +9366,10 @@ canonize_tree_label0_begin:7  %val = load i32* %sorted_value_V_addr, align 4
 
 <Node id="545" bw="64" op_0_bw="32">
 <![CDATA[
-canonize_tree_label0_begin:8  %sext_ln30 = sext i32 %val to i64
+canonize_tree_label0_begin:8  %sext_ln31 = sext i32 %val to i64
 
 ]]></Node>
-<StgValue><ssdm name="sext_ln30"/></StgValue>
+<StgValue><ssdm name="sext_ln31"/></StgValue>
 </operation>
 
 <operation id="677" st_id="132" stage="1" lat="1">
@@ -9382,7 +9382,7 @@ canonize_tree_label0_begin:8  %sext_ln30 = sext i32 %val to i64
 
 <Node id="546" bw="8" op_0_bw="5" op_1_bw="64" op_2_bw="64">
 <![CDATA[
-canonize_tree_label0_begin:9  %symbol_bits_V_addr_256 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %sext_ln30
+canonize_tree_label0_begin:9  %symbol_bits_V_addr_256 = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %sext_ln31
 
 ]]></Node>
 <StgValue><ssdm name="symbol_bits_V_addr_256"/></StgValue>
@@ -9417,7 +9417,7 @@ canonize_tree_label0_begin:10  %trunc_ln209 = trunc i32 %t_V to i5
 canonize_tree_label0_begin:11  store i5 %trunc_ln209, i5* %symbol_bits_V_addr_256, align 1
 
 ]]></Node>
-<StgValue><ssdm name="store_ln30"/></StgValue>
+<StgValue><ssdm name="store_ln31"/></StgValue>
 </operation>
 
 <operation id="680" st_id="132" stage="1" lat="1">
@@ -9433,7 +9433,7 @@ canonize_tree_label0_begin:11  store i5 %trunc_ln209, i5* %symbol_bits_V_addr_25
 canonize_tree_label0_begin:13  br i1 %icmp_ln891, label %canonize_tree_label0_end, label %.loopexit.i.i
 
 ]]></Node>
-<StgValue><ssdm name="br_ln31"/></StgValue>
+<StgValue><ssdm name="br_ln32"/></StgValue>
 </operation>
 </state>
 
@@ -9481,7 +9481,7 @@ canonize_tree_label0_begin:13  br i1 %icmp_ln891, label %canonize_tree_label0_en
 .loopexit.i.i:2  br i1 %icmp_ln891_1, label %process_symbols_end, label %.exit
 
 ]]></Node>
-<StgValue><ssdm name="br_ln33"/></StgValue>
+<StgValue><ssdm name="br_ln34"/></StgValue>
 </operation>
 
 <operation id="684" st_id="133" stage="1" lat="1">
@@ -9529,7 +9529,7 @@ process_symbols_end:1  %length_V = add i32 %t_V, -1
 process_symbols_end:2  br label %process_symbols_begin
 
 ]]></Node>
-<StgValue><ssdm name="br_ln25"/></StgValue>
+<StgValue><ssdm name="br_ln26"/></StgValue>
 </operation>
 
 <operation id="687" st_id="133" stage="1" lat="1">
@@ -12176,7 +12176,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2397" from="br_ln25" to="t_V" fromId="686" toId="649">
+<dataflow id="2397" from="br_ln26" to="t_V" fromId="686" toId="649">
 <BackEdge/>
 </dataflow>
 <dataflow id="2399" from="StgValue_2398" to="t_V" fromId="2398" toId="649">
@@ -12184,7 +12184,7 @@ process_symbols_end:2  br label %process_symbols_begin
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2400" from="br_ln25" to="t_V" fromId="648" toId="649">
+<dataflow id="2400" from="br_ln26" to="t_V" fromId="648" toId="649">
 </dataflow>
 <dataflow id="2401" from="t_V" to="zext_ln544" fromId="649" toId="650">
 </dataflow>
@@ -12203,7 +12203,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2407" from="br_ln25" to="k_0_i_i" fromId="686" toId="653">
+<dataflow id="2407" from="br_ln26" to="k_0_i_i" fromId="686" toId="653">
 <BackEdge/>
 </dataflow>
 <dataflow id="2408" from="StgValue_2362" to="k_0_i_i" fromId="2362" toId="653">
@@ -12211,25 +12211,25 @@ process_symbols_end:2  br label %process_symbols_begin
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2409" from="br_ln25" to="k_0_i_i" fromId="648" toId="653">
+<dataflow id="2409" from="br_ln26" to="k_0_i_i" fromId="648" toId="653">
 </dataflow>
-<dataflow id="2411" from="_ssdm_op_SpecLoopName" to="specloopname_ln25" fromId="2410" toId="654">
+<dataflow id="2411" from="_ssdm_op_SpecLoopName" to="specloopname_ln26" fromId="2410" toId="654">
 </dataflow>
-<dataflow id="2413" from="p_str485" to="specloopname_ln25" fromId="2412" toId="654">
+<dataflow id="2413" from="p_str485" to="specloopname_ln26" fromId="2412" toId="654">
 </dataflow>
 <dataflow id="2415" from="_ssdm_op_SpecRegionBegin" to="tmp_i_i" fromId="2414" toId="655">
 </dataflow>
 <dataflow id="2416" from="p_str485" to="tmp_i_i" fromId="2412" toId="655">
 </dataflow>
-<dataflow id="2418" from="_ssdm_op_SpecLoopTripCount" to="speclooptripcount_ln26" fromId="2417" toId="656">
+<dataflow id="2418" from="_ssdm_op_SpecLoopTripCount" to="speclooptripcount_ln27" fromId="2417" toId="656">
 </dataflow>
-<dataflow id="2419" from="StgValue_2398" to="speclooptripcount_ln26" fromId="2398" toId="656">
+<dataflow id="2419" from="StgValue_2398" to="speclooptripcount_ln27" fromId="2398" toId="656">
 </dataflow>
-<dataflow id="2420" from="StgValue_2398" to="speclooptripcount_ln26" fromId="2398" toId="656">
+<dataflow id="2420" from="StgValue_2398" to="speclooptripcount_ln27" fromId="2398" toId="656">
 </dataflow>
-<dataflow id="2421" from="StgValue_2398" to="speclooptripcount_ln26" fromId="2398" toId="656">
+<dataflow id="2421" from="StgValue_2398" to="speclooptripcount_ln27" fromId="2398" toId="656">
 </dataflow>
-<dataflow id="2423" from="p_str384" to="speclooptripcount_ln26" fromId="2422" toId="656">
+<dataflow id="2423" from="p_str384" to="speclooptripcount_ln27" fromId="2422" toId="656">
 </dataflow>
 <dataflow id="2424" from="codeword_length_hist" to="count_V" fromId="651" toId="657">
 </dataflow>
@@ -12238,7 +12238,7 @@ process_symbols_end:2  br label %process_symbols_begin
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2426" from="br_ln27" to="k_1_i_i" fromId="658" toId="659">
+<dataflow id="2426" from="br_ln28" to="k_1_i_i" fromId="658" toId="659">
 </dataflow>
 <dataflow id="2427" from="k" to="k_1_i_i" fromId="665" toId="659">
 <BackEdge/>
@@ -12248,7 +12248,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2428" from="br_ln27" to="k_1_i_i" fromId="671" toId="659">
+<dataflow id="2428" from="br_ln28" to="k_1_i_i" fromId="671" toId="659">
 <BackEdge/>
 </dataflow>
 <dataflow id="2429" from="StgValue_2362" to="i_op_assign" fromId="2362" toId="660">
@@ -12256,7 +12256,7 @@ process_symbols_end:2  br label %process_symbols_begin
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2430" from="br_ln27" to="i_op_assign" fromId="658" toId="660">
+<dataflow id="2430" from="br_ln28" to="i_op_assign" fromId="658" toId="660">
 </dataflow>
 <dataflow id="2431" from="i" to="i_op_assign" fromId="662" toId="660">
 <BackEdge/>
@@ -12266,7 +12266,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2432" from="br_ln27" to="i_op_assign" fromId="671" toId="660">
+<dataflow id="2432" from="br_ln28" to="i_op_assign" fromId="671" toId="660">
 <BackEdge/>
 </dataflow>
 <dataflow id="2433" from="i_op_assign" to="icmp_ln887" fromId="660" toId="661">
@@ -12277,7 +12277,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </dataflow>
 <dataflow id="2437" from="StgValue_2436" to="i" fromId="2436" toId="662">
 </dataflow>
-<dataflow id="2438" from="icmp_ln887" to="br_ln27" fromId="661" toId="663">
+<dataflow id="2438" from="icmp_ln887" to="br_ln28" fromId="661" toId="663">
 </dataflow>
 <dataflow id="2439" from="_ssdm_op_SpecRegionBegin" to="tmp_14_i_i" fromId="2414" toId="664">
 </dataflow>
@@ -12287,13 +12287,13 @@ process_symbols_end:2  br label %process_symbols_begin
 </dataflow>
 <dataflow id="2443" from="k_1_i_i" to="k" fromId="659" toId="665">
 </dataflow>
-<dataflow id="2444" from="k_1_i_i" to="sext_ln29" fromId="659" toId="666">
+<dataflow id="2444" from="k_1_i_i" to="sext_ln30" fromId="659" toId="666">
 </dataflow>
 <dataflow id="2445" from="sorted_value_V" to="sorted_value_V_addr" fromId="828" toId="667">
 </dataflow>
 <dataflow id="2446" from="StgValue_833" to="sorted_value_V_addr" fromId="833" toId="667">
 </dataflow>
-<dataflow id="2447" from="sext_ln29" to="sorted_value_V_addr" fromId="666" toId="667">
+<dataflow id="2447" from="sext_ln30" to="sorted_value_V_addr" fromId="666" toId="667">
 </dataflow>
 <dataflow id="2448" from="sorted_value_V_addr" to="val" fromId="667" toId="668">
 </dataflow>
@@ -12307,49 +12307,49 @@ process_symbols_end:2  br label %process_symbols_begin
 </dataflow>
 <dataflow id="2454" from="tmp_14_i_i" to="empty_33" fromId="664" toId="670">
 </dataflow>
-<dataflow id="2455" from="_ssdm_op_SpecLoopName" to="specloopname_ln27" fromId="2410" toId="672">
+<dataflow id="2455" from="_ssdm_op_SpecLoopName" to="specloopname_ln28" fromId="2410" toId="672">
 </dataflow>
-<dataflow id="2456" from="p_str586" to="specloopname_ln27" fromId="2440" toId="672">
+<dataflow id="2456" from="p_str586" to="specloopname_ln28" fromId="2440" toId="672">
 </dataflow>
-<dataflow id="2457" from="_ssdm_op_SpecLoopTripCount" to="speclooptripcount_ln28" fromId="2417" toId="673">
+<dataflow id="2457" from="_ssdm_op_SpecLoopTripCount" to="speclooptripcount_ln29" fromId="2417" toId="673">
 </dataflow>
-<dataflow id="2459" from="StgValue_2458" to="speclooptripcount_ln28" fromId="2458" toId="673">
+<dataflow id="2459" from="StgValue_2458" to="speclooptripcount_ln29" fromId="2458" toId="673">
 </dataflow>
-<dataflow id="2460" from="StgValue_2458" to="speclooptripcount_ln28" fromId="2458" toId="673">
+<dataflow id="2460" from="StgValue_2458" to="speclooptripcount_ln29" fromId="2458" toId="673">
 </dataflow>
-<dataflow id="2461" from="StgValue_2458" to="speclooptripcount_ln28" fromId="2458" toId="673">
+<dataflow id="2461" from="StgValue_2458" to="speclooptripcount_ln29" fromId="2458" toId="673">
 </dataflow>
-<dataflow id="2462" from="p_str384" to="speclooptripcount_ln28" fromId="2422" toId="673">
+<dataflow id="2462" from="p_str384" to="speclooptripcount_ln29" fromId="2422" toId="673">
 </dataflow>
-<dataflow id="2464" from="_ssdm_op_SpecPipeline" to="specpipeline_ln28" fromId="2463" toId="674">
+<dataflow id="2464" from="_ssdm_op_SpecPipeline" to="specpipeline_ln29" fromId="2463" toId="674">
 </dataflow>
-<dataflow id="2465" from="StgValue_2436" to="specpipeline_ln28" fromId="2436" toId="674">
+<dataflow id="2465" from="StgValue_2436" to="specpipeline_ln29" fromId="2436" toId="674">
 </dataflow>
-<dataflow id="2466" from="StgValue_2436" to="specpipeline_ln28" fromId="2436" toId="674">
+<dataflow id="2466" from="StgValue_2436" to="specpipeline_ln29" fromId="2436" toId="674">
 </dataflow>
-<dataflow id="2467" from="StgValue_2436" to="specpipeline_ln28" fromId="2436" toId="674">
+<dataflow id="2467" from="StgValue_2436" to="specpipeline_ln29" fromId="2436" toId="674">
 </dataflow>
-<dataflow id="2468" from="StgValue_2362" to="specpipeline_ln28" fromId="2362" toId="674">
+<dataflow id="2468" from="StgValue_2362" to="specpipeline_ln29" fromId="2362" toId="674">
 </dataflow>
-<dataflow id="2469" from="p_str384" to="specpipeline_ln28" fromId="2422" toId="674">
+<dataflow id="2469" from="p_str384" to="specpipeline_ln29" fromId="2422" toId="674">
 </dataflow>
 <dataflow id="2470" from="sorted_value_V_addr" to="val" fromId="667" toId="675">
 </dataflow>
-<dataflow id="2471" from="val" to="sext_ln30" fromId="675" toId="676">
+<dataflow id="2471" from="val" to="sext_ln31" fromId="675" toId="676">
 </dataflow>
 <dataflow id="2472" from="symbol_bits_V" to="symbol_bits_V_addr_256" fromId="831" toId="677">
 </dataflow>
 <dataflow id="2473" from="StgValue_833" to="symbol_bits_V_addr_256" fromId="833" toId="677">
 </dataflow>
-<dataflow id="2474" from="sext_ln30" to="symbol_bits_V_addr_256" fromId="676" toId="677">
+<dataflow id="2474" from="sext_ln31" to="symbol_bits_V_addr_256" fromId="676" toId="677">
 </dataflow>
 <dataflow id="2475" from="t_V" to="trunc_ln209" fromId="649" toId="678">
 </dataflow>
-<dataflow id="2476" from="trunc_ln209" to="store_ln30" fromId="678" toId="679">
+<dataflow id="2476" from="trunc_ln209" to="store_ln31" fromId="678" toId="679">
 </dataflow>
-<dataflow id="2477" from="symbol_bits_V_addr_256" to="store_ln30" fromId="677" toId="679">
+<dataflow id="2477" from="symbol_bits_V_addr_256" to="store_ln31" fromId="677" toId="679">
 </dataflow>
-<dataflow id="2478" from="icmp_ln891" to="br_ln31" fromId="669" toId="680">
+<dataflow id="2478" from="icmp_ln891" to="br_ln32" fromId="669" toId="680">
 </dataflow>
 <dataflow id="2479" from="k_1_i_i" to="i_op_assign_1" fromId="659" toId="681">
 <condition id="-1">
@@ -12357,7 +12357,7 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2480" from="br_ln27" to="i_op_assign_1" fromId="663" toId="681">
+<dataflow id="2480" from="br_ln28" to="i_op_assign_1" fromId="663" toId="681">
 </dataflow>
 <dataflow id="2481" from="k" to="i_op_assign_1" fromId="665" toId="681">
 <condition id="-1">
@@ -12366,13 +12366,13 @@ process_symbols_end:2  br label %process_symbols_begin
 </and_exp></or_exp>
 </condition>
 </dataflow>
-<dataflow id="2482" from="br_ln31" to="i_op_assign_1" fromId="680" toId="681">
+<dataflow id="2482" from="br_ln32" to="i_op_assign_1" fromId="680" toId="681">
 </dataflow>
 <dataflow id="2483" from="i_op_assign_1" to="icmp_ln891_1" fromId="681" toId="682">
 </dataflow>
 <dataflow id="2484" from="val_assign_loc_read" to="icmp_ln891_1" fromId="643" toId="682">
 </dataflow>
-<dataflow id="2485" from="icmp_ln891_1" to="br_ln33" fromId="682" toId="683">
+<dataflow id="2485" from="icmp_ln891_1" to="br_ln34" fromId="682" toId="683">
 </dataflow>
 <dataflow id="2486" from="_ssdm_op_SpecRegionEnd" to="empty_34" fromId="2451" toId="684">
 </dataflow>

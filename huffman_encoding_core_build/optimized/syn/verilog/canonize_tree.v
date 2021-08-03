@@ -367,8 +367,8 @@ wire    ap_CS_fsm_state125;
 wire    ap_CS_fsm_state126;
 wire    ap_CS_fsm_state127;
 wire   [63:0] zext_ln544_fu_2975_p1;
-wire  signed [63:0] sext_ln29_fu_2997_p1;
-wire  signed [63:0] sext_ln30_fu_3007_p1;
+wire  signed [63:0] sext_ln30_fu_2997_p1;
+wire  signed [63:0] sext_ln31_fu_3007_p1;
 reg    ap_block_state1;
 wire   [4:0] trunc_ln209_fu_3012_p1;
 reg   [131:0] ap_NS_fsm;
@@ -558,7 +558,7 @@ end
 
 always @ (*) begin
     if (((1'b0 == ap_block_pp0_stage0) & (ap_enable_reg_pp0_iter1 == 1'b1) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
-        symbol_bits_V_address0 = sext_ln30_fu_3007_p1;
+        symbol_bits_V_address0 = sext_ln31_fu_3007_p1;
     end else if ((1'b1 == ap_CS_fsm_state128)) begin
         symbol_bits_V_address0 = 64'd254;
     end else if ((1'b1 == ap_CS_fsm_state127)) begin
@@ -1864,11 +1864,11 @@ assign k_fu_2991_p2 = ($signed(32'd1) + $signed(ap_phi_mux_k_1_i_i_phi_fu_2944_p
 
 assign length_V_fu_3022_p2 = ($signed(t_V_reg_2917) + $signed(32'd4294967295));
 
-assign sext_ln29_fu_2997_p1 = ap_phi_mux_k_1_i_i_phi_fu_2944_p4;
+assign sext_ln30_fu_2997_p1 = ap_phi_mux_k_1_i_i_phi_fu_2944_p4;
 
-assign sext_ln30_fu_3007_p1 = $signed(sorted_value_V_q0);
+assign sext_ln31_fu_3007_p1 = $signed(sorted_value_V_q0);
 
-assign sorted_value_V_address0 = sext_ln29_fu_2997_p1;
+assign sorted_value_V_address0 = sext_ln30_fu_2997_p1;
 
 assign symbol_bits_V_d1 = 5'd0;
 
