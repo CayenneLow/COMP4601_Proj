@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -6451,7 +6452,8 @@ static unsigned int bit_reverse32(unsigned int input) {
  }
  return rev;
 }
-# 2 "./hls-src/huffman_create_tree.cpp" 2
+# 1 "./hls-src/huffman_create_tree.cpp" 2
+
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 1 3
 # 15 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 3
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\_mingw.h" 1 3
@@ -7184,7 +7186,8 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
 
 
 }
-# 3 "./hls-src/huffman_create_tree.cpp" 2
+# 2 "./hls-src/huffman_create_tree.cpp" 2
+
 void create_tree (
                 Symbol in[INPUT_SYMBOL_SIZE],
                 int num_symbols,
@@ -7198,8 +7201,8 @@ void create_tree (
     (void) ((!!(num_symbols > 0)) || (_assert("num_symbols > 0","./hls-src/huffman_create_tree.cpp",13),0));
     (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_create_tree.cpp",14),0));
     for(int i = 0; i < (num_symbols-1); i++) {
-
-        Frequency node_freq = 0;
+_ssdm_op_SpecPipeline(5, 1, 1, 0, "");
+ Frequency node_freq = 0;
 
 
 

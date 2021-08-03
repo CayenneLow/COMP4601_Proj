@@ -1,0 +1,59 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../tests/huffman_encoding_test.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_truncate_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_codeword.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_sort.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_encoding.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_compute_bit_length.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_filter.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_create_tree.cpp in debug mode
+   Compiling ../../../../hls-src/huffman_canonize_tree.cpp in debug mode
+   Generating csim.exe
+Starting canonical Huffman encoding testbench
+Start reading file [huffman.random256.txt]
+61 codewords with length 7
+104 codewords with length 8
+43 codewords with length 9
+28 codewords with length 10
+10 codewords with length 11
+2 codewords with length 12
+2 codewords with length 13
+3 codewords with length 14
+1 codewords with length 15
+2 codewords with length 16
+0b0 with length 1
+0b0 with length 2
+0b0 with length 3
+0b0 with length 4
+0b0 with length 5
+0b0 with length 6
+0b0 with length 7
+0b01111010 with length 8
+0b0111000100 with length 9
+0b01111011110 with length 10
+0b011111110100 with length 11
+0b0111111111100 with length 12
+0b01111111111100 with length 13
+0b011111111111100 with length 14
+0b0111111111111110 with length 15
+0b01111111111111110 with length 16
+0b0100000000000000000 with length 17
+0b01000000000000000000 with length 18
+0b010000000000000000000 with length 19
+0b0100000000000000000000 with length 20
+0b01000000000000000000000 with length 21
+0b010000000000000000000000 with length 22
+0b0100000000000000000000000 with length 23
+0b01000000000000000000000000 with length 24
+0b010000000000000000000000000 with length 25
+0b100000000000000000000000000 with length 26
+
+***************Comparing against output data*************** 
+
+*******************************************
+ PASS: The output matches the golden output
+*******************************************
+Ending canonical Huffman encoding testbench
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

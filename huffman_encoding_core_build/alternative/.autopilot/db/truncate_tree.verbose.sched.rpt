@@ -1,0 +1,313 @@
+
+
+================================================================
+== Vivado HLS Report for 'truncate_tree'
+================================================================
+* Date:           Sun Aug  1 13:10:58 2021
+
+* Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
+* Project:        huffman_encoding_core_build
+* Solution:       alternative
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 6.508 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     1210|     1318| 12.100 us | 13.180 us |  1210|  1318|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- copy_input    |      128|      128|         2|          -|          -|    64|    no    |
+        |- move_nodes    |     1080|     1188|  30 ~ 33 |          -|          -|    36|    no    |
+        | + reorder      |       28|       31|  9 ~ 10  |          -|          -|     3|    no    |
+        |  ++ reorder.1  |        1|        1|         2|          -|          -|     1|    no    |
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 14
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 4 
+3 --> 2 
+4 --> 5 
+5 --> 6 
+6 --> 8 7 4 
+7 --> 8 
+8 --> 7 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 5 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 15 [1/1] (1.76ns)   --->   "br label %1" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 15 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 3.25>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "%i_0 = phi i7 [ 0, %0 ], [ %i, %2 ]"   --->   Operation 16 'phi' 'i_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (1.48ns)   --->   "%icmp_ln10 = icmp eq i7 %i_0, -64" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 17 'icmp' 'icmp_ln10' <Predicate = true> <Delay = 1.48> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 64, i64 64, i64 64)"   --->   Operation 18 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (1.87ns)   --->   "%i = add i7 %i_0, 1" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 19 'add' 'i' <Predicate = true> <Delay = 1.87> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "br i1 %icmp_ln10, label %.preheader158.preheader, label %2" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 20 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%zext_ln11 = zext i7 %i_0 to i64" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 21 'zext' 'zext_ln11' <Predicate = (!icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%input_length_histogr = getelementptr [64 x i32]* %input_length_histogram_V, i64 0, i64 %zext_ln11" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 22 'getelementptr' 'input_length_histogr' <Predicate = (!icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 23 [2/2] (3.25ns)   --->   "%input_length_histogr_1 = load i32* %input_length_histogr, align 4" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 23 'load' 'input_length_histogr_1' <Predicate = (!icmp_ln10)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%j_V_2 = alloca i32"   --->   Operation 24 'alloca' 'j_V_2' <Predicate = (icmp_ln10)> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (1.81ns)   --->   "store i32 27, i32* %j_V_2" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 25 'store' <Predicate = (icmp_ln10)> <Delay = 1.81>
+ST_2 : Operation 26 [1/1] (1.76ns)   --->   "br label %.preheader158" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 26 'br' <Predicate = (icmp_ln10)> <Delay = 1.76>
+
+State 3 <SV = 2> <Delay = 6.50>
+ST_3 : Operation 27 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([11 x i8]* @p_str75) nounwind" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 27 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 28 [1/2] (3.25ns)   --->   "%input_length_histogr_1 = load i32* %input_length_histogr, align 4" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 28 'load' 'input_length_histogr_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_3 : Operation 29 [1/1] (0.00ns)   --->   "%output_length_histog = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln11" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 29 'getelementptr' 'output_length_histog' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 30 [1/1] (3.25ns)   --->   "store i32 %input_length_histogr_1, i32* %output_length_histog, align 4" [./hls-src/huffman_truncate_tree.cpp:11]   --->   Operation 30 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "br label %1" [./hls-src/huffman_truncate_tree.cpp:10]   --->   Operation 31 'br' <Predicate = true> <Delay = 0.00>
+
+State 4 <SV = 2> <Delay = 1.82>
+ST_4 : Operation 32 [1/1] (0.00ns)   --->   "%i1_0 = phi i6 [ %i_1, %move_nodes_end ], [ -1, %.preheader158.preheader ]"   --->   Operation 32 'phi' 'i1_0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 33 [1/1] (1.42ns)   --->   "%icmp_ln16 = icmp ugt i6 %i1_0, 27" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 33 'icmp' 'icmp_ln16' <Predicate = true> <Delay = 1.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 34 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 36, i64 36, i64 36)"   --->   Operation 34 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 35 [1/1] (0.00ns)   --->   "br i1 %icmp_ln16, label %move_nodes_begin, label %4" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 35 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 36 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([11 x i8]* @p_str176) nounwind" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 36 'specloopname' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([11 x i8]* @p_str176)" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 37 'specregionbegin' 'tmp' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "%zext_ln19 = zext i6 %i1_0 to i64" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 38 'zext' 'zext_ln19' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 39 [1/1] (0.00ns)   --->   "%output_length_histog_1 = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln19" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 39 'getelementptr' 'output_length_histog_1' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 40 [1/1] (1.82ns)   --->   "%i_1 = add i6 %i1_0, -1" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 40 'add' 'i_1' <Predicate = (icmp_ln16)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 41 [1/1] (0.00ns)   --->   "%zext_ln32 = zext i6 %i_1 to i64" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 41 'zext' 'zext_ln32' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 42 [1/1] (0.00ns)   --->   "%output_length_histog_2 = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln32" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 42 'getelementptr' 'output_length_histog_2' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 43 [1/1] (0.00ns)   --->   "br label %3" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 43 'br' <Predicate = (icmp_ln16)> <Delay = 0.00>
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_truncate_tree.cpp:52]   --->   Operation 44 'ret' <Predicate = (!icmp_ln16)> <Delay = 0.00>
+
+State 5 <SV = 3> <Delay = 3.25>
+ST_5 : Operation 45 [2/2] (3.25ns)   --->   "%output_length_histog_3 = load i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 45 'load' 'output_length_histog_3' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 6 <SV = 4> <Delay = 5.72>
+ST_6 : Operation 46 [1/2] (3.25ns)   --->   "%output_length_histog_3 = load i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 46 'load' 'output_length_histog_3' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_6 : Operation 47 [1/1] (2.47ns)   --->   "%icmp_ln883 = icmp eq i32 %output_length_histog_3, 0" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 47 'icmp' 'icmp_ln883' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 48 [1/1] (0.00ns)   --->   "br i1 %icmp_ln883, label %move_nodes_end, label %reorder_begin" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 48 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 49 [1/1] (0.00ns)   --->   "%j_V_2_load = load i32* %j_V_2" [./hls-src/huffman_truncate_tree.cpp:21]   --->   Operation 49 'load' 'j_V_2_load' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 50 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([8 x i8]* @p_str277) nounwind" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 50 'specloopname' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_1 = call i32 (...)* @_ssdm_op_SpecRegionBegin([8 x i8]* @p_str277)" [./hls-src/huffman_truncate_tree.cpp:19]   --->   Operation 51 'specregionbegin' 'tmp_1' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 3, i32 3, i32 3, [1 x i8]* @p_str378) nounwind" [./hls-src/huffman_truncate_tree.cpp:20]   --->   Operation 52 'speclooptripcount' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 53 [1/1] (2.47ns)   --->   "%icmp_ln879 = icmp eq i32 %j_V_2_load, 27" [./hls-src/huffman_truncate_tree.cpp:21]   --->   Operation 53 'icmp' 'icmp_ln879' <Predicate = (!icmp_ln883)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 54 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879, label %hls_label_0.preheader, label %reorder_end" [./hls-src/huffman_truncate_tree.cpp:21]   --->   Operation 54 'br' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 55 [1/1] (1.76ns)   --->   "br label %hls_label_0" [./hls-src/huffman_truncate_tree.cpp:23]   --->   Operation 55 'br' <Predicate = (!icmp_ln883 & icmp_ln879)> <Delay = 1.76>
+ST_6 : Operation 56 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str176, i32 %tmp)" [./hls-src/huffman_truncate_tree.cpp:39]   --->   Operation 56 'specregionend' 'empty_7' <Predicate = (icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "br label %.preheader158" [./hls-src/huffman_truncate_tree.cpp:16]   --->   Operation 57 'br' <Predicate = (icmp_ln883)> <Delay = 0.00>
+
+State 7 <SV = 5> <Delay = 5.80>
+ST_7 : Operation 58 [1/1] (0.00ns)   --->   "%t_V = phi i32 [ %j_V, %hls_label_0 ], [ 27, %hls_label_0.preheader ]"   --->   Operation 58 'phi' 't_V' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 59 [1/1] (2.55ns)   --->   "%j_V = add i32 %t_V, -1" [./hls-src/huffman_truncate_tree.cpp:25]   --->   Operation 59 'add' 'j_V' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 60 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i32 %j_V to i64" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 60 'zext' 'zext_ln544' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 61 [1/1] (0.00ns)   --->   "%output_length_histog_4 = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 61 'getelementptr' 'output_length_histog_4' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 62 [2/2] (3.25ns)   --->   "%output_length_histog_5 = load i32* %output_length_histog_4, align 4" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 62 'load' 'output_length_histog_5' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 8 <SV = 6> <Delay = 5.72>
+ST_8 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_2 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str479)" [./hls-src/huffman_truncate_tree.cpp:23]   --->   Operation 63 'specregionbegin' 'tmp_2' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_8 : Operation 64 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 1, i32 1, i32 1, [1 x i8]* @p_str378) nounwind" [./hls-src/huffman_truncate_tree.cpp:24]   --->   Operation 64 'speclooptripcount' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_8 : Operation 65 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str479, i32 %tmp_2)" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 65 'specregionend' 'empty' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_8 : Operation 66 [1/2] (3.25ns)   --->   "%output_length_histog_5 = load i32* %output_length_histog_4, align 4" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 66 'load' 'output_length_histog_5' <Predicate = (icmp_ln879)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_8 : Operation 67 [1/1] (2.47ns)   --->   "%icmp_ln879_1 = icmp eq i32 %output_length_histog_5, 0" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 67 'icmp' 'icmp_ln879_1' <Predicate = (icmp_ln879)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 68 [1/1] (0.00ns)   --->   "br i1 %icmp_ln879_1, label %hls_label_0, label %reorder_end.loopexit" [./hls-src/huffman_truncate_tree.cpp:26]   --->   Operation 68 'br' <Predicate = (icmp_ln879)> <Delay = 0.00>
+ST_8 : Operation 69 [1/1] (1.81ns)   --->   "store i32 %j_V, i32* %j_V_2" [./hls-src/huffman_truncate_tree.cpp:25]   --->   Operation 69 'store' <Predicate = (icmp_ln879 & !icmp_ln879_1)> <Delay = 1.81>
+ST_8 : Operation 70 [1/1] (0.00ns)   --->   "br label %reorder_end"   --->   Operation 70 'br' <Predicate = (icmp_ln879 & !icmp_ln879_1)> <Delay = 0.00>
+
+State 9 <SV = 7> <Delay = 5.80>
+ST_9 : Operation 71 [1/1] (0.00ns)   --->   "%t_V_1 = load i32* %j_V_2" [./hls-src/huffman_truncate_tree.cpp:37]   --->   Operation 71 'load' 't_V_1' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 72 [1/1] (0.00ns)   --->   "%zext_ln544_1 = zext i32 %t_V_1 to i64" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 72 'zext' 'zext_ln544_1' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 73 [1/1] (0.00ns)   --->   "%output_length_histog_6 = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln544_1" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 73 'getelementptr' 'output_length_histog_6' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 74 [2/2] (3.25ns)   --->   "%output_length_histog_7 = load i32* %output_length_histog_6, align 4" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 74 'load' 'output_length_histog_7' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_9 : Operation 75 [1/1] (0.00ns)   --->   "%zext_ln215 = zext i32 %t_V_1 to i33" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 75 'zext' 'zext_ln215' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 76 [1/1] (2.55ns)   --->   "%ret_V = add i33 %zext_ln215, 1" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 76 'add' 'ret_V' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 77 [1/1] (0.00ns)   --->   "%zext_ln544_2 = zext i33 %ret_V to i64" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 77 'zext' 'zext_ln544_2' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 78 [1/1] (0.00ns)   --->   "%output_length_histog_8 = getelementptr [64 x i32]* %output_length_histogram1_V, i64 0, i64 %zext_ln544_2" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 78 'getelementptr' 'output_length_histog_8' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 79 [2/2] (3.25ns)   --->   "%output_length_histog_9 = load i32* %output_length_histog_8, align 4" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 79 'load' 'output_length_histog_9' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_9 : Operation 80 [1/1] (2.55ns)   --->   "%j_V_3 = add i32 %t_V_1, 1" [./hls-src/huffman_truncate_tree.cpp:37]   --->   Operation 80 'add' 'j_V_3' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 81 [1/1] (1.81ns)   --->   "store i32 %j_V_3, i32* %j_V_2" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 81 'store' <Predicate = true> <Delay = 1.81>
+
+State 10 <SV = 8> <Delay = 3.25>
+ST_10 : Operation 82 [1/2] (3.25ns)   --->   "%output_length_histog_7 = load i32* %output_length_histog_6, align 4" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 82 'load' 'output_length_histog_7' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_10 : Operation 83 [1/2] (3.25ns)   --->   "%output_length_histog_9 = load i32* %output_length_histog_8, align 4" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 83 'load' 'output_length_histog_9' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 11 <SV = 9> <Delay = 5.80>
+ST_11 : Operation 84 [1/1] (2.55ns)   --->   "%add_ln701 = add i32 %output_length_histog_7, -1" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 84 'add' 'add_ln701' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 85 [1/1] (3.25ns)   --->   "store i32 %add_ln701, i32* %output_length_histog_6, align 4" [./hls-src/huffman_truncate_tree.cpp:30]   --->   Operation 85 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_11 : Operation 86 [1/1] (2.55ns)   --->   "%add_ln700 = add i32 %output_length_histog_9, 2" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 86 'add' 'add_ln700' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 87 [1/1] (3.25ns)   --->   "store i32 %add_ln700, i32* %output_length_histog_8, align 4" [./hls-src/huffman_truncate_tree.cpp:31]   --->   Operation 87 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 12 <SV = 10> <Delay = 3.25>
+ST_12 : Operation 88 [2/2] (3.25ns)   --->   "%output_length_histog_10 = load i32* %output_length_histog_2, align 4" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 88 'load' 'output_length_histog_10' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_12 : Operation 89 [2/2] (3.25ns)   --->   "%output_length_histog_11 = load i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 89 'load' 'output_length_histog_11' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 13 <SV = 11> <Delay = 3.25>
+ST_13 : Operation 90 [1/2] (3.25ns)   --->   "%output_length_histog_10 = load i32* %output_length_histog_2, align 4" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 90 'load' 'output_length_histog_10' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_13 : Operation 91 [1/2] (3.25ns)   --->   "%output_length_histog_11 = load i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 91 'load' 'output_length_histog_11' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+
+State 14 <SV = 12> <Delay = 5.80>
+ST_14 : Operation 92 [1/1] (2.55ns)   --->   "%add_ln700_1 = add i32 %output_length_histog_10, 1" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 92 'add' 'add_ln700_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 93 [1/1] (3.25ns)   --->   "store i32 %add_ln700_1, i32* %output_length_histog_2, align 4" [./hls-src/huffman_truncate_tree.cpp:32]   --->   Operation 93 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_14 : Operation 94 [1/1] (2.55ns)   --->   "%add_ln701_1 = add i32 %output_length_histog_11, -2" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 94 'add' 'add_ln701_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 95 [1/1] (3.25ns)   --->   "store i32 %add_ln701_1, i32* %output_length_histog_1, align 4" [./hls-src/huffman_truncate_tree.cpp:33]   --->   Operation 95 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 64> <RAM>
+ST_14 : Operation 96 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecRegionEnd([8 x i8]* @p_str277, i32 %tmp_1)" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 96 'specregionend' 'empty_6' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 97 [1/1] (0.00ns)   --->   "br label %3" [./hls-src/huffman_truncate_tree.cpp:38]   --->   Operation 97 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_truncate_tree.cpp:10) [5]  (1.77 ns)
+
+ <State 2>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_truncate_tree.cpp:10) [5]  (0 ns)
+	'getelementptr' operation ('input_length_histogr', ./hls-src/huffman_truncate_tree.cpp:11) [13]  (0 ns)
+	'load' operation ('input_length_histogr_1', ./hls-src/huffman_truncate_tree.cpp:11) on array 'input_length_histogram_V' [14]  (3.25 ns)
+
+ <State 3>: 6.51ns
+The critical path consists of the following:
+	'load' operation ('input_length_histogr_1', ./hls-src/huffman_truncate_tree.cpp:11) on array 'input_length_histogram_V' [14]  (3.25 ns)
+	'store' operation ('store_ln11', ./hls-src/huffman_truncate_tree.cpp:11) of variable 'input_length_histogr_1', ./hls-src/huffman_truncate_tree.cpp:11 on array 'output_length_histogram1_V' [16]  (3.25 ns)
+
+ <State 4>: 1.83ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_truncate_tree.cpp:32) [23]  (0 ns)
+	'add' operation ('i', ./hls-src/huffman_truncate_tree.cpp:32) [32]  (1.83 ns)
+
+ <State 5>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_3', ./hls-src/huffman_truncate_tree.cpp:19) on array 'output_length_histogram1_V' [37]  (3.25 ns)
+
+ <State 6>: 5.73ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_3', ./hls-src/huffman_truncate_tree.cpp:19) on array 'output_length_histogram1_V' [37]  (3.25 ns)
+	'icmp' operation ('icmp_ln883', ./hls-src/huffman_truncate_tree.cpp:19) [38]  (2.47 ns)
+
+ <State 7>: 5.81ns
+The critical path consists of the following:
+	'phi' operation ('j.V') with incoming values : ('j.V', ./hls-src/huffman_truncate_tree.cpp:25) [50]  (0 ns)
+	'add' operation ('j.V', ./hls-src/huffman_truncate_tree.cpp:25) [53]  (2.55 ns)
+	'getelementptr' operation ('output_length_histog_4', ./hls-src/huffman_truncate_tree.cpp:26) [56]  (0 ns)
+	'load' operation ('output_length_histog_5', ./hls-src/huffman_truncate_tree.cpp:26) on array 'output_length_histogram1_V' [57]  (3.25 ns)
+
+ <State 8>: 5.73ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_5', ./hls-src/huffman_truncate_tree.cpp:26) on array 'output_length_histogram1_V' [57]  (3.25 ns)
+	'icmp' operation ('icmp_ln879_1', ./hls-src/huffman_truncate_tree.cpp:26) [58]  (2.47 ns)
+
+ <State 9>: 5.81ns
+The critical path consists of the following:
+	'load' operation ('t.V', ./hls-src/huffman_truncate_tree.cpp:37) on local variable 'j.V' [64]  (0 ns)
+	'add' operation ('ret.V', ./hls-src/huffman_truncate_tree.cpp:31) [71]  (2.55 ns)
+	'getelementptr' operation ('output_length_histog_8', ./hls-src/huffman_truncate_tree.cpp:31) [73]  (0 ns)
+	'load' operation ('output_length_histog_9', ./hls-src/huffman_truncate_tree.cpp:31) on array 'output_length_histogram1_V' [74]  (3.25 ns)
+
+ <State 10>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_7', ./hls-src/huffman_truncate_tree.cpp:30) on array 'output_length_histogram1_V' [67]  (3.25 ns)
+
+ <State 11>: 5.81ns
+The critical path consists of the following:
+	'add' operation ('add_ln701', ./hls-src/huffman_truncate_tree.cpp:30) [68]  (2.55 ns)
+	'store' operation ('store_ln30', ./hls-src/huffman_truncate_tree.cpp:30) of variable 'add_ln701', ./hls-src/huffman_truncate_tree.cpp:30 on array 'output_length_histogram1_V' [69]  (3.25 ns)
+
+ <State 12>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_10', ./hls-src/huffman_truncate_tree.cpp:32) on array 'output_length_histogram1_V' [77]  (3.25 ns)
+
+ <State 13>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('output_length_histog_10', ./hls-src/huffman_truncate_tree.cpp:32) on array 'output_length_histogram1_V' [77]  (3.25 ns)
+
+ <State 14>: 5.81ns
+The critical path consists of the following:
+	'add' operation ('add_ln700_1', ./hls-src/huffman_truncate_tree.cpp:32) [78]  (2.55 ns)
+	'store' operation ('store_ln32', ./hls-src/huffman_truncate_tree.cpp:32) of variable 'add_ln700_1', ./hls-src/huffman_truncate_tree.cpp:32 on array 'output_length_histogram1_V' [79]  (3.25 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -6451,7 +6452,8 @@ static unsigned int bit_reverse32(unsigned int input) {
  }
  return rev;
 }
-# 2 "./hls-src/huffman_encoding.cpp" 2
+# 1 "./hls-src/huffman_encoding.cpp" 2
+
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 1 3
 # 15 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 3
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\_mingw.h" 1 3
@@ -7184,14 +7186,17 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
 
 
 }
-# 3 "./hls-src/huffman_encoding.cpp" 2
+# 2 "./hls-src/huffman_encoding.cpp" 2
+
 
 void huffman_encoding(
                Symbol symbol_histogram[INPUT_SYMBOL_SIZE],
                PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
                int *num_nonzero_symbols) {_ssdm_SpecArrayDimSize(symbol_histogram, 256);_ssdm_SpecArrayDimSize(encoding, 256);
-# 23 "./hls-src/huffman_encoding.cpp"
-  Symbol filtered[INPUT_SYMBOL_SIZE];
+# 21 "./hls-src/huffman_encoding.cpp"
+#pragma HLS DATAFLOW
+
+ Symbol filtered[INPUT_SYMBOL_SIZE];
   Symbol sorted[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy1[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy2[INPUT_SYMBOL_SIZE];
@@ -7211,9 +7216,6 @@ void huffman_encoding(
   int previous_frequency = -1;
 copy_sorted:
   for(int i = 0; i < n; i++) {
-#pragma HLS LOOP_TRIPCOUNT min=256 max=256 avg=256
-# 42 "./hls-src/huffman_encoding.cpp"
-
     sorted_copy1[i].value = sorted[i].value;
     sorted_copy1[i].frequency = sorted[i].frequency;
     sorted_copy2[i].value = sorted[i].value;

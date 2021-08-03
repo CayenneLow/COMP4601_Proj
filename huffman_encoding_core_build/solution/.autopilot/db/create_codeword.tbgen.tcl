@@ -23,12 +23,13 @@ set C_modelArgMapList {[
  	{ "Name" : "codeword_length_histogram_V", "interface" : "memory", "bitwidth" : 32, "direction" : "READONLY"} , 
  	{ "Name" : "encoding_V", "interface" : "memory", "bitwidth" : 32, "direction" : "WRITEONLY"} ]}
 # RTL Port declarations: 
-set portNum 16
+set portNum 17
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst sc_in sc_logic 1 reset -1 active_high_sync } 
 	{ ap_start sc_in sc_logic 1 start -1 } 
 	{ ap_done sc_out sc_logic 1 predone -1 } 
+	{ ap_continue sc_in sc_logic 1 continue -1 } 
 	{ ap_idle sc_out sc_logic 1 done -1 } 
 	{ ap_ready sc_out sc_logic 1 ready -1 } 
 	{ symbol_bits_V_address0 sc_out sc_lv 8 signal 0 } 
@@ -47,6 +48,7 @@ set NewPortList {[
  	{ "name": "ap_rst", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "reset", "bundle":{"name": "ap_rst", "role": "default" }} , 
  	{ "name": "ap_start", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "start", "bundle":{"name": "ap_start", "role": "default" }} , 
  	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
+ 	{ "name": "ap_continue", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "continue", "bundle":{"name": "ap_continue", "role": "default" }} , 
  	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }} , 
  	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
  	{ "name": "symbol_bits_V_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "symbol_bits_V", "role": "address0" }} , 
@@ -64,34 +66,34 @@ set RtlHierarchyInfo {[
 	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1"],
 		"CDFG" : "create_codeword",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "822", "EstimateLatencyMax" : "1078",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1080", "EstimateLatencyMax" : "1080",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "symbol_bits_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "codeword_length_histogram_V", "Type" : "Memory", "Direction" : "I"},
+			{"Name" : "symbol_bits_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "0", "DependentChan" : "0"},
+			{"Name" : "codeword_length_histogram_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "0", "DependentChan" : "0"},
 			{"Name" : "encoding_V", "Type" : "Memory", "Direction" : "O"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.first_codeword_V_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	create_codeword {
-		symbol_bits_V {Type I LastRead 2 FirstWrite -1}
+		symbol_bits_V {Type I LastRead 3 FirstWrite -1}
 		codeword_length_histogram_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 3}}}
+		encoding_V {Type O LastRead -1 FirstWrite 4}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "822", "Max" : "1078"}
-	, {"Name" : "Interval", "Min" : "822", "Max" : "1078"}
+	{"Name" : "Latency", "Min" : "1080", "Max" : "1080"}
+	, {"Name" : "Interval", "Min" : "1080", "Max" : "1080"}
 ]}
 
 set PipelineEnableSignalInfo {[

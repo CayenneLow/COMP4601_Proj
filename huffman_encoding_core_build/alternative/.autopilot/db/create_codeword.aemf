@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1627787462119">
+  <ports id="1" name="symbol_bits_V" type="PortType" originalName="symbol_bits.V" coreName="RAM" bitwidth="5" iftype="IfTypeRegister" arraysize="256">
+    <dataOutputObjs>load</dataOutputObjs>
+    <dataOutputObjs>load</dataOutputObjs>
+  </ports>
+  <ports id="2" name="encoding_V" type="PortType" originalName="encoding.V" coreName="RAM" bitwidth="32" direction="DirOut" iftype="IfTypeRegister" arraysize="256"/>
+  <edges id="118" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="119" source_obj="//@blocks.1/@node_objs.2" sink_obj="//@blocks.1/@node_objs.0" is_back_edge="1"/>
+  <edges id="120" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.1/@node_objs.0" is_back_edge="1"/>
+  <edges id="123" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@blocks.1/@node_objs.0"/>
+  <edges id="124" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.1/@node_objs.1"/>
+  <edges id="127" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.1/@node_objs.2"/>
+  <edges id="130" source_obj="//@blocks.1/@node_objs.1" sink_obj="//@blocks.1/@node_objs.3"/>
+  <edges id="131" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.1/@node_objs.3"/>
+  <edges id="132" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.1/@node_objs.3"/>
+  <edges id="133" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.3/@node_objs.0"/>
+  <edges id="142" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.2/@node_objs.1"/>
+  <edges id="143" source_obj="//@blocks.4/@node_objs.2" sink_obj="//@blocks.4/@node_objs.0" is_back_edge="1"/>
+  <edges id="144" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.4/@node_objs.0" is_back_edge="1"/>
+  <edges id="147" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.4/@node_objs.0"/>
+  <edges id="148" source_obj="//@blocks.4/@node_objs.0" sink_obj="//@blocks.4/@node_objs.1"/>
+  <edges id="151" source_obj="//@blocks.4/@node_objs.0" sink_obj="//@blocks.4/@node_objs.2"/>
+  <edges id="154" source_obj="//@blocks.4/@node_objs.1" sink_obj="//@blocks.4/@node_objs.3"/>
+  <edges id="155" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.4/@node_objs.3"/>
+  <edges id="156" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.4/@node_objs.3"/>
+  <edges id="167" source_obj="//@blocks.5/@node_objs.1" sink_obj="//@blocks.5/@node_objs.2"/>
+  <edges id="170" source_obj="//@blocks.5/@node_objs.2" sink_obj="//@blocks.5/@node_objs.3"/>
+  <edges id="172" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.5/@node_objs.4"/>
+  <edges id="179" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.6/@node_objs.1"/>
+  <edges id="181" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0"/>
+  <edges id="182" source_obj="//@regions.0/@basic_blocks.1/@node_objs.5" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="183" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="184" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1"/>
+  <edges id="186" source_obj="//@regions.0/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="187" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="188" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="189" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.0" sink_obj="//@blocks.7/@node_objs.0"/>
+  <edges id="193" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.0"/>
+  <edges id="218" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.5"/>
+  <edges id="219" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.6"/>
+  <edges id="220" source_obj="//@regions.1/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="221" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.4" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="223" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.0"/>
+  <edges id="224" source_obj="//@regions.1/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.1"/>
+  <edges id="226" source_obj="//@regions.1/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.2"/>
+  <edges id="228" source_obj="//@regions.1/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.3"/>
+  <edges id="229" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.1" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.3"/>
+  <edges id="230" edge_type="CtrlEdge" source_obj="//@blocks.8" sink_obj="//@regions.1/@basic_blocks.0/@node_objs.3"/>
+  <edges id="236" source_obj="//@regions.1/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.1"/>
+  <edges id="238" source_obj="//@regions.1/@basic_blocks.1/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.2"/>
+  <edges id="239" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.2" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.2"/>
+  <edges id="240" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.3" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.2"/>
+  <edges id="288" source_obj="//@regions.1/@basic_blocks.2/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.7"/>
+  <edges id="289" source_obj="//@regions.1/@basic_blocks.2/@node_objs.7" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.8"/>
+  <edges id="291" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.4" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.9"/>
+  <edges id="297" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.4" sink_obj="//@regions.1/@basic_blocks.3/@node_objs.1"/>
+  <edges id="298" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.0" sink_obj="//@regions.1/@basic_blocks.4/@node_objs.0"/>
+  <edges id="355" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@blocks.1"/>
+  <edges id="356" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.3"/>
+  <edges id="357" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.2"/>
+  <edges id="358" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.1" is_back_edge="1"/>
+  <edges id="359" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.4"/>
+  <edges id="360" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.6"/>
+  <edges id="361" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.5"/>
+  <edges id="362" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.4" is_back_edge="1"/>
+  <edges id="363" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@regions.0/@basic_blocks.0"/>
+  <edges id="364" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.7"/>
+  <edges id="365" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1"/>
+  <edges id="366" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0" is_back_edge="1"/>
+  <edges id="367" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@regions.1/@basic_blocks.0"/>
+  <edges id="368" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.0" sink_obj="//@blocks.8"/>
+  <edges id="369" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.0" sink_obj="//@regions.1/@basic_blocks.1"/>
+  <edges id="370" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.1" sink_obj="//@regions.1/@basic_blocks.3"/>
+  <edges id="371" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.1" sink_obj="//@regions.1/@basic_blocks.2"/>
+  <edges id="372" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.2" sink_obj="//@regions.1/@basic_blocks.4"/>
+  <edges id="373" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.3" sink_obj="//@regions.1/@basic_blocks.4"/>
+  <edges id="374" edge_type="CtrlEdge" source_obj="//@regions.1/@basic_blocks.4" sink_obj="//@regions.1/@basic_blocks.0" is_back_edge="1"/>
+  <edges id="2147483647" source_obj="//@regions.0/@basic_blocks.1/@node_objs.4" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1" is_back_edge="1"/>
+  <edges id="-1" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.2/@node_objs.0"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.2/@node_objs.0"/>
+  <edges id="-1" source_obj="//@blocks.4/@node_objs.0" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="-1" source_obj="//@ports.0" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="-1" source_obj="//@blocks.5/@node_objs.0" sink_obj="//@blocks.5/@node_objs.1"/>
+  <edges id="-1" source_obj="//@blocks.5/@node_objs.0" sink_obj="//@blocks.5/@node_objs.3"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.5/@node_objs.1"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.5/@node_objs.3"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.6/@node_objs.0"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.2"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.2"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.1/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.1/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.3"/>
+  <edges id="-1" source_obj="//@regions.0/@basic_blocks.1/@node_objs.3" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.4"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.0"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.6"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.3/@node_objs.0"/>
+  <edges id="-1" source_obj="//@ports.0" sink_obj="//@regions.1/@basic_blocks.1/@node_objs.0"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.0"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.8"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.0"/>
+  <edges id="-1" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.8"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.3"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.4"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.1"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.5"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.2"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.2" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.3"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.1" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.4"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.3" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.5"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.4" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.5"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.2/@node_objs.5" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.6"/>
+  <edges id="-1" source_obj="//@regions.1/@basic_blocks.1/@node_objs.0" sink_obj="//@regions.1/@basic_blocks.2/@node_objs.6"/>
+  <blocks id="6" name=".preheader355.preheader" type="BlockType">
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>.preheader355</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="3" name="codeword_length_hist" lineNumber="12" originalName="codeword_length_histogram.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="codeword_length_hist_U" coreName="RAM" contextFuncName="create_codeword" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="1" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="12" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="4" name="first_codeword_V" lineNumber="22" originalName="first_codeword.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="first_codeword_V_U" coreName="RAM" contextFuncName="create_codeword" bitwidth="27" opcode="alloca" m_display="0" m_topoIndex="2" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="22" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="5" name="_ln13" lineNumber="13" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" m_display="0" m_delay="1.76" m_topoIndex="3" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="13" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>.preheader355</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>12</validLinenumbers>
+      <validLinenumbers>22</validLinenumbers>
+      <validLinenumbers>13</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="12" name=".preheader355" type="BlockType">
+    <controlInputObjs>.preheader355.preheader</controlInputObjs>
+    <controlInputObjs>block_17</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>.preheader354.preheader</controlOutputObjs>
+    <controlOutputObjs>block_17</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="7" name="i_0" originalName="i" bitwidth="5" opcode="phi" nodeLabel="1.0" m_display="0" m_topoIndex="4" m_clusterGroupNumber="-1">
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <controlInputObjs>block_17</controlInputObjs>
+      <controlInputObjs>.preheader355.preheader</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="8" name="icmp_ln13" lineNumber="13" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="icmp_ln13_fu_228_p2" contextFuncName="create_codeword" bitwidth="1" opcode="icmp" nodeLabel="1.0" m_display="0" m_delay="1.36" m_topoIndex="5" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="13" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="10" name="i" lineNumber="13" originalName="i" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="i_fu_234_p2" contextFuncName="create_codeword" bitwidth="5" opcode="add" nodeLabel="1.0" m_display="0" m_delay="1.78" m_topoIndex="6" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="13" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="11" name="_ln13" lineNumber="13" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="1.0" m_display="0" m_topoIndex="7" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="13" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>block_17</controlInputObjs>
+      <controlInputObjs>.preheader354.preheader</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>13</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="17" name="block_17" type="BlockType">
+    <controlInputObjs>.preheader355</controlInputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>.preheader355</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="15" name="codeword_length_hist_1_write_ln14" lineNumber="14" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="1.0" m_display="0" m_delay="2.32" m_topoIndex="10" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="14" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="16" name="_ln13" lineNumber="13" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="1.0" m_display="0" m_topoIndex="11" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="13" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>.preheader355</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>14</validLinenumbers>
+      <validLinenumbers>13</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="19" name=".preheader354.preheader" type="BlockType">
+    <controlInputObjs>.preheader355</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>.preheader354</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="18" name="_ln17" lineNumber="17" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="1.0" m_display="0" m_delay="1.76" m_topoIndex="12" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="17" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>.preheader354</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>17</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="25" name=".preheader354" type="BlockType">
+    <controlInputObjs>.preheader354.preheader</controlInputObjs>
+    <controlInputObjs>block_35</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>arrayctor.loop2.preheader</controlOutputObjs>
+    <controlOutputObjs>block_35</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="20" name="i1_0" originalName="i" bitwidth="9" opcode="phi" nodeLabel="2.0" m_display="0" m_topoIndex="13" m_clusterGroupNumber="-1">
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <controlInputObjs>block_35</controlInputObjs>
+      <controlInputObjs>.preheader354.preheader</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="21" name="icmp_ln17" lineNumber="17" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="icmp_ln17_fu_245_p2" contextFuncName="create_codeword" bitwidth="1" opcode="icmp" nodeLabel="2.0" m_display="0" m_delay="1.66" m_topoIndex="14" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="17" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="23" name="i_3" lineNumber="17" originalName="i" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="i_3_fu_251_p2" contextFuncName="create_codeword" bitwidth="9" opcode="add" nodeLabel="2.0" m_display="0" m_delay="1.82" m_topoIndex="15" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="17" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="24" name="_ln17" lineNumber="17" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="2.0" m_display="0" m_topoIndex="16" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="17" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>block_35</controlInputObjs>
+      <controlInputObjs>arrayctor.loop2.preheader</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>17</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="35" name="block_35" type="BlockType">
+    <controlInputObjs>.preheader354</controlInputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>.preheader354</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="28" name="symbol_bits_V_load" lineNumber="18" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="5" opcode="load" nodeLabel="2.0" nodeLatency="1" m_display="0" m_delay="3.25" m_topoIndex="19" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="18" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>symbol_bits_V</dataInputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="31" name="t_V" lineNumber="19" originalName="t.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="32" opcode="load" nodeLabel="3.0" nodeLatency="1" m_display="0" m_delay="2.32" m_topoIndex="25" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="19" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="32" name="add_ln700" lineNumber="19" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="add_ln700_fu_267_p2" contextFuncName="create_codeword" bitwidth="32" opcode="add" nodeLabel="4.0" m_display="0" m_delay="2.55" m_topoIndex="26" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="19" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="33" name="codeword_length_hist_2_write_ln19" lineNumber="19" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="4.0" m_display="0" m_delay="2.32" m_topoIndex="27" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="19" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="34" name="_ln17" lineNumber="17" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="4.0" m_display="0" m_topoIndex="28" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="17" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>.preheader354</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>18</validLinenumbers>
+      <validLinenumbers>19</validLinenumbers>
+      <validLinenumbers>17</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="39" name="arrayctor.loop2.preheader" type="BlockType">
+    <controlInputObjs>.preheader354</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>block_44</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="37" name="first_codeword_V_add_write_ln24" lineNumber="24" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="2.0" m_display="0" m_delay="2.32" m_topoIndex="21" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="24" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="38" name="_ln26" lineNumber="26" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="2.0" m_display="0" m_delay="1.76" m_topoIndex="22" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="26" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>block_44</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>24</validLinenumbers>
+      <validLinenumbers>26</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="66" name=".preheader.preheader" type="BlockType">
+    <controlInputObjs>block_44</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>.preheader</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="65" name="_ln42" lineNumber="42" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="7.0" m_display="0" m_delay="1.76" m_topoIndex="47" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="42" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+      <controlInputObjs>.preheader</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>42</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="114" name="block_114" type="BlockType">
+    <controlInputObjs>.preheader</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="113" name="_ln59" lineNumber="59" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="ret" nodeLabel="12.0" m_display="0" m_topoIndex="84" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="59" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+    </node_objs>
+    <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+      <validLinenumbers>59</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <regions anchor_node="-1" region_type="8" interval="2" typeName="Pipeline" id="445" pipe_depth="2" RegionName="first_codewords">
+    <basic_blocks id="44" name="block_44" type="BlockType">
+      <controlInputObjs>arrayctor.loop2.preheader</controlInputObjs>
+      <controlInputObjs>first_codewords</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>.preheader.preheader</controlOutputObjs>
+      <controlOutputObjs>first_codewords</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="40" name="i3_0" originalName="i" bitwidth="5" opcode="phi" nodeLabel="5.0" m_display="0" m_topoIndex="29" m_clusterGroupNumber="-1">
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <controlInputObjs>arrayctor.loop2.preheader</controlInputObjs>
+        <controlInputObjs>first_codewords</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="41" name="icmp_ln26" lineNumber="26" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="icmp_ln26_fu_274_p2" contextFuncName="create_codeword" bitwidth="1" opcode="icmp" nodeLabel="5.0" m_display="0" m_delay="1.36" m_topoIndex="30" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="26" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="43" name="_ln26" lineNumber="26" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="5.0" m_display="0" m_topoIndex="31" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="26" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>first_codewords</controlInputObjs>
+        <controlInputObjs>.preheader.preheader</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>26</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="64" name="first_codewords" type="BlockType">
+      <controlInputObjs>block_44</controlInputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>block_44</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="49" name="add_ln28" lineNumber="28" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="add_ln28_fu_280_p2" contextFuncName="create_codeword" bitwidth="5" opcode="add" nodeLabel="5.0" m_display="0" m_delay="1.78" m_topoIndex="32" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="28" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="52" name="first_codeword_V_loa" lineNumber="28" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="27" opcode="load" nodeLabel="5.0" nodeLatency="1" m_display="1" m_delay="2.32" m_isLCDNode="true" m_isStartOfPath="true" m_topoIndex="35" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="28" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>store</dataInputObjs>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="54" name="codeword_length_hist_4" lineNumber="28" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="32" opcode="load" nodeLabel="5.0" nodeLatency="1" m_display="0" m_delay="2.32" m_topoIndex="37" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="28" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="57" name="add_ln1503" lineNumber="28" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="add_ln1503_fu_305_p2" contextFuncName="create_codeword" bitwidth="26" opcode="add" nodeLabel="6.0" m_display="1" m_delay="2.37" m_isLCDNode="true" m_topoIndex="41" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="28" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="60" name="first_codeword_V_add_2_write_ln28" lineNumber="28" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="6.0" m_display="1" m_delay="2.32" m_isLCDNode="true" m_topoIndex="44" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="28" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="62" name="i_4" lineNumber="26" originalName="i" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="i_4_fu_320_p2" contextFuncName="create_codeword" bitwidth="5" opcode="add" nodeLabel="6.0" m_display="0" m_delay="1.78" m_topoIndex="45" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="26" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="63" name="_ln26" lineNumber="26" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="6.0" m_display="0" m_topoIndex="46" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="26" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <controlInputObjs>block_44</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>28</validLinenumbers>
+        <validLinenumbers>26</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+  </regions>
+  <regions anchor_node="-1" region_type="8" interval="4" typeName="Pipeline" id="446" pipe_depth="4" RegionName="assign_codewords">
+    <basic_blocks id="72" name=".preheader" type="BlockType">
+      <controlInputObjs>.preheader.preheader</controlInputObjs>
+      <controlInputObjs>assign_codewords_end</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>block_114</controlOutputObjs>
+      <controlOutputObjs>assign_codewords_begin</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="67" name="i4_0" originalName="i" bitwidth="9" opcode="phi" nodeLabel="8.0" m_display="0" m_topoIndex="48" m_clusterGroupNumber="-1">
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <controlInputObjs>assign_codewords_end</controlInputObjs>
+        <controlInputObjs>.preheader.preheader</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="68" name="icmp_ln42" lineNumber="42" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="icmp_ln42_fu_326_p2" contextFuncName="create_codeword" bitwidth="1" opcode="icmp" nodeLabel="8.0" m_display="0" m_delay="1.66" m_topoIndex="49" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="42" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="70" name="i_5" lineNumber="42" originalName="i" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="i_5_fu_332_p2" contextFuncName="create_codeword" bitwidth="9" opcode="add" nodeLabel="8.0" m_display="0" m_delay="1.82" m_topoIndex="50" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="42" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="71" name="_ln42" lineNumber="42" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="8.0" m_display="0" m_topoIndex="51" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="42" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>assign_codewords_begin</controlInputObjs>
+        <controlInputObjs>block_114</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>42</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="81" name="assign_codewords_begin" type="BlockType">
+      <controlInputObjs>.preheader</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>block_109</controlOutputObjs>
+      <controlOutputObjs>_ifconv</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="78" name="length_V" lineNumber="44" originalName="length.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="5" opcode="load" nodeLabel="8.0" nodeLatency="1" m_display="0" m_delay="3.25" m_topoIndex="54" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="44" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataInputObjs>symbol_bits_V</dataInputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <dataOutputObjs>load</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <dataOutputObjs>sub</dataOutputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="79" name="icmp_ln883" lineNumber="47" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="icmp_ln883_fu_343_p2" contextFuncName="create_codeword" bitwidth="1" opcode="icmp" nodeLabel="9.0" m_display="0" m_delay="1.36" m_topoIndex="55" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="47" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="80" name="_ln47" lineNumber="47" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="9.0" m_display="0" m_topoIndex="56" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="47" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>_ifconv</controlInputObjs>
+        <controlInputObjs>block_109</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>44</validLinenumbers>
+        <validLinenumbers>47</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="105" name="_ifconv" type="BlockType">
+      <controlInputObjs>assign_codewords_begin</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>assign_codewords_end</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="84" name="out_reversed_V_1" lineNumber="49" originalName="out_reversed.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" bitwidth="27" opcode="load" nodeLabel="9.0" nodeLatency="1" m_display="0" m_delay="2.32" m_topoIndex="59" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="49" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>shl</dataOutputObjs>
+        <dataOutputObjs>lshr</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="87" name="ret_V" lineNumber="51" originalName="ret.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="ret_V_fu_367_p2" contextFuncName="create_codeword" bitwidth="6" opcode="sub" nodeLabel="10.0" m_display="0" m_delay="1.82" m_topoIndex="65" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="51" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+        <dataOutputObjs>sub</dataOutputObjs>
+        <dataOutputObjs>lshr</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="90" name="sub_ln556" lineNumber="51" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="sub_ln556_fu_385_p2" contextFuncName="create_codeword" bitwidth="3" opcode="sub" nodeLabel="10.0" m_display="0" m_delay="1.65" m_topoIndex="68" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="51" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>sub</dataInputObjs>
+        <dataOutputObjs>shl</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="92" name="r_V" lineNumber="51" originalName="r.V" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="r_V_fu_395_p2" contextFuncName="create_codeword" bitwidth="27" opcode="shl" nodeLabel="10.0" m_display="0" m_topoIndex="70" m_clusterGroupNumber="1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="51" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataInputObjs>sub</dataInputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="94" name="lshr_ln808" lineNumber="51" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="lshr_ln808_fu_405_p2" contextFuncName="create_codeword" bitwidth="27" opcode="lshr" nodeLabel="10.0" m_display="0" m_topoIndex="72" m_clusterGroupNumber="1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="51" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataInputObjs>sub</dataInputObjs>
+        <dataOutputObjs>select</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="97" name="select_ln796" lineNumber="51" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="select_ln796_fu_419_p3" contextFuncName="create_codeword" bitwidth="22" opcode="select" nodeLabel="10.0" m_display="0" m_delay="4.28" m_topoIndex="75" m_clusterGroupNumber="1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="51" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>sub</dataInputObjs>
+        <dataInputObjs>shl</dataInputObjs>
+        <dataInputObjs>lshr</dataInputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="101" name="encoding_V_addr_1_write_ln53" lineNumber="53" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="11.0" m_display="0" m_delay="3.25" m_topoIndex="81" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="53" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataInputObjs>select</dataInputObjs>
+        <dataInputObjs>load</dataInputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="102" name="add_ln700_3" lineNumber="54" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." rtlName="add_ln700_3_fu_427_p2" contextFuncName="create_codeword" bitwidth="27" opcode="add" nodeLabel="10.0" m_display="0" m_delay="2.4" m_topoIndex="76" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="54" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>load</dataInputObjs>
+        <dataOutputObjs>store</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="103" name="first_codeword_V_add_3_write_ln54" lineNumber="54" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="10.0" m_display="0" m_delay="2.32" m_topoIndex="77" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="54" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataInputObjs>load</dataInputObjs>
+        <dataInputObjs>alloca</dataInputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="104" name="_ln55" lineNumber="55" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="11.0" m_display="0" m_topoIndex="82" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="55" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <controlInputObjs>assign_codewords_end</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>49</validLinenumbers>
+        <validLinenumbers>51</validLinenumbers>
+        <validLinenumbers>53</validLinenumbers>
+        <validLinenumbers>54</validLinenumbers>
+        <validLinenumbers>55</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="109" name="block_109" type="BlockType">
+      <controlInputObjs>assign_codewords_begin</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>assign_codewords_end</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="107" name="encoding_V_addr_write_ln56" lineNumber="56" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="store" nodeLabel="9.0" m_display="0" m_delay="3.25" m_topoIndex="61" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="56" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="108" name="_ln0" opcode="br" nodeLabel="9.0" m_display="0" m_topoIndex="62" m_clusterGroupNumber="-1">
+        <controlInputObjs>assign_codewords_end</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>56</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="112" name="assign_codewords_end" type="BlockType">
+      <controlInputObjs>_ifconv</controlInputObjs>
+      <controlInputObjs>block_109</controlInputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>.preheader</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="111" name="_ln42" lineNumber="42" fileName="./hls-src/huffman_create_codeword.cpp" fileDirectory=".." contextFuncName="create_codeword" opcode="br" nodeLabel="11.0" m_display="0" m_topoIndex="83" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="./hls-src/huffman_create_codeword.cpp" linenumber="42" fileDirectory="D:\UNSW\21T2\COMP4601\Project" functionName="create_codeword"/>
+        <controlInputObjs>.preheader</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="./hls-src/huffman_create_codeword.cpp">
+        <validLinenumbers>42</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+  </regions>
+  <ScheduleInfo time="0"/>
+  <ScheduleInfo time="1"/>
+  <ScheduleInfo time="2"/>
+  <ScheduleInfo time="3"/>
+  <ScheduleInfo time="4"/>
+  <ScheduleInfo time="5"/>
+  <ScheduleInfo time="6"/>
+  <ScheduleInfo time="7"/>
+  <ScheduleInfo time="8"/>
+  <ScheduleInfo time="9"/>
+  <ScheduleInfo time="10"/>
+  <ScheduleInfo time="11"/>
+  <ScheduleInfo time="12"/>
+  <regnodes realName="codeword_length_hist_2_reg_467">
+    <nodeIds>30</nodeIds>
+  </regnodes>
+  <regnodes realName="symbol_bits_V_addr_1_reg_505">
+    <nodeIds>77</nodeIds>
+  </regnodes>
+  <regnodes realName="i3_0_reg_205">
+    <nodeIds>40</nodeIds>
+  </regnodes>
+  <regnodes realName="first_codeword_V_add_1_reg_475">
+    <nodeIds>51</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln44_reg_499">
+    <nodeIds>76</nodeIds>
+  </regnodes>
+  <regnodes realName="i1_0_reg_194">
+    <nodeIds>20</nodeIds>
+  </regnodes>
+  <regnodes realName="i_5_reg_494">
+    <nodeIds>70</nodeIds>
+  </regnodes>
+  <regnodes realName="i4_0_reg_217">
+    <nodeIds>67</nodeIds>
+  </regnodes>
+  <regnodes realName="length_V_reg_510">
+    <nodeIds>78</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln42_reg_490">
+    <nodeIds>68</nodeIds>
+  </regnodes>
+  <regnodes realName="symbol_bits_V_addr_reg_462">
+    <nodeIds>27</nodeIds>
+  </regnodes>
+  <regnodes realName="i_reg_448">
+    <nodeIds>10</nodeIds>
+  </regnodes>
+  <regnodes realName="select_ln796_reg_525">
+    <nodeIds>97</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln883_reg_516">
+    <nodeIds>79</nodeIds>
+  </regnodes>
+  <regnodes realName="i_0_reg_183">
+    <nodeIds>7</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln17_reg_453">
+    <nodeIds>21</nodeIds>
+  </regnodes>
+  <regnodes realName="codeword_length_hist_3_reg_480">
+    <nodeIds>53</nodeIds>
+  </regnodes>
+  <regnodes realName="i_3_reg_457">
+    <nodeIds>23</nodeIds>
+  </regnodes>
+  <regnodes realName="i_4_reg_485">
+    <nodeIds>62</nodeIds>
+  </regnodes>
+  <regnodes realName="first_codeword_V_add_3_reg_520">
+    <nodeIds>83</nodeIds>
+  </regnodes>
+  <expressionNodes realName="tmp_2_fu_434">
+    <nodeIds>98</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="p_Result_1_fu_373">
+    <nodeIds>88</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln1503_1_fu_301">
+    <nodeIds>56</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="first_codeword_V_add_3_gep_fu_154">
+    <nodeIds>83</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln209_fu_440">
+    <nodeIds>99</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln42_fu_326">
+    <nodeIds>68</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="shl_ln_fu_311">
+    <nodeIds>58</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="r_V_fu_395">
+    <nodeIds>92</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln883_fu_343">
+    <nodeIds>79</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln808_fu_401">
+    <nodeIds>93</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln14_fu_240">
+    <nodeIds>13</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="encoding_V_addr_1_gep_fu_175">
+    <nodeIds>100</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln556_fu_391">
+    <nodeIds>91</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="encoding_V_addr_gep_fu_161">
+    <nodeIds>106</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_4_fu_320">
+    <nodeIds>62</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="symbol_bits_V_addr_gep_fu_91">
+    <nodeIds>27</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln790_fu_381">
+    <nodeIds>89</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i3_0_phi_fu_209">
+    <nodeIds>40</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln700_3_fu_427">
+    <nodeIds>102</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln18_fu_257">
+    <nodeIds>26</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="codeword_length_hist_1_gep_fu_78">
+    <nodeIds>14</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i1_0_phi_fu_198">
+    <nodeIds>20</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_0_phi_fu_187">
+    <nodeIds>7</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="select_ln796_fu_419">
+    <nodeIds>97</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln28_fu_292">
+    <nodeIds>48</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln17_fu_245">
+    <nodeIds>21</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="first_codeword_V_add_1_gep_fu_125">
+    <nodeIds>51</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="first_codeword_V_alloca_fu_74">
+    <nodeIds>4</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln700_fu_267">
+    <nodeIds>32</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln796_1_fu_415">
+    <nodeIds>96</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="codeword_length_hist_2_gep_fu_118">
+    <nodeIds>30</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln796_fu_411">
+    <nodeIds>95</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln544_fu_349">
+    <nodeIds>82</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_fu_234">
+    <nodeIds>10</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="p_Result_s_fu_354">
+    <nodeIds>85</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="codeword_length_hist_3_gep_fu_132">
+    <nodeIds>53</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln28_fu_280">
+    <nodeIds>49</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln28_1_fu_286">
+    <nodeIds>50</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="first_codeword_V_add_gep_fu_104">
+    <nodeIds>36</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln1503_fu_297">
+    <nodeIds>55</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln26_fu_274">
+    <nodeIds>41</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="ret_V_fu_367">
+    <nodeIds>87</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="first_codeword_V_add_2_gep_fu_139">
+    <nodeIds>59</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_fu_262">
+    <nodeIds>29</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i4_0_phi_fu_221">
+    <nodeIds>67</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="sub_ln556_fu_385">
+    <nodeIds>90</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln44_fu_338">
+    <nodeIds>76</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="symbol_bits_V_addr_1_gep_fu_146">
+    <nodeIds>77</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln13_fu_228">
+    <nodeIds>8</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="lshr_ln808_fu_405">
+    <nodeIds>94</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="codeword_length_hist_alloca_fu_70">
+    <nodeIds>3</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_3_fu_251">
+    <nodeIds>23</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln1503_fu_305">
+    <nodeIds>57</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln215_fu_364">
+    <nodeIds>86</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_5_fu_332">
+    <nodeIds>70</nodeIds>
+  </expressionNodes>
+  <memoryPorts dataString="codeword_length_hist">
+    <nodeIds>15</nodeIds>
+    <nodeIds>31</nodeIds>
+    <nodeIds>33</nodeIds>
+    <nodeIds>54</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="encoding_V">
+    <nodeIds>107</nodeIds>
+    <nodeIds>101</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="first_codeword_V">
+    <nodeIds>37</nodeIds>
+    <nodeIds>52</nodeIds>
+    <nodeIds>60</nodeIds>
+    <nodeIds>84</nodeIds>
+    <nodeIds>103</nodeIds>
+  </memoryPorts>
+  <memoryPorts dataString="symbol_bits_V">
+    <nodeIds>28</nodeIds>
+    <nodeIds>78</nodeIds>
+  </memoryPorts>
+  <ioPorts name="encoding_V(p0)">
+    <contents name="store">
+      <nodeIds>107</nodeIds>
+      <nodeIds>101</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="symbol_bits_V(p0)">
+    <contents name="load">
+      <nodeIds>28</nodeIds>
+      <nodeIds>78</nodeIds>
+    </contents>
+  </ioPorts>
+  <fsm>
+    <states id="1">
+      <operations id="3" stage="1" latency="1"/>
+      <operations id="4" stage="1" latency="1"/>
+      <operations id="5" stage="1" latency="1"/>
+    </states>
+    <states id="2">
+      <operations id="7" stage="1" latency="1"/>
+      <operations id="8" stage="1" latency="1"/>
+      <operations id="9" stage="1" latency="1"/>
+      <operations id="10" stage="1" latency="1"/>
+      <operations id="11" stage="1" latency="1"/>
+      <operations id="13" stage="1" latency="1"/>
+      <operations id="14" stage="1" latency="1"/>
+      <operations id="15" stage="1" latency="1"/>
+      <operations id="16" stage="1" latency="1"/>
+      <operations id="18" stage="1" latency="1"/>
+    </states>
+    <states id="3">
+      <operations id="20" stage="1" latency="1"/>
+      <operations id="21" stage="1" latency="1"/>
+      <operations id="22" stage="1" latency="1"/>
+      <operations id="23" stage="1" latency="1"/>
+      <operations id="24" stage="1" latency="1"/>
+      <operations id="26" stage="1" latency="1"/>
+      <operations id="27" stage="1" latency="1"/>
+      <operations id="28" stage="2" latency="2"/>
+      <operations id="36" stage="1" latency="1"/>
+      <operations id="37" stage="1" latency="1"/>
+      <operations id="38" stage="1" latency="1"/>
+    </states>
+    <states id="4">
+      <operations id="28" stage="1" latency="2"/>
+      <operations id="29" stage="1" latency="1"/>
+      <operations id="30" stage="1" latency="1"/>
+      <operations id="31" stage="2" latency="2"/>
+    </states>
+    <states id="5">
+      <operations id="31" stage="1" latency="2"/>
+      <operations id="32" stage="1" latency="1"/>
+      <operations id="33" stage="1" latency="1"/>
+      <operations id="34" stage="1" latency="1"/>
+    </states>
+    <states id="6">
+      <operations id="40" stage="1" latency="1"/>
+      <operations id="41" stage="1" latency="1"/>
+      <operations id="42" stage="1" latency="1"/>
+      <operations id="43" stage="1" latency="1"/>
+      <operations id="49" stage="1" latency="1"/>
+      <operations id="50" stage="1" latency="1"/>
+      <operations id="51" stage="1" latency="1"/>
+      <operations id="52" stage="2" latency="2"/>
+      <operations id="53" stage="1" latency="1"/>
+      <operations id="54" stage="2" latency="2"/>
+    </states>
+    <states id="7">
+      <operations id="45" stage="1" latency="1"/>
+      <operations id="46" stage="1" latency="1"/>
+      <operations id="47" stage="1" latency="1"/>
+      <operations id="48" stage="1" latency="1"/>
+      <operations id="52" stage="1" latency="2"/>
+      <operations id="54" stage="1" latency="2"/>
+      <operations id="55" stage="1" latency="1"/>
+      <operations id="56" stage="1" latency="1"/>
+      <operations id="57" stage="1" latency="1"/>
+      <operations id="58" stage="1" latency="1"/>
+      <operations id="59" stage="1" latency="1"/>
+      <operations id="60" stage="1" latency="1"/>
+      <operations id="61" stage="1" latency="1"/>
+      <operations id="62" stage="1" latency="1"/>
+      <operations id="63" stage="1" latency="1"/>
+    </states>
+    <states id="8">
+      <operations id="65" stage="1" latency="1"/>
+    </states>
+    <states id="9">
+      <operations id="67" stage="1" latency="1"/>
+      <operations id="68" stage="1" latency="1"/>
+      <operations id="69" stage="1" latency="1"/>
+      <operations id="70" stage="1" latency="1"/>
+      <operations id="71" stage="1" latency="1"/>
+      <operations id="76" stage="1" latency="1"/>
+      <operations id="77" stage="1" latency="1"/>
+      <operations id="78" stage="2" latency="2"/>
+    </states>
+    <states id="10">
+      <operations id="73" stage="1" latency="1"/>
+      <operations id="74" stage="1" latency="1"/>
+      <operations id="75" stage="1" latency="1"/>
+      <operations id="78" stage="1" latency="2"/>
+      <operations id="79" stage="1" latency="1"/>
+      <operations id="80" stage="1" latency="1"/>
+      <operations id="82" stage="1" latency="1"/>
+      <operations id="83" stage="1" latency="1"/>
+      <operations id="84" stage="2" latency="2"/>
+      <operations id="106" stage="1" latency="1"/>
+      <operations id="107" stage="1" latency="1"/>
+      <operations id="108" stage="1" latency="1"/>
+    </states>
+    <states id="11">
+      <operations id="84" stage="1" latency="2"/>
+      <operations id="85" stage="1" latency="1"/>
+      <operations id="86" stage="1" latency="1"/>
+      <operations id="87" stage="1" latency="1"/>
+      <operations id="88" stage="1" latency="1"/>
+      <operations id="89" stage="1" latency="1"/>
+      <operations id="90" stage="1" latency="1"/>
+      <operations id="91" stage="1" latency="1"/>
+      <operations id="92" stage="1" latency="1"/>
+      <operations id="93" stage="1" latency="1"/>
+      <operations id="94" stage="1" latency="1"/>
+      <operations id="95" stage="1" latency="1"/>
+      <operations id="96" stage="1" latency="1"/>
+      <operations id="97" stage="1" latency="1"/>
+      <operations id="102" stage="1" latency="1"/>
+      <operations id="103" stage="1" latency="1"/>
+    </states>
+    <states id="12">
+      <operations id="98" stage="1" latency="1"/>
+      <operations id="99" stage="1" latency="1"/>
+      <operations id="100" stage="1" latency="1"/>
+      <operations id="101" stage="1" latency="1"/>
+      <operations id="104" stage="1" latency="1"/>
+      <operations id="110" stage="1" latency="1"/>
+      <operations id="111" stage="1" latency="1"/>
+    </states>
+    <states id="13">
+      <operations id="113" stage="1" latency="1"/>
+    </states>
+    <transitions inState="1" outState="2">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="2">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="3">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="3" outState="4">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="4" outState="5">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="5" outState="3">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="3" outState="6">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="8" outState="9">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="7" outState="6">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="6" outState="8">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="6" outState="7">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="10" outState="11">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="11" outState="12">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="12" outState="9">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="9" outState="13">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="9" outState="10">
+      <condition id="-1"/>
+    </transitions>
+  </fsm>
+  <CFGRegionsRoot>
+    <cfgRegions mId="1" mTag="create_codeword" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="1877" mMaxLatency="1877">
+      <subRegions>2</subRegions>
+      <subRegions>3</subRegions>
+      <subRegions>4</subRegions>
+      <subRegions>5</subRegions>
+      <subRegions>6</subRegions>
+      <subRegions>7</subRegions>
+      <subRegions>8</subRegions>
+      <subRegions>9</subRegions>
+      <subRegions>10</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="2" mTag="Entry" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>6</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="3" mTag="Loop 1" mII="-1" mDepth="-1" mMinTripCount="27" mMaxTripCount="27" mMinLatency="27" mMaxLatency="27" mType="1">
+      <basicBlocks>12</basicBlocks>
+      <basicBlocks>17</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="4" mTag="Region 1" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>19</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="5" mTag="Loop 2" mII="-1" mDepth="-1" mMinTripCount="256" mMaxTripCount="256" mMinLatency="768" mMaxLatency="768" mType="1">
+      <basicBlocks>25</basicBlocks>
+      <basicBlocks>35</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="6" mTag="Region 2" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>39</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="7" mTag="first_codewords" mII="2" mDepth="2" mMinTripCount="26" mMaxTripCount="26" mMinLatency="52" mMaxLatency="52" mType="1">
+      <basicBlocks>44</basicBlocks>
+      <basicBlocks>64</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="8" mTag="Region 3" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>66</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="9" mTag="assign_codewords" mII="4" mDepth="4" mMinTripCount="256" mMaxTripCount="256" mMinLatency="1024" mMaxLatency="1024" mType="1">
+      <basicBlocks>72</basicBlocks>
+      <basicBlocks>81</basicBlocks>
+      <basicBlocks>105</basicBlocks>
+      <basicBlocks>109</basicBlocks>
+      <basicBlocks>112</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="10" mTag="Return" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>114</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+  </CFGRegionsRoot>
+</cdfg:DBCdfg>

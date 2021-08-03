@@ -36,6 +36,7 @@ process_symbols:
   }
 
   /* ====== Base LOOP ====== */
+  /*
 process_symbols:
   for(int k = 0; k < num_symbols; k++) {
     if (count == 0) {
@@ -53,4 +54,5 @@ process_symbols:
     symbol_bits[val] = length; //assign symbol k to have length bits
     count--; //keep assigning i bits until we have counted off n symbols
   }
+  */
 }

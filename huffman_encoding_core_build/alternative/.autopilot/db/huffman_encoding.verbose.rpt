@@ -1,0 +1,1413 @@
+
+
+================================================================
+== Vivado HLS Report for 'huffman_encoding'
+================================================================
+* Date:           Sun Aug  1 13:11:03 2021
+
+* Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
+* Project:        huffman_encoding_core_build
+* Solution:       alternative
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 8.661 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?| dataflow |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
+        |                         |                      |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+        |         Instance        |        Module        |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+        +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
+        |sort_U0                  |sort                  |      355|     4707|  3.550 us | 47.070 us |   355|  4707|   none  |
+        |create_tree_U0           |create_tree           |        2|     1022| 20.000 ns | 10.220 us |     2|  1022|   none  |
+        |create_codeword_U0       |create_codeword       |     1877|     1877| 18.770 us | 18.770 us |  1877|  1877|   none  |
+        |truncate_tree_U0         |truncate_tree         |     1210|     1318| 12.100 us | 13.180 us |  1210|  1318|   none  |
+        |compute_bit_length_U0    |compute_bit_length    |        ?|        ?|          ?|          ?|     ?|     ?|   none  |
+        |canonize_tree_U0         |canonize_tree         |      258|     2306|  2.580 us | 23.060 us |   258|  2306|   none  |
+        |filter_U0                |filter                |      259|      259|  2.590 us |  2.590 us |   259|   259|   none  |
+        |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        ?|        ?|          ?|          ?|     ?|     ?|   none  |
+        |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
+        +-------------------------+----------------------+---------+---------+-----------+-----------+------+------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     62|    -|
+|FIFO             |        0|      -|      30|    264|    -|
+|Instance         |        8|      -|    4986|   5740|    0|
+|Memory           |       14|      -|       0|      0|    0|
+|Multiplexer      |        -|      -|       -|     90|    -|
+|Register         |        -|      -|      10|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       22|      0|    5026|   6156|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        7|      0|       4|     11|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------+----------------------+---------+-------+------+------+-----+
+    |         Instance        |        Module        | BRAM_18K| DSP48E|  FF  |  LUT | URAM|
+    +-------------------------+----------------------+---------+-------+------+------+-----+
+    |Block_proc_U0            |Block_proc            |        0|      0|    34|    29|    0|
+    |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        0|      0|   130|   135|    0|
+    |canonize_tree_U0         |canonize_tree         |        0|      0|   241|   332|    0|
+    |compute_bit_length_U0    |compute_bit_length    |        2|      0|   194|   422|    0|
+    |create_codeword_U0       |create_codeword       |        0|      0|   226|   724|    0|
+    |create_tree_U0           |create_tree           |        1|      0|   518|   820|    0|
+    |filter_U0                |filter                |        0|      0|    90|   166|    0|
+    |sort_U0                  |sort                  |        5|      0|  3320|  2527|    0|
+    |truncate_tree_U0         |truncate_tree         |        0|      0|   233|   585|    0|
+    +-------------------------+----------------------+---------+-------+------+------+-----+
+    |Total                    |                      |        8|      0|  4986|  5740|    0|
+    +-------------------------+----------------------+---------+-------+------+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |         Memory         |        Module        | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |filtered_value_V_U      |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |filtered_frequency_V_U  |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |sorted_0_U              |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |sorted_1_U              |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |sorted_copy1_value_V_U  |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |sorted_copy1_frequen_U  |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |sorted_copy2_value_V_U  |huffman_encoding_mb6  |        1|  0|   0|    0|   256|   32|     2|        16384|
+    |parent_V_U              |huffman_encoding_tde  |        1|  0|   0|    0|   255|   31|     2|        15810|
+    |left_V_U                |huffman_encoding_udo  |        1|  0|   0|    0|   255|   32|     2|        16320|
+    |right_V_U               |huffman_encoding_udo  |        1|  0|   0|    0|   255|   32|     2|        16320|
+    |length_histogram_V_U    |huffman_encoding_wdI  |        1|  0|   0|    0|    64|   32|     2|         4096|
+    |truncated_length_his_U  |huffman_encoding_xdS  |        2|  0|   0|    0|    64|   32|     2|         4096|
+    |symbol_bits_V_U         |huffman_encoding_yd2  |        1|  0|   0|    0|   256|    5|     2|         2560|
+    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total                   |                      |       14|  0|   0|    0|  2941|  388|    26|       173890|
+    +------------------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    +----------------------+---------+---+----+-----+------+-----+---------+
+    |         Name         | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +----------------------+---------+---+----+-----+------+-----+---------+
+    |n_c16_U               |        0|  5|   0|    -|     2|   32|       64|
+    |n_c_U                 |        0|  5|   0|    -|     2|   32|       64|
+    |val_assign_loc_c17_U  |        0|  5|   0|    -|     2|   32|       64|
+    |val_assign_loc_c18_U  |        0|  5|   0|    -|     2|   32|       64|
+    |val_assign_loc_c19_U  |        0|  5|   0|    -|     3|   32|       96|
+    |val_assign_loc_c_U    |        0|  5|   0|    -|     2|   32|       64|
+    +----------------------+---------+---+----+-----+------+-----+---------+
+    |Total                 |        0| 30|   0|    0|    13|  192|      416|
+    +----------------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------------------------------------+----------+-------+---+----+------------+------------+
+    |                Variable Name               | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------------------------+----------+-------+---+----+------------+------------+
+    |Loop_copy_sorted_pro_U0_ap_continue         |    and   |      0|  0|   2|           1|           1|
+    |Loop_copy_sorted_pro_U0_ap_start            |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_filtered_frequency_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_filtered_value_V            |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_left_V                      |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_parent_V                    |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_right_V                     |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_sorted_0                    |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_sorted_1                    |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_sorted_copy1_frequen        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_sorted_copy1_value_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_sorted_copy2_value_V        |    and   |      0|  0|   2|           1|           1|
+    |ap_idle                                     |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_done                                |    and   |      0|  0|   2|           1|           1|
+    |canonize_tree_U0_ap_start                   |    and   |      0|  0|   2|           1|           1|
+    |compute_bit_length_U0_ap_start              |    and   |      0|  0|   2|           1|           1|
+    |create_tree_U0_ap_continue                  |    and   |      0|  0|   2|           1|           1|
+    |create_tree_U0_ap_start                     |    and   |      0|  0|   2|           1|           1|
+    |filter_U0_ap_continue                       |    and   |      0|  0|   2|           1|           1|
+    |sort_U0_ap_continue                         |    and   |      0|  0|   2|           1|           1|
+    |sort_U0_ap_start                            |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_filtered_frequency_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_filtered_value_V      |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_left_V                |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_parent_V              |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_right_V               |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_sorted_0              |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_sorted_1              |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_sorted_copy1_frequen  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_sorted_copy1_value_V  |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_sorted_copy2_value_V  |    or    |      0|  0|   2|           1|           1|
+    +--------------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                       |          |      0|  0|  62|          31|          31|
+    +--------------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------------------------+----+-----------+-----+-----------+
+    |                      Name                      | LUT| Input Size| Bits| Total Bits|
+    +------------------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_channel_write_filtered_frequency_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_filtered_value_V      |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_left_V                |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_parent_V              |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_right_V               |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_sorted_0              |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_sorted_1              |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_sorted_copy1_frequen  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_sorted_copy1_value_V  |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_sorted_copy2_value_V  |   9|          2|    1|          2|
+    +------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                           |  90|         20|   10|         20|
+    +------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------------------------------------+---+----+-----+-----------+
+    |                      Name                      | FF| LUT| Bits| Const Bits|
+    +------------------------------------------------+---+----+-----+-----------+
+    |ap_sync_reg_channel_write_filtered_frequency_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_filtered_value_V      |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_left_V                |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_parent_V              |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_right_V               |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_sorted_0              |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_sorted_1              |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_sorted_copy1_frequen  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_sorted_copy1_value_V  |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_sorted_copy2_value_V  |  1|   0|    1|          0|
+    +------------------------------------------------+---+----+-----+-----------+
+    |Total                                           | 10|   0|   10|          0|
+    +------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------------------+-----+-----+------------+------------------------------+--------------+
+|               RTL Ports               | Dir | Bits|  Protocol  |         Source Object        |    C Type    |
++---------------------------------------+-----+-----+------------+------------------------------+--------------+
+|ap_clk                                 |  in |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|ap_rst                                 |  in |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|ap_start                               |  in |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|ap_done                                | out |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|ap_ready                               | out |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|ap_idle                                | out |    1| ap_ctrl_hs |       huffman_encoding       | return value |
+|symbol_histogram_value_V_address0      | out |    8|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_ce0           | out |    1|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_d0            | out |   32|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_q0            |  in |   32|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_we0           | out |    1|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_address1      | out |    8|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_ce1           | out |    1|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_d1            | out |   32|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_q1            |  in |   32|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_value_V_we1           | out |    1|  ap_memory |   symbol_histogram_value_V   |     array    |
+|symbol_histogram_frequency_V_address0  | out |    8|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_ce0       | out |    1|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_d0        | out |   32|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_q0        |  in |   32|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_we0       | out |    1|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_address1  | out |    8|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_ce1       | out |    1|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_d1        | out |   32|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_q1        |  in |   32|  ap_memory | symbol_histogram_frequency_V |     array    |
+|symbol_histogram_frequency_V_we1       | out |    1|  ap_memory | symbol_histogram_frequency_V |     array    |
+|encoding_V_address0                    | out |    8|  ap_memory |          encoding_V          |     array    |
+|encoding_V_ce0                         | out |    1|  ap_memory |          encoding_V          |     array    |
+|encoding_V_d0                          | out |   32|  ap_memory |          encoding_V          |     array    |
+|encoding_V_q0                          |  in |   32|  ap_memory |          encoding_V          |     array    |
+|encoding_V_we0                         | out |    1|  ap_memory |          encoding_V          |     array    |
+|encoding_V_address1                    | out |    8|  ap_memory |          encoding_V          |     array    |
+|encoding_V_ce1                         | out |    1|  ap_memory |          encoding_V          |     array    |
+|encoding_V_d1                          | out |   32|  ap_memory |          encoding_V          |     array    |
+|encoding_V_q1                          |  in |   32|  ap_memory |          encoding_V          |     array    |
+|encoding_V_we1                         | out |    1|  ap_memory |          encoding_V          |     array    |
+|num_nonzero_symbols                    | out |   32|   ap_vld   |      num_nonzero_symbols     |    pointer   |
+|num_nonzero_symbols_ap_vld             | out |    1|   ap_vld   |      num_nonzero_symbols     |    pointer   |
++---------------------------------------+-----+-----+------------+------------------------------+--------------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 2
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 16
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 16, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 16 
+16 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 3.25>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%val_assign_loc_c19 = alloca i32, align 4"   --->   Operation 17 'alloca' 'val_assign_loc_c19' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%val_assign_loc_c18 = alloca i32, align 4"   --->   Operation 18 'alloca' 'val_assign_loc_c18' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%val_assign_loc_c17 = alloca i32, align 4"   --->   Operation 19 'alloca' 'val_assign_loc_c17' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%val_assign_loc_c = alloca i32, align 4"   --->   Operation 20 'alloca' 'val_assign_loc_c' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%n_c16 = alloca i32, align 4"   --->   Operation 21 'alloca' 'n_c16' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%n_c = alloca i32, align 4"   --->   Operation 22 'alloca' 'n_c' <Predicate = true> <Delay = 0.00> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 23 [1/1] (3.25ns)   --->   "%filtered_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 23 'alloca' 'filtered_value_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 24 [1/1] (3.25ns)   --->   "%filtered_frequency_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:23]   --->   Operation 24 'alloca' 'filtered_frequency_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 25 [1/1] (3.25ns)   --->   "%sorted_0 = alloca [256 x i32], align 4"   --->   Operation 25 'alloca' 'sorted_0' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 26 [1/1] (3.25ns)   --->   "%sorted_1 = alloca [256 x i32], align 4"   --->   Operation 26 'alloca' 'sorted_1' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 27 [1/1] (3.25ns)   --->   "%sorted_copy1_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 27 'alloca' 'sorted_copy1_value_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 28 [1/1] (3.25ns)   --->   "%sorted_copy1_frequen = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:25]   --->   Operation 28 'alloca' 'sorted_copy1_frequen' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 29 [1/1] (3.25ns)   --->   "%sorted_copy2_value_V = alloca [256 x i32], align 4" [./hls-src/huffman_encoding.cpp:26]   --->   Operation 29 'alloca' 'sorted_copy2_value_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 30 [1/1] (3.25ns)   --->   "%parent_V = alloca [255 x i31], align 4" [./hls-src/huffman_encoding.cpp:27]   --->   Operation 30 'alloca' 'parent_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 31 [1/1] (3.25ns)   --->   "%left_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:28]   --->   Operation 31 'alloca' 'left_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 32 [1/1] (3.25ns)   --->   "%right_V = alloca [255 x i32], align 4" [./hls-src/huffman_encoding.cpp:29]   --->   Operation 32 'alloca' 'right_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 33 [1/1] (3.25ns)   --->   "%length_histogram_V = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:35]   --->   Operation 33 'alloca' 'length_histogram_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 34 [1/1] (3.25ns)   --->   "%truncated_length_his = alloca [64 x i32], align 4" [./hls-src/huffman_encoding.cpp:36]   --->   Operation 34 'alloca' 'truncated_length_his' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 35 [1/1] (3.25ns)   --->   "%symbol_bits_V = alloca [256 x i5], align 1" [./hls-src/huffman_encoding.cpp:38]   --->   Operation 35 'alloca' 'symbol_bits_V' <Predicate = true> <Delay = 3.25>
+ST_1 : Operation 36 [2/2] (0.00ns)   --->   "call fastcc void @filter([256 x i32]* nocapture %symbol_histogram_value_V, [256 x i32]* nocapture %symbol_histogram_frequency_V, [256 x i32]* nocapture %filtered_value_V, [256 x i32]* nocapture %filtered_frequency_V, i32* %n_c) noinline" [./hls-src/huffman_encoding.cpp:32]   --->   Operation 36 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 37 [1/2] (0.00ns)   --->   "call fastcc void @filter([256 x i32]* nocapture %symbol_histogram_value_V, [256 x i32]* nocapture %symbol_histogram_frequency_V, [256 x i32]* nocapture %filtered_value_V, [256 x i32]* nocapture %filtered_frequency_V, i32* %n_c) noinline" [./hls-src/huffman_encoding.cpp:32]   --->   Operation 37 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 38 [2/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32* nocapture %n_c, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1, i32* %n_c16)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 38 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 39 [1/2] (0.00ns)   --->   "call fastcc void @sort([256 x i32]* %filtered_value_V, [256 x i32]* %filtered_frequency_V, i32* nocapture %n_c, [256 x i32]* %sorted_0, [256 x i32]* %sorted_1, i32* %n_c16)" [./hls-src/huffman_encoding.cpp:33]   --->   Operation 39 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 40 [2/2] (0.00ns)   --->   "call fastcc void @Loop_copy_sorted_pro(i32* nocapture %n_c16, [256 x i32]* %sorted_0, [256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_1, [256 x i32]* %sorted_copy1_frequen, [256 x i32]* %sorted_copy2_value_V, i32* %val_assign_loc_c, i32* %val_assign_loc_c17)"   --->   Operation 40 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 41 [1/2] (0.00ns)   --->   "call fastcc void @Loop_copy_sorted_pro(i32* nocapture %n_c16, [256 x i32]* %sorted_0, [256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_1, [256 x i32]* %sorted_copy1_frequen, [256 x i32]* %sorted_copy2_value_V, i32* %val_assign_loc_c, i32* %val_assign_loc_c17)"   --->   Operation 41 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 0.00>
+ST_7 : Operation 42 [2/2] (0.00ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32* nocapture %val_assign_loc_c, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* %val_assign_loc_c18)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 42 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 8 <SV = 7> <Delay = 0.00>
+ST_8 : Operation 43 [1/2] (0.00ns)   --->   "call fastcc void @create_tree([256 x i32]* %sorted_copy1_value_V, [256 x i32]* %sorted_copy1_frequen, i32* nocapture %val_assign_loc_c, [255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* %val_assign_loc_c18)" [./hls-src/huffman_encoding.cpp:52]   --->   Operation 43 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 9 <SV = 8> <Delay = 0.00>
+ST_9 : Operation 44 [2/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* nocapture %val_assign_loc_c18, [64 x i32]* %length_histogram_V, i32* %val_assign_loc_c19)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 44 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 10 <SV = 9> <Delay = 0.00>
+ST_10 : Operation 45 [1/2] (0.00ns)   --->   "call fastcc void @compute_bit_length([255 x i31]* %parent_V, [255 x i32]* %left_V, [255 x i32]* %right_V, i32* nocapture %val_assign_loc_c18, [64 x i32]* %length_histogram_V, i32* %val_assign_loc_c19)" [./hls-src/huffman_encoding.cpp:53]   --->   Operation 45 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 11 <SV = 10> <Delay = 0.00>
+ST_11 : Operation 46 [2/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 46 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 12 <SV = 11> <Delay = 0.00>
+ST_12 : Operation 47 [1/2] (0.00ns)   --->   "call fastcc void @truncate_tree([64 x i32]* %length_histogram_V, [64 x i32]* %truncated_length_his)" [./hls-src/huffman_encoding.cpp:70]   --->   Operation 47 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 13 <SV = 12> <Delay = 0.00>
+ST_13 : Operation 48 [2/2] (0.00ns)   --->   "call fastcc void @canonize_tree([256 x i32]* %sorted_copy2_value_V, i32* nocapture %val_assign_loc_c19, [64 x i32]* %truncated_length_his, [256 x i5]* %symbol_bits_V)" [./hls-src/huffman_encoding.cpp:71]   --->   Operation 48 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 0.00>
+ST_14 : Operation 49 [1/2] (0.00ns)   --->   "call fastcc void @canonize_tree([256 x i32]* %sorted_copy2_value_V, i32* nocapture %val_assign_loc_c19, [64 x i32]* %truncated_length_his, [256 x i5]* %symbol_bits_V)" [./hls-src/huffman_encoding.cpp:71]   --->   Operation 49 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 15 <SV = 14> <Delay = 0.00>
+ST_15 : Operation 50 [2/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 50 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 16 <SV = 15> <Delay = 0.00>
+ST_16 : Operation 51 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecDataflowPipeline(i32 -1, i32 0, [1 x i8]* @p_str37) nounwind" [./hls-src/huffman_encoding.cpp:21]   --->   Operation 51 'specdataflowpipeline' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_value_V), !map !151"   --->   Operation 52 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 53 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %symbol_histogram_frequency_V), !map !157"   --->   Operation 53 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 54 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([256 x i32]* %encoding_V), !map !161"   --->   Operation 54 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 55 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %num_nonzero_symbols), !map !165"   --->   Operation 55 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 56 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([17 x i8]* @huffman_encoding_str) nounwind"   --->   Operation 56 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 57 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecChannel([4 x i8]* @n_c_str, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 0, i32* %n_c, i32* %n_c)"   --->   Operation 57 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 58 [1/1] (0.00ns)   --->   "%empty_15 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %n_c, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 58 'specinterface' 'empty_15' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 59 [1/1] (0.00ns)   --->   "%empty_16 = call i32 (...)* @_ssdm_op_SpecChannel([6 x i8]* @n_c16_str, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 0, i32* %n_c16, i32* %n_c16)"   --->   Operation 59 'specchannel' 'empty_16' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 60 [1/1] (0.00ns)   --->   "%empty_17 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %n_c16, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 60 'specinterface' 'empty_17' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 61 [1/1] (0.00ns)   --->   "%empty_18 = call i32 (...)* @_ssdm_op_SpecChannel([17 x i8]* @val_OC_assign_OC_loc_3, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 0, i32* %val_assign_loc_c, i32* %val_assign_loc_c)"   --->   Operation 61 'specchannel' 'empty_18' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 62 [1/1] (0.00ns)   --->   "%empty_19 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 62 'specinterface' 'empty_19' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 63 [1/1] (0.00ns)   --->   "%empty_20 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc_2, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 0, i32* %val_assign_loc_c17, i32* %val_assign_loc_c17)"   --->   Operation 63 'specchannel' 'empty_20' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 64 [1/1] (0.00ns)   --->   "%empty_21 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c17, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 64 'specinterface' 'empty_21' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 65 [1/1] (0.00ns)   --->   "%empty_22 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc_1, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 0, i32* %val_assign_loc_c18, i32* %val_assign_loc_c18)"   --->   Operation 65 'specchannel' 'empty_22' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 66 [1/1] (0.00ns)   --->   "%empty_23 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c18, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 66 'specinterface' 'empty_23' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 67 [1/1] (0.00ns)   --->   "%empty_24 = call i32 (...)* @_ssdm_op_SpecChannel([19 x i8]* @val_OC_assign_OC_loc, i32 1, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 3, i32 0, i32* %val_assign_loc_c19, i32* %val_assign_loc_c19)"   --->   Operation 67 'specchannel' 'empty_24' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 68 [1/1] (0.00ns)   --->   "%empty_25 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_loc_c19, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 68 'specinterface' 'empty_25' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 69 [1/2] (0.00ns)   --->   "call fastcc void @create_codeword([256 x i5]* %symbol_bits_V, [256 x i32]* %encoding_V)" [./hls-src/huffman_encoding.cpp:72]   --->   Operation 69 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_16 : Operation 70 [1/1] (0.00ns)   --->   "call fastcc void @Block__proc(i32* nocapture %val_assign_loc_c17, i32* %num_nonzero_symbols)"   --->   Operation 70 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_16 : Operation 71 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_encoding.cpp:75]   --->   Operation 71 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 1
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ symbol_histogram_value_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ symbol_histogram_frequency_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=0; MemPort=[13]; IO mode=ap_memory:ce=0
+Port [ encoding_V]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=1; pingpong=0; private_global=0; MemPort=[03]; IO mode=ap_memory:ce=0
+Port [ num_nonzero_symbols]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+val_assign_loc_c19        (alloca              ) [ 00111111111111111]
+val_assign_loc_c18        (alloca              ) [ 00111111111111111]
+val_assign_loc_c17        (alloca              ) [ 00111111111111111]
+val_assign_loc_c          (alloca              ) [ 00111111111111111]
+n_c16                     (alloca              ) [ 00111111111111111]
+n_c                       (alloca              ) [ 01111111111111111]
+filtered_value_V          (alloca              ) [ 00111000000000000]
+filtered_frequency_V      (alloca              ) [ 00111000000000000]
+sorted_0                  (alloca              ) [ 00111110000000000]
+sorted_1                  (alloca              ) [ 00111110000000000]
+sorted_copy1_value_V      (alloca              ) [ 00111111100000000]
+sorted_copy1_frequen      (alloca              ) [ 00111111100000000]
+sorted_copy2_value_V      (alloca              ) [ 00111111111111100]
+parent_V                  (alloca              ) [ 00111111111000000]
+left_V                    (alloca              ) [ 00111111111000000]
+right_V                   (alloca              ) [ 00111111111000000]
+length_histogram_V        (alloca              ) [ 00111111111110000]
+truncated_length_his      (alloca              ) [ 00111111111111100]
+symbol_bits_V             (alloca              ) [ 00111111111111111]
+call_ln32                 (call                ) [ 00000000000000000]
+call_ln33                 (call                ) [ 00000000000000000]
+call_ln0                  (call                ) [ 00000000000000000]
+call_ln52                 (call                ) [ 00000000000000000]
+call_ln53                 (call                ) [ 00000000000000000]
+call_ln70                 (call                ) [ 00000000000000000]
+call_ln71                 (call                ) [ 00000000000000000]
+specdataflowpipeline_ln21 (specdataflowpipeline) [ 00000000000000000]
+specbitsmap_ln0           (specbitsmap         ) [ 00000000000000000]
+specbitsmap_ln0           (specbitsmap         ) [ 00000000000000000]
+specbitsmap_ln0           (specbitsmap         ) [ 00000000000000000]
+specbitsmap_ln0           (specbitsmap         ) [ 00000000000000000]
+spectopmodule_ln0         (spectopmodule       ) [ 00000000000000000]
+empty                     (specchannel         ) [ 00000000000000000]
+empty_15                  (specinterface       ) [ 00000000000000000]
+empty_16                  (specchannel         ) [ 00000000000000000]
+empty_17                  (specinterface       ) [ 00000000000000000]
+empty_18                  (specchannel         ) [ 00000000000000000]
+empty_19                  (specinterface       ) [ 00000000000000000]
+empty_20                  (specchannel         ) [ 00000000000000000]
+empty_21                  (specinterface       ) [ 00000000000000000]
+empty_22                  (specchannel         ) [ 00000000000000000]
+empty_23                  (specinterface       ) [ 00000000000000000]
+empty_24                  (specchannel         ) [ 00000000000000000]
+empty_25                  (specinterface       ) [ 00000000000000000]
+call_ln72                 (call                ) [ 00000000000000000]
+call_ln0                  (call                ) [ 00000000000000000]
+ret_ln75                  (ret                 ) [ 00000000000000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="symbol_histogram_value_V">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="symbol_histogram_value_V"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="symbol_histogram_frequency_V">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="symbol_histogram_frequency_V"/><MemPortTyVec>1 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="encoding_V">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="encoding_V"/><MemPortTyVec>0 3 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="num_nonzero_symbols">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="num_nonzero_symbols"/></StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1001" name="const_8">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1001" name="const_10">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="filter"/></StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1001" name="const_12">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="sort"/></StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1001" name="const_14">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Loop_copy_sorted_pro"/></StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1001" name="const_16">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="create_tree"/></StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1001" name="const_18">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="compute_bit_length"/></StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1001" name="const_20">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="truncate_tree"/></StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1001" name="const_22">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="canonize_tree"/></StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1001" name="const_24">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="create_codeword"/></StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1001" name="const_26">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecDataflowPipeline"/></StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str37"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecBitsMap"/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecTopModule"/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="huffman_encoding_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecChannel"/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="n_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1001" name="const_44">
+<pin_list>
+<pin id="45" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="46" class="1001" name="const_46">
+<pin_list>
+<pin id="47" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="48" class="1001" name="const_48">
+<pin_list>
+<pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="50" class="1001" name="const_50">
+<pin_list>
+<pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecInterface"/></StgValue>
+</bind>
+</comp>
+
+<comp id="52" class="1001" name="const_52">
+<pin_list>
+<pin id="53" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="ap_fifo_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="54" class="1001" name="const_54">
+<pin_list>
+<pin id="55" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="56" class="1001" name="const_56">
+<pin_list>
+<pin id="57" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="n_c16_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="58" class="1001" name="const_58">
+<pin_list>
+<pin id="59" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="val_OC_assign_OC_loc_3"/></StgValue>
+</bind>
+</comp>
+
+<comp id="60" class="1001" name="const_60">
+<pin_list>
+<pin id="61" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="val_OC_assign_OC_loc_2"/></StgValue>
+</bind>
+</comp>
+
+<comp id="62" class="1001" name="const_62">
+<pin_list>
+<pin id="63" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="val_OC_assign_OC_loc_1"/></StgValue>
+</bind>
+</comp>
+
+<comp id="64" class="1001" name="const_64">
+<pin_list>
+<pin id="65" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="val_OC_assign_OC_loc"/></StgValue>
+</bind>
+</comp>
+
+<comp id="66" class="1001" name="const_66">
+<pin_list>
+<pin id="67" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="68" class="1001" name="const_68">
+<pin_list>
+<pin id="69" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Block__proc"/></StgValue>
+</bind>
+</comp>
+
+<comp id="70" class="1004" name="val_assign_loc_c19_fu_70">
+<pin_list>
+<pin id="71" dir="0" index="0" bw="1" slack="0"/>
+<pin id="72" dir="1" index="1" bw="32" slack="8"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="val_assign_loc_c19/1 "/>
+</bind>
+</comp>
+
+<comp id="74" class="1004" name="val_assign_loc_c18_fu_74">
+<pin_list>
+<pin id="75" dir="0" index="0" bw="1" slack="0"/>
+<pin id="76" dir="1" index="1" bw="32" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="val_assign_loc_c18/1 "/>
+</bind>
+</comp>
+
+<comp id="78" class="1004" name="val_assign_loc_c17_fu_78">
+<pin_list>
+<pin id="79" dir="0" index="0" bw="1" slack="0"/>
+<pin id="80" dir="1" index="1" bw="32" slack="4"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="val_assign_loc_c17/1 "/>
+</bind>
+</comp>
+
+<comp id="82" class="1004" name="val_assign_loc_c_fu_82">
+<pin_list>
+<pin id="83" dir="0" index="0" bw="1" slack="0"/>
+<pin id="84" dir="1" index="1" bw="32" slack="4"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="val_assign_loc_c/1 "/>
+</bind>
+</comp>
+
+<comp id="86" class="1004" name="n_c16_fu_86">
+<pin_list>
+<pin id="87" dir="0" index="0" bw="1" slack="0"/>
+<pin id="88" dir="1" index="1" bw="32" slack="2"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="n_c16/1 "/>
+</bind>
+</comp>
+
+<comp id="90" class="1004" name="n_c_fu_90">
+<pin_list>
+<pin id="91" dir="0" index="0" bw="1" slack="0"/>
+<pin id="92" dir="1" index="1" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="n_c/1 "/>
+</bind>
+</comp>
+
+<comp id="94" class="1004" name="filtered_value_V_alloca_fu_94">
+<pin_list>
+<pin id="95" dir="0" index="0" bw="1" slack="0"/>
+<pin id="96" dir="1" index="1" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="filtered_value_V/1 "/>
+</bind>
+</comp>
+
+<comp id="98" class="1004" name="filtered_frequency_V_alloca_fu_98">
+<pin_list>
+<pin id="99" dir="0" index="0" bw="1" slack="0"/>
+<pin id="100" dir="1" index="1" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="filtered_frequency_V/1 "/>
+</bind>
+</comp>
+
+<comp id="102" class="1004" name="sorted_0_alloca_fu_102">
+<pin_list>
+<pin id="103" dir="0" index="0" bw="1" slack="0"/>
+<pin id="104" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="sorted_0/1 "/>
+</bind>
+</comp>
+
+<comp id="106" class="1004" name="sorted_1_alloca_fu_106">
+<pin_list>
+<pin id="107" dir="0" index="0" bw="1" slack="0"/>
+<pin id="108" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="sorted_1/1 "/>
+</bind>
+</comp>
+
+<comp id="110" class="1004" name="sorted_copy1_value_V_alloca_fu_110">
+<pin_list>
+<pin id="111" dir="0" index="0" bw="1" slack="0"/>
+<pin id="112" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="sorted_copy1_value_V/1 "/>
+</bind>
+</comp>
+
+<comp id="114" class="1004" name="sorted_copy1_frequen_alloca_fu_114">
+<pin_list>
+<pin id="115" dir="0" index="0" bw="1" slack="0"/>
+<pin id="116" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="sorted_copy1_frequen/1 "/>
+</bind>
+</comp>
+
+<comp id="118" class="1004" name="sorted_copy2_value_V_alloca_fu_118">
+<pin_list>
+<pin id="119" dir="0" index="0" bw="1" slack="0"/>
+<pin id="120" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="sorted_copy2_value_V/1 "/>
+</bind>
+</comp>
+
+<comp id="122" class="1004" name="parent_V_alloca_fu_122">
+<pin_list>
+<pin id="123" dir="0" index="0" bw="1" slack="0"/>
+<pin id="124" dir="1" index="1" bw="31" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="parent_V/1 "/>
+</bind>
+</comp>
+
+<comp id="126" class="1004" name="left_V_alloca_fu_126">
+<pin_list>
+<pin id="127" dir="0" index="0" bw="1" slack="0"/>
+<pin id="128" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="left_V/1 "/>
+</bind>
+</comp>
+
+<comp id="130" class="1004" name="right_V_alloca_fu_130">
+<pin_list>
+<pin id="131" dir="0" index="0" bw="1" slack="0"/>
+<pin id="132" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="right_V/1 "/>
+</bind>
+</comp>
+
+<comp id="134" class="1004" name="length_histogram_V_alloca_fu_134">
+<pin_list>
+<pin id="135" dir="0" index="0" bw="1" slack="0"/>
+<pin id="136" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="length_histogram_V/1 "/>
+</bind>
+</comp>
+
+<comp id="138" class="1004" name="truncated_length_his_alloca_fu_138">
+<pin_list>
+<pin id="139" dir="0" index="0" bw="1" slack="0"/>
+<pin id="140" dir="1" index="1" bw="32" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="truncated_length_his/1 "/>
+</bind>
+</comp>
+
+<comp id="142" class="1004" name="symbol_bits_V_alloca_fu_142">
+<pin_list>
+<pin id="143" dir="0" index="0" bw="1" slack="0"/>
+<pin id="144" dir="1" index="1" bw="5" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="symbol_bits_V/1 "/>
+</bind>
+</comp>
+
+<comp id="146" class="1004" name="grp_sort_fu_146">
+<pin_list>
+<pin id="147" dir="0" index="0" bw="0" slack="0"/>
+<pin id="148" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="149" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="150" dir="0" index="3" bw="32" slack="2"/>
+<pin id="151" dir="0" index="4" bw="32" slack="2147483647"/>
+<pin id="152" dir="0" index="5" bw="32" slack="2147483647"/>
+<pin id="153" dir="0" index="6" bw="32" slack="2"/>
+<pin id="154" dir="1" index="7" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln33/3 "/>
+</bind>
+</comp>
+
+<comp id="156" class="1004" name="grp_create_tree_fu_156">
+<pin_list>
+<pin id="157" dir="0" index="0" bw="0" slack="0"/>
+<pin id="158" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="159" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="160" dir="0" index="3" bw="32" slack="6"/>
+<pin id="161" dir="0" index="4" bw="31" slack="2147483647"/>
+<pin id="162" dir="0" index="5" bw="32" slack="2147483647"/>
+<pin id="163" dir="0" index="6" bw="32" slack="2147483647"/>
+<pin id="164" dir="0" index="7" bw="32" slack="6"/>
+<pin id="165" dir="1" index="8" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln52/7 "/>
+</bind>
+</comp>
+
+<comp id="167" class="1004" name="grp_create_codeword_fu_167">
+<pin_list>
+<pin id="168" dir="0" index="0" bw="0" slack="0"/>
+<pin id="169" dir="0" index="1" bw="5" slack="2147483647"/>
+<pin id="170" dir="0" index="2" bw="32" slack="0"/>
+<pin id="171" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln72/15 "/>
+</bind>
+</comp>
+
+<comp id="174" class="1004" name="grp_truncate_tree_fu_174">
+<pin_list>
+<pin id="175" dir="0" index="0" bw="0" slack="0"/>
+<pin id="176" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="177" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="178" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln70/11 "/>
+</bind>
+</comp>
+
+<comp id="180" class="1004" name="grp_compute_bit_length_fu_180">
+<pin_list>
+<pin id="181" dir="0" index="0" bw="0" slack="0"/>
+<pin id="182" dir="0" index="1" bw="31" slack="2147483647"/>
+<pin id="183" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="184" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="185" dir="0" index="4" bw="32" slack="8"/>
+<pin id="186" dir="0" index="5" bw="32" slack="2147483647"/>
+<pin id="187" dir="0" index="6" bw="32" slack="8"/>
+<pin id="188" dir="1" index="7" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln53/9 "/>
+</bind>
+</comp>
+
+<comp id="190" class="1004" name="grp_canonize_tree_fu_190">
+<pin_list>
+<pin id="191" dir="0" index="0" bw="0" slack="0"/>
+<pin id="192" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="193" dir="0" index="2" bw="32" slack="12"/>
+<pin id="194" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="195" dir="0" index="4" bw="5" slack="2147483647"/>
+<pin id="196" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln71/13 "/>
+</bind>
+</comp>
+
+<comp id="198" class="1004" name="grp_filter_fu_198">
+<pin_list>
+<pin id="199" dir="0" index="0" bw="0" slack="0"/>
+<pin id="200" dir="0" index="1" bw="32" slack="0"/>
+<pin id="201" dir="0" index="2" bw="32" slack="0"/>
+<pin id="202" dir="0" index="3" bw="32" slack="0"/>
+<pin id="203" dir="0" index="4" bw="32" slack="0"/>
+<pin id="204" dir="0" index="5" bw="32" slack="0"/>
+<pin id="205" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln32/1 "/>
+</bind>
+</comp>
+
+<comp id="211" class="1004" name="grp_Loop_copy_sorted_pro_fu_211">
+<pin_list>
+<pin id="212" dir="0" index="0" bw="0" slack="0"/>
+<pin id="213" dir="0" index="1" bw="32" slack="4"/>
+<pin id="214" dir="0" index="2" bw="32" slack="2147483647"/>
+<pin id="215" dir="0" index="3" bw="32" slack="2147483647"/>
+<pin id="216" dir="0" index="4" bw="32" slack="2147483647"/>
+<pin id="217" dir="0" index="5" bw="32" slack="2147483647"/>
+<pin id="218" dir="0" index="6" bw="32" slack="2147483647"/>
+<pin id="219" dir="0" index="7" bw="32" slack="4"/>
+<pin id="220" dir="0" index="8" bw="32" slack="4"/>
+<pin id="221" dir="1" index="9" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln0/5 "/>
+</bind>
+</comp>
+
+<comp id="223" class="1004" name="call_ln0_Block_proc_fu_223">
+<pin_list>
+<pin id="224" dir="0" index="0" bw="0" slack="0"/>
+<pin id="225" dir="0" index="1" bw="32" slack="15"/>
+<pin id="226" dir="0" index="2" bw="32" slack="0"/>
+<pin id="227" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln0/16 "/>
+</bind>
+</comp>
+
+<comp id="230" class="1005" name="val_assign_loc_c19_reg_230">
+<pin_list>
+<pin id="231" dir="0" index="0" bw="32" slack="8"/>
+<pin id="232" dir="1" index="1" bw="32" slack="8"/>
+</pin_list>
+<bind>
+<opset="val_assign_loc_c19 "/>
+</bind>
+</comp>
+
+<comp id="236" class="1005" name="val_assign_loc_c18_reg_236">
+<pin_list>
+<pin id="237" dir="0" index="0" bw="32" slack="6"/>
+<pin id="238" dir="1" index="1" bw="32" slack="6"/>
+</pin_list>
+<bind>
+<opset="val_assign_loc_c18 "/>
+</bind>
+</comp>
+
+<comp id="242" class="1005" name="val_assign_loc_c17_reg_242">
+<pin_list>
+<pin id="243" dir="0" index="0" bw="32" slack="4"/>
+<pin id="244" dir="1" index="1" bw="32" slack="4"/>
+</pin_list>
+<bind>
+<opset="val_assign_loc_c17 "/>
+</bind>
+</comp>
+
+<comp id="248" class="1005" name="val_assign_loc_c_reg_248">
+<pin_list>
+<pin id="249" dir="0" index="0" bw="32" slack="4"/>
+<pin id="250" dir="1" index="1" bw="32" slack="4"/>
+</pin_list>
+<bind>
+<opset="val_assign_loc_c "/>
+</bind>
+</comp>
+
+<comp id="254" class="1005" name="n_c16_reg_254">
+<pin_list>
+<pin id="255" dir="0" index="0" bw="32" slack="2"/>
+<pin id="256" dir="1" index="1" bw="32" slack="2"/>
+</pin_list>
+<bind>
+<opset="n_c16 "/>
+</bind>
+</comp>
+
+<comp id="260" class="1005" name="n_c_reg_260">
+<pin_list>
+<pin id="261" dir="0" index="0" bw="32" slack="0"/>
+<pin id="262" dir="1" index="1" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opset="n_c "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="73"><net_src comp="8" pin="0"/><net_sink comp="70" pin=0"/></net>
+
+<net id="77"><net_src comp="8" pin="0"/><net_sink comp="74" pin=0"/></net>
+
+<net id="81"><net_src comp="8" pin="0"/><net_sink comp="78" pin=0"/></net>
+
+<net id="85"><net_src comp="8" pin="0"/><net_sink comp="82" pin=0"/></net>
+
+<net id="89"><net_src comp="8" pin="0"/><net_sink comp="86" pin=0"/></net>
+
+<net id="93"><net_src comp="8" pin="0"/><net_sink comp="90" pin=0"/></net>
+
+<net id="97"><net_src comp="8" pin="0"/><net_sink comp="94" pin=0"/></net>
+
+<net id="101"><net_src comp="8" pin="0"/><net_sink comp="98" pin=0"/></net>
+
+<net id="105"><net_src comp="8" pin="0"/><net_sink comp="102" pin=0"/></net>
+
+<net id="109"><net_src comp="8" pin="0"/><net_sink comp="106" pin=0"/></net>
+
+<net id="113"><net_src comp="8" pin="0"/><net_sink comp="110" pin=0"/></net>
+
+<net id="117"><net_src comp="8" pin="0"/><net_sink comp="114" pin=0"/></net>
+
+<net id="121"><net_src comp="8" pin="0"/><net_sink comp="118" pin=0"/></net>
+
+<net id="125"><net_src comp="8" pin="0"/><net_sink comp="122" pin=0"/></net>
+
+<net id="129"><net_src comp="8" pin="0"/><net_sink comp="126" pin=0"/></net>
+
+<net id="133"><net_src comp="8" pin="0"/><net_sink comp="130" pin=0"/></net>
+
+<net id="137"><net_src comp="8" pin="0"/><net_sink comp="134" pin=0"/></net>
+
+<net id="141"><net_src comp="8" pin="0"/><net_sink comp="138" pin=0"/></net>
+
+<net id="145"><net_src comp="8" pin="0"/><net_sink comp="142" pin=0"/></net>
+
+<net id="155"><net_src comp="12" pin="0"/><net_sink comp="146" pin=0"/></net>
+
+<net id="166"><net_src comp="16" pin="0"/><net_sink comp="156" pin=0"/></net>
+
+<net id="172"><net_src comp="24" pin="0"/><net_sink comp="167" pin=0"/></net>
+
+<net id="173"><net_src comp="4" pin="0"/><net_sink comp="167" pin=2"/></net>
+
+<net id="179"><net_src comp="20" pin="0"/><net_sink comp="174" pin=0"/></net>
+
+<net id="189"><net_src comp="18" pin="0"/><net_sink comp="180" pin=0"/></net>
+
+<net id="197"><net_src comp="22" pin="0"/><net_sink comp="190" pin=0"/></net>
+
+<net id="206"><net_src comp="10" pin="0"/><net_sink comp="198" pin=0"/></net>
+
+<net id="207"><net_src comp="0" pin="0"/><net_sink comp="198" pin=1"/></net>
+
+<net id="208"><net_src comp="2" pin="0"/><net_sink comp="198" pin=2"/></net>
+
+<net id="209"><net_src comp="94" pin="1"/><net_sink comp="198" pin=3"/></net>
+
+<net id="210"><net_src comp="98" pin="1"/><net_sink comp="198" pin=4"/></net>
+
+<net id="222"><net_src comp="14" pin="0"/><net_sink comp="211" pin=0"/></net>
+
+<net id="228"><net_src comp="68" pin="0"/><net_sink comp="223" pin=0"/></net>
+
+<net id="229"><net_src comp="6" pin="0"/><net_sink comp="223" pin=2"/></net>
+
+<net id="233"><net_src comp="70" pin="1"/><net_sink comp="230" pin=0"/></net>
+
+<net id="234"><net_src comp="230" pin="1"/><net_sink comp="180" pin=6"/></net>
+
+<net id="235"><net_src comp="230" pin="1"/><net_sink comp="190" pin=2"/></net>
+
+<net id="239"><net_src comp="74" pin="1"/><net_sink comp="236" pin=0"/></net>
+
+<net id="240"><net_src comp="236" pin="1"/><net_sink comp="156" pin=7"/></net>
+
+<net id="241"><net_src comp="236" pin="1"/><net_sink comp="180" pin=4"/></net>
+
+<net id="245"><net_src comp="78" pin="1"/><net_sink comp="242" pin=0"/></net>
+
+<net id="246"><net_src comp="242" pin="1"/><net_sink comp="211" pin=8"/></net>
+
+<net id="247"><net_src comp="242" pin="1"/><net_sink comp="223" pin=1"/></net>
+
+<net id="251"><net_src comp="82" pin="1"/><net_sink comp="248" pin=0"/></net>
+
+<net id="252"><net_src comp="248" pin="1"/><net_sink comp="211" pin=7"/></net>
+
+<net id="253"><net_src comp="248" pin="1"/><net_sink comp="156" pin=3"/></net>
+
+<net id="257"><net_src comp="86" pin="1"/><net_sink comp="254" pin=0"/></net>
+
+<net id="258"><net_src comp="254" pin="1"/><net_sink comp="146" pin=6"/></net>
+
+<net id="259"><net_src comp="254" pin="1"/><net_sink comp="211" pin=1"/></net>
+
+<net id="263"><net_src comp="90" pin="1"/><net_sink comp="260" pin=0"/></net>
+
+<net id="264"><net_src comp="260" pin="1"/><net_sink comp="198" pin=5"/></net>
+
+<net id="265"><net_src comp="260" pin="1"/><net_sink comp="146" pin=3"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: encoding_V | {15 16 }
+	Port: num_nonzero_symbols | {16 }
+ - Input state : 
+	Port: huffman_encoding : symbol_histogram_value_V | {1 2 }
+	Port: huffman_encoding : symbol_histogram_frequency_V | {1 2 }
+  - Chain level:
+	State 1
+		call_ln32 : 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|---------------------------------|---------|---------|---------|---------|---------|
+| Operation|         Functional Unit         |   BRAM  |  Delay  |    FF   |   LUT   |   URAM  |
+|----------|---------------------------------|---------|---------|---------|---------|---------|
+|          |         grp_sort_fu_146         |    5    | 72.8492 |   5604  |   1062  |    0    |
+|          |      grp_create_tree_fu_156     |    1    | 23.4087 |   821   |   630   |    0    |
+|          |    grp_create_codeword_fu_167   |    0    | 14.6095 |   304   |   609   |    0    |
+|          |     grp_truncate_tree_fu_174    |    0    | 12.7279 |   287   |   471   |    0    |
+|   call   |  grp_compute_bit_length_fu_180  |    2    | 14.2893 |   345   |   314   |    0    |
+|          |     grp_canonize_tree_fu_190    |    0    |  10.614 |   321   |   253   |    0    |
+|          |        grp_filter_fu_198        |    0    |  3.538  |   196   |   103   |    0    |
+|          | grp_Loop_copy_sorted_pro_fu_211 |    0    |  3.538  |   174   |    74   |    0    |
+|          |    call_ln0_Block_proc_fu_223   |    0    |    0    |    0    |    0    |    0    |
+|----------|---------------------------------|---------|---------|---------|---------|---------|
+|   Total  |                                 |    8    | 155.575 |   8052  |   3516  |    0    |
+|----------|---------------------------------|---------|---------|---------|---------|---------|
+
+Memories:
++--------------------+--------+--------+--------+--------+
+|                    |  BRAM  |   FF   |   LUT  |  URAM  |
++--------------------+--------+--------+--------+--------+
+|filtered_frequency_V|    1   |    0   |    0   |    0   |
+|  filtered_value_V  |    1   |    0   |    0   |    0   |
+|       left_V       |    1   |    0   |    0   |    0   |
+| length_histogram_V |    1   |    0   |    0   |    0   |
+|      parent_V      |    1   |    0   |    0   |    0   |
+|       right_V      |    1   |    0   |    0   |    0   |
+|      sorted_0      |    1   |    0   |    0   |    0   |
+|      sorted_1      |    1   |    0   |    0   |    0   |
+|sorted_copy1_frequen|    1   |    0   |    0   |    0   |
+|sorted_copy1_value_V|    1   |    0   |    0   |    0   |
+|sorted_copy2_value_V|    1   |    0   |    0   |    0   |
+|    symbol_bits_V   |    1   |    0   |    0   |    0   |
+|truncated_length_his|    2   |    0   |    0   |    0   |
++--------------------+--------+--------+--------+--------+
+|        Total       |   14   |    0   |    0   |    0   |
++--------------------+--------+--------+--------+--------+
+
+* Register list:
++--------------------------+--------+
+|                          |   FF   |
++--------------------------+--------+
+|       n_c16_reg_254      |   32   |
+|        n_c_reg_260       |   32   |
+|val_assign_loc_c17_reg_242|   32   |
+|val_assign_loc_c18_reg_236|   32   |
+|val_assign_loc_c19_reg_230|   32   |
+| val_assign_loc_c_reg_248 |   32   |
++--------------------------+--------+
+|           Total          |   192  |
++--------------------------+--------+
+
+* Multiplexer (MUX) list: 
+|--------|------|------|------|--------|
+|  Comp  |  Pin | Size |  BW  | S x BW |
+|--------|------|------|------|--------|
+|  Total |      |      |      |    0   |
+|--------|------|------|------|--------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+--------+
+|           |  BRAM  |  Delay |   FF   |   LUT  |  URAM  |
++-----------+--------+--------+--------+--------+--------+
+|  Function |    8   |   155  |  8052  |  3516  |    0   |
+|   Memory  |   14   |    -   |    0   |    0   |    0   |
+|Multiplexer|    -   |    -   |    -   |    -   |    -   |
+|  Register |    -   |    -   |   192  |    -   |    -   |
++-----------+--------+--------+--------+--------+--------+
+|   Total   |   22   |   155  |  8244  |  3516  |    0   |
++-----------+--------+--------+--------+--------+--------+

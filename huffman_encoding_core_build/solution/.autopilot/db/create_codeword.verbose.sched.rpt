@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'create_codeword'
 ================================================================
-* Date:           Tue Aug  3 15:22:56 2021
+* Date:           Tue Aug  3 21:42:40 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -25,12 +25,12 @@
 
 + Latency: 
     * Summary: 
-    +---------+---------+----------+-----------+-----+------+---------+
-    |  Latency (cycles) |  Latency (absolute)  |  Interval  | Pipeline|
-    |   min   |   max   |    min   |    max    | min |  max |   Type  |
-    +---------+---------+----------+-----------+-----+------+---------+
-    |      822|     1078| 8.220 us | 10.780 us |  822|  1078|   none  |
-    +---------+---------+----------+-----------+-----+------+---------+
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     1080|     1080| 10.800 us | 10.800 us |  1080|  1080|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
 
     + Detail: 
         * Instance: 
@@ -41,8 +41,8 @@
         |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
         |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
         +--------------------+---------+---------+----------+-----------+-----------+------+----------+
-        |- first_codewords   |       52|       52|         2|          -|          -|    26|    no    |
-        |- assign_codewords  |      768|     1024|   3 ~ 4  |          -|          -|   256|    no    |
+        |- first_codewords   |       52|       52|         2|          2|          1|    26|    yes   |
+        |- assign_codewords  |     1024|     1024|         4|          4|          5|   256|    yes   |
         +--------------------+---------+---------+----------+-----------+-----------+------+----------+
 
 ============================================================
@@ -55,7 +55,7 @@ ExposeGlobal: 0
 ============================================================
 IsTopModel: 0
 ResetActiveHigh: 1
-IsCombinational: 0
+IsCombinational: 2
 IsDatapathOnly: 0
 HasWiredReturn: 1
 HasMFsm: 0
@@ -67,106 +67,124 @@ IsDontTouch: 0
 HasImplIP: 0
 IsGatedGlobalClock: 0
 
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 2, depth = 2
+  * Pipeline-1: initiation interval (II) = 4, depth = 4
+
 
 ============================================================
 + Verbose Summary: Schedule
 ============================================================
-* Number of FSM states : 7
-* Pipeline : 0
+* Number of FSM states : 9
+* Pipeline : 2
+  Pipeline-0 : II = 2, D = 2, States = { 2 3 }
+  Pipeline-1 : II = 4, D = 4, States = { 5 6 7 8 }
 * Dataflow Pipeline: 0
 
 * FSM state transitions: 
 1 --> 2 
-2 --> 3 4 
+2 --> 4 3 
 3 --> 2 
 4 --> 5 
-5 --> 6 7 
+5 --> 9 6 
 6 --> 7 
-7 --> 4 
+7 --> 8 
+8 --> 5 
+9 --> 
 
 * FSM state operations: 
 
 State 1 <SV = 0> <Delay = 2.32>
-ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%first_codeword_V = alloca [27 x i27], align 4" [./hls-src/huffman_create_codeword.cpp:9]   --->   Operation 8 'alloca' 'first_codeword_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%first_codeword_V_add = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 0" [./hls-src/huffman_create_codeword.cpp:12]   --->   Operation 9 'getelementptr' 'first_codeword_V_add' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 10 [1/1] (2.32ns)   --->   "store i27 0, i27* %first_codeword_V_add, align 16" [./hls-src/huffman_create_codeword.cpp:12]   --->   Operation 10 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_1 : Operation 11 [1/1] (1.76ns)   --->   "br label %1" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 11 'br' <Predicate = true> <Delay = 1.76>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%first_codeword_V = alloca [27 x i27], align 4" [./hls-src/huffman_create_codeword.cpp:9]   --->   Operation 10 'alloca' 'first_codeword_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%first_codeword_V_add = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 0" [./hls-src/huffman_create_codeword.cpp:12]   --->   Operation 11 'getelementptr' 'first_codeword_V_add' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (2.32ns)   --->   "store i27 0, i27* %first_codeword_V_add, align 16" [./hls-src/huffman_create_codeword.cpp:12]   --->   Operation 12 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_1 : Operation 13 [1/1] (1.76ns)   --->   "br label %1" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 13 'br' <Predicate = true> <Delay = 1.76>
 
 State 2 <SV = 1> <Delay = 5.03>
-ST_2 : Operation 12 [1/1] (0.00ns)   --->   "%i_0 = phi i5 [ 1, %0 ], [ %i, %_ZlsILi33ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i.exit ]"   --->   Operation 12 'phi' 'i_0' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 13 [1/1] (1.36ns)   --->   "%icmp_ln14 = icmp eq i5 %i_0, -5" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 13 'icmp' 'icmp_ln14' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 26, i64 26, i64 26)"   --->   Operation 14 'speclooptripcount' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 15 [1/1] (0.00ns)   --->   "br i1 %icmp_ln14, label %.preheader.preheader, label %_ZlsILi33ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i.exit" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 15 'br' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 16 [1/1] (1.78ns)   --->   "%add_ln16 = add i5 -1, %i_0" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 16 'add' 'add_ln16' <Predicate = (!icmp_ln14)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%zext_ln16_1 = zext i5 %add_ln16 to i64" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 17 'zext' 'zext_ln16_1' <Predicate = (!icmp_ln14)> <Delay = 0.00>
-ST_2 : Operation 18 [1/1] (0.00ns)   --->   "%first_codeword_V_add_1 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln16_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 18 'getelementptr' 'first_codeword_V_add_1' <Predicate = (!icmp_ln14)> <Delay = 0.00>
-ST_2 : Operation 19 [2/2] (2.32ns)   --->   "%first_codeword_V_loa = load i27* %first_codeword_V_add_1, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 19 'load' 'first_codeword_V_loa' <Predicate = (!icmp_ln14)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%codeword_length_hist = getelementptr [64 x i32]* %codeword_length_histogram_V, i64 0, i64 %zext_ln16_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 20 'getelementptr' 'codeword_length_hist' <Predicate = (!icmp_ln14)> <Delay = 0.00>
-ST_2 : Operation 21 [2/2] (3.25ns)   --->   "%codeword_length_hist_1 = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 21 'load' 'codeword_length_hist_1' <Predicate = (!icmp_ln14)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_2 : Operation 22 [1/1] (1.76ns)   --->   "br label %.preheader" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 22 'br' <Predicate = (icmp_ln14)> <Delay = 1.76>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%i_0 = phi i5 [ 1, %0 ], [ %i, %first_codewords ]"   --->   Operation 14 'phi' 'i_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 15 [1/1] (1.36ns)   --->   "%icmp_ln14 = icmp eq i5 %i_0, -5" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 15 'icmp' 'icmp_ln14' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 26, i64 26, i64 26)"   --->   Operation 16 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "br i1 %icmp_ln14, label %.preheader.preheader, label %first_codewords" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 17 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (1.78ns)   --->   "%add_ln16 = add i5 -1, %i_0" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 18 'add' 'add_ln16' <Predicate = (!icmp_ln14)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%zext_ln16_1 = zext i5 %add_ln16 to i64" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 19 'zext' 'zext_ln16_1' <Predicate = (!icmp_ln14)> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%first_codeword_V_add_1 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln16_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 20 'getelementptr' 'first_codeword_V_add_1' <Predicate = (!icmp_ln14)> <Delay = 0.00>
+ST_2 : Operation 21 [2/2] (2.32ns)   --->   "%first_codeword_V_loa = load i27* %first_codeword_V_add_1, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 21 'load' 'first_codeword_V_loa' <Predicate = (!icmp_ln14)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%codeword_length_hist = getelementptr [64 x i32]* %codeword_length_histogram_V, i64 0, i64 %zext_ln16_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 22 'getelementptr' 'codeword_length_hist' <Predicate = (!icmp_ln14)> <Delay = 0.00>
+ST_2 : Operation 23 [2/2] (3.25ns)   --->   "%codeword_length_hist_1 = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 23 'load' 'codeword_length_hist_1' <Predicate = (!icmp_ln14)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
 
 State 3 <SV = 2> <Delay = 7.94>
-ST_3 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str9) nounwind" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 23 'specloopname' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 24 [1/1] (0.00ns)   --->   "%zext_ln16 = zext i5 %i_0 to i64" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 24 'zext' 'zext_ln16' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 25 [1/2] (2.32ns)   --->   "%first_codeword_V_loa = load i27* %first_codeword_V_add_1, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 25 'load' 'first_codeword_V_loa' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_3 : Operation 26 [1/2] (3.25ns)   --->   "%codeword_length_hist_1 = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 26 'load' 'codeword_length_hist_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_3 : Operation 27 [1/1] (0.00ns)   --->   "%trunc_ln1503 = trunc i32 %codeword_length_hist_1 to i26" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 27 'trunc' 'trunc_ln1503' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 28 [1/1] (0.00ns)   --->   "%trunc_ln1503_1 = trunc i27 %first_codeword_V_loa to i26" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 28 'trunc' 'trunc_ln1503_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 29 [1/1] (2.37ns)   --->   "%add_ln1503 = add i26 %trunc_ln1503, %trunc_ln1503_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 29 'add' 'add_ln1503' <Predicate = true> <Delay = 2.37> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%shl_ln = call i27 @_ssdm_op_BitConcatenate.i27.i26.i1(i26 %add_ln1503, i1 false)" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 30 'bitconcatenate' 'shl_ln' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%first_codeword_V_add_2 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln16" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 31 'getelementptr' 'first_codeword_V_add_2' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 32 [1/1] (2.32ns)   --->   "store i27 %shl_ln, i27* %first_codeword_V_add_2, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 32 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_3 : Operation 33 [1/1] (1.78ns)   --->   "%i = add i5 1, %i_0" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 33 'add' 'i' <Predicate = true> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 34 [1/1] (0.00ns)   --->   "br label %1" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str62) nounwind" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 24 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([16 x i8]* @p_str62)" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 25 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str263) nounwind" [./hls-src/huffman_create_codeword.cpp:15]   --->   Operation 26 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 27 [1/1] (0.00ns)   --->   "%zext_ln16 = zext i5 %i_0 to i64" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 27 'zext' 'zext_ln16' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 28 [1/2] (2.32ns)   --->   "%first_codeword_V_loa = load i27* %first_codeword_V_add_1, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 28 'load' 'first_codeword_V_loa' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_3 : Operation 29 [1/2] (3.25ns)   --->   "%codeword_length_hist_1 = load i32* %codeword_length_hist, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 29 'load' 'codeword_length_hist_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%trunc_ln1503 = trunc i32 %codeword_length_hist_1 to i26" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 30 'trunc' 'trunc_ln1503' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%trunc_ln1503_1 = trunc i27 %first_codeword_V_loa to i26" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 31 'trunc' 'trunc_ln1503_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 32 [1/1] (2.37ns)   --->   "%add_ln1503 = add i26 %trunc_ln1503, %trunc_ln1503_1" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 32 'add' 'add_ln1503' <Predicate = true> <Delay = 2.37> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%shl_ln = call i27 @_ssdm_op_BitConcatenate.i27.i26.i1(i26 %add_ln1503, i1 false)" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 33 'bitconcatenate' 'shl_ln' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "%first_codeword_V_add_2 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln16" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 34 'getelementptr' 'first_codeword_V_add_2' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 35 [1/1] (2.32ns)   --->   "store i27 %shl_ln, i27* %first_codeword_V_add_2, align 4" [./hls-src/huffman_create_codeword.cpp:16]   --->   Operation 35 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_3 : Operation 36 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([16 x i8]* @p_str62, i32 %tmp)" [./hls-src/huffman_create_codeword.cpp:19]   --->   Operation 36 'specregionend' 'empty' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 37 [1/1] (1.78ns)   --->   "%i = add i5 1, %i_0" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 37 'add' 'i' <Predicate = true> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 38 [1/1] (0.00ns)   --->   "br label %1" [./hls-src/huffman_create_codeword.cpp:14]   --->   Operation 38 'br' <Predicate = true> <Delay = 0.00>
 
-State 4 <SV = 2> <Delay = 3.25>
-ST_4 : Operation 35 [1/1] (0.00ns)   --->   "%i1_0 = phi i9 [ %i_6, %4 ], [ 0, %.preheader.preheader ]"   --->   Operation 35 'phi' 'i1_0' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 36 [1/1] (1.66ns)   --->   "%icmp_ln22 = icmp eq i9 %i1_0, -256" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 36 'icmp' 'icmp_ln22' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 37 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 37 'speclooptripcount' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 38 [1/1] (1.82ns)   --->   "%i_6 = add i9 %i1_0, 1" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 38 'add' 'i_6' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 39 [1/1] (0.00ns)   --->   "br i1 %icmp_ln22, label %5, label %2" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 39 'br' <Predicate = true> <Delay = 0.00>
-ST_4 : Operation 40 [1/1] (0.00ns)   --->   "%zext_ln24 = zext i9 %i1_0 to i64" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 40 'zext' 'zext_ln24' <Predicate = (!icmp_ln22)> <Delay = 0.00>
-ST_4 : Operation 41 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 41 'getelementptr' 'symbol_bits_V_addr' <Predicate = (!icmp_ln22)> <Delay = 0.00>
-ST_4 : Operation 42 [2/2] (3.25ns)   --->   "%length_V = load i5* %symbol_bits_V_addr, align 1" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 42 'load' 'length_V' <Predicate = (!icmp_ln22)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_4 : Operation 43 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_create_codeword.cpp:39]   --->   Operation 43 'ret' <Predicate = (icmp_ln22)> <Delay = 0.00>
+State 4 <SV = 2> <Delay = 1.76>
+ST_4 : Operation 39 [1/1] (1.76ns)   --->   "br label %.preheader" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 39 'br' <Predicate = true> <Delay = 1.76>
 
-State 5 <SV = 3> <Delay = 5.57>
-ST_5 : Operation 44 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([17 x i8]* @p_str210) nounwind" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 44 'specloopname' <Predicate = true> <Delay = 0.00>
-ST_5 : Operation 45 [1/2] (3.25ns)   --->   "%length_V = load i5* %symbol_bits_V_addr, align 1" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 45 'load' 'length_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_5 : Operation 46 [1/1] (1.36ns)   --->   "%icmp_ln883 = icmp eq i5 %length_V, 0" [./hls-src/huffman_create_codeword.cpp:27]   --->   Operation 46 'icmp' 'icmp_ln883' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 47 [1/1] (0.00ns)   --->   "br i1 %icmp_ln883, label %3, label %_ifconv" [./hls-src/huffman_create_codeword.cpp:27]   --->   Operation 47 'br' <Predicate = true> <Delay = 0.00>
-ST_5 : Operation 48 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i5 %length_V to i64" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 48 'zext' 'zext_ln544' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_5 : Operation 49 [1/1] (0.00ns)   --->   "%first_codeword_V_add_3 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 49 'getelementptr' 'first_codeword_V_add_3' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_5 : Operation 50 [2/2] (2.32ns)   --->   "%out_reversed_V_1 = load i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 50 'load' 'out_reversed_V_1' <Predicate = (!icmp_ln883)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_5 : Operation 51 [1/1] (0.00ns)   --->   "%encoding_V_addr = getelementptr [256 x i32]* %encoding_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:36]   --->   Operation 51 'getelementptr' 'encoding_V_addr' <Predicate = (icmp_ln883)> <Delay = 0.00>
-ST_5 : Operation 52 [1/1] (3.25ns)   --->   "store i32 0, i32* %encoding_V_addr, align 4" [./hls-src/huffman_create_codeword.cpp:36]   --->   Operation 52 'store' <Predicate = (icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_5 : Operation 53 [1/1] (0.00ns)   --->   "br label %4"   --->   Operation 53 'br' <Predicate = (icmp_ln883)> <Delay = 0.00>
+State 5 <SV = 3> <Delay = 3.25>
+ST_5 : Operation 40 [1/1] (0.00ns)   --->   "%i1_0 = phi i9 [ %i_4, %assign_codewords_end ], [ 0, %.preheader.preheader ]"   --->   Operation 40 'phi' 'i1_0' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 41 [1/1] (1.66ns)   --->   "%icmp_ln22 = icmp eq i9 %i1_0, -256" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 41 'icmp' 'icmp_ln22' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 42 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 42 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 43 [1/1] (1.82ns)   --->   "%i_4 = add i9 %i1_0, 1" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 43 'add' 'i_4' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 44 [1/1] (0.00ns)   --->   "br i1 %icmp_ln22, label %3, label %assign_codewords_begin" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 44 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 45 [1/1] (0.00ns)   --->   "%zext_ln24 = zext i9 %i1_0 to i64" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 45 'zext' 'zext_ln24' <Predicate = (!icmp_ln22)> <Delay = 0.00>
+ST_5 : Operation 46 [1/1] (0.00ns)   --->   "%symbol_bits_V_addr = getelementptr [256 x i5]* %symbol_bits_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 46 'getelementptr' 'symbol_bits_V_addr' <Predicate = (!icmp_ln22)> <Delay = 0.00>
+ST_5 : Operation 47 [2/2] (3.25ns)   --->   "%length_V = load i5* %symbol_bits_V_addr, align 1" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 47 'load' 'length_V' <Predicate = (!icmp_ln22)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
 
-State 6 <SV = 4> <Delay = 7.93>
-ST_6 : Operation 54 [1/2] (2.32ns)   --->   "%out_reversed_V_1 = load i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 54 'load' 'out_reversed_V_1' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_6 : Operation 55 [1/1] (0.00ns)   --->   "%p_Result_s = call i27 @llvm.part.select.i27(i27 %out_reversed_V_1, i32 26, i32 0) nounwind" [./hls-src/huffman_create_codeword.cpp:30]   --->   Operation 55 'partselect' 'p_Result_s' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 56 [1/1] (0.00ns)   --->   "%zext_ln215 = zext i5 %length_V to i6" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 56 'zext' 'zext_ln215' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 57 [1/1] (1.82ns)   --->   "%ret_V = sub i6 27, %zext_ln215" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 57 'sub' 'ret_V' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 58 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%p_Result_1 = call i1 @_ssdm_op_BitSelect.i1.i6.i32(i6 %ret_V, i32 5)" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 58 'bitselect' 'p_Result_1' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 59 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%sext_ln790 = sext i6 %ret_V to i27" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 59 'sext' 'sext_ln790' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 60 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%zext_ln790 = zext i27 %p_Result_s to i32" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 60 'zext' 'zext_ln790' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 61 [1/1] (1.82ns)   --->   "%sub_ln556 = sub i6 0, %ret_V" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 61 'sub' 'sub_ln556' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 62 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%sext_ln556 = sext i6 %sub_ln556 to i32" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 62 'sext' 'sext_ln556' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 63 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%shl_ln790 = shl i32 %zext_ln790, %sext_ln556" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 63 'shl' 'shl_ln790' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.28> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 64 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%lshr_ln808 = lshr i27 %p_Result_s, %sext_ln790" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 64 'lshr' 'lshr_ln808' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.28> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 65 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%trunc_ln1353 = trunc i32 %shl_ln790 to i22" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 65 'trunc' 'trunc_ln1353' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 66 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%trunc_ln1353_1 = trunc i27 %lshr_ln808 to i22" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 66 'trunc' 'trunc_ln1353_1' <Predicate = true> <Delay = 0.00>
-ST_6 : Operation 67 [1/1] (4.28ns) (out node of the LUT)   --->   "%select_ln796 = select i1 %p_Result_1, i22 %trunc_ln1353, i22 %trunc_ln1353_1" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 67 'select' 'select_ln796' <Predicate = true> <Delay = 4.28> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.70> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
-ST_6 : Operation 68 [1/1] (2.40ns)   --->   "%add_ln700 = add i27 1, %out_reversed_V_1" [./hls-src/huffman_create_codeword.cpp:34]   --->   Operation 68 'add' 'add_ln700' <Predicate = true> <Delay = 2.40> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 69 [1/1] (2.32ns)   --->   "store i27 %add_ln700, i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:34]   --->   Operation 69 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
+State 6 <SV = 4> <Delay = 5.57>
+ST_6 : Operation 48 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([17 x i8]* @p_str364) nounwind" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 48 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 49 [1/1] (0.00ns)   --->   "%tmp_s = call i32 (...)* @_ssdm_op_SpecRegionBegin([17 x i8]* @p_str364)" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 49 'specregionbegin' 'tmp_s' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 50 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 5, i32 1, i32 1, i32 0, [1 x i8]* @p_str263) nounwind" [./hls-src/huffman_create_codeword.cpp:23]   --->   Operation 50 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 51 [1/2] (3.25ns)   --->   "%length_V = load i5* %symbol_bits_V_addr, align 1" [./hls-src/huffman_create_codeword.cpp:24]   --->   Operation 51 'load' 'length_V' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_6 : Operation 52 [1/1] (1.36ns)   --->   "%icmp_ln883 = icmp eq i5 %length_V, 0" [./hls-src/huffman_create_codeword.cpp:27]   --->   Operation 52 'icmp' 'icmp_ln883' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.36> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 53 [1/1] (0.00ns)   --->   "br i1 %icmp_ln883, label %2, label %_ifconv" [./hls-src/huffman_create_codeword.cpp:27]   --->   Operation 53 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 54 [1/1] (0.00ns)   --->   "%zext_ln544 = zext i5 %length_V to i64" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 54 'zext' 'zext_ln544' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 55 [1/1] (0.00ns)   --->   "%first_codeword_V_add_3 = getelementptr [27 x i27]* %first_codeword_V, i64 0, i64 %zext_ln544" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 55 'getelementptr' 'first_codeword_V_add_3' <Predicate = (!icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 56 [2/2] (2.32ns)   --->   "%out_reversed_V_1 = load i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 56 'load' 'out_reversed_V_1' <Predicate = (!icmp_ln883)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_6 : Operation 57 [1/1] (0.00ns)   --->   "%encoding_V_addr = getelementptr [256 x i32]* %encoding_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:36]   --->   Operation 57 'getelementptr' 'encoding_V_addr' <Predicate = (icmp_ln883)> <Delay = 0.00>
+ST_6 : Operation 58 [1/1] (3.25ns)   --->   "store i32 0, i32* %encoding_V_addr, align 4" [./hls-src/huffman_create_codeword.cpp:36]   --->   Operation 58 'store' <Predicate = (icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
 
-State 7 <SV = 5> <Delay = 3.25>
-ST_7 : Operation 70 [1/1] (0.00ns)   --->   "%tmp_3 = call i27 @_ssdm_op_BitConcatenate.i27.i22.i5(i22 %select_ln796, i5 %length_V)" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 70 'bitconcatenate' 'tmp_3' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_7 : Operation 71 [1/1] (0.00ns)   --->   "%zext_ln209 = zext i27 %tmp_3 to i32" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 71 'zext' 'zext_ln209' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_7 : Operation 72 [1/1] (0.00ns)   --->   "%encoding_V_addr_1 = getelementptr [256 x i32]* %encoding_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 72 'getelementptr' 'encoding_V_addr_1' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_7 : Operation 73 [1/1] (3.25ns)   --->   "store i32 %zext_ln209, i32* %encoding_V_addr_1, align 4" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 73 'store' <Predicate = (!icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 256> <RAM>
-ST_7 : Operation 74 [1/1] (0.00ns)   --->   "br label %4" [./hls-src/huffman_create_codeword.cpp:35]   --->   Operation 74 'br' <Predicate = (!icmp_ln883)> <Delay = 0.00>
-ST_7 : Operation 75 [1/1] (0.00ns)   --->   "br label %.preheader" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 75 'br' <Predicate = true> <Delay = 0.00>
+State 7 <SV = 5> <Delay = 7.76>
+ST_7 : Operation 59 [1/2] (2.32ns)   --->   "%out_reversed_V_1 = load i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:29]   --->   Operation 59 'load' 'out_reversed_V_1' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_7 : Operation 60 [1/1] (0.00ns)   --->   "%p_Result_s = call i27 @llvm.part.select.i27(i27 %out_reversed_V_1, i32 26, i32 0) nounwind" [./hls-src/huffman_create_codeword.cpp:30]   --->   Operation 60 'partselect' 'p_Result_s' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 61 [1/1] (0.00ns)   --->   "%zext_ln215 = zext i5 %length_V to i6" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 61 'zext' 'zext_ln215' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 62 [1/1] (1.82ns)   --->   "%ret_V = sub i6 27, %zext_ln215" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 62 'sub' 'ret_V' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 63 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%p_Result_1 = call i1 @_ssdm_op_BitSelect.i1.i6.i32(i6 %ret_V, i32 5)" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 63 'bitselect' 'p_Result_1' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 64 [1/1] (0.00ns)   --->   "%trunc_ln790 = trunc i6 %ret_V to i3" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 64 'trunc' 'trunc_ln790' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 65 [1/1] (1.65ns)   --->   "%sub_ln556 = sub i3 0, %trunc_ln790" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 65 'sub' 'sub_ln556' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 66 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%zext_ln556 = zext i3 %sub_ln556 to i27" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 66 'zext' 'zext_ln556' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 67 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%r_V = shl i27 %p_Result_s, %zext_ln556" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 67 'shl' 'r_V' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.28> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 68 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%zext_ln808 = zext i6 %ret_V to i27" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 68 'zext' 'zext_ln808' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 69 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%lshr_ln808 = lshr i27 %p_Result_s, %zext_ln808" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 69 'lshr' 'lshr_ln808' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.28> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 70 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%trunc_ln796 = trunc i27 %r_V to i22" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 70 'trunc' 'trunc_ln796' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 71 [1/1] (0.00ns) (grouped into LUT with out node select_ln796)   --->   "%trunc_ln796_1 = trunc i27 %lshr_ln808 to i22" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 71 'trunc' 'trunc_ln796_1' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_7 : Operation 72 [1/1] (4.28ns) (out node of the LUT)   --->   "%select_ln796 = select i1 %p_Result_1, i22 %trunc_ln796, i22 %trunc_ln796_1" [./hls-src/huffman_create_codeword.cpp:31]   --->   Operation 72 'select' 'select_ln796' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 4.28> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.70> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 73 [1/1] (2.40ns)   --->   "%add_ln700 = add i27 1, %out_reversed_V_1" [./hls-src/huffman_create_codeword.cpp:34]   --->   Operation 73 'add' 'add_ln700' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 2.40> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.40> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 74 [1/1] (2.32ns)   --->   "store i27 %add_ln700, i27* %first_codeword_V_add_3, align 4" [./hls-src/huffman_create_codeword.cpp:34]   --->   Operation 74 'store' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+
+State 8 <SV = 6> <Delay = 3.25>
+ST_8 : Operation 75 [1/1] (0.00ns)   --->   "%tmp_2 = call i27 @_ssdm_op_BitConcatenate.i27.i22.i5(i22 %select_ln796, i5 %length_V)" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 75 'bitconcatenate' 'tmp_2' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_8 : Operation 76 [1/1] (0.00ns)   --->   "%zext_ln209 = zext i27 %tmp_2 to i32" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 76 'zext' 'zext_ln209' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_8 : Operation 77 [1/1] (0.00ns)   --->   "%encoding_V_addr_1 = getelementptr [256 x i32]* %encoding_V, i64 0, i64 %zext_ln24" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 77 'getelementptr' 'encoding_V_addr_1' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_8 : Operation 78 [1/1] (3.25ns)   --->   "store i32 %zext_ln209, i32* %encoding_V_addr_1, align 4" [./hls-src/huffman_create_codeword.cpp:33]   --->   Operation 78 'store' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 27> <Depth = 27> <RAM>
+ST_8 : Operation 79 [1/1] (0.00ns)   --->   "br label %assign_codewords_end" [./hls-src/huffman_create_codeword.cpp:35]   --->   Operation 79 'br' <Predicate = (!icmp_ln22 & !icmp_ln883)> <Delay = 0.00>
+ST_8 : Operation 80 [1/1] (0.00ns)   --->   "br label %assign_codewords_end"   --->   Operation 80 'br' <Predicate = (!icmp_ln22 & icmp_ln883)> <Delay = 0.00>
+ST_8 : Operation 81 [1/1] (0.00ns)   --->   "%empty_29 = call i32 (...)* @_ssdm_op_SpecRegionEnd([17 x i8]* @p_str364, i32 %tmp_s)" [./hls-src/huffman_create_codeword.cpp:38]   --->   Operation 81 'specregionend' 'empty_29' <Predicate = (!icmp_ln22)> <Delay = 0.00>
+ST_8 : Operation 82 [1/1] (0.00ns)   --->   "br label %.preheader" [./hls-src/huffman_create_codeword.cpp:22]   --->   Operation 82 'br' <Predicate = (!icmp_ln22)> <Delay = 0.00>
+
+State 9 <SV = 4> <Delay = 0.00>
+ST_9 : Operation 83 [1/1] (0.00ns)   --->   "ret void" [./hls-src/huffman_create_codeword.cpp:39]   --->   Operation 83 'ret' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -183,38 +201,45 @@ The critical path consists of the following:
  <State 2>: 5.03ns
 The critical path consists of the following:
 	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_create_codeword.cpp:14) [9]  (0 ns)
-	'add' operation ('add_ln16', ./hls-src/huffman_create_codeword.cpp:16) [16]  (1.78 ns)
-	'getelementptr' operation ('codeword_length_hist', ./hls-src/huffman_create_codeword.cpp:16) [20]  (0 ns)
-	'load' operation ('codeword_length_hist_1', ./hls-src/huffman_create_codeword.cpp:16) on array 'codeword_length_histogram_V' [21]  (3.25 ns)
+	'add' operation ('add_ln16', ./hls-src/huffman_create_codeword.cpp:16) [18]  (1.78 ns)
+	'getelementptr' operation ('codeword_length_hist', ./hls-src/huffman_create_codeword.cpp:16) [22]  (0 ns)
+	'load' operation ('codeword_length_hist_1', ./hls-src/huffman_create_codeword.cpp:16) on array 'codeword_length_histogram_V' [23]  (3.25 ns)
 
  <State 3>: 7.95ns
 The critical path consists of the following:
-	'load' operation ('codeword_length_hist_1', ./hls-src/huffman_create_codeword.cpp:16) on array 'codeword_length_histogram_V' [21]  (3.25 ns)
-	'add' operation ('add_ln1503', ./hls-src/huffman_create_codeword.cpp:16) [24]  (2.37 ns)
-	'store' operation ('store_ln16', ./hls-src/huffman_create_codeword.cpp:16) of variable 'shl_ln', ./hls-src/huffman_create_codeword.cpp:16 on array 'first_codeword.V', ./hls-src/huffman_create_codeword.cpp:9 [27]  (2.32 ns)
+	'load' operation ('codeword_length_hist_1', ./hls-src/huffman_create_codeword.cpp:16) on array 'codeword_length_histogram_V' [23]  (3.25 ns)
+	'add' operation ('add_ln1503', ./hls-src/huffman_create_codeword.cpp:16) [26]  (2.37 ns)
+	'store' operation ('store_ln16', ./hls-src/huffman_create_codeword.cpp:16) of variable 'shl_ln', ./hls-src/huffman_create_codeword.cpp:16 on array 'first_codeword.V', ./hls-src/huffman_create_codeword.cpp:9 [29]  (2.32 ns)
 
- <State 4>: 3.25ns
+ <State 4>: 1.77ns
 The critical path consists of the following:
-	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_create_codeword.cpp:22) [33]  (0 ns)
-	'getelementptr' operation ('symbol_bits_V_addr', ./hls-src/huffman_create_codeword.cpp:24) [41]  (0 ns)
-	'load' operation ('length.V', ./hls-src/huffman_create_codeword.cpp:24) on array 'symbol_bits_V' [42]  (3.25 ns)
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_create_codeword.cpp:22) [36]  (1.77 ns)
 
- <State 5>: 5.58ns
+ <State 5>: 3.25ns
 The critical path consists of the following:
-	'load' operation ('length.V', ./hls-src/huffman_create_codeword.cpp:24) on array 'symbol_bits_V' [42]  (3.25 ns)
-	'getelementptr' operation ('first_codeword_V_add_3', ./hls-src/huffman_create_codeword.cpp:29) [47]  (0 ns)
-	'load' operation ('out_reversed.V', ./hls-src/huffman_create_codeword.cpp:29) on array 'first_codeword.V', ./hls-src/huffman_create_codeword.cpp:9 [48]  (2.32 ns)
+	'phi' operation ('i') with incoming values : ('i', ./hls-src/huffman_create_codeword.cpp:22) [36]  (0 ns)
+	'getelementptr' operation ('symbol_bits_V_addr', ./hls-src/huffman_create_codeword.cpp:24) [46]  (0 ns)
+	'load' operation ('length.V', ./hls-src/huffman_create_codeword.cpp:24) on array 'symbol_bits_V' [47]  (3.25 ns)
 
- <State 6>: 7.94ns
+ <State 6>: 5.58ns
 The critical path consists of the following:
-	'sub' operation ('ret.V', ./hls-src/huffman_create_codeword.cpp:31) [51]  (1.83 ns)
-	'sub' operation ('sub_ln556', ./hls-src/huffman_create_codeword.cpp:31) [55]  (1.83 ns)
-	'shl' operation ('shl_ln790', ./hls-src/huffman_create_codeword.cpp:31) [57]  (0 ns)
-	'select' operation ('select_ln796', ./hls-src/huffman_create_codeword.cpp:31) [61]  (4.29 ns)
+	'load' operation ('length.V', ./hls-src/huffman_create_codeword.cpp:24) on array 'symbol_bits_V' [47]  (3.25 ns)
+	'getelementptr' operation ('first_codeword_V_add_3', ./hls-src/huffman_create_codeword.cpp:29) [52]  (0 ns)
+	'load' operation ('out_reversed.V', ./hls-src/huffman_create_codeword.cpp:29) on array 'first_codeword.V', ./hls-src/huffman_create_codeword.cpp:9 [53]  (2.32 ns)
 
- <State 7>: 3.25ns
+ <State 7>: 7.76ns
 The critical path consists of the following:
-	'store' operation ('store_ln33', ./hls-src/huffman_create_codeword.cpp:33) of variable 'zext_ln209', ./hls-src/huffman_create_codeword.cpp:33 on array 'encoding_V' [65]  (3.25 ns)
+	'sub' operation ('ret.V', ./hls-src/huffman_create_codeword.cpp:31) [56]  (1.83 ns)
+	'sub' operation ('sub_ln556', ./hls-src/huffman_create_codeword.cpp:31) [59]  (1.65 ns)
+	'shl' operation ('r.V', ./hls-src/huffman_create_codeword.cpp:31) [61]  (0 ns)
+	'select' operation ('select_ln796', ./hls-src/huffman_create_codeword.cpp:31) [66]  (4.29 ns)
+
+ <State 8>: 3.25ns
+The critical path consists of the following:
+	'store' operation ('store_ln33', ./hls-src/huffman_create_codeword.cpp:33) of variable 'zext_ln209', ./hls-src/huffman_create_codeword.cpp:33 on array 'encoding_V' [70]  (3.25 ns)
+
+ <State 9>: 0ns
+The critical path consists of the following:
 
 
 ============================================================
@@ -232,6 +257,8 @@ N/A
 	State 5
 	State 6
 	State 7
+	State 8
+	State 9
 
 
 ============================================================

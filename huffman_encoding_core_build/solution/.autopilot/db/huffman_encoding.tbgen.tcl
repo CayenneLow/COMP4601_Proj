@@ -4,8 +4,8 @@ set isTaskLevelControl 1
 set isCombinational 0
 set isDatapathOnly 0
 set isFreeRunPipelineModule 0
-set isPipelined 0
-set pipeline_type none
+set isPipelined 1
+set pipeline_type dataflow
 set FunctionProtocol ap_ctrl_hs
 set isOneStateSeq 0
 set ProfileFlag 0
@@ -25,74 +25,119 @@ set C_modelArgMapList {[
  	{ "Name" : "encoding_V", "interface" : "memory", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "encoding.V","cData": "uint32","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 255,"step" : 1}]}]}]} , 
  	{ "Name" : "num_nonzero_symbols", "interface" : "wire", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "num_nonzero_symbols","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 0,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
-set portNum 18
+set portNum 38
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst sc_in sc_logic 1 reset -1 active_high_sync } 
-	{ ap_start sc_in sc_logic 1 start -1 } 
-	{ ap_done sc_out sc_logic 1 predone -1 } 
-	{ ap_idle sc_out sc_logic 1 done -1 } 
-	{ ap_ready sc_out sc_logic 1 ready -1 } 
 	{ symbol_histogram_value_V_address0 sc_out sc_lv 8 signal 0 } 
 	{ symbol_histogram_value_V_ce0 sc_out sc_logic 1 signal 0 } 
+	{ symbol_histogram_value_V_d0 sc_out sc_lv 32 signal 0 } 
 	{ symbol_histogram_value_V_q0 sc_in sc_lv 32 signal 0 } 
+	{ symbol_histogram_value_V_we0 sc_out sc_logic 1 signal 0 } 
+	{ symbol_histogram_value_V_address1 sc_out sc_lv 8 signal 0 } 
+	{ symbol_histogram_value_V_ce1 sc_out sc_logic 1 signal 0 } 
+	{ symbol_histogram_value_V_d1 sc_out sc_lv 32 signal 0 } 
+	{ symbol_histogram_value_V_q1 sc_in sc_lv 32 signal 0 } 
+	{ symbol_histogram_value_V_we1 sc_out sc_logic 1 signal 0 } 
 	{ symbol_histogram_frequency_V_address0 sc_out sc_lv 8 signal 1 } 
 	{ symbol_histogram_frequency_V_ce0 sc_out sc_logic 1 signal 1 } 
+	{ symbol_histogram_frequency_V_d0 sc_out sc_lv 32 signal 1 } 
 	{ symbol_histogram_frequency_V_q0 sc_in sc_lv 32 signal 1 } 
+	{ symbol_histogram_frequency_V_we0 sc_out sc_logic 1 signal 1 } 
+	{ symbol_histogram_frequency_V_address1 sc_out sc_lv 8 signal 1 } 
+	{ symbol_histogram_frequency_V_ce1 sc_out sc_logic 1 signal 1 } 
+	{ symbol_histogram_frequency_V_d1 sc_out sc_lv 32 signal 1 } 
+	{ symbol_histogram_frequency_V_q1 sc_in sc_lv 32 signal 1 } 
+	{ symbol_histogram_frequency_V_we1 sc_out sc_logic 1 signal 1 } 
 	{ encoding_V_address0 sc_out sc_lv 8 signal 2 } 
 	{ encoding_V_ce0 sc_out sc_logic 1 signal 2 } 
-	{ encoding_V_we0 sc_out sc_logic 1 signal 2 } 
 	{ encoding_V_d0 sc_out sc_lv 32 signal 2 } 
+	{ encoding_V_q0 sc_in sc_lv 32 signal 2 } 
+	{ encoding_V_we0 sc_out sc_logic 1 signal 2 } 
+	{ encoding_V_address1 sc_out sc_lv 8 signal 2 } 
+	{ encoding_V_ce1 sc_out sc_logic 1 signal 2 } 
+	{ encoding_V_d1 sc_out sc_lv 32 signal 2 } 
+	{ encoding_V_q1 sc_in sc_lv 32 signal 2 } 
+	{ encoding_V_we1 sc_out sc_logic 1 signal 2 } 
 	{ num_nonzero_symbols sc_out sc_lv 32 signal 3 } 
+	{ ap_start sc_in sc_logic 1 start -1 } 
+	{ ap_done sc_out sc_logic 1 predone -1 } 
 	{ num_nonzero_symbols_ap_vld sc_out sc_logic 1 outvld 3 } 
+	{ ap_ready sc_out sc_logic 1 ready -1 } 
+	{ ap_idle sc_out sc_logic 1 done -1 } 
 }
 set NewPortList {[ 
 	{ "name": "ap_clk", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "clock", "bundle":{"name": "ap_clk", "role": "default" }} , 
  	{ "name": "ap_rst", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "reset", "bundle":{"name": "ap_rst", "role": "default" }} , 
- 	{ "name": "ap_start", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "start", "bundle":{"name": "ap_start", "role": "default" }} , 
- 	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
- 	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }} , 
- 	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
  	{ "name": "symbol_histogram_value_V_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "address0" }} , 
  	{ "name": "symbol_histogram_value_V_ce0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "ce0" }} , 
+ 	{ "name": "symbol_histogram_value_V_d0", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "d0" }} , 
  	{ "name": "symbol_histogram_value_V_q0", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "q0" }} , 
+ 	{ "name": "symbol_histogram_value_V_we0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "we0" }} , 
+ 	{ "name": "symbol_histogram_value_V_address1", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "address1" }} , 
+ 	{ "name": "symbol_histogram_value_V_ce1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "ce1" }} , 
+ 	{ "name": "symbol_histogram_value_V_d1", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "d1" }} , 
+ 	{ "name": "symbol_histogram_value_V_q1", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "q1" }} , 
+ 	{ "name": "symbol_histogram_value_V_we1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_value_V", "role": "we1" }} , 
  	{ "name": "symbol_histogram_frequency_V_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "address0" }} , 
  	{ "name": "symbol_histogram_frequency_V_ce0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "ce0" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_d0", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "d0" }} , 
  	{ "name": "symbol_histogram_frequency_V_q0", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "q0" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_we0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "we0" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_address1", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "address1" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_ce1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "ce1" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_d1", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "d1" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_q1", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "q1" }} , 
+ 	{ "name": "symbol_histogram_frequency_V_we1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "symbol_histogram_frequency_V", "role": "we1" }} , 
  	{ "name": "encoding_V_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "encoding_V", "role": "address0" }} , 
  	{ "name": "encoding_V_ce0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "encoding_V", "role": "ce0" }} , 
- 	{ "name": "encoding_V_we0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "encoding_V", "role": "we0" }} , 
  	{ "name": "encoding_V_d0", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "encoding_V", "role": "d0" }} , 
+ 	{ "name": "encoding_V_q0", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "encoding_V", "role": "q0" }} , 
+ 	{ "name": "encoding_V_we0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "encoding_V", "role": "we0" }} , 
+ 	{ "name": "encoding_V_address1", "direction": "out", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "encoding_V", "role": "address1" }} , 
+ 	{ "name": "encoding_V_ce1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "encoding_V", "role": "ce1" }} , 
+ 	{ "name": "encoding_V_d1", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "encoding_V", "role": "d1" }} , 
+ 	{ "name": "encoding_V_q1", "direction": "in", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "encoding_V", "role": "q1" }} , 
+ 	{ "name": "encoding_V_we1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "encoding_V", "role": "we1" }} , 
  	{ "name": "num_nonzero_symbols", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "num_nonzero_symbols", "role": "default" }} , 
- 	{ "name": "num_nonzero_symbols_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "num_nonzero_symbols", "role": "ap_vld" }}  ]}
+ 	{ "name": "ap_start", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "start", "bundle":{"name": "ap_start", "role": "default" }} , 
+ 	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
+ 	{ "name": "num_nonzero_symbols_ap_vld", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "outvld", "bundle":{"name": "num_nonzero_symbols", "role": "ap_vld" }} , 
+ 	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
+ 	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "25", "26", "29"],
+	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "25", "26", "28", "31", "32", "33", "35", "36", "37", "38", "39", "40", "41", "42"],
 		"CDFG" : "huffman_encoding",
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"Pipeline" : "Dataflow", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "1",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "5197", "EstimateLatencyMax" : "23730",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "-1", "EstimateLatencyMax" : "-1",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
+		"HasSubDataflow" : "1",
 		"InDataflowNetwork" : "0",
 		"HasNonBlockingOperation" : "0",
-		"WaitState" : [
-			{"State" : "ap_ST_fsm_state8", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_create_tree_fu_367"},
-			{"State" : "ap_ST_fsm_state5", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_sort_fu_377"},
-			{"State" : "ap_ST_fsm_state12", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_truncate_tree_fu_386"},
-			{"State" : "ap_ST_fsm_state10", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_compute_bit_length_fu_393"},
-			{"State" : "ap_ST_fsm_state18", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_create_codeword_fu_402"}],
+		"InputProcess" : [
+			{"ID" : "15", "Name" : "filter_U0"}],
+		"OutputProcess" : [
+			{"ID" : "33", "Name" : "create_codeword_U0"},
+			{"ID" : "35", "Name" : "Block_proc_U0"}],
 		"Port" : [
-			{"Name" : "symbol_histogram_value_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "symbol_histogram_frequency_V", "Type" : "Memory", "Direction" : "I"},
+			{"Name" : "symbol_histogram_value_V", "Type" : "Memory", "Direction" : "I",
+				"SubConnect" : [
+					{"ID" : "15", "SubInstance" : "filter_U0", "Port" : "in_value_V"}]},
+			{"Name" : "symbol_histogram_frequency_V", "Type" : "Memory", "Direction" : "I",
+				"SubConnect" : [
+					{"ID" : "15", "SubInstance" : "filter_U0", "Port" : "in_frequency_V"}]},
 			{"Name" : "encoding_V", "Type" : "Memory", "Direction" : "O",
 				"SubConnect" : [
-					{"ID" : "29", "SubInstance" : "grp_create_codeword_fu_402", "Port" : "encoding_V"}]},
-			{"Name" : "num_nonzero_symbols", "Type" : "Vld", "Direction" : "O"}]},
+					{"ID" : "33", "SubInstance" : "create_codeword_U0", "Port" : "encoding_V"}]},
+			{"Name" : "num_nonzero_symbols", "Type" : "Vld", "Direction" : "O",
+				"SubConnect" : [
+					{"ID" : "35", "SubInstance" : "Block_proc_U0", "Port" : "num_nonzero_symbols"}]}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.filtered_value_V_U", "Parent" : "0"},
 	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.filtered_frequency_V_U", "Parent" : "0"},
 	{"ID" : "3", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.sorted_0_U", "Parent" : "0"},
@@ -107,57 +152,143 @@ set RtlHierarchyInfo {[
 	{"ID" : "12", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.truncated_length_his_U", "Parent" : "0"},
 	{"ID" : "13", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.truncated_length_his_1_U", "Parent" : "0"},
 	{"ID" : "14", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.symbol_bits_V_U", "Parent" : "0"},
-	{"ID" : "15", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_create_tree_fu_367", "Parent" : "0", "Child" : ["16"],
-		"CDFG" : "create_tree",
+	{"ID" : "15", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.filter_U0", "Parent" : "0",
+		"CDFG" : "filter",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1", "EstimateLatencyMax" : "1021",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "259", "EstimateLatencyMax" : "259",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
 			{"Name" : "in_value_V", "Type" : "Memory", "Direction" : "I"},
 			{"Name" : "in_frequency_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "num_symbols", "Type" : "None", "Direction" : "I"},
-			{"Name" : "parent_V", "Type" : "Memory", "Direction" : "O"},
-			{"Name" : "left_V", "Type" : "Memory", "Direction" : "O"},
-			{"Name" : "right_V", "Type" : "Memory", "Direction" : "O"}]},
-	{"ID" : "16", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_create_tree_fu_367.frequency_V_U", "Parent" : "15"},
-	{"ID" : "17", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377", "Parent" : "0", "Child" : ["18", "19", "20", "21", "22", "23", "24"],
+			{"Name" : "out_value_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "16", "DependentChan" : "1"},
+			{"Name" : "out_frequency_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "16", "DependentChan" : "2"},
+			{"Name" : "n_out", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "16", "DependentChan" : "36",
+				"BlockSignal" : [
+					{"Name" : "n_out_blk_n", "Type" : "RtlSignal"}]}]},
+	{"ID" : "16", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.sort_U0", "Parent" : "0", "Child" : ["17", "18", "19", "20", "21", "22", "23", "24"],
 		"CDFG" : "sort",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "410", "EstimateLatencyMax" : "15258",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "355", "EstimateLatencyMax" : "4707",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "in_value_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "in_frequency_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "num_symbols", "Type" : "None", "Direction" : "I"},
-			{"Name" : "out_value_V", "Type" : "Memory", "Direction" : "O"},
-			{"Name" : "out_frequency_V", "Type" : "Memory", "Direction" : "O"}]},
-	{"ID" : "18", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.previous_sorting_val_U", "Parent" : "17"},
-	{"ID" : "19", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.previous_sorting_fre_U", "Parent" : "17"},
-	{"ID" : "20", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.sorting_value_V_U", "Parent" : "17"},
-	{"ID" : "21", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.sorting_frequency_V_U", "Parent" : "17"},
-	{"ID" : "22", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.digit_histogram_V_U", "Parent" : "17"},
-	{"ID" : "23", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.digit_location_V_U", "Parent" : "17"},
-	{"ID" : "24", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_sort_fu_377.current_digit_V_U", "Parent" : "17"},
-	{"ID" : "25", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_truncate_tree_fu_386", "Parent" : "0",
+			{"Name" : "in_value_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "15", "DependentChan" : "1"},
+			{"Name" : "in_frequency_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "15", "DependentChan" : "2"},
+			{"Name" : "n", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "15", "DependentChan" : "36",
+				"BlockSignal" : [
+					{"Name" : "n_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "out_value_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "25", "DependentChan" : "3"},
+			{"Name" : "out_frequency_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "25", "DependentChan" : "4"},
+			{"Name" : "n_out", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "25", "DependentChan" : "37",
+				"BlockSignal" : [
+					{"Name" : "n_out_blk_n", "Type" : "RtlSignal"}]}]},
+	{"ID" : "17", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.previous_sorting_val_U", "Parent" : "16"},
+	{"ID" : "18", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.previous_sorting_fre_U", "Parent" : "16"},
+	{"ID" : "19", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.sorting_value_V_U", "Parent" : "16"},
+	{"ID" : "20", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.sorting_frequency_V_U", "Parent" : "16"},
+	{"ID" : "21", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.current_digit_V_U", "Parent" : "16"},
+	{"ID" : "22", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.huffman_encoding_g8j_U6", "Parent" : "16"},
+	{"ID" : "23", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.huffman_encoding_g8j_U7", "Parent" : "16"},
+	{"ID" : "24", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.sort_U0.huffman_encoding_g8j_U8", "Parent" : "16"},
+	{"ID" : "25", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.Loop_copy_sorted_pro_U0", "Parent" : "0",
+		"CDFG" : "Loop_copy_sorted_pro",
+		"Protocol" : "ap_ctrl_hs",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
+		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "0",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "-1", "EstimateLatencyMax" : "-1",
+		"Combinational" : "0",
+		"Datapath" : "0",
+		"ClockEnable" : "0",
+		"HasSubDataflow" : "0",
+		"InDataflowNetwork" : "1",
+		"HasNonBlockingOperation" : "0",
+		"Port" : [
+			{"Name" : "n", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "16", "DependentChan" : "37",
+				"BlockSignal" : [
+					{"Name" : "n_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "sorted_0", "Type" : "Memory", "Direction" : "I", "DependentProc" : "16", "DependentChan" : "3"},
+			{"Name" : "sorted_copy1_value_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "26", "DependentChan" : "5"},
+			{"Name" : "sorted_1", "Type" : "Memory", "Direction" : "I", "DependentProc" : "16", "DependentChan" : "4"},
+			{"Name" : "sorted_copy1_frequency_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "26", "DependentChan" : "6"},
+			{"Name" : "sorted_copy2_value_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "32", "DependentChan" : "7"},
+			{"Name" : "val_assign_out_out", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "26", "DependentChan" : "38",
+				"BlockSignal" : [
+					{"Name" : "val_assign_out_out_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "val_assign_out_out1", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "35", "DependentChan" : "39",
+				"BlockSignal" : [
+					{"Name" : "val_assign_out_out1_blk_n", "Type" : "RtlSignal"}]}]},
+	{"ID" : "26", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.create_tree_U0", "Parent" : "0", "Child" : ["27"],
+		"CDFG" : "create_tree",
+		"Protocol" : "ap_ctrl_hs",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
+		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "0",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "2", "EstimateLatencyMax" : "1022",
+		"Combinational" : "0",
+		"Datapath" : "0",
+		"ClockEnable" : "0",
+		"HasSubDataflow" : "0",
+		"InDataflowNetwork" : "1",
+		"HasNonBlockingOperation" : "0",
+		"Port" : [
+			{"Name" : "in_value_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "25", "DependentChan" : "5"},
+			{"Name" : "in_frequency_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "25", "DependentChan" : "6"},
+			{"Name" : "val_assign_loc", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "25", "DependentChan" : "38",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "parent_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "28", "DependentChan" : "8"},
+			{"Name" : "left_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "28", "DependentChan" : "9"},
+			{"Name" : "right_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "28", "DependentChan" : "10"},
+			{"Name" : "val_assign_loc_out", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "28", "DependentChan" : "40",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_out_blk_n", "Type" : "RtlSignal"}]}]},
+	{"ID" : "27", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.create_tree_U0.frequency_V_U", "Parent" : "26"},
+	{"ID" : "28", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.compute_bit_length_U0", "Parent" : "0", "Child" : ["29", "30"],
+		"CDFG" : "compute_bit_length",
+		"Protocol" : "ap_ctrl_hs",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
+		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "0",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "-1", "EstimateLatencyMax" : "-1",
+		"Combinational" : "0",
+		"Datapath" : "0",
+		"ClockEnable" : "0",
+		"HasSubDataflow" : "0",
+		"InDataflowNetwork" : "1",
+		"HasNonBlockingOperation" : "0",
+		"Port" : [
+			{"Name" : "parent_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "26", "DependentChan" : "8"},
+			{"Name" : "left_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "26", "DependentChan" : "9"},
+			{"Name" : "right_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "26", "DependentChan" : "10"},
+			{"Name" : "val_assign_loc", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "26", "DependentChan" : "40",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "length_histogram_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "31", "DependentChan" : "11"},
+			{"Name" : "val_assign_loc_out", "Type" : "Fifo", "Direction" : "O", "DependentProc" : "32", "DependentChan" : "41",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_out_blk_n", "Type" : "RtlSignal"}]}]},
+	{"ID" : "29", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.compute_bit_length_U0.child_depth_V_U", "Parent" : "28"},
+	{"ID" : "30", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.compute_bit_length_U0.internal_length_hist_U", "Parent" : "28"},
+	{"ID" : "31", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.truncate_tree_U0", "Parent" : "0",
 		"CDFG" : "truncate_tree",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
 		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1339", "EstimateLatencyMax" : "1447",
@@ -165,101 +296,153 @@ set RtlHierarchyInfo {[
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "input_length_histogram_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "output_length_histogram1_V", "Type" : "Memory", "Direction" : "IO"},
-			{"Name" : "output_length_histogram2_V", "Type" : "Memory", "Direction" : "O"}]},
-	{"ID" : "26", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_compute_bit_length_fu_393", "Parent" : "0", "Child" : ["27", "28"],
-		"CDFG" : "compute_bit_length",
+			{"Name" : "input_length_histogram_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "28", "DependentChan" : "11"},
+			{"Name" : "output_length_histogram1_V", "Type" : "Memory", "Direction" : "IO", "DependentProc" : "32", "DependentChan" : "12"},
+			{"Name" : "output_length_histogram2_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "33", "DependentChan" : "13"}]},
+	{"ID" : "32", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.canonize_tree_U0", "Parent" : "0",
+		"CDFG" : "canonize_tree",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1078", "EstimateLatencyMax" : "1331",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "-1", "EstimateLatencyMax" : "-1",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "parent_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "left_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "right_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "num_symbols", "Type" : "None", "Direction" : "I"},
-			{"Name" : "length_histogram_V", "Type" : "Memory", "Direction" : "O"}]},
-	{"ID" : "27", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_compute_bit_length_fu_393.child_depth_V_U", "Parent" : "26"},
-	{"ID" : "28", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_compute_bit_length_fu_393.internal_length_hist_U", "Parent" : "26"},
-	{"ID" : "29", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_create_codeword_fu_402", "Parent" : "0", "Child" : ["30"],
+			{"Name" : "sorted_value_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "25", "DependentChan" : "7"},
+			{"Name" : "val_assign_loc", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "28", "DependentChan" : "41",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "codeword_length_histogram_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "31", "DependentChan" : "12"},
+			{"Name" : "symbol_bits_V", "Type" : "Memory", "Direction" : "O", "DependentProc" : "33", "DependentChan" : "14"}]},
+	{"ID" : "33", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.create_codeword_U0", "Parent" : "0", "Child" : ["34"],
 		"CDFG" : "create_codeword",
 		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "822", "EstimateLatencyMax" : "1078",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1080", "EstimateLatencyMax" : "1080",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
+		"InDataflowNetwork" : "1",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "symbol_bits_V", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "codeword_length_histogram_V", "Type" : "Memory", "Direction" : "I"},
+			{"Name" : "symbol_bits_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "32", "DependentChan" : "14"},
+			{"Name" : "codeword_length_histogram_V", "Type" : "Memory", "Direction" : "I", "DependentProc" : "31", "DependentChan" : "13"},
 			{"Name" : "encoding_V", "Type" : "Memory", "Direction" : "O"}]},
-	{"ID" : "30", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_create_codeword_fu_402.first_codeword_V_U", "Parent" : "29"}]}
+	{"ID" : "34", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.create_codeword_U0.first_codeword_V_U", "Parent" : "33"},
+	{"ID" : "35", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.Block_proc_U0", "Parent" : "0",
+		"CDFG" : "Block_proc",
+		"Protocol" : "ap_ctrl_hs",
+		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
+		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "1",
+		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
+		"Combinational" : "0",
+		"Datapath" : "0",
+		"ClockEnable" : "0",
+		"HasSubDataflow" : "0",
+		"InDataflowNetwork" : "1",
+		"HasNonBlockingOperation" : "0",
+		"StartSource" : "25",
+		"StartFifo" : "start_for_Block_pzec_U",
+		"Port" : [
+			{"Name" : "val_assign_loc", "Type" : "Fifo", "Direction" : "I", "DependentProc" : "25", "DependentChan" : "39",
+				"BlockSignal" : [
+					{"Name" : "val_assign_loc_blk_n", "Type" : "RtlSignal"}]},
+			{"Name" : "num_nonzero_symbols", "Type" : "Vld", "Direction" : "O"}]},
+	{"ID" : "36", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.n_c_U", "Parent" : "0"},
+	{"ID" : "37", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.n_c16_U", "Parent" : "0"},
+	{"ID" : "38", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.val_assign_loc_c_U", "Parent" : "0"},
+	{"ID" : "39", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.val_assign_loc_c17_U", "Parent" : "0"},
+	{"ID" : "40", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.val_assign_loc_c18_U", "Parent" : "0"},
+	{"ID" : "41", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.val_assign_loc_c19_U", "Parent" : "0"},
+	{"ID" : "42", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.start_for_Block_pzec_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	huffman_encoding {
 		symbol_histogram_value_V {Type I LastRead 2 FirstWrite -1}
 		symbol_histogram_frequency_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 3}
-		num_nonzero_symbols {Type O LastRead -1 FirstWrite 10}}
-	create_tree {
+		encoding_V {Type O LastRead -1 FirstWrite 4}
+		num_nonzero_symbols {Type O LastRead -1 FirstWrite 0}}
+	filter {
 		in_value_V {Type I LastRead 2 FirstWrite -1}
-		in_frequency_V {Type I LastRead 2 FirstWrite -1}
-		num_symbols {Type I LastRead 0 FirstWrite -1}
-		parent_V {Type O LastRead -1 FirstWrite 1}
-		left_V {Type O LastRead -1 FirstWrite 2}
-		right_V {Type O LastRead -1 FirstWrite 4}}
+		in_frequency_V {Type I LastRead 1 FirstWrite -1}
+		out_value_V {Type O LastRead -1 FirstWrite 3}
+		out_frequency_V {Type O LastRead -1 FirstWrite 2}
+		n_out {Type O LastRead -1 FirstWrite 2}}
 	sort {
 		in_value_V {Type I LastRead 1 FirstWrite -1}
 		in_frequency_V {Type I LastRead 1 FirstWrite -1}
-		num_symbols {Type I LastRead 0 FirstWrite -1}
-		out_value_V {Type O LastRead -1 FirstWrite 8}
-		out_frequency_V {Type O LastRead -1 FirstWrite 8}}
+		n {Type I LastRead 0 FirstWrite -1}
+		out_value_V {Type O LastRead -1 FirstWrite 14}
+		out_frequency_V {Type O LastRead -1 FirstWrite 14}
+		n_out {Type O LastRead -1 FirstWrite 0}}
+	Loop_copy_sorted_pro {
+		n {Type I LastRead 0 FirstWrite -1}
+		sorted_0 {Type I LastRead 1 FirstWrite -1}
+		sorted_copy1_value_V {Type O LastRead -1 FirstWrite 2}
+		sorted_1 {Type I LastRead 1 FirstWrite -1}
+		sorted_copy1_frequency_V {Type O LastRead -1 FirstWrite 2}
+		sorted_copy2_value_V {Type O LastRead -1 FirstWrite 2}
+		val_assign_out_out {Type O LastRead -1 FirstWrite 1}
+		val_assign_out_out1 {Type O LastRead -1 FirstWrite 1}}
+	create_tree {
+		in_value_V {Type I LastRead 2 FirstWrite -1}
+		in_frequency_V {Type I LastRead 2 FirstWrite -1}
+		val_assign_loc {Type I LastRead 0 FirstWrite -1}
+		parent_V {Type O LastRead -1 FirstWrite 2}
+		left_V {Type O LastRead -1 FirstWrite 2}
+		right_V {Type O LastRead -1 FirstWrite 3}
+		val_assign_loc_out {Type O LastRead -1 FirstWrite 0}}
+	compute_bit_length {
+		parent_V {Type I LastRead 3 FirstWrite -1}
+		left_V {Type I LastRead 3 FirstWrite -1}
+		right_V {Type I LastRead 3 FirstWrite -1}
+		val_assign_loc {Type I LastRead 0 FirstWrite -1}
+		length_histogram_V {Type O LastRead -1 FirstWrite 7}
+		val_assign_loc_out {Type O LastRead -1 FirstWrite 0}}
 	truncate_tree {
 		input_length_histogram_V {Type I LastRead 1 FirstWrite -1}
 		output_length_histogram1_V {Type IO LastRead 11 FirstWrite 2}
 		output_length_histogram2_V {Type O LastRead -1 FirstWrite 4}}
-	compute_bit_length {
-		parent_V {Type I LastRead 2 FirstWrite -1}
-		left_V {Type I LastRead 3 FirstWrite -1}
-		right_V {Type I LastRead 3 FirstWrite -1}
-		num_symbols {Type I LastRead 0 FirstWrite -1}
-		length_histogram_V {Type O LastRead -1 FirstWrite 6}}
+	canonize_tree {
+		sorted_value_V {Type I LastRead 4 FirstWrite -1}
+		val_assign_loc {Type I LastRead 0 FirstWrite -1}
+		codeword_length_histogram_V {Type I LastRead 2 FirstWrite -1}
+		symbol_bits_V {Type O LastRead -1 FirstWrite 1}}
 	create_codeword {
-		symbol_bits_V {Type I LastRead 2 FirstWrite -1}
+		symbol_bits_V {Type I LastRead 3 FirstWrite -1}
 		codeword_length_histogram_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 3}}}
+		encoding_V {Type O LastRead -1 FirstWrite 4}}
+	Block_proc {
+		val_assign_loc {Type I LastRead 0 FirstWrite -1}
+		num_nonzero_symbols {Type O LastRead -1 FirstWrite 0}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "5197", "Max" : "23730"}
-	, {"Name" : "Interval", "Min" : "5198", "Max" : "23731"}
+	{"Name" : "Latency", "Min" : "-1", "Max" : "-1"}
+	, {"Name" : "Interval", "Min" : "-1", "Max" : "-1"}
 ]}
 
 set PipelineEnableSignalInfo {[
 ]}
 
 set Spec2ImplPortList { 
-	symbol_histogram_value_V { ap_memory {  { symbol_histogram_value_V_address0 mem_address 1 8 }  { symbol_histogram_value_V_ce0 mem_ce 1 1 }  { symbol_histogram_value_V_q0 mem_dout 0 32 } } }
-	symbol_histogram_frequency_V { ap_memory {  { symbol_histogram_frequency_V_address0 mem_address 1 8 }  { symbol_histogram_frequency_V_ce0 mem_ce 1 1 }  { symbol_histogram_frequency_V_q0 mem_dout 0 32 } } }
-	encoding_V { ap_memory {  { encoding_V_address0 mem_address 1 8 }  { encoding_V_ce0 mem_ce 1 1 }  { encoding_V_we0 mem_we 1 1 }  { encoding_V_d0 mem_din 1 32 } } }
+	symbol_histogram_value_V { ap_memory {  { symbol_histogram_value_V_address0 mem_address 1 8 }  { symbol_histogram_value_V_ce0 mem_ce 1 1 }  { symbol_histogram_value_V_d0 mem_din 1 32 }  { symbol_histogram_value_V_q0 mem_dout 0 32 }  { symbol_histogram_value_V_we0 mem_we 1 1 }  { symbol_histogram_value_V_address1 mem_address 1 8 }  { symbol_histogram_value_V_ce1 mem_ce 1 1 }  { symbol_histogram_value_V_d1 mem_din 1 32 }  { symbol_histogram_value_V_q1 mem_dout 0 32 }  { symbol_histogram_value_V_we1 mem_we 1 1 } } }
+	symbol_histogram_frequency_V { ap_memory {  { symbol_histogram_frequency_V_address0 mem_address 1 8 }  { symbol_histogram_frequency_V_ce0 mem_ce 1 1 }  { symbol_histogram_frequency_V_d0 mem_din 1 32 }  { symbol_histogram_frequency_V_q0 mem_dout 0 32 }  { symbol_histogram_frequency_V_we0 mem_we 1 1 }  { symbol_histogram_frequency_V_address1 mem_address 1 8 }  { symbol_histogram_frequency_V_ce1 mem_ce 1 1 }  { symbol_histogram_frequency_V_d1 mem_din 1 32 }  { symbol_histogram_frequency_V_q1 mem_dout 0 32 }  { symbol_histogram_frequency_V_we1 mem_we 1 1 } } }
+	encoding_V { ap_memory {  { encoding_V_address0 mem_address 1 8 }  { encoding_V_ce0 mem_ce 1 1 }  { encoding_V_d0 mem_din 1 32 }  { encoding_V_q0 mem_dout 0 32 }  { encoding_V_we0 mem_we 1 1 }  { encoding_V_address1 mem_address 1 8 }  { encoding_V_ce1 mem_ce 1 1 }  { encoding_V_d1 mem_din 1 32 }  { encoding_V_q1 mem_dout 0 32 }  { encoding_V_we1 mem_we 1 1 } } }
 	num_nonzero_symbols { ap_vld {  { num_nonzero_symbols out_data 1 32 }  { num_nonzero_symbols_ap_vld out_vld 1 1 } } }
 }
 

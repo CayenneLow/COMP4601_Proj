@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -7197,19 +7198,16 @@ void compute_bit_length (
     ap_uint<SYMBOL_BITS> internal_length_histogram[TREE_DEPTH];
  init_histogram:
     for(int i = 0; i < TREE_DEPTH; i++) {
-
-        internal_length_histogram[i] = 0;
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+ internal_length_histogram[i] = 0;
     }
 
     child_depth[num_symbols-2] = 1;
 
 traverse_tree:
     for(int i = num_symbols-3; i >= 0; i--) {
-_ssdm_op_SpecLoopTripCount(253, 253, 253, "");
-# 22 "./hls-src/huffman_compute_bit_length.cpp"
-
-
-        ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
+_ssdm_op_SpecPipeline(3, 1, 1, 0, "");
+ ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
         child_depth[i] = length;
         if(left[i] != INTERNAL_NODE || right[i] != INTERNAL_NODE){
             int children;

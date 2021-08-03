@@ -12,7 +12,6 @@ void create_codeword(
     first_codeword[0] = 0;
  first_codewords:
     for(int i = 1; i < MAX_CODEWORD_LENGTH; i++) {
-#pragma HLS PIPELINE II=1
         first_codeword[i] = (first_codeword[i-1] + codeword_length_histogram[i-1]) << 1;
         Codeword c = first_codeword[i];
         //        std::cout << c.to_string(2) << " with length " << i << "\n";
@@ -20,7 +19,6 @@ void create_codeword(
 
  assign_codewords:
   for (int i = 0; i < INPUT_SYMBOL_SIZE; ++i) {
-#pragma HLS PIPELINE II=5
       CodewordLength length = symbol_bits[i];
       //if symbol has 0 bits, it doesn't need to be encoded
   make_codeword:

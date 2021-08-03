@@ -1,0 +1,226 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'huffman_encoding'" level="0">
+<item name = "Date">Sun Aug  1 13:11:03 2021
+</item>
+<item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
+<item name = "Project">huffman_encoding_core_build</item>
+<item name = "Solution">alternative</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00 ns, 8.661 ns, 1.25 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="sort_U0">sort, 355, 4707, 3.550 us, 47.070 us, 355, 4707, none</column>
+<column name="create_tree_U0">create_tree, 2, 1022, 20.000 ns, 10.220 us, 2, 1022, none</column>
+<column name="create_codeword_U0">create_codeword, 1877, 1877, 18.770 us, 18.770 us, 1877, 1877, none</column>
+<column name="truncate_tree_U0">truncate_tree, 1210, 1318, 12.100 us, 13.180 us, 1210, 1318, none</column>
+<column name="compute_bit_length_U0">compute_bit_length, ?, ?, ?, ?, ?, ?, none</column>
+<column name="canonize_tree_U0">canonize_tree, 258, 2306, 2.580 us, 23.060 us, 258, 2306, none</column>
+<column name="filter_U0">filter, 259, 259, 2.590 us, 2.590 us, 259, 259, none</column>
+<column name="Loop_copy_sorted_pro_U0">Loop_copy_sorted_pro, ?, ?, ?, ?, ?, ?, none</column>
+<column name="Block_proc_U0">Block_proc, 0, 0, 0 ns, 0 ns, 0, 0, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 62, -</column>
+<column name="FIFO">0, -, 30, 264, -</column>
+<column name="Instance">8, -, 4986, 5740, 0</column>
+<column name="Memory">14, -, 0, 0, 0</column>
+<column name="Multiplexer">-, -, -, 90, -</column>
+<column name="Register">-, -, 10, -, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
+<specialColumn name="Utilization (%)">7, 0, 4, 11, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="Block_proc_U0">Block_proc, 0, 0, 34, 29, 0</column>
+<column name="Loop_copy_sorted_pro_U0">Loop_copy_sorted_pro, 0, 0, 130, 135, 0</column>
+<column name="canonize_tree_U0">canonize_tree, 0, 0, 241, 332, 0</column>
+<column name="compute_bit_length_U0">compute_bit_length, 2, 0, 194, 422, 0</column>
+<column name="create_codeword_U0">create_codeword, 0, 0, 226, 724, 0</column>
+<column name="create_tree_U0">create_tree, 1, 0, 518, 820, 0</column>
+<column name="filter_U0">filter, 0, 0, 90, 166, 0</column>
+<column name="sort_U0">sort, 5, 0, 3320, 2527, 0</column>
+<column name="truncate_tree_U0">truncate_tree, 0, 0, 233, 585, 0</column>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="filtered_value_V_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="filtered_frequency_V_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="sorted_0_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="sorted_1_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="sorted_copy1_value_V_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="sorted_copy1_frequen_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="sorted_copy2_value_V_U">huffman_encoding_mb6, 1, 0, 0, 0, 256, 32, 2, 16384</column>
+<column name="parent_V_U">huffman_encoding_tde, 1, 0, 0, 0, 255, 31, 2, 15810</column>
+<column name="left_V_U">huffman_encoding_udo, 1, 0, 0, 0, 255, 32, 2, 16320</column>
+<column name="right_V_U">huffman_encoding_udo, 1, 0, 0, 0, 255, 32, 2, 16320</column>
+<column name="length_histogram_V_U">huffman_encoding_wdI, 1, 0, 0, 0, 64, 32, 2, 4096</column>
+<column name="truncated_length_his_U">huffman_encoding_xdS, 2, 0, 0, 0, 64, 32, 2, 4096</column>
+<column name="symbol_bits_V_U">huffman_encoding_yd2, 1, 0, 0, 0, 256, 5, 2, 2560</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+<column name="n_c16_U">0, 5, 0, -, 2, 32, 64</column>
+<column name="n_c_U">0, 5, 0, -, 2, 32, 64</column>
+<column name="val_assign_loc_c17_U">0, 5, 0, -, 2, 32, 64</column>
+<column name="val_assign_loc_c18_U">0, 5, 0, -, 2, 32, 64</column>
+<column name="val_assign_loc_c19_U">0, 5, 0, -, 3, 32, 96</column>
+<column name="val_assign_loc_c_U">0, 5, 0, -, 2, 32, 64</column>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="Loop_copy_sorted_pro_U0_ap_continue">and, 0, 0, 2, 1, 1</column>
+<column name="Loop_copy_sorted_pro_U0_ap_start">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_filtered_frequency_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_filtered_value_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_left_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_parent_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_right_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_sorted_0">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_sorted_1">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_sorted_copy1_frequen">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_sorted_copy1_value_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_channel_done_sorted_copy2_value_V">and, 0, 0, 2, 1, 1</column>
+<column name="ap_idle">and, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_done">and, 0, 0, 2, 1, 1</column>
+<column name="canonize_tree_U0_ap_start">and, 0, 0, 2, 1, 1</column>
+<column name="compute_bit_length_U0_ap_start">and, 0, 0, 2, 1, 1</column>
+<column name="create_tree_U0_ap_continue">and, 0, 0, 2, 1, 1</column>
+<column name="create_tree_U0_ap_start">and, 0, 0, 2, 1, 1</column>
+<column name="filter_U0_ap_continue">and, 0, 0, 2, 1, 1</column>
+<column name="sort_U0_ap_continue">and, 0, 0, 2, 1, 1</column>
+<column name="sort_U0_ap_start">and, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_filtered_frequency_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_filtered_value_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_left_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_parent_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_right_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_sorted_0">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_sorted_1">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_sorted_copy1_frequen">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_sorted_copy1_value_V">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_channel_write_sorted_copy2_value_V">or, 0, 0, 2, 1, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_sync_reg_channel_write_filtered_frequency_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_filtered_value_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_left_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_parent_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_right_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_sorted_0">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_sorted_1">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_sorted_copy1_frequen">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_sorted_copy1_value_V">9, 2, 1, 2</column>
+<column name="ap_sync_reg_channel_write_sorted_copy2_value_V">9, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_sync_reg_channel_write_filtered_frequency_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_filtered_value_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_left_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_parent_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_right_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_sorted_0">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_sorted_1">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_sorted_copy1_frequen">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_sorted_copy1_value_V">1, 0, 1, 0</column>
+<column name="ap_sync_reg_channel_write_sorted_copy2_value_V">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, huffman_encoding, return value</column>
+<column name="symbol_histogram_value_V_address0">out, 8, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_ce0">out, 1, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_d0">out, 32, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_q0">in, 32, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_we0">out, 1, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_address1">out, 8, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_ce1">out, 1, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_d1">out, 32, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_q1">in, 32, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_value_V_we1">out, 1, ap_memory, symbol_histogram_value_V, array</column>
+<column name="symbol_histogram_frequency_V_address0">out, 8, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_ce0">out, 1, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_d0">out, 32, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_q0">in, 32, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_we0">out, 1, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_address1">out, 8, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_ce1">out, 1, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_d1">out, 32, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_q1">in, 32, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="symbol_histogram_frequency_V_we1">out, 1, ap_memory, symbol_histogram_frequency_V, array</column>
+<column name="encoding_V_address0">out, 8, ap_memory, encoding_V, array</column>
+<column name="encoding_V_ce0">out, 1, ap_memory, encoding_V, array</column>
+<column name="encoding_V_d0">out, 32, ap_memory, encoding_V, array</column>
+<column name="encoding_V_q0">in, 32, ap_memory, encoding_V, array</column>
+<column name="encoding_V_we0">out, 1, ap_memory, encoding_V, array</column>
+<column name="encoding_V_address1">out, 8, ap_memory, encoding_V, array</column>
+<column name="encoding_V_ce1">out, 1, ap_memory, encoding_V, array</column>
+<column name="encoding_V_d1">out, 32, ap_memory, encoding_V, array</column>
+<column name="encoding_V_q1">in, 32, ap_memory, encoding_V, array</column>
+<column name="encoding_V_we1">out, 1, ap_memory, encoding_V, array</column>
+<column name="num_nonzero_symbols">out, 32, ap_vld, num_nonzero_symbols, pointer</column>
+<column name="num_nonzero_symbols_ap_vld">out, 1, ap_vld, num_nonzero_symbols, pointer</column>
+</table>
+</item>
+</section>
+</profile>

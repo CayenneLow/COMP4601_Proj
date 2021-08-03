@@ -7075,7 +7075,7 @@
         <item_version>0</item_version>
       </dp_component_resource>
       <dp_expression_resource>
-        <count>15</count>
+        <count>16</count>
         <item_version>0</item_version>
         <item class_id="38" tracking_level="0" version="0">
           <first>add_ln700_1_fu_326_p2 ( + ) </first>
@@ -7166,6 +7166,29 @@
             <item>
               <first>LUT</first>
               <second>39</second>
+            </item>
+          </second>
+        </item>
+        <item>
+          <first>ap_block_state1 ( or ) </first>
+          <second>
+            <count>4</count>
+            <item_version>0</item_version>
+            <item>
+              <first>(0P0)</first>
+              <second>1</second>
+            </item>
+            <item>
+              <first>(1P1)</first>
+              <second>1</second>
+            </item>
+            <item>
+              <first>FF</first>
+              <second>0</second>
+            </item>
+            <item>
+              <first>LUT</first>
+              <second>2</second>
             </item>
           </second>
         </item>
@@ -7432,7 +7455,7 @@
         <item_version>0</item_version>
       </dp_memory_resource>
       <dp_multiplexer_resource>
-        <count>12</count>
+        <count>13</count>
         <item_version>0</item_version>
         <item>
           <first>ap_NS_fsm</first>
@@ -7454,6 +7477,29 @@
             <item>
               <first>LUT</first>
               <second>85</second>
+            </item>
+          </second>
+        </item>
+        <item>
+          <first>ap_done</first>
+          <second>
+            <count>4</count>
+            <item_version>0</item_version>
+            <item>
+              <first>(0Size)</first>
+              <second>2</second>
+            </item>
+            <item>
+              <first>(1Bits)</first>
+              <second>1</second>
+            </item>
+            <item>
+              <first>(2Count)</first>
+              <second>2</second>
+            </item>
+            <item>
+              <first>LUT</first>
+              <second>9</second>
             </item>
           </second>
         </item>
@@ -7712,7 +7758,7 @@
         </item>
       </dp_multiplexer_resource>
       <dp_register_resource>
-        <count>19</count>
+        <count>20</count>
         <item_version>0</item_version>
         <item>
           <first>ap_CS_fsm</first>
@@ -7730,6 +7776,25 @@
             <item>
               <first>FF</first>
               <second>16</second>
+            </item>
+          </second>
+        </item>
+        <item>
+          <first>ap_done_reg</first>
+          <second>
+            <count>3</count>
+            <item_version>0</item_version>
+            <item>
+              <first>(Bits)</first>
+              <second>1</second>
+            </item>
+            <item>
+              <first>(Consts)</first>
+              <second>0</second>
+            </item>
+            <item>
+              <first>FF</first>
+              <second>1</second>
             </item>
           </second>
         </item>

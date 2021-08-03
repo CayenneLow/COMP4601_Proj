@@ -13,14 +13,7 @@
     "Speed": "-1"
   },
   "HlsSolution": {
-    "DirectiveTcl": [
-      "set_directive_loop_tripcount huffman_encoding\/copy_sorted -min 256 -max 256 -avg 256",
-      "set_directive_loop_tripcount compute_bit_length\/traverse_tree -min 253 -max 253 -avg 253"
-    ],
-    "DirectiveInfo": [
-      "loop_tripcount huffman_encoding\/copy_sorted {{tripcount positionBooleanCmd} {min 256} {max 256} {avg 256}} {}",
-      "loop_tripcount compute_bit_length\/traverse_tree {{tripcount positionBooleanCmd} {min 253} {max 253} {avg 253}} {}"
-    ]
+    
   },
   "Args": {
     "symbol_histogram": {
@@ -40,7 +33,11 @@
             "dataWidth": "32",
             "multiInterfaceRef": [
               "symbol_histogram_value_V_address0",
-              "symbol_histogram_value_V_q0"
+              "symbol_histogram_value_V_address1",
+              "symbol_histogram_value_V_d0",
+              "symbol_histogram_value_V_d1",
+              "symbol_histogram_value_V_q0",
+              "symbol_histogram_value_V_q1"
             ],
             "structImpl": "interface"
           },
@@ -50,7 +47,11 @@
             "dataWidth": "32",
             "multiInterfaceRef": [
               "symbol_histogram_frequency_V_address0",
-              "symbol_histogram_frequency_V_q0"
+              "symbol_histogram_frequency_V_address1",
+              "symbol_histogram_frequency_V_d0",
+              "symbol_histogram_frequency_V_d1",
+              "symbol_histogram_frequency_V_q0",
+              "symbol_histogram_frequency_V_q1"
             ],
             "structImpl": "interface"
           }
@@ -66,7 +67,11 @@
         "arraySizes": ["256"],
         "multiInterfaceRef": [
           "encoding_V_address0",
-          "encoding_V_d0"
+          "encoding_V_address1",
+          "encoding_V_d0",
+          "encoding_V_d1",
+          "encoding_V_q0",
+          "encoding_V_q1"
         ]
       }
     },
@@ -88,7 +93,7 @@
     "ClockPeriod": "10",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "5197",
+    "Latency": "undef",
     "Uncertainty": "1.25"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
@@ -105,48 +110,80 @@
   },
   "Files": {
     "CSource": [
-      "..\/..\/hls-src\/huffman_truncate_tree.cpp",
-      "..\/..\/hls-src\/huffman_create_codeword.cpp",
-      "..\/..\/hls-src\/huffman_sort.cpp",
-      "..\/..\/hls-src\/huffman_encoding.cpp",
-      "..\/..\/hls-src\/huffman_compute_bit_length.cpp",
-      "..\/..\/hls-src\/huffman_filter.cpp",
+      "..\/..\/hls-src\/huffman_canonize_tree.cpp",
       "..\/..\/hls-src\/huffman_create_tree.cpp",
-      "..\/..\/hls-src\/huffman_canonize_tree.cpp"
+      "..\/..\/hls-src\/huffman_filter.cpp",
+      "..\/..\/hls-src\/huffman_compute_bit_length.cpp",
+      "..\/..\/hls-src\/huffman_encoding.cpp",
+      "..\/..\/hls-src\/huffman_sort.cpp",
+      "..\/..\/hls-src\/huffman_create_codeword.cpp",
+      "..\/..\/hls-src\/huffman_truncate_tree.cpp"
     ],
     "Vhdl": [
+      "impl\/vhdl\/Block_proc.vhd",
+      "impl\/vhdl\/canonize_tree.vhd",
       "impl\/vhdl\/compute_bit_length.vhd",
+      "impl\/vhdl\/compute_bit_lengtibs.vhd",
       "impl\/vhdl\/compute_bit_lengtjbC.vhd",
-      "impl\/vhdl\/compute_bit_lengtkbM.vhd",
       "impl\/vhdl\/create_codeword.vhd",
-      "impl\/vhdl\/create_codeword_flbW.vhd",
+      "impl\/vhdl\/create_codeword_fkbM.vhd",
       "impl\/vhdl\/create_tree.vhd",
-      "impl\/vhdl\/create_tree_frequibs.vhd",
+      "impl\/vhdl\/create_tree_frequhbi.vhd",
+      "impl\/vhdl\/fifo_w32_d2_A.vhd",
+      "impl\/vhdl\/fifo_w32_d3_A.vhd",
+      "impl\/vhdl\/filter.vhd",
+      "impl\/vhdl\/huffman_encoding_g8j.vhd",
+      "impl\/vhdl\/huffman_encoding_lbW.vhd",
+      "impl\/vhdl\/huffman_encoding_lbW_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_sc4.vhd",
+      "impl\/vhdl\/huffman_encoding_sc4_memcore.vhd",
       "impl\/vhdl\/huffman_encoding_tde.vhd",
-      "impl\/vhdl\/huffman_encoding_xdS.vhd",
-      "impl\/vhdl\/huffman_encoding_zec.vhd",
+      "impl\/vhdl\/huffman_encoding_tde_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_vdy.vhd",
+      "impl\/vhdl\/huffman_encoding_vdy_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_wdI.vhd",
+      "impl\/vhdl\/huffman_encoding_wdI_memcore.vhd",
+      "impl\/vhdl\/huffman_encoding_yd2.vhd",
+      "impl\/vhdl\/huffman_encoding_yd2_memcore.vhd",
+      "impl\/vhdl\/Loop_copy_sorted_pro.vhd",
       "impl\/vhdl\/sort.vhd",
-      "impl\/vhdl\/sort_current_digihbi.vhd",
-      "impl\/vhdl\/sort_digit_histogfYi.vhd",
+      "impl\/vhdl\/sort_current_digifYi.vhd",
       "impl\/vhdl\/sort_previous_sorbkb.vhd",
+      "impl\/vhdl\/start_for_Block_pzec.vhd",
       "impl\/vhdl\/truncate_tree.vhd",
       "impl\/vhdl\/huffman_encoding.vhd"
     ],
     "Verilog": [
+      "impl\/verilog\/Block_proc.v",
+      "impl\/verilog\/canonize_tree.v",
       "impl\/verilog\/compute_bit_length.v",
+      "impl\/verilog\/compute_bit_lengtibs.v",
       "impl\/verilog\/compute_bit_lengtjbC.v",
-      "impl\/verilog\/compute_bit_lengtkbM.v",
       "impl\/verilog\/create_codeword.v",
-      "impl\/verilog\/create_codeword_flbW.v",
+      "impl\/verilog\/create_codeword_fkbM.v",
       "impl\/verilog\/create_tree.v",
-      "impl\/verilog\/create_tree_frequibs.v",
+      "impl\/verilog\/create_tree_frequhbi.v",
+      "impl\/verilog\/fifo_w32_d2_A.v",
+      "impl\/verilog\/fifo_w32_d3_A.v",
+      "impl\/verilog\/filter.v",
+      "impl\/verilog\/huffman_encoding_g8j.v",
+      "impl\/verilog\/huffman_encoding_lbW.v",
+      "impl\/verilog\/huffman_encoding_lbW_memcore.v",
+      "impl\/verilog\/huffman_encoding_sc4.v",
+      "impl\/verilog\/huffman_encoding_sc4_memcore.v",
       "impl\/verilog\/huffman_encoding_tde.v",
-      "impl\/verilog\/huffman_encoding_xdS.v",
-      "impl\/verilog\/huffman_encoding_zec.v",
+      "impl\/verilog\/huffman_encoding_tde_memcore.v",
+      "impl\/verilog\/huffman_encoding_vdy.v",
+      "impl\/verilog\/huffman_encoding_vdy_memcore.v",
+      "impl\/verilog\/huffman_encoding_wdI.v",
+      "impl\/verilog\/huffman_encoding_wdI_memcore.v",
+      "impl\/verilog\/huffman_encoding_yd2.v",
+      "impl\/verilog\/huffman_encoding_yd2_memcore.v",
+      "impl\/verilog\/Loop_copy_sorted_pro.v",
       "impl\/verilog\/sort.v",
-      "impl\/verilog\/sort_current_digihbi.v",
-      "impl\/verilog\/sort_digit_histogfYi.v",
+      "impl\/verilog\/sort_current_digifYi.v",
       "impl\/verilog\/sort_previous_sorbkb.v",
+      "impl\/verilog\/start_for_Block_pzec.v",
       "impl\/verilog\/truncate_tree.v",
       "impl\/verilog\/huffman_encoding.v"
     ],
@@ -170,12 +207,12 @@
     },
     "ap_ctrl": {
       "type": "ap_ctrl",
-      "ctrl_ports": "ap_start ap_done ap_idle ap_ready",
+      "ctrl_ports": "ap_start ap_done ap_ready ap_idle",
       "ctype": {
         "start": {"Type": "bool"},
         "done": {"Type": "bool"},
-        "idle": {"Type": "bool"},
-        "ready": {"Type": "bool"}
+        "ready": {"Type": "bool"},
+        "idle": {"Type": "bool"}
       }
     },
     "ap_rst": {
@@ -196,6 +233,17 @@
       "bundle_name": "encoding_V",
       "bundle_role": "address0"
     },
+    "encoding_V_address1": {
+      "type": "data",
+      "dir": "out",
+      "width": "8",
+      "ctype": {"DATA": {
+          "Type": "null",
+          "Width": "8"
+        }},
+      "bundle_name": "encoding_V",
+      "bundle_role": "address1"
+    },
     "encoding_V_d0": {
       "type": "data",
       "dir": "out",
@@ -206,6 +254,39 @@
         }},
       "bundle_name": "encoding_V",
       "bundle_role": "d0"
+    },
+    "encoding_V_d1": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "encoding_V",
+      "bundle_role": "d1"
+    },
+    "encoding_V_q0": {
+      "type": "data",
+      "dir": "in",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "encoding_V",
+      "bundle_role": "q0"
+    },
+    "encoding_V_q1": {
+      "type": "data",
+      "dir": "in",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "encoding_V",
+      "bundle_role": "q1"
     },
     "num_nonzero_symbols": {
       "type": "data",
@@ -229,6 +310,39 @@
       "bundle_name": "symbol_histogram_frequency_V",
       "bundle_role": "address0"
     },
+    "symbol_histogram_frequency_V_address1": {
+      "type": "data",
+      "dir": "out",
+      "width": "8",
+      "ctype": {"DATA": {
+          "Type": "null",
+          "Width": "8"
+        }},
+      "bundle_name": "symbol_histogram_frequency_V",
+      "bundle_role": "address1"
+    },
+    "symbol_histogram_frequency_V_d0": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_frequency_V",
+      "bundle_role": "d0"
+    },
+    "symbol_histogram_frequency_V_d1": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_frequency_V",
+      "bundle_role": "d1"
+    },
     "symbol_histogram_frequency_V_q0": {
       "type": "data",
       "dir": "in",
@@ -239,6 +353,17 @@
         }},
       "bundle_name": "symbol_histogram_frequency_V",
       "bundle_role": "q0"
+    },
+    "symbol_histogram_frequency_V_q1": {
+      "type": "data",
+      "dir": "in",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_frequency_V",
+      "bundle_role": "q1"
     },
     "symbol_histogram_value_V_address0": {
       "type": "data",
@@ -251,6 +376,39 @@
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "address0"
     },
+    "symbol_histogram_value_V_address1": {
+      "type": "data",
+      "dir": "out",
+      "width": "8",
+      "ctype": {"DATA": {
+          "Type": "null",
+          "Width": "8"
+        }},
+      "bundle_name": "symbol_histogram_value_V",
+      "bundle_role": "address1"
+    },
+    "symbol_histogram_value_V_d0": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_value_V",
+      "bundle_role": "d0"
+    },
+    "symbol_histogram_value_V_d1": {
+      "type": "data",
+      "dir": "out",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_value_V",
+      "bundle_role": "d1"
+    },
     "symbol_histogram_value_V_q0": {
       "type": "data",
       "dir": "in",
@@ -261,6 +419,17 @@
         }},
       "bundle_name": "symbol_histogram_value_V",
       "bundle_role": "q0"
+    },
+    "symbol_histogram_value_V_q1": {
+      "type": "data",
+      "dir": "in",
+      "width": "32",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }},
+      "bundle_name": "symbol_histogram_value_V",
+      "bundle_role": "q1"
     }
   },
   "RtlPorts": {
@@ -280,11 +449,11 @@
       "dir": "out",
       "width": "1"
     },
-    "ap_idle": {
+    "ap_ready": {
       "dir": "out",
       "width": "1"
     },
-    "ap_ready": {
+    "ap_idle": {
       "dir": "out",
       "width": "1"
     },
@@ -296,9 +465,37 @@
       "dir": "out",
       "width": "1"
     },
+    "symbol_histogram_value_V_d0": {
+      "dir": "out",
+      "width": "32"
+    },
     "symbol_histogram_value_V_q0": {
       "dir": "in",
       "width": "32"
+    },
+    "symbol_histogram_value_V_we0": {
+      "dir": "out",
+      "width": "1"
+    },
+    "symbol_histogram_value_V_address1": {
+      "dir": "out",
+      "width": "8"
+    },
+    "symbol_histogram_value_V_ce1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "symbol_histogram_value_V_d1": {
+      "dir": "out",
+      "width": "32"
+    },
+    "symbol_histogram_value_V_q1": {
+      "dir": "in",
+      "width": "32"
+    },
+    "symbol_histogram_value_V_we1": {
+      "dir": "out",
+      "width": "1"
     },
     "symbol_histogram_frequency_V_address0": {
       "dir": "out",
@@ -308,9 +505,37 @@
       "dir": "out",
       "width": "1"
     },
+    "symbol_histogram_frequency_V_d0": {
+      "dir": "out",
+      "width": "32"
+    },
     "symbol_histogram_frequency_V_q0": {
       "dir": "in",
       "width": "32"
+    },
+    "symbol_histogram_frequency_V_we0": {
+      "dir": "out",
+      "width": "1"
+    },
+    "symbol_histogram_frequency_V_address1": {
+      "dir": "out",
+      "width": "8"
+    },
+    "symbol_histogram_frequency_V_ce1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "symbol_histogram_frequency_V_d1": {
+      "dir": "out",
+      "width": "32"
+    },
+    "symbol_histogram_frequency_V_q1": {
+      "dir": "in",
+      "width": "32"
+    },
+    "symbol_histogram_frequency_V_we1": {
+      "dir": "out",
+      "width": "1"
     },
     "encoding_V_address0": {
       "dir": "out",
@@ -320,13 +545,37 @@
       "dir": "out",
       "width": "1"
     },
+    "encoding_V_d0": {
+      "dir": "out",
+      "width": "32"
+    },
+    "encoding_V_q0": {
+      "dir": "in",
+      "width": "32"
+    },
     "encoding_V_we0": {
       "dir": "out",
       "width": "1"
     },
-    "encoding_V_d0": {
+    "encoding_V_address1": {
+      "dir": "out",
+      "width": "8"
+    },
+    "encoding_V_ce1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "encoding_V_d1": {
       "dir": "out",
       "width": "32"
+    },
+    "encoding_V_q1": {
+      "dir": "in",
+      "width": "32"
+    },
+    "encoding_V_we1": {
+      "dir": "out",
+      "width": "1"
     },
     "num_nonzero_symbols": {
       "dir": "out",
@@ -342,29 +591,59 @@
       "ModuleName": "huffman_encoding",
       "Instances": [
         {
-          "ModuleName": "create_tree",
-          "InstanceName": "grp_create_tree_fu_367"
+          "ModuleName": "sort",
+          "InstanceName": "sort_U0"
         },
         {
-          "ModuleName": "sort",
-          "InstanceName": "grp_sort_fu_377"
+          "ModuleName": "create_tree",
+          "InstanceName": "create_tree_U0"
         },
         {
           "ModuleName": "truncate_tree",
-          "InstanceName": "grp_truncate_tree_fu_386"
+          "InstanceName": "truncate_tree_U0"
         },
         {
           "ModuleName": "compute_bit_length",
-          "InstanceName": "grp_compute_bit_length_fu_393"
+          "InstanceName": "compute_bit_length_U0"
+        },
+        {
+          "ModuleName": "canonize_tree",
+          "InstanceName": "canonize_tree_U0"
         },
         {
           "ModuleName": "create_codeword",
-          "InstanceName": "grp_create_codeword_fu_402"
+          "InstanceName": "create_codeword_U0"
+        },
+        {
+          "ModuleName": "filter",
+          "InstanceName": "filter_U0"
+        },
+        {
+          "ModuleName": "Loop_copy_sorted_pro",
+          "InstanceName": "Loop_copy_sorted_pro_U0"
+        },
+        {
+          "ModuleName": "Block_proc",
+          "InstanceName": "Block_proc_U0"
         }
       ]
     },
     "Info": {
+      "filter": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "1",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
       "sort": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "1",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
+      "Loop_copy_sorted_pro": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
         "isPipelined": "0",
@@ -392,6 +671,13 @@
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
+      "canonize_tree": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "1",
+        "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "0"
+      },
       "create_codeword": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
@@ -399,23 +685,59 @@
         "isCombinational": "0",
         "isOneStateSeq": "0"
       },
-      "huffman_encoding": {
+      "Block_proc": {
         "FunctionProtocol": "ap_ctrl_hs",
         "isTaskLevelControl": "1",
         "isPipelined": "0",
+        "isCombinational": "0",
+        "isOneStateSeq": "1"
+      },
+      "huffman_encoding": {
+        "FunctionProtocol": "ap_ctrl_hs",
+        "isTaskLevelControl": "1",
+        "isPipelined": "1",
         "isCombinational": "0",
         "isOneStateSeq": "0"
       }
     },
     "Metrics": {
+      "filter": {
+        "Latency": {
+          "LatencyBest": "259",
+          "LatencyAvg": "259",
+          "LatencyWorst": "259",
+          "PipelineII": "259",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "6.705"
+        },
+        "Loops": [{
+            "Name": "Loop 1",
+            "TripCount": "256",
+            "Latency": "257",
+            "PipelineII": "1",
+            "PipelineDepth": "3"
+          }],
+        "Area": {
+          "FF": "90",
+          "LUT": "166",
+          "BRAM_18K": "0",
+          "DSP48E": "0",
+          "URAM": "0"
+        }
+      },
       "sort": {
         "Latency": {
-          "LatencyBest": "410",
+          "LatencyBest": "355",
           "LatencyAvg": "",
-          "LatencyWorst": "15258",
-          "PipelineIIMin": "410",
-          "PipelineIIMax": "15258",
-          "PipelineII": "410 ~ 15258",
+          "LatencyWorst": "4707",
+          "PipelineIIMin": "355",
+          "PipelineIIMax": "4707",
+          "PipelineII": "355 ~ 4707",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -429,52 +751,52 @@
             "Name": "copy_in_to_sorting",
             "TripCount": "",
             "LatencyMin": "0",
-            "LatencyMax": "512",
-            "Latency": "0 ~ 512",
-            "PipelineII": "",
+            "LatencyMax": "256",
+            "Latency": "0 ~ 256",
+            "PipelineII": "1",
             "PipelineDepth": "2"
           },
           {
             "Name": "radix_sort",
             "TripCount": "8",
-            "LatencyMin": "408",
-            "LatencyMax": "14744",
-            "Latency": "408 ~ 14744",
+            "LatencyMin": "352",
+            "LatencyMax": "4448",
+            "Latency": "352 ~ 4448",
             "PipelineII": "",
-            "PipelineDepthMin": "51",
-            "PipelineDepthMax": "1843",
-            "PipelineDepth": "51 ~ 1843",
+            "PipelineDepthMin": "44",
+            "PipelineDepthMax": "556",
+            "PipelineDepth": "44 ~ 556",
             "Loops": [
               {
                 "Name": "init_histogram",
                 "TripCount": "16",
                 "Latency": "16",
-                "PipelineII": "",
+                "PipelineII": "1",
                 "PipelineDepth": "1"
               },
               {
                 "Name": "compute_histogram",
                 "TripCount": "",
-                "LatencyMin": "0",
-                "LatencyMax": "1024",
-                "Latency": "0 ~ 1024",
-                "PipelineII": "",
-                "PipelineDepth": "4"
+                "LatencyMin": "2",
+                "LatencyMax": "258",
+                "Latency": "2 ~ 258",
+                "PipelineII": "1",
+                "PipelineDepth": "3"
               },
               {
                 "Name": "find_digit_location",
                 "TripCount": "15",
-                "Latency": "30",
-                "PipelineII": "",
-                "PipelineDepth": "2"
+                "Latency": "15",
+                "PipelineII": "1",
+                "PipelineDepth": "1"
               },
               {
                 "Name": "re_sort",
                 "TripCount": "",
-                "LatencyMin": "0",
-                "LatencyMax": "768",
-                "Latency": "0 ~ 768",
-                "PipelineII": "",
+                "LatencyMin": "2",
+                "LatencyMax": "258",
+                "Latency": "2 ~ 258",
+                "PipelineII": "1",
                 "PipelineDepth": "3"
               }
             ]
@@ -482,27 +804,56 @@
         ],
         "Area": {
           "BRAM_18K": "5",
-          "FF": "464",
-          "LUT": "816",
+          "FF": "3320",
+          "LUT": "2527",
           "URAM": "0",
           "DSP48E": "0"
         }
       },
-      "create_tree": {
+      "Loop_copy_sorted_pro": {
         "Latency": {
-          "LatencyBest": "1",
+          "LatencyBest": "",
           "LatencyAvg": "",
-          "LatencyWorst": "1021",
-          "PipelineIIMin": "1",
-          "PipelineIIMax": "1021",
-          "PipelineII": "1 ~ 1021",
+          "LatencyWorst": "",
+          "PipelineII": "",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "1.25",
-          "Estimate": "7.575"
+          "Estimate": "6.508"
+        },
+        "Loops": [{
+            "Name": "copy_sorted",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "",
+            "PipelineDepth": "2"
+          }],
+        "Area": {
+          "FF": "130",
+          "LUT": "135",
+          "BRAM_18K": "0",
+          "DSP48E": "0",
+          "URAM": "0"
+        }
+      },
+      "create_tree": {
+        "Latency": {
+          "LatencyBest": "2",
+          "LatencyAvg": "",
+          "LatencyWorst": "1022",
+          "PipelineIIMin": "2",
+          "PipelineIIMax": "1022",
+          "PipelineII": "2 ~ 1022",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "8.661"
         },
         "Loops": [{
             "Name": "Loop 1",
@@ -510,25 +861,23 @@
             "LatencyMin": "0",
             "LatencyMax": "1020",
             "Latency": "0 ~ 1020",
-            "PipelineII": "",
+            "PipelineII": "4",
             "PipelineDepth": "4"
           }],
         "Area": {
           "BRAM_18K": "1",
-          "FF": "453",
-          "LUT": "782",
+          "FF": "518",
+          "LUT": "820",
           "URAM": "0",
           "DSP48E": "0"
         }
       },
       "compute_bit_length": {
         "Latency": {
-          "LatencyBest": "1078",
-          "LatencyAvg": "1331",
-          "LatencyWorst": "1331",
-          "PipelineIIMin": "1078",
-          "PipelineIIMax": "1331",
-          "PipelineII": "1078 ~ 1331",
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -542,25 +891,21 @@
             "Name": "init_histogram",
             "TripCount": "64",
             "Latency": "64",
-            "PipelineII": "",
+            "PipelineII": "1",
             "PipelineDepth": "1"
           },
           {
             "Name": "traverse_tree",
-            "TripCount": "253",
-            "LatencyMin": "1012",
-            "LatencyMax": "1265",
-            "Latency": "1012 ~ 1265",
-            "PipelineII": "",
-            "PipelineDepthMin": "4",
-            "PipelineDepthMax": "5",
-            "PipelineDepth": "4 ~ 5"
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "3",
+            "PipelineDepth": "5"
           }
         ],
         "Area": {
           "BRAM_18K": "2",
-          "FF": "126",
-          "LUT": "375",
+          "FF": "194",
+          "LUT": "422",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -627,8 +972,53 @@
           }
         ],
         "Area": {
-          "FF": "255",
-          "LUT": "638",
+          "FF": "256",
+          "LUT": "649",
+          "BRAM_18K": "0",
+          "DSP48E": "0",
+          "URAM": "0"
+        }
+      },
+      "canonize_tree": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "6.508"
+        },
+        "Loops": [
+          {
+            "Name": "init_bits",
+            "TripCount": "256",
+            "Latency": "256",
+            "PipelineII": "",
+            "PipelineDepth": "1"
+          },
+          {
+            "Name": "process_symbols",
+            "TripCount": "",
+            "Latency": "",
+            "PipelineII": "",
+            "PipelineDepth": "",
+            "Loops": [{
+                "Name": "canonize_tree_label0",
+                "TripCount": "",
+                "Latency": "",
+                "PipelineII": "1",
+                "PipelineDepth": "2"
+              }]
+          }
+        ],
+        "Area": {
+          "FF": "276",
+          "LUT": "365",
           "BRAM_18K": "0",
           "DSP48E": "0",
           "URAM": "0"
@@ -636,12 +1026,10 @@
       },
       "create_codeword": {
         "Latency": {
-          "LatencyBest": "822",
-          "LatencyAvg": "1078",
-          "LatencyWorst": "1078",
-          "PipelineIIMin": "822",
-          "PipelineIIMax": "1078",
-          "PipelineII": "822 ~ 1078",
+          "LatencyBest": "1080",
+          "LatencyAvg": "1080",
+          "LatencyWorst": "1080",
+          "PipelineII": "1080",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -655,92 +1043,65 @@
             "Name": "first_codewords",
             "TripCount": "26",
             "Latency": "52",
-            "PipelineII": "",
+            "PipelineII": "2",
             "PipelineDepth": "2"
           },
           {
             "Name": "assign_codewords",
             "TripCount": "256",
-            "LatencyMin": "768",
-            "LatencyMax": "1024",
-            "Latency": "768 ~ 1024",
-            "PipelineII": "",
-            "PipelineDepthMin": "3",
-            "PipelineDepthMax": "4",
-            "PipelineDepth": "3 ~ 4"
+            "Latency": "1024",
+            "PipelineII": "4",
+            "PipelineDepth": "4"
           }
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "126",
-          "LUT": "536",
+          "FF": "130",
+          "LUT": "530",
           "URAM": "0",
           "DSP48E": "0"
         }
       },
-      "huffman_encoding": {
+      "Block_proc": {
         "Latency": {
-          "LatencyBest": "5197",
-          "LatencyAvg": "",
-          "LatencyWorst": "23730",
-          "PipelineIIMin": "5198",
-          "PipelineIIMax": "23731",
-          "PipelineII": "5198 ~ 23731",
+          "LatencyBest": "0",
+          "LatencyAvg": "0",
+          "LatencyWorst": "0",
+          "PipelineII": "0",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
           "Target": "10.00",
           "Uncertainty": "1.25",
-          "Estimate": "8.333"
+          "Estimate": "3.634"
         },
-        "Loops": [
-          {
-            "Name": "Loop 1",
-            "TripCount": "256",
-            "Latency": "768",
-            "PipelineII": "",
-            "PipelineDepth": "3"
-          },
-          {
-            "Name": "copy_sorted",
-            "TripCount": "256",
-            "Latency": "512",
-            "PipelineII": "",
-            "PipelineDepth": "2"
-          },
-          {
-            "Name": "init_bits",
-            "TripCount": "256",
-            "Latency": "256",
-            "PipelineII": "",
-            "PipelineDepth": "1"
-          },
-          {
-            "Name": "process_symbols",
-            "TripCount": "",
-            "LatencyMin": "0",
-            "LatencyMax": "2048",
-            "Latency": "0 ~ 2048",
-            "PipelineII": "",
-            "PipelineDepthMin": "3",
-            "PipelineDepthMax": "8",
-            "PipelineDepth": "3 ~ 8",
-            "Loops": [{
-                "Name": "process_symbols.1",
-                "TripCount": "",
-                "LatencyMin": "3",
-                "LatencyMax": "5",
-                "Latency": "3 ~ 5",
-                "PipelineII": "",
-                "PipelineDepth": "2"
-              }]
-          }
-        ],
+        "Area": {
+          "FF": "34",
+          "LUT": "29",
+          "BRAM_18K": "0",
+          "DSP48E": "0",
+          "URAM": "0"
+        }
+      },
+      "huffman_encoding": {
+        "Latency": {
+          "LatencyBest": "",
+          "LatencyAvg": "",
+          "LatencyWorst": "",
+          "PipelineII": "",
+          "PipelineDepth": "",
+          "PipelineType": "dataflow"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "8.661"
+        },
         "Area": {
           "BRAM_18K": "23",
-          "FF": "1866",
-          "LUT": "4168",
+          "FF": "4990",
+          "LUT": "6089",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -757,7 +1118,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2021-08-03 15:22:59 +1000",
+    "Time": "2021-08-03 21:42:47 +1000",
     "ToolName": "vivado_hls",
     "ToolVersion": "2020.1"
   }
