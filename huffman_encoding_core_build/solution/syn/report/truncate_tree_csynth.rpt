@@ -1,0 +1,195 @@
+
+
+================================================================
+== Vivado HLS Report for 'truncate_tree'
+================================================================
+* Date:           Tue Aug  3 12:44:38 2021
+
+* Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
+* Project:        huffman_encoding_core_build
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 6.508 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     1339|     1447| 13.390 us | 14.470 us |  1339|  1447|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- copy_input    |      128|      128|         2|          -|          -|    64|    no    |
+        |- move_nodes    |     1080|     1188|  30 ~ 33 |          -|          -|    36|    no    |
+        | + reorder      |       28|       31|  9 ~ 10  |          -|          -|     3|    no    |
+        |  ++ reorder.1  |        1|        1|         2|          -|          -|     1|    no    |
+        |- copy_output   |      128|      128|         2|          -|          -|    64|    no    |
+        +----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|    390|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|    259|    -|
+|Register         |        -|      -|     256|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|     256|    649|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |      1|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |     Variable Name     | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |add_ln700_1_fu_326_p2  |     +    |      0|  0|  39|          32|           1|
+    |add_ln700_fu_319_p2    |     +    |      0|  0|  39|          32|           2|
+    |add_ln701_1_fu_333_p2  |     +    |      0|  0|  39|          32|           3|
+    |add_ln701_fu_312_p2    |     +    |      0|  0|  39|          32|           2|
+    |i_1_fu_249_p2          |     +    |      0|  0|  15|           6|           2|
+    |i_2_fu_346_p2          |     +    |      0|  0|  15|           7|           1|
+    |i_fu_222_p2            |     +    |      0|  0|  15|           7|           1|
+    |j_V_3_fu_301_p2        |     +    |      0|  0|  39|          32|           1|
+    |j_V_fu_266_p2          |     +    |      0|  0|  39|          32|           2|
+    |ret_V_fu_290_p2        |     +    |      0|  0|  40|          33|           1|
+    |grp_fu_197_p2          |   icmp   |      0|  0|  18|          32|           1|
+    |icmp_ln10_fu_216_p2    |   icmp   |      0|  0|  11|           7|           8|
+    |icmp_ln16_fu_238_p2    |   icmp   |      0|  0|  11|           6|           5|
+    |icmp_ln44_fu_340_p2    |   icmp   |      0|  0|  11|           7|           8|
+    |icmp_ln879_fu_260_p2   |   icmp   |      0|  0|  18|          32|           5|
+    |ap_block_state1        |    or    |      0|  0|   2|           1|           1|
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |Total                  |          |      0|  0| 390|         330|          44|
+    +-----------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------------+----+-----------+-----+-----------+
+    |                 Name                | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                            |  85|         17|    1|         17|
+    |ap_done                              |   9|          2|    1|          2|
+    |i1_0_reg_164                         |   9|          2|    6|         12|
+    |i2_0_reg_186                         |   9|          2|    7|         14|
+    |i_0_reg_153                          |   9|          2|    7|         14|
+    |j_V_2_fu_58                          |  15|          3|   32|         96|
+    |output_length_histogram1_V_address0  |  33|          6|    6|         36|
+    |output_length_histogram1_V_address1  |  27|          5|    6|         30|
+    |output_length_histogram1_V_d0        |  21|          4|   32|        128|
+    |output_length_histogram1_V_d1        |  15|          3|   32|         96|
+    |reg_206                              |   9|          2|   32|         64|
+    |reg_211                              |   9|          2|   32|         64|
+    |t_V_reg_175                          |   9|          2|   32|         64|
+    +-------------------------------------+----+-----------+-----+-----------+
+    |Total                                | 259|         52|  226|        637|
+    +-------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------+----+----+-----+-----------+
+    |              Name              | FF | LUT| Bits| Const Bits|
+    +--------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                       |  16|   0|   16|          0|
+    |ap_done_reg                     |   1|   0|    1|          0|
+    |i1_0_reg_164                    |   6|   0|    6|          0|
+    |i2_0_reg_186                    |   7|   0|    7|          0|
+    |i_0_reg_153                     |   7|   0|    7|          0|
+    |i_1_reg_391                     |   6|   0|    6|          0|
+    |i_2_reg_437                     |   7|   0|    7|          0|
+    |i_reg_360                       |   7|   0|    7|          0|
+    |icmp_ln879_reg_404              |   1|   0|    1|          0|
+    |j_V_2_fu_58                     |  32|   0|   32|          0|
+    |j_V_reg_408                     |  32|   0|   32|          0|
+    |output_length_histog_1_reg_386  |   6|   0|    6|          0|
+    |output_length_histog_2_reg_396  |   6|   0|    6|          0|
+    |output_length_histog_6_reg_422  |   6|   0|    6|          0|
+    |output_length_histog_8_reg_428  |   6|   0|    6|          0|
+    |reg_206                         |  32|   0|   32|          0|
+    |reg_211                         |  32|   0|   32|          0|
+    |t_V_reg_175                     |  32|   0|   32|          0|
+    |zext_ln11_reg_365               |   7|   0|   64|         57|
+    |zext_ln45_reg_442               |   7|   0|   64|         57|
+    +--------------------------------+----+----+-----+-----------+
+    |Total                           | 256|   0|  370|        114|
+    +--------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------+-----+-----+------------+----------------------------+--------------+
+|              RTL Ports              | Dir | Bits|  Protocol  |        Source Object       |    C Type    |
++-------------------------------------+-----+-----+------------+----------------------------+--------------+
+|ap_clk                               |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_rst                               |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_start                             |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_done                              | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_continue                          |  in |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_idle                              | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|ap_ready                             | out |    1| ap_ctrl_hs |        truncate_tree       | return value |
+|input_length_histogram_V_address0    | out |    6|  ap_memory |  input_length_histogram_V  |     array    |
+|input_length_histogram_V_ce0         | out |    1|  ap_memory |  input_length_histogram_V  |     array    |
+|input_length_histogram_V_q0          |  in |   32|  ap_memory |  input_length_histogram_V  |     array    |
+|output_length_histogram1_V_address0  | out |    6|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_ce0       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_we0       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_d0        | out |   32|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_q0        |  in |   32|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_address1  | out |    6|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_ce1       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_we1       | out |    1|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_d1        | out |   32|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram1_V_q1        |  in |   32|  ap_memory | output_length_histogram1_V |     array    |
+|output_length_histogram2_V_address0  | out |    6|  ap_memory | output_length_histogram2_V |     array    |
+|output_length_histogram2_V_ce0       | out |    1|  ap_memory | output_length_histogram2_V |     array    |
+|output_length_histogram2_V_we0       | out |    1|  ap_memory | output_length_histogram2_V |     array    |
+|output_length_histogram2_V_d0        | out |   32|  ap_memory | output_length_histogram2_V |     array    |
++-------------------------------------+-----+-----+------------+----------------------------+--------------+
+

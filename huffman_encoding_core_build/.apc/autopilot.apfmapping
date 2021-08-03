@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="huffman.h" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman.h"/>
+    <originFiles name="huffman_canonize_tree.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_canonize_tree.cpp"/>
+    <originFiles name="huffman_create_tree.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_create_tree.cpp"/>
+    <originFiles name="huffman_filter.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_filter.cpp"/>
+    <originFiles name="huffman_compute_bit_length.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_compute_bit_length.cpp"/>
+    <originFiles name="huffman_encoding.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_encoding.cpp"/>
+    <originFiles name="huffman_sort.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_sort.cpp"/>
+    <originFiles name="huffman_create_codeword.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_create_codeword.cpp"/>
+    <originFiles name="huffman_truncate_tree.cpp" path="D:\UNSW\21T2\COMP4601\Project\hls-src\huffman_truncate_tree.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="huffman.random256.txt" path="D:\UNSW\21T2\COMP4601\Project\tests\huffman.random256.txt"/>
+    <originFiles name="huffman.random256.golden" path="D:\UNSW\21T2\COMP4601\Project\tests\huffman.random256.golden"/>
+    <originFiles name="huffman_encoding_test.cpp" path="D:\UNSW\21T2\COMP4601\Project\tests\huffman_encoding_test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

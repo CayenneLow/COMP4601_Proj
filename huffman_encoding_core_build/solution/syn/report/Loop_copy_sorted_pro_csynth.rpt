@@ -1,0 +1,173 @@
+
+
+================================================================
+== Vivado HLS Report for 'Loop_copy_sorted_pro'
+================================================================
+* Date:           Tue Aug  3 12:44:36 2021
+
+* Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
+* Project:        huffman_encoding_core_build
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 6.508 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      513|      513| 5.130 us | 5.130 us |  513|  513|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |               |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- copy_sorted  |      512|      512|         2|          -|          -|   256|    no    |
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     60|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     75|    -|
+|Register         |        -|      -|     130|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|     130|    135|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------+----------+-------+---+----+------------+------------+
+    |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------+----------+-------+---+----+------------+------------+
+    |i_fu_190_p2          |     +    |      0|  0|  38|          31|           1|
+    |icmp_ln42_fu_185_p2  |   icmp   |      0|  0|  18|          32|          32|
+    |ap_block_state1      |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state2      |    or    |      0|  0|   2|           1|           1|
+    +---------------------+----------+-------+---+----+------------+------------+
+    |Total                |          |      0|  0|  60|          65|          35|
+    +---------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------+----+-----------+-----+-----------+
+    |            Name           | LUT| Input Size| Bits| Total Bits|
+    +---------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                  |  21|          4|    1|          4|
+    |ap_done                    |   9|          2|    1|          2|
+    |i_0_i_reg_170              |   9|          2|   31|         62|
+    |n_blk_n                    |   9|          2|    1|          2|
+    |real_start                 |   9|          2|    1|          2|
+    |val_assign_out_out1_blk_n  |   9|          2|    1|          2|
+    |val_assign_out_out_blk_n   |   9|          2|    1|          2|
+    +---------------------------+----+-----------+-----+-----------+
+    |Total                      |  75|         16|   37|         76|
+    +---------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------+----+----+-----+-----------+
+    |        Name       | FF | LUT| Bits| Const Bits|
+    +-------------------+----+----+-----+-----------+
+    |ap_CS_fsm          |   3|   0|    3|          0|
+    |ap_done_reg        |   1|   0|    1|          0|
+    |i_0_i_reg_170      |  31|   0|   31|          0|
+    |i_reg_212          |  31|   0|   31|          0|
+    |n_read_reg_202     |  32|   0|   32|          0|
+    |start_once_reg     |   1|   0|    1|          0|
+    |zext_ln43_reg_217  |  31|   0|   64|         33|
+    +-------------------+----+----+-----+-----------+
+    |Total              | 130|   0|  163|         33|
+    +-------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------------+-----+-----+------------+--------------------------+--------------+
+|             RTL Ports             | Dir | Bits|  Protocol  |       Source Object      |    C Type    |
++-----------------------------------+-----+-----+------------+--------------------------+--------------+
+|ap_clk                             |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_rst                             |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_start                           |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|start_full_n                       |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_done                            | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_continue                        |  in |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_idle                            | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|ap_ready                           | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|start_out                          | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|start_write                        | out |    1| ap_ctrl_hs |   Loop_copy_sorted_pro   | return value |
+|n_dout                             |  in |   32|   ap_fifo  |             n            |    pointer   |
+|n_empty_n                          |  in |    1|   ap_fifo  |             n            |    pointer   |
+|n_read                             | out |    1|   ap_fifo  |             n            |    pointer   |
+|sorted_0_address0                  | out |    8|  ap_memory |         sorted_0         |     array    |
+|sorted_0_ce0                       | out |    1|  ap_memory |         sorted_0         |     array    |
+|sorted_0_q0                        |  in |   32|  ap_memory |         sorted_0         |     array    |
+|sorted_copy1_value_V_address0      | out |    8|  ap_memory |   sorted_copy1_value_V   |     array    |
+|sorted_copy1_value_V_ce0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
+|sorted_copy1_value_V_we0           | out |    1|  ap_memory |   sorted_copy1_value_V   |     array    |
+|sorted_copy1_value_V_d0            | out |   32|  ap_memory |   sorted_copy1_value_V   |     array    |
+|sorted_1_address0                  | out |    8|  ap_memory |         sorted_1         |     array    |
+|sorted_1_ce0                       | out |    1|  ap_memory |         sorted_1         |     array    |
+|sorted_1_q0                        |  in |   32|  ap_memory |         sorted_1         |     array    |
+|sorted_copy1_frequency_V_address0  | out |    8|  ap_memory | sorted_copy1_frequency_V |     array    |
+|sorted_copy1_frequency_V_ce0       | out |    1|  ap_memory | sorted_copy1_frequency_V |     array    |
+|sorted_copy1_frequency_V_we0       | out |    1|  ap_memory | sorted_copy1_frequency_V |     array    |
+|sorted_copy1_frequency_V_d0        | out |   32|  ap_memory | sorted_copy1_frequency_V |     array    |
+|sorted_copy2_value_V_address0      | out |    8|  ap_memory |   sorted_copy2_value_V   |     array    |
+|sorted_copy2_value_V_ce0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
+|sorted_copy2_value_V_we0           | out |    1|  ap_memory |   sorted_copy2_value_V   |     array    |
+|sorted_copy2_value_V_d0            | out |   32|  ap_memory |   sorted_copy2_value_V   |     array    |
+|val_assign_out_out_din             | out |   32|   ap_fifo  |    val_assign_out_out    |    pointer   |
+|val_assign_out_out_full_n          |  in |    1|   ap_fifo  |    val_assign_out_out    |    pointer   |
+|val_assign_out_out_write           | out |    1|   ap_fifo  |    val_assign_out_out    |    pointer   |
+|val_assign_out_out1_din            | out |   32|   ap_fifo  |    val_assign_out_out1   |    pointer   |
+|val_assign_out_out1_full_n         |  in |    1|   ap_fifo  |    val_assign_out_out1   |    pointer   |
+|val_assign_out_out1_write          | out |    1|   ap_fifo  |    val_assign_out_out1   |    pointer   |
++-----------------------------------+-----+-----+------------+--------------------------+--------------+
+

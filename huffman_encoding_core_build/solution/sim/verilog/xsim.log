@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Tue Aug  3 11:42:36 2021
+# Process ID: 35428
+# Current directory: D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution/sim/verilog
+# Command line: xsim.exe -mode tcl -source {xsim.dir/huffman_encoding/xsim_script.tcl}
+# Log file: D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution/sim/verilog/xsim.log
+# Journal file: D:/UNSW/21T2/COMP4601/Project/huffman_encoding_core_build/solution/sim/verilog\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/huffman_encoding/xsim_script.tcl
+# xsim {huffman_encoding} -autoloadwcfg -tclbatch {huffman_encoding.tcl}
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+source huffman_encoding.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [n/a] @ "125000"
+// RTL Simulation : 0 / 1 [n/a] @ "100000145000"
+// RTL Simulation : 0 / 1 [n/a] @ "200000155000"
+// RTL Simulation : 0 / 1 [n/a] @ "300000165000"
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:10:26 . Memory (MB): peak = 932.996 ; gain = 0.051
+INFO: [Common 17-344] 'run' was cancelled
+xsim: Time (s): cpu = 00:00:02 ; elapsed = 00:10:27 . Memory (MB): peak = 932.996 ; gain = 385.078
+INFO: [Common 17-344] 'source' was cancelled
+xsim% 

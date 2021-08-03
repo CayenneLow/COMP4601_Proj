@@ -59,7 +59,7 @@ merge_bit_length:
   for(int i = 0; i < TREE_DEPTH; i++) {
 #pragma HLS PIPELINE II=1
     if(length_histogram[i] > 0)
-      std::cout << length_histogram[i] << " codewords with length " << i << "\n";
+      //std::cout << length_histogram[i] << " codewords with length " << i << "\n";
     codewords_in_tree += length_histogram[i];
   }
   // prevent infinite loop

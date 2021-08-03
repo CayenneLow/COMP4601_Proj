@@ -1,0 +1,19 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="huffman_encoding" label="copy_sorted" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="256"/>
+                <option name="max" value="256"/>
+                <option name="avg" value="256"/>
+            </pragma>
+        </directive>
+        <directive functionName="compute_bit_length" label="traverse_tree" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="253"/>
+                <option name="max" value="253"/>
+                <option name="avg" value="253"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+
