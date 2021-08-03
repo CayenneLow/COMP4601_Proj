@@ -50,6 +50,9 @@ if __name__ == '__main__':
         right = tree_stack.pop()
         left = tree_stack.pop()
         tree = Branch(left, right)
+        if tree_stack and tree.freq < tree_stack[-1].freq:
+            tree_stack.append(tree)
+            continue
         for i, t in enumerate(tree_stack):
             if t.freq < tree.freq:
                 tree_stack.insert(i, tree)
