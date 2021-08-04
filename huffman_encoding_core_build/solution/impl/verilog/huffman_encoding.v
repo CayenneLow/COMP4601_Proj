@@ -7,1472 +7,1482 @@
 
 `timescale 1 ns / 1 ps 
 
-(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2020_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=dataflow,HLS_SYN_CLOCK=8.661000,HLS_SYN_LAT=-1,HLS_SYN_TPT=-1,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=4990,HLS_SYN_LUT=6089,HLS_VERSION=2020_1}" *)
+(* CORE_GENERATION_INFO="huffman_encoding,hls_ip_2020_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=1,HLS_INPUT_PART=xc7z020-clg484-1,HLS_INPUT_CLOCK=10.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=8.333000,HLS_SYN_LAT=-1,HLS_SYN_TPT=none,HLS_SYN_MEM=23,HLS_SYN_DSP=0,HLS_SYN_FF=1866,HLS_SYN_LUT=4168,HLS_VERSION=2020_1}" *)
 
 module huffman_encoding (
         ap_clk,
         ap_rst,
-        symbol_histogram_value_V_address0,
-        symbol_histogram_value_V_ce0,
-        symbol_histogram_value_V_d0,
-        symbol_histogram_value_V_q0,
-        symbol_histogram_value_V_we0,
-        symbol_histogram_value_V_address1,
-        symbol_histogram_value_V_ce1,
-        symbol_histogram_value_V_d1,
-        symbol_histogram_value_V_q1,
-        symbol_histogram_value_V_we1,
-        symbol_histogram_frequency_V_address0,
-        symbol_histogram_frequency_V_ce0,
-        symbol_histogram_frequency_V_d0,
-        symbol_histogram_frequency_V_q0,
-        symbol_histogram_frequency_V_we0,
-        symbol_histogram_frequency_V_address1,
-        symbol_histogram_frequency_V_ce1,
-        symbol_histogram_frequency_V_d1,
-        symbol_histogram_frequency_V_q1,
-        symbol_histogram_frequency_V_we1,
-        encoding_V_address0,
-        encoding_V_ce0,
-        encoding_V_d0,
-        encoding_V_q0,
-        encoding_V_we0,
-        encoding_V_address1,
-        encoding_V_ce1,
-        encoding_V_d1,
-        encoding_V_q1,
-        encoding_V_we1,
-        num_nonzero_symbols,
         ap_start,
         ap_done,
-        num_nonzero_symbols_ap_vld,
+        ap_idle,
         ap_ready,
-        ap_idle
+        symbol_histogram_value_V_address0,
+        symbol_histogram_value_V_ce0,
+        symbol_histogram_value_V_q0,
+        symbol_histogram_frequency_V_address0,
+        symbol_histogram_frequency_V_ce0,
+        symbol_histogram_frequency_V_q0,
+        encoding_V_address0,
+        encoding_V_ce0,
+        encoding_V_we0,
+        encoding_V_d0,
+        num_nonzero_symbols,
+        num_nonzero_symbols_ap_vld
 );
 
+parameter    ap_ST_fsm_state1 = 18'd1;
+parameter    ap_ST_fsm_state2 = 18'd2;
+parameter    ap_ST_fsm_state3 = 18'd4;
+parameter    ap_ST_fsm_state4 = 18'd8;
+parameter    ap_ST_fsm_state5 = 18'd16;
+parameter    ap_ST_fsm_state6 = 18'd32;
+parameter    ap_ST_fsm_state7 = 18'd64;
+parameter    ap_ST_fsm_state8 = 18'd128;
+parameter    ap_ST_fsm_state9 = 18'd256;
+parameter    ap_ST_fsm_state10 = 18'd512;
+parameter    ap_ST_fsm_state11 = 18'd1024;
+parameter    ap_ST_fsm_state12 = 18'd2048;
+parameter    ap_ST_fsm_state13 = 18'd4096;
+parameter    ap_ST_fsm_state14 = 18'd8192;
+parameter    ap_ST_fsm_state15 = 18'd16384;
+parameter    ap_ST_fsm_state16 = 18'd32768;
+parameter    ap_ST_fsm_state17 = 18'd65536;
+parameter    ap_ST_fsm_state18 = 18'd131072;
 
 input   ap_clk;
 input   ap_rst;
-output  [7:0] symbol_histogram_value_V_address0;
-output   symbol_histogram_value_V_ce0;
-output  [31:0] symbol_histogram_value_V_d0;
-input  [31:0] symbol_histogram_value_V_q0;
-output   symbol_histogram_value_V_we0;
-output  [7:0] symbol_histogram_value_V_address1;
-output   symbol_histogram_value_V_ce1;
-output  [31:0] symbol_histogram_value_V_d1;
-input  [31:0] symbol_histogram_value_V_q1;
-output   symbol_histogram_value_V_we1;
-output  [7:0] symbol_histogram_frequency_V_address0;
-output   symbol_histogram_frequency_V_ce0;
-output  [31:0] symbol_histogram_frequency_V_d0;
-input  [31:0] symbol_histogram_frequency_V_q0;
-output   symbol_histogram_frequency_V_we0;
-output  [7:0] symbol_histogram_frequency_V_address1;
-output   symbol_histogram_frequency_V_ce1;
-output  [31:0] symbol_histogram_frequency_V_d1;
-input  [31:0] symbol_histogram_frequency_V_q1;
-output   symbol_histogram_frequency_V_we1;
-output  [7:0] encoding_V_address0;
-output   encoding_V_ce0;
-output  [31:0] encoding_V_d0;
-input  [31:0] encoding_V_q0;
-output   encoding_V_we0;
-output  [7:0] encoding_V_address1;
-output   encoding_V_ce1;
-output  [31:0] encoding_V_d1;
-input  [31:0] encoding_V_q1;
-output   encoding_V_we1;
-output  [31:0] num_nonzero_symbols;
 input   ap_start;
 output   ap_done;
-output   num_nonzero_symbols_ap_vld;
-output   ap_ready;
 output   ap_idle;
+output   ap_ready;
+output  [7:0] symbol_histogram_value_V_address0;
+output   symbol_histogram_value_V_ce0;
+input  [31:0] symbol_histogram_value_V_q0;
+output  [7:0] symbol_histogram_frequency_V_address0;
+output   symbol_histogram_frequency_V_ce0;
+input  [31:0] symbol_histogram_frequency_V_q0;
+output  [7:0] encoding_V_address0;
+output   encoding_V_ce0;
+output   encoding_V_we0;
+output  [31:0] encoding_V_d0;
+output  [31:0] num_nonzero_symbols;
+output   num_nonzero_symbols_ap_vld;
 
-wire   [31:0] filtered_value_V_i_q0;
-wire   [31:0] filtered_value_V_t_q0;
-wire   [31:0] filtered_frequency_V_i_q0;
-wire   [31:0] filtered_frequency_V_t_q0;
-wire   [31:0] sorted_0_i_q0;
-wire   [31:0] sorted_0_t_q0;
-wire   [31:0] sorted_1_i_q0;
-wire   [31:0] sorted_1_t_q0;
-wire   [31:0] sorted_copy1_value_V_i_q0;
-wire   [31:0] sorted_copy1_value_V_t_q0;
-wire   [31:0] sorted_copy1_frequen_i_q0;
-wire   [31:0] sorted_copy1_frequen_t_q0;
-wire   [31:0] sorted_copy2_value_V_i_q0;
-wire   [31:0] sorted_copy2_value_V_t_q0;
-wire   [30:0] parent_V_i_q0;
-wire   [30:0] parent_V_t_q0;
-wire   [31:0] left_V_i_q0;
-wire   [31:0] left_V_t_q0;
-wire   [31:0] right_V_i_q0;
-wire   [31:0] right_V_t_q0;
-wire   [31:0] length_histogram_V_i_q0;
-wire   [31:0] length_histogram_V_t_q0;
-wire   [31:0] truncated_length_his_i_q0;
-wire   [31:0] truncated_length_his_i_q1;
-wire   [31:0] truncated_length_his_t_q0;
-wire   [31:0] truncated_length_his_t_q1;
-wire   [31:0] truncated_length_his_1_i_q0;
-wire   [31:0] truncated_length_his_1_t_q0;
-wire   [4:0] symbol_bits_V_i_q0;
-wire   [4:0] symbol_bits_V_t_q0;
-wire    filter_U0_ap_start;
-wire    filter_U0_ap_done;
-wire    filter_U0_ap_continue;
-wire    filter_U0_ap_idle;
-wire    filter_U0_ap_ready;
-wire   [7:0] filter_U0_in_value_V_address0;
-wire    filter_U0_in_value_V_ce0;
-wire   [7:0] filter_U0_in_frequency_V_address0;
-wire    filter_U0_in_frequency_V_ce0;
-wire   [7:0] filter_U0_out_value_V_address0;
-wire    filter_U0_out_value_V_ce0;
-wire    filter_U0_out_value_V_we0;
-wire   [31:0] filter_U0_out_value_V_d0;
-wire   [7:0] filter_U0_out_frequency_V_address0;
-wire    filter_U0_out_frequency_V_ce0;
-wire    filter_U0_out_frequency_V_we0;
-wire   [31:0] filter_U0_out_frequency_V_d0;
-wire   [31:0] filter_U0_n_out_din;
-wire    filter_U0_n_out_write;
-wire    ap_channel_done_filtered_frequency_V;
-wire    filter_U0_out_frequency_V_full_n;
-reg    ap_sync_reg_channel_write_filtered_frequency_V;
-wire    ap_sync_channel_write_filtered_frequency_V;
-wire    ap_channel_done_filtered_value_V;
-wire    filter_U0_out_value_V_full_n;
-reg    ap_sync_reg_channel_write_filtered_value_V;
-wire    ap_sync_channel_write_filtered_value_V;
-wire    sort_U0_ap_start;
-wire    sort_U0_ap_done;
-wire    sort_U0_ap_continue;
-wire    sort_U0_ap_idle;
-wire    sort_U0_ap_ready;
-wire   [7:0] sort_U0_in_value_V_address0;
-wire    sort_U0_in_value_V_ce0;
-wire   [7:0] sort_U0_in_frequency_V_address0;
-wire    sort_U0_in_frequency_V_ce0;
-wire    sort_U0_n_read;
-wire   [7:0] sort_U0_out_value_V_address0;
-wire    sort_U0_out_value_V_ce0;
-wire    sort_U0_out_value_V_we0;
-wire   [31:0] sort_U0_out_value_V_d0;
-wire   [7:0] sort_U0_out_frequency_V_address0;
-wire    sort_U0_out_frequency_V_ce0;
-wire    sort_U0_out_frequency_V_we0;
-wire   [31:0] sort_U0_out_frequency_V_d0;
-wire   [31:0] sort_U0_n_out_din;
-wire    sort_U0_n_out_write;
-wire    ap_channel_done_sorted_1;
-wire    sort_U0_out_frequency_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_1;
-wire    ap_sync_channel_write_sorted_1;
-wire    ap_channel_done_sorted_0;
-wire    sort_U0_out_value_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_0;
-wire    ap_sync_channel_write_sorted_0;
-wire    Loop_copy_sorted_pro_U0_ap_start;
-wire    Loop_copy_sorted_pro_U0_ap_done;
-wire    Loop_copy_sorted_pro_U0_ap_continue;
-wire    Loop_copy_sorted_pro_U0_ap_idle;
-wire    Loop_copy_sorted_pro_U0_ap_ready;
-wire    Loop_copy_sorted_pro_U0_start_out;
-wire    Loop_copy_sorted_pro_U0_start_write;
-wire    Loop_copy_sorted_pro_U0_n_read;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_0_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_0_ce0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0;
-wire   [31:0] Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_1_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_1_ce0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0;
-wire   [31:0] Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0;
-wire   [7:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0;
-wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0;
-wire   [31:0] Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0;
-wire   [31:0] Loop_copy_sorted_pro_U0_val_assign_out_out_din;
-wire    Loop_copy_sorted_pro_U0_val_assign_out_out_write;
-wire   [31:0] Loop_copy_sorted_pro_U0_val_assign_out_out1_din;
-wire    Loop_copy_sorted_pro_U0_val_assign_out_out1_write;
-wire    ap_channel_done_sorted_copy2_value_V;
-wire    Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy2_value_V;
-wire    ap_sync_channel_write_sorted_copy2_value_V;
-wire    ap_channel_done_sorted_copy1_frequen;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy1_frequen;
-wire    ap_sync_channel_write_sorted_copy1_frequen;
-wire    ap_channel_done_sorted_copy1_value_V;
-wire    Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n;
-reg    ap_sync_reg_channel_write_sorted_copy1_value_V;
-wire    ap_sync_channel_write_sorted_copy1_value_V;
-wire    create_tree_U0_ap_start;
-wire    create_tree_U0_ap_done;
-wire    create_tree_U0_ap_continue;
-wire    create_tree_U0_ap_idle;
-wire    create_tree_U0_ap_ready;
-wire   [7:0] create_tree_U0_in_value_V_address0;
-wire    create_tree_U0_in_value_V_ce0;
-wire   [7:0] create_tree_U0_in_frequency_V_address0;
-wire    create_tree_U0_in_frequency_V_ce0;
-wire    create_tree_U0_val_assign_loc_read;
-wire   [7:0] create_tree_U0_parent_V_address0;
-wire    create_tree_U0_parent_V_ce0;
-wire    create_tree_U0_parent_V_we0;
-wire   [30:0] create_tree_U0_parent_V_d0;
-wire   [7:0] create_tree_U0_left_V_address0;
-wire    create_tree_U0_left_V_ce0;
-wire    create_tree_U0_left_V_we0;
-wire   [31:0] create_tree_U0_left_V_d0;
-wire   [7:0] create_tree_U0_right_V_address0;
-wire    create_tree_U0_right_V_ce0;
-wire    create_tree_U0_right_V_we0;
-wire   [31:0] create_tree_U0_right_V_d0;
-wire   [31:0] create_tree_U0_val_assign_loc_out_din;
-wire    create_tree_U0_val_assign_loc_out_write;
-wire    ap_channel_done_right_V;
-wire    create_tree_U0_right_V_full_n;
-reg    ap_sync_reg_channel_write_right_V;
-wire    ap_sync_channel_write_right_V;
-wire    ap_channel_done_left_V;
-wire    create_tree_U0_left_V_full_n;
-reg    ap_sync_reg_channel_write_left_V;
-wire    ap_sync_channel_write_left_V;
-wire    ap_channel_done_parent_V;
-wire    create_tree_U0_parent_V_full_n;
-reg    ap_sync_reg_channel_write_parent_V;
-wire    ap_sync_channel_write_parent_V;
-wire    compute_bit_length_U0_ap_start;
-wire    compute_bit_length_U0_ap_done;
-wire    compute_bit_length_U0_ap_continue;
-wire    compute_bit_length_U0_ap_idle;
-wire    compute_bit_length_U0_ap_ready;
-wire   [7:0] compute_bit_length_U0_parent_V_address0;
-wire    compute_bit_length_U0_parent_V_ce0;
-wire   [7:0] compute_bit_length_U0_left_V_address0;
-wire    compute_bit_length_U0_left_V_ce0;
-wire   [7:0] compute_bit_length_U0_right_V_address0;
-wire    compute_bit_length_U0_right_V_ce0;
-wire    compute_bit_length_U0_val_assign_loc_read;
-wire   [5:0] compute_bit_length_U0_length_histogram_V_address0;
-wire    compute_bit_length_U0_length_histogram_V_ce0;
-wire    compute_bit_length_U0_length_histogram_V_we0;
-wire   [31:0] compute_bit_length_U0_length_histogram_V_d0;
-wire   [31:0] compute_bit_length_U0_val_assign_loc_out_din;
-wire    compute_bit_length_U0_val_assign_loc_out_write;
-wire    ap_channel_done_length_histogram_V;
-wire    compute_bit_length_U0_length_histogram_V_full_n;
-wire    truncate_tree_U0_ap_start;
-wire    truncate_tree_U0_ap_done;
-wire    truncate_tree_U0_ap_continue;
-wire    truncate_tree_U0_ap_idle;
-wire    truncate_tree_U0_ap_ready;
-wire   [5:0] truncate_tree_U0_input_length_histogram_V_address0;
-wire    truncate_tree_U0_input_length_histogram_V_ce0;
-wire   [5:0] truncate_tree_U0_output_length_histogram1_V_address0;
-wire    truncate_tree_U0_output_length_histogram1_V_ce0;
-wire    truncate_tree_U0_output_length_histogram1_V_we0;
-wire   [31:0] truncate_tree_U0_output_length_histogram1_V_d0;
-wire   [5:0] truncate_tree_U0_output_length_histogram1_V_address1;
-wire    truncate_tree_U0_output_length_histogram1_V_ce1;
-wire    truncate_tree_U0_output_length_histogram1_V_we1;
-wire   [31:0] truncate_tree_U0_output_length_histogram1_V_d1;
-wire   [5:0] truncate_tree_U0_output_length_histogram2_V_address0;
-wire    truncate_tree_U0_output_length_histogram2_V_ce0;
-wire    truncate_tree_U0_output_length_histogram2_V_we0;
-wire   [31:0] truncate_tree_U0_output_length_histogram2_V_d0;
-wire    ap_channel_done_truncated_length_his_1;
-wire    truncate_tree_U0_output_length_histogram2_V_full_n;
-reg    ap_sync_reg_channel_write_truncated_length_his_1;
-wire    ap_sync_channel_write_truncated_length_his_1;
-wire    ap_channel_done_truncated_length_his;
-wire    truncate_tree_U0_output_length_histogram1_V_full_n;
-reg    ap_sync_reg_channel_write_truncated_length_his;
-wire    ap_sync_channel_write_truncated_length_his;
-wire    canonize_tree_U0_ap_start;
-wire    canonize_tree_U0_ap_done;
-wire    canonize_tree_U0_ap_continue;
-wire    canonize_tree_U0_ap_idle;
-wire    canonize_tree_U0_ap_ready;
-wire   [7:0] canonize_tree_U0_sorted_value_V_address0;
-wire    canonize_tree_U0_sorted_value_V_ce0;
-wire    canonize_tree_U0_val_assign_loc_read;
-wire   [5:0] canonize_tree_U0_codeword_length_histogram_V_address0;
-wire    canonize_tree_U0_codeword_length_histogram_V_ce0;
-wire   [7:0] canonize_tree_U0_symbol_bits_V_address0;
-wire    canonize_tree_U0_symbol_bits_V_ce0;
-wire    canonize_tree_U0_symbol_bits_V_we0;
-wire   [4:0] canonize_tree_U0_symbol_bits_V_d0;
-wire    ap_channel_done_symbol_bits_V;
-wire    canonize_tree_U0_symbol_bits_V_full_n;
-wire    create_codeword_U0_ap_start;
-wire    create_codeword_U0_ap_done;
-wire    create_codeword_U0_ap_continue;
-wire    create_codeword_U0_ap_idle;
-wire    create_codeword_U0_ap_ready;
-wire   [7:0] create_codeword_U0_symbol_bits_V_address0;
-wire    create_codeword_U0_symbol_bits_V_ce0;
-wire   [5:0] create_codeword_U0_codeword_length_histogram_V_address0;
-wire    create_codeword_U0_codeword_length_histogram_V_ce0;
-wire   [7:0] create_codeword_U0_encoding_V_address0;
-wire    create_codeword_U0_encoding_V_ce0;
-wire    create_codeword_U0_encoding_V_we0;
-wire   [31:0] create_codeword_U0_encoding_V_d0;
-wire    ap_sync_continue;
-wire    Block_proc_U0_ap_start;
-wire    Block_proc_U0_ap_done;
-wire    Block_proc_U0_ap_continue;
-wire    Block_proc_U0_ap_idle;
-wire    Block_proc_U0_ap_ready;
-wire    Block_proc_U0_val_assign_loc_read;
-wire   [31:0] Block_proc_U0_num_nonzero_symbols;
-wire    Block_proc_U0_num_nonzero_symbols_ap_vld;
-wire    filtered_value_V_i_full_n;
-wire    filtered_value_V_t_empty_n;
-wire    filtered_frequency_V_i_full_n;
-wire    filtered_frequency_V_t_empty_n;
-wire    sorted_0_i_full_n;
-wire    sorted_0_t_empty_n;
-wire    sorted_1_i_full_n;
-wire    sorted_1_t_empty_n;
-wire    sorted_copy1_value_V_i_full_n;
-wire    sorted_copy1_value_V_t_empty_n;
-wire    sorted_copy1_frequen_i_full_n;
-wire    sorted_copy1_frequen_t_empty_n;
-wire    sorted_copy2_value_V_i_full_n;
-wire    sorted_copy2_value_V_t_empty_n;
-wire    parent_V_i_full_n;
-wire    parent_V_t_empty_n;
-wire    left_V_i_full_n;
-wire    left_V_t_empty_n;
-wire    right_V_i_full_n;
-wire    right_V_t_empty_n;
-wire    length_histogram_V_i_full_n;
-wire    length_histogram_V_t_empty_n;
-wire    truncated_length_his_i_full_n;
-wire    truncated_length_his_t_empty_n;
-wire    truncated_length_his_1_i_full_n;
-wire    truncated_length_his_1_t_empty_n;
-wire    symbol_bits_V_i_full_n;
-wire    symbol_bits_V_t_empty_n;
-wire    n_c_full_n;
-wire   [31:0] n_c_dout;
-wire    n_c_empty_n;
-wire    n_c16_full_n;
-wire   [31:0] n_c16_dout;
-wire    n_c16_empty_n;
-wire    val_assign_loc_c_full_n;
-wire   [31:0] val_assign_loc_c_dout;
-wire    val_assign_loc_c_empty_n;
-wire    val_assign_loc_c17_full_n;
-wire   [31:0] val_assign_loc_c17_dout;
-wire    val_assign_loc_c17_empty_n;
-wire    val_assign_loc_c18_full_n;
-wire   [31:0] val_assign_loc_c18_dout;
-wire    val_assign_loc_c18_empty_n;
-wire    val_assign_loc_c19_full_n;
-wire   [31:0] val_assign_loc_c19_dout;
-wire    val_assign_loc_c19_empty_n;
-wire    ap_sync_done;
-wire    ap_sync_ready;
-wire    filter_U0_start_full_n;
-wire    filter_U0_start_write;
-wire    sort_U0_start_full_n;
-wire    sort_U0_start_write;
-wire   [0:0] start_for_Block_proc_U0_din;
-wire    start_for_Block_proc_U0_full_n;
-wire   [0:0] start_for_Block_proc_U0_dout;
-wire    start_for_Block_proc_U0_empty_n;
-wire    create_tree_U0_start_full_n;
-wire    create_tree_U0_start_write;
-wire    compute_bit_length_U0_start_full_n;
-wire    compute_bit_length_U0_start_write;
-wire    truncate_tree_U0_start_full_n;
-wire    truncate_tree_U0_start_write;
-wire    canonize_tree_U0_start_full_n;
-wire    canonize_tree_U0_start_write;
-wire    create_codeword_U0_start_full_n;
-wire    create_codeword_U0_start_write;
-wire    Block_proc_U0_start_full_n;
-wire    Block_proc_U0_start_write;
+reg ap_done;
+reg ap_idle;
+reg ap_ready;
+reg symbol_histogram_value_V_ce0;
+reg symbol_histogram_frequency_V_ce0;
+reg num_nonzero_symbols_ap_vld;
+
+(* fsm_encoding = "none" *) reg   [17:0] ap_CS_fsm;
+wire    ap_CS_fsm_state1;
+reg   [31:0] reg_425;
+wire    ap_CS_fsm_state2;
+wire   [0:0] icmp_ln10_fu_437_p2;
+wire    ap_CS_fsm_state6;
+wire   [8:0] i_4_fu_443_p2;
+reg   [8:0] i_4_reg_587;
+wire   [63:0] zext_ln12_fu_449_p1;
+reg   [63:0] zext_ln12_reg_592;
+reg   [31:0] symbol_histogram_fre_1_reg_602;
+wire    ap_CS_fsm_state3;
+wire   [0:0] icmp_ln883_fu_454_p2;
+reg   [0:0] icmp_ln883_reg_607;
+wire   [30:0] i_fu_487_p2;
+reg   [30:0] i_reg_619;
+wire   [63:0] zext_ln41_fu_493_p1;
+reg   [63:0] zext_ln41_reg_624;
+wire   [0:0] icmp_ln40_fu_481_p2;
+wire   [8:0] i_5_fu_505_p2;
+wire    ap_CS_fsm_state13;
+wire   [31:0] k_fu_527_p2;
+reg   [31:0] k_reg_659;
+wire    ap_CS_fsm_state14;
+wire   [0:0] icmp_ln879_fu_533_p2;
+reg   [0:0] icmp_ln879_reg_664;
+wire   [0:0] icmp_ln41_fu_521_p2;
+wire   [31:0] length_V_fu_539_p2;
+reg   [31:0] length_V_reg_668;
+wire    ap_CS_fsm_state15;
+wire   [31:0] truncated_length_his_q0;
+wire    ap_CS_fsm_state16;
+wire   [0:0] icmp_ln879_2_fu_550_p2;
+wire   [31:0] count_V_1_fu_571_p2;
+wire    ap_CS_fsm_state17;
+reg   [7:0] filtered_value_V_address0;
+reg    filtered_value_V_ce0;
+reg    filtered_value_V_we0;
+wire   [31:0] filtered_value_V_q0;
+reg   [7:0] filtered_frequency_V_address0;
+reg    filtered_frequency_V_ce0;
+reg    filtered_frequency_V_we0;
+wire   [31:0] filtered_frequency_V_q0;
+reg   [7:0] sorted_0_address0;
+reg    sorted_0_ce0;
+reg    sorted_0_we0;
+wire   [31:0] sorted_0_q0;
+reg   [7:0] sorted_1_address0;
+reg    sorted_1_ce0;
+reg    sorted_1_we0;
+wire   [31:0] sorted_1_q0;
+reg   [7:0] sorted_copy1_value_V_address0;
+reg    sorted_copy1_value_V_ce0;
+reg    sorted_copy1_value_V_we0;
+wire   [31:0] sorted_copy1_value_V_q0;
+reg   [7:0] sorted_copy1_frequen_address0;
+reg    sorted_copy1_frequen_ce0;
+reg    sorted_copy1_frequen_we0;
+wire   [31:0] sorted_copy1_frequen_q0;
+reg   [7:0] sorted_copy2_value_V_address0;
+reg    sorted_copy2_value_V_ce0;
+reg    sorted_copy2_value_V_we0;
+wire   [31:0] sorted_copy2_value_V_q0;
+reg   [7:0] parent_V_address0;
+reg    parent_V_ce0;
+reg    parent_V_we0;
+wire   [30:0] parent_V_q0;
+reg   [7:0] left_V_address0;
+reg    left_V_ce0;
+reg    left_V_we0;
+wire   [31:0] left_V_q0;
+reg   [7:0] right_V_address0;
+reg    right_V_ce0;
+reg    right_V_we0;
+wire   [31:0] right_V_q0;
+reg   [5:0] length_histogram_V_address0;
+reg    length_histogram_V_ce0;
+reg    length_histogram_V_we0;
+wire   [31:0] length_histogram_V_q0;
+reg   [5:0] truncated_length_his_address0;
+reg    truncated_length_his_ce0;
+reg    truncated_length_his_we0;
+reg    truncated_length_his_ce1;
+reg    truncated_length_his_we1;
+wire   [31:0] truncated_length_his_q1;
+reg   [5:0] truncated_length_his_1_address0;
+reg    truncated_length_his_1_ce0;
+reg    truncated_length_his_1_we0;
+wire   [31:0] truncated_length_his_1_q0;
+reg   [7:0] symbol_bits_V_address0;
+reg    symbol_bits_V_ce0;
+reg    symbol_bits_V_we0;
+reg   [4:0] symbol_bits_V_d0;
+wire   [4:0] symbol_bits_V_q0;
+wire    grp_create_tree_fu_369_ap_start;
+wire    grp_create_tree_fu_369_ap_done;
+wire    grp_create_tree_fu_369_ap_idle;
+wire    grp_create_tree_fu_369_ap_ready;
+wire   [7:0] grp_create_tree_fu_369_in_value_V_address0;
+wire    grp_create_tree_fu_369_in_value_V_ce0;
+wire   [7:0] grp_create_tree_fu_369_in_frequency_V_address0;
+wire    grp_create_tree_fu_369_in_frequency_V_ce0;
+wire   [7:0] grp_create_tree_fu_369_parent_V_address0;
+wire    grp_create_tree_fu_369_parent_V_ce0;
+wire    grp_create_tree_fu_369_parent_V_we0;
+wire   [30:0] grp_create_tree_fu_369_parent_V_d0;
+wire   [7:0] grp_create_tree_fu_369_left_V_address0;
+wire    grp_create_tree_fu_369_left_V_ce0;
+wire    grp_create_tree_fu_369_left_V_we0;
+wire   [31:0] grp_create_tree_fu_369_left_V_d0;
+wire   [7:0] grp_create_tree_fu_369_right_V_address0;
+wire    grp_create_tree_fu_369_right_V_ce0;
+wire    grp_create_tree_fu_369_right_V_we0;
+wire   [31:0] grp_create_tree_fu_369_right_V_d0;
+wire    grp_sort_fu_379_ap_start;
+wire    grp_sort_fu_379_ap_done;
+wire    grp_sort_fu_379_ap_idle;
+wire    grp_sort_fu_379_ap_ready;
+wire   [7:0] grp_sort_fu_379_in_value_V_address0;
+wire    grp_sort_fu_379_in_value_V_ce0;
+wire   [7:0] grp_sort_fu_379_in_frequency_V_address0;
+wire    grp_sort_fu_379_in_frequency_V_ce0;
+wire   [7:0] grp_sort_fu_379_out_value_V_address0;
+wire    grp_sort_fu_379_out_value_V_ce0;
+wire    grp_sort_fu_379_out_value_V_we0;
+wire   [31:0] grp_sort_fu_379_out_value_V_d0;
+wire   [7:0] grp_sort_fu_379_out_frequency_V_address0;
+wire    grp_sort_fu_379_out_frequency_V_ce0;
+wire    grp_sort_fu_379_out_frequency_V_we0;
+wire   [31:0] grp_sort_fu_379_out_frequency_V_d0;
+wire    grp_truncate_tree_fu_388_ap_start;
+wire    grp_truncate_tree_fu_388_ap_done;
+wire    grp_truncate_tree_fu_388_ap_idle;
+wire    grp_truncate_tree_fu_388_ap_ready;
+wire   [5:0] grp_truncate_tree_fu_388_input_length_histogram_V_address0;
+wire    grp_truncate_tree_fu_388_input_length_histogram_V_ce0;
+wire   [5:0] grp_truncate_tree_fu_388_output_length_histogram1_V_address0;
+wire    grp_truncate_tree_fu_388_output_length_histogram1_V_ce0;
+wire    grp_truncate_tree_fu_388_output_length_histogram1_V_we0;
+wire   [31:0] grp_truncate_tree_fu_388_output_length_histogram1_V_d0;
+wire   [5:0] grp_truncate_tree_fu_388_output_length_histogram1_V_address1;
+wire    grp_truncate_tree_fu_388_output_length_histogram1_V_ce1;
+wire    grp_truncate_tree_fu_388_output_length_histogram1_V_we1;
+wire   [31:0] grp_truncate_tree_fu_388_output_length_histogram1_V_d1;
+wire   [5:0] grp_truncate_tree_fu_388_output_length_histogram2_V_address0;
+wire    grp_truncate_tree_fu_388_output_length_histogram2_V_ce0;
+wire    grp_truncate_tree_fu_388_output_length_histogram2_V_we0;
+wire   [31:0] grp_truncate_tree_fu_388_output_length_histogram2_V_d0;
+wire    grp_compute_bit_length_fu_395_ap_start;
+wire    grp_compute_bit_length_fu_395_ap_done;
+wire    grp_compute_bit_length_fu_395_ap_idle;
+wire    grp_compute_bit_length_fu_395_ap_ready;
+wire   [7:0] grp_compute_bit_length_fu_395_parent_V_address0;
+wire    grp_compute_bit_length_fu_395_parent_V_ce0;
+wire   [7:0] grp_compute_bit_length_fu_395_left_V_address0;
+wire    grp_compute_bit_length_fu_395_left_V_ce0;
+wire   [7:0] grp_compute_bit_length_fu_395_right_V_address0;
+wire    grp_compute_bit_length_fu_395_right_V_ce0;
+wire   [5:0] grp_compute_bit_length_fu_395_length_histogram_V_address0;
+wire    grp_compute_bit_length_fu_395_length_histogram_V_ce0;
+wire    grp_compute_bit_length_fu_395_length_histogram_V_we0;
+wire   [31:0] grp_compute_bit_length_fu_395_length_histogram_V_d0;
+wire    grp_create_codeword_fu_404_ap_start;
+wire    grp_create_codeword_fu_404_ap_done;
+wire    grp_create_codeword_fu_404_ap_idle;
+wire    grp_create_codeword_fu_404_ap_ready;
+wire   [7:0] grp_create_codeword_fu_404_symbol_bits_V_address0;
+wire    grp_create_codeword_fu_404_symbol_bits_V_ce0;
+wire   [5:0] grp_create_codeword_fu_404_codeword_length_histogram_V_address0;
+wire    grp_create_codeword_fu_404_codeword_length_histogram_V_ce0;
+wire   [7:0] grp_create_codeword_fu_404_encoding_V_address0;
+wire    grp_create_codeword_fu_404_encoding_V_ce0;
+wire    grp_create_codeword_fu_404_encoding_V_we0;
+wire   [31:0] grp_create_codeword_fu_404_encoding_V_d0;
+reg   [8:0] i_0_i_reg_302;
+wire    ap_CS_fsm_state4;
+reg   [30:0] i_0_reg_313;
+wire    ap_CS_fsm_state7;
+wire    ap_CS_fsm_state5;
+reg   [8:0] i_0_i1_reg_324;
+wire   [0:0] icmp_ln13_fu_499_p2;
+wire    ap_CS_fsm_state12;
+reg   [31:0] p_066_0_i_reg_335;
+reg   [31:0] i_op_assign_reg_347;
+reg   [31:0] t_V_3_reg_359;
+reg    grp_create_tree_fu_369_ap_start_reg;
+wire    ap_CS_fsm_state8;
+reg    grp_sort_fu_379_ap_start_reg;
+reg    grp_truncate_tree_fu_388_ap_start_reg;
+wire    ap_CS_fsm_state11;
+reg    grp_compute_bit_length_fu_395_ap_start_reg;
+wire    ap_CS_fsm_state9;
+wire    ap_CS_fsm_state10;
+reg    grp_create_codeword_fu_404_ap_start_reg;
+wire    ap_CS_fsm_state18;
+wire   [63:0] zext_ln544_fu_460_p1;
+wire   [63:0] zext_ln14_fu_511_p1;
+wire   [63:0] zext_ln544_5_fu_545_p1;
+wire   [63:0] zext_ln53_fu_556_p1;
+wire  signed [63:0] sext_ln54_fu_561_p1;
+reg   [31:0] t_V_4_fu_78;
+wire   [31:0] j_V_fu_466_p2;
+reg   [31:0] length_V_1_fu_138;
+wire   [4:0] trunc_ln209_fu_566_p1;
+wire   [31:0] zext_ln40_fu_477_p1;
+reg   [17:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
-#0 ap_sync_reg_channel_write_filtered_frequency_V = 1'b0;
-#0 ap_sync_reg_channel_write_filtered_value_V = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_1 = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_0 = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy2_value_V = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy1_frequen = 1'b0;
-#0 ap_sync_reg_channel_write_sorted_copy1_value_V = 1'b0;
-#0 ap_sync_reg_channel_write_right_V = 1'b0;
-#0 ap_sync_reg_channel_write_left_V = 1'b0;
-#0 ap_sync_reg_channel_write_parent_V = 1'b0;
-#0 ap_sync_reg_channel_write_truncated_length_his_1 = 1'b0;
-#0 ap_sync_reg_channel_write_truncated_length_his = 1'b0;
+#0 ap_CS_fsm = 18'd1;
+#0 grp_create_tree_fu_369_ap_start_reg = 1'b0;
+#0 grp_sort_fu_379_ap_start_reg = 1'b0;
+#0 grp_truncate_tree_fu_388_ap_start_reg = 1'b0;
+#0 grp_compute_bit_length_fu_395_ap_start_reg = 1'b0;
+#0 grp_create_codeword_fu_404_ap_start_reg = 1'b0;
 end
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 filtered_value_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(filter_U0_out_value_V_address0),
-    .i_ce0(filter_U0_out_value_V_ce0),
-    .i_we0(filter_U0_out_value_V_we0),
-    .i_d0(filter_U0_out_value_V_d0),
-    .i_q0(filtered_value_V_i_q0),
-    .t_address0(sort_U0_in_value_V_address0),
-    .t_ce0(sort_U0_in_value_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(filtered_value_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(filtered_value_V_i_full_n),
-    .i_write(ap_channel_done_filtered_value_V),
-    .t_empty_n(filtered_value_V_t_empty_n),
-    .t_read(sort_U0_ap_ready)
+    .address0(filtered_value_V_address0),
+    .ce0(filtered_value_V_ce0),
+    .we0(filtered_value_V_we0),
+    .d0(symbol_histogram_value_V_q0),
+    .q0(filtered_value_V_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 filtered_frequency_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(filter_U0_out_frequency_V_address0),
-    .i_ce0(filter_U0_out_frequency_V_ce0),
-    .i_we0(filter_U0_out_frequency_V_we0),
-    .i_d0(filter_U0_out_frequency_V_d0),
-    .i_q0(filtered_frequency_V_i_q0),
-    .t_address0(sort_U0_in_frequency_V_address0),
-    .t_ce0(sort_U0_in_frequency_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(filtered_frequency_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(filtered_frequency_V_i_full_n),
-    .i_write(ap_channel_done_filtered_frequency_V),
-    .t_empty_n(filtered_frequency_V_t_empty_n),
-    .t_read(sort_U0_ap_ready)
+    .address0(filtered_frequency_V_address0),
+    .ce0(filtered_frequency_V_ce0),
+    .we0(filtered_frequency_V_we0),
+    .d0(symbol_histogram_fre_1_reg_602),
+    .q0(filtered_frequency_V_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_0_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(sort_U0_out_value_V_address0),
-    .i_ce0(sort_U0_out_value_V_ce0),
-    .i_we0(sort_U0_out_value_V_we0),
-    .i_d0(sort_U0_out_value_V_d0),
-    .i_q0(sorted_0_i_q0),
-    .t_address0(Loop_copy_sorted_pro_U0_sorted_0_address0),
-    .t_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_0_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_0_i_full_n),
-    .i_write(ap_channel_done_sorted_0),
-    .t_empty_n(sorted_0_t_empty_n),
-    .t_read(Loop_copy_sorted_pro_U0_ap_ready)
+    .address0(sorted_0_address0),
+    .ce0(sorted_0_ce0),
+    .we0(sorted_0_we0),
+    .d0(grp_sort_fu_379_out_value_V_d0),
+    .q0(sorted_0_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_1_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(sort_U0_out_frequency_V_address0),
-    .i_ce0(sort_U0_out_frequency_V_ce0),
-    .i_we0(sort_U0_out_frequency_V_we0),
-    .i_d0(sort_U0_out_frequency_V_d0),
-    .i_q0(sorted_1_i_q0),
-    .t_address0(Loop_copy_sorted_pro_U0_sorted_1_address0),
-    .t_ce0(Loop_copy_sorted_pro_U0_sorted_1_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_1_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_1_i_full_n),
-    .i_write(ap_channel_done_sorted_1),
-    .t_empty_n(sorted_1_t_empty_n),
-    .t_read(Loop_copy_sorted_pro_U0_ap_ready)
+    .address0(sorted_1_address0),
+    .ce0(sorted_1_ce0),
+    .we0(sorted_1_we0),
+    .d0(grp_sort_fu_379_out_frequency_V_d0),
+    .q0(sorted_1_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_copy1_value_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0),
-    .i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0),
-    .i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0),
-    .i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0),
-    .i_q0(sorted_copy1_value_V_i_q0),
-    .t_address0(create_tree_U0_in_value_V_address0),
-    .t_ce0(create_tree_U0_in_value_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_copy1_value_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_copy1_value_V_i_full_n),
-    .i_write(ap_channel_done_sorted_copy1_value_V),
-    .t_empty_n(sorted_copy1_value_V_t_empty_n),
-    .t_read(create_tree_U0_ap_ready)
+    .address0(sorted_copy1_value_V_address0),
+    .ce0(sorted_copy1_value_V_ce0),
+    .we0(sorted_copy1_value_V_we0),
+    .d0(sorted_0_q0),
+    .q0(sorted_copy1_value_V_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_copy1_frequen_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0),
-    .i_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0),
-    .i_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0),
-    .i_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0),
-    .i_q0(sorted_copy1_frequen_i_q0),
-    .t_address0(create_tree_U0_in_frequency_V_address0),
-    .t_ce0(create_tree_U0_in_frequency_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_copy1_frequen_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_copy1_frequen_i_full_n),
-    .i_write(ap_channel_done_sorted_copy1_frequen),
-    .t_empty_n(sorted_copy1_frequen_t_empty_n),
-    .t_read(create_tree_U0_ap_ready)
+    .address0(sorted_copy1_frequen_address0),
+    .ce0(sorted_copy1_frequen_ce0),
+    .we0(sorted_copy1_frequen_we0),
+    .d0(sorted_1_q0),
+    .q0(sorted_copy1_frequen_q0)
 );
 
-huffman_encoding_lbW #(
+sort_previous_sorbkb #(
     .DataWidth( 32 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 sorted_copy2_value_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0),
-    .i_ce0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0),
-    .i_we0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0),
-    .i_d0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0),
-    .i_q0(sorted_copy2_value_V_i_q0),
-    .t_address0(canonize_tree_U0_sorted_value_V_address0),
-    .t_ce0(canonize_tree_U0_sorted_value_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(sorted_copy2_value_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(sorted_copy2_value_V_i_full_n),
-    .i_write(ap_channel_done_sorted_copy2_value_V),
-    .t_empty_n(sorted_copy2_value_V_t_empty_n),
-    .t_read(canonize_tree_U0_ap_ready)
+    .address0(sorted_copy2_value_V_address0),
+    .ce0(sorted_copy2_value_V_ce0),
+    .we0(sorted_copy2_value_V_we0),
+    .d0(sorted_0_q0),
+    .q0(sorted_copy2_value_V_q0)
 );
 
-huffman_encoding_sc4 #(
+huffman_encoding_tde #(
     .DataWidth( 31 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 parent_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(create_tree_U0_parent_V_address0),
-    .i_ce0(create_tree_U0_parent_V_ce0),
-    .i_we0(create_tree_U0_parent_V_we0),
-    .i_d0(create_tree_U0_parent_V_d0),
-    .i_q0(parent_V_i_q0),
-    .t_address0(compute_bit_length_U0_parent_V_address0),
-    .t_ce0(compute_bit_length_U0_parent_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(31'd0),
-    .t_q0(parent_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(parent_V_i_full_n),
-    .i_write(ap_channel_done_parent_V),
-    .t_empty_n(parent_V_t_empty_n),
-    .t_read(compute_bit_length_U0_ap_ready)
+    .address0(parent_V_address0),
+    .ce0(parent_V_ce0),
+    .we0(parent_V_we0),
+    .d0(grp_create_tree_fu_369_parent_V_d0),
+    .q0(parent_V_q0)
 );
 
-huffman_encoding_tde #(
+create_tree_frequibs #(
     .DataWidth( 32 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 left_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(create_tree_U0_left_V_address0),
-    .i_ce0(create_tree_U0_left_V_ce0),
-    .i_we0(create_tree_U0_left_V_we0),
-    .i_d0(create_tree_U0_left_V_d0),
-    .i_q0(left_V_i_q0),
-    .t_address0(compute_bit_length_U0_left_V_address0),
-    .t_ce0(compute_bit_length_U0_left_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(left_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(left_V_i_full_n),
-    .i_write(ap_channel_done_left_V),
-    .t_empty_n(left_V_t_empty_n),
-    .t_read(compute_bit_length_U0_ap_ready)
+    .address0(left_V_address0),
+    .ce0(left_V_ce0),
+    .we0(left_V_we0),
+    .d0(grp_create_tree_fu_369_left_V_d0),
+    .q0(left_V_q0)
 );
 
-huffman_encoding_tde #(
+create_tree_frequibs #(
     .DataWidth( 32 ),
     .AddressRange( 255 ),
     .AddressWidth( 8 ))
 right_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(create_tree_U0_right_V_address0),
-    .i_ce0(create_tree_U0_right_V_ce0),
-    .i_we0(create_tree_U0_right_V_we0),
-    .i_d0(create_tree_U0_right_V_d0),
-    .i_q0(right_V_i_q0),
-    .t_address0(compute_bit_length_U0_right_V_address0),
-    .t_ce0(compute_bit_length_U0_right_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(right_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(right_V_i_full_n),
-    .i_write(ap_channel_done_right_V),
-    .t_empty_n(right_V_t_empty_n),
-    .t_read(compute_bit_length_U0_ap_ready)
+    .address0(right_V_address0),
+    .ce0(right_V_ce0),
+    .we0(right_V_we0),
+    .d0(grp_create_tree_fu_369_right_V_d0),
+    .q0(right_V_q0)
 );
 
-huffman_encoding_vdy #(
+compute_bit_lengtkbM #(
     .DataWidth( 32 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 length_histogram_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(compute_bit_length_U0_length_histogram_V_address0),
-    .i_ce0(compute_bit_length_U0_length_histogram_V_ce0),
-    .i_we0(compute_bit_length_U0_length_histogram_V_we0),
-    .i_d0(compute_bit_length_U0_length_histogram_V_d0),
-    .i_q0(length_histogram_V_i_q0),
-    .t_address0(truncate_tree_U0_input_length_histogram_V_address0),
-    .t_ce0(truncate_tree_U0_input_length_histogram_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(length_histogram_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(length_histogram_V_i_full_n),
-    .i_write(compute_bit_length_U0_ap_done),
-    .t_empty_n(length_histogram_V_t_empty_n),
-    .t_read(truncate_tree_U0_ap_ready)
+    .address0(length_histogram_V_address0),
+    .ce0(length_histogram_V_ce0),
+    .we0(length_histogram_V_we0),
+    .d0(grp_compute_bit_length_fu_395_length_histogram_V_d0),
+    .q0(length_histogram_V_q0)
 );
 
-huffman_encoding_wdI #(
+huffman_encoding_xdS #(
     .DataWidth( 32 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 truncated_length_his_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(truncate_tree_U0_output_length_histogram1_V_address0),
-    .i_ce0(truncate_tree_U0_output_length_histogram1_V_ce0),
-    .i_we0(truncate_tree_U0_output_length_histogram1_V_we0),
-    .i_d0(truncate_tree_U0_output_length_histogram1_V_d0),
-    .i_q0(truncated_length_his_i_q0),
-    .i_address1(truncate_tree_U0_output_length_histogram1_V_address1),
-    .i_ce1(truncate_tree_U0_output_length_histogram1_V_ce1),
-    .i_we1(truncate_tree_U0_output_length_histogram1_V_we1),
-    .i_d1(truncate_tree_U0_output_length_histogram1_V_d1),
-    .i_q1(truncated_length_his_i_q1),
-    .t_address0(canonize_tree_U0_codeword_length_histogram_V_address0),
-    .t_ce0(canonize_tree_U0_codeword_length_histogram_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(truncated_length_his_t_q0),
-    .t_address1(6'd0),
-    .t_ce1(1'b0),
-    .t_we1(1'b0),
-    .t_d1(32'd0),
-    .t_q1(truncated_length_his_t_q1),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(truncated_length_his_i_full_n),
-    .i_write(ap_channel_done_truncated_length_his),
-    .t_empty_n(truncated_length_his_t_empty_n),
-    .t_read(canonize_tree_U0_ap_ready)
+    .address0(truncated_length_his_address0),
+    .ce0(truncated_length_his_ce0),
+    .we0(truncated_length_his_we0),
+    .d0(grp_truncate_tree_fu_388_output_length_histogram1_V_d0),
+    .q0(truncated_length_his_q0),
+    .address1(grp_truncate_tree_fu_388_output_length_histogram1_V_address1),
+    .ce1(truncated_length_his_ce1),
+    .we1(truncated_length_his_we1),
+    .d1(grp_truncate_tree_fu_388_output_length_histogram1_V_d1),
+    .q1(truncated_length_his_q1)
 );
 
-huffman_encoding_vdy #(
+compute_bit_lengtkbM #(
     .DataWidth( 32 ),
     .AddressRange( 64 ),
     .AddressWidth( 6 ))
 truncated_length_his_1_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(truncate_tree_U0_output_length_histogram2_V_address0),
-    .i_ce0(truncate_tree_U0_output_length_histogram2_V_ce0),
-    .i_we0(truncate_tree_U0_output_length_histogram2_V_we0),
-    .i_d0(truncate_tree_U0_output_length_histogram2_V_d0),
-    .i_q0(truncated_length_his_1_i_q0),
-    .t_address0(create_codeword_U0_codeword_length_histogram_V_address0),
-    .t_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(32'd0),
-    .t_q0(truncated_length_his_1_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(truncated_length_his_1_i_full_n),
-    .i_write(ap_channel_done_truncated_length_his_1),
-    .t_empty_n(truncated_length_his_1_t_empty_n),
-    .t_read(create_codeword_U0_ap_ready)
+    .address0(truncated_length_his_1_address0),
+    .ce0(truncated_length_his_1_ce0),
+    .we0(truncated_length_his_1_we0),
+    .d0(grp_truncate_tree_fu_388_output_length_histogram2_V_d0),
+    .q0(truncated_length_his_1_q0)
 );
 
-huffman_encoding_yd2 #(
+huffman_encoding_zec #(
     .DataWidth( 5 ),
     .AddressRange( 256 ),
     .AddressWidth( 8 ))
 symbol_bits_V_U(
     .clk(ap_clk),
     .reset(ap_rst),
-    .i_address0(canonize_tree_U0_symbol_bits_V_address0),
-    .i_ce0(canonize_tree_U0_symbol_bits_V_ce0),
-    .i_we0(canonize_tree_U0_symbol_bits_V_we0),
-    .i_d0(canonize_tree_U0_symbol_bits_V_d0),
-    .i_q0(symbol_bits_V_i_q0),
-    .t_address0(create_codeword_U0_symbol_bits_V_address0),
-    .t_ce0(create_codeword_U0_symbol_bits_V_ce0),
-    .t_we0(1'b0),
-    .t_d0(5'd0),
-    .t_q0(symbol_bits_V_t_q0),
-    .i_ce(1'b1),
-    .t_ce(1'b1),
-    .i_full_n(symbol_bits_V_i_full_n),
-    .i_write(canonize_tree_U0_ap_done),
-    .t_empty_n(symbol_bits_V_t_empty_n),
-    .t_read(create_codeword_U0_ap_ready)
+    .address0(symbol_bits_V_address0),
+    .ce0(symbol_bits_V_ce0),
+    .we0(symbol_bits_V_we0),
+    .d0(symbol_bits_V_d0),
+    .q0(symbol_bits_V_q0)
 );
 
-filter filter_U0(
+create_tree grp_create_tree_fu_369(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(filter_U0_ap_start),
-    .ap_done(filter_U0_ap_done),
-    .ap_continue(filter_U0_ap_continue),
-    .ap_idle(filter_U0_ap_idle),
-    .ap_ready(filter_U0_ap_ready),
-    .in_value_V_address0(filter_U0_in_value_V_address0),
-    .in_value_V_ce0(filter_U0_in_value_V_ce0),
-    .in_value_V_q0(symbol_histogram_value_V_q0),
-    .in_frequency_V_address0(filter_U0_in_frequency_V_address0),
-    .in_frequency_V_ce0(filter_U0_in_frequency_V_ce0),
-    .in_frequency_V_q0(symbol_histogram_frequency_V_q0),
-    .out_value_V_address0(filter_U0_out_value_V_address0),
-    .out_value_V_ce0(filter_U0_out_value_V_ce0),
-    .out_value_V_we0(filter_U0_out_value_V_we0),
-    .out_value_V_d0(filter_U0_out_value_V_d0),
-    .out_frequency_V_address0(filter_U0_out_frequency_V_address0),
-    .out_frequency_V_ce0(filter_U0_out_frequency_V_ce0),
-    .out_frequency_V_we0(filter_U0_out_frequency_V_we0),
-    .out_frequency_V_d0(filter_U0_out_frequency_V_d0),
-    .n_out_din(filter_U0_n_out_din),
-    .n_out_full_n(n_c_full_n),
-    .n_out_write(filter_U0_n_out_write)
+    .ap_start(grp_create_tree_fu_369_ap_start),
+    .ap_done(grp_create_tree_fu_369_ap_done),
+    .ap_idle(grp_create_tree_fu_369_ap_idle),
+    .ap_ready(grp_create_tree_fu_369_ap_ready),
+    .in_value_V_address0(grp_create_tree_fu_369_in_value_V_address0),
+    .in_value_V_ce0(grp_create_tree_fu_369_in_value_V_ce0),
+    .in_value_V_q0(sorted_copy1_value_V_q0),
+    .in_frequency_V_address0(grp_create_tree_fu_369_in_frequency_V_address0),
+    .in_frequency_V_ce0(grp_create_tree_fu_369_in_frequency_V_ce0),
+    .in_frequency_V_q0(sorted_copy1_frequen_q0),
+    .num_symbols(reg_425),
+    .parent_V_address0(grp_create_tree_fu_369_parent_V_address0),
+    .parent_V_ce0(grp_create_tree_fu_369_parent_V_ce0),
+    .parent_V_we0(grp_create_tree_fu_369_parent_V_we0),
+    .parent_V_d0(grp_create_tree_fu_369_parent_V_d0),
+    .left_V_address0(grp_create_tree_fu_369_left_V_address0),
+    .left_V_ce0(grp_create_tree_fu_369_left_V_ce0),
+    .left_V_we0(grp_create_tree_fu_369_left_V_we0),
+    .left_V_d0(grp_create_tree_fu_369_left_V_d0),
+    .right_V_address0(grp_create_tree_fu_369_right_V_address0),
+    .right_V_ce0(grp_create_tree_fu_369_right_V_ce0),
+    .right_V_we0(grp_create_tree_fu_369_right_V_we0),
+    .right_V_d0(grp_create_tree_fu_369_right_V_d0)
 );
 
-sort sort_U0(
+sort grp_sort_fu_379(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(sort_U0_ap_start),
-    .ap_done(sort_U0_ap_done),
-    .ap_continue(sort_U0_ap_continue),
-    .ap_idle(sort_U0_ap_idle),
-    .ap_ready(sort_U0_ap_ready),
-    .in_value_V_address0(sort_U0_in_value_V_address0),
-    .in_value_V_ce0(sort_U0_in_value_V_ce0),
-    .in_value_V_q0(filtered_value_V_t_q0),
-    .in_frequency_V_address0(sort_U0_in_frequency_V_address0),
-    .in_frequency_V_ce0(sort_U0_in_frequency_V_ce0),
-    .in_frequency_V_q0(filtered_frequency_V_t_q0),
-    .n_dout(n_c_dout),
-    .n_empty_n(n_c_empty_n),
-    .n_read(sort_U0_n_read),
-    .out_value_V_address0(sort_U0_out_value_V_address0),
-    .out_value_V_ce0(sort_U0_out_value_V_ce0),
-    .out_value_V_we0(sort_U0_out_value_V_we0),
-    .out_value_V_d0(sort_U0_out_value_V_d0),
-    .out_frequency_V_address0(sort_U0_out_frequency_V_address0),
-    .out_frequency_V_ce0(sort_U0_out_frequency_V_ce0),
-    .out_frequency_V_we0(sort_U0_out_frequency_V_we0),
-    .out_frequency_V_d0(sort_U0_out_frequency_V_d0),
-    .n_out_din(sort_U0_n_out_din),
-    .n_out_full_n(n_c16_full_n),
-    .n_out_write(sort_U0_n_out_write)
+    .ap_start(grp_sort_fu_379_ap_start),
+    .ap_done(grp_sort_fu_379_ap_done),
+    .ap_idle(grp_sort_fu_379_ap_idle),
+    .ap_ready(grp_sort_fu_379_ap_ready),
+    .in_value_V_address0(grp_sort_fu_379_in_value_V_address0),
+    .in_value_V_ce0(grp_sort_fu_379_in_value_V_ce0),
+    .in_value_V_q0(filtered_value_V_q0),
+    .in_frequency_V_address0(grp_sort_fu_379_in_frequency_V_address0),
+    .in_frequency_V_ce0(grp_sort_fu_379_in_frequency_V_ce0),
+    .in_frequency_V_q0(filtered_frequency_V_q0),
+    .num_symbols(reg_425),
+    .out_value_V_address0(grp_sort_fu_379_out_value_V_address0),
+    .out_value_V_ce0(grp_sort_fu_379_out_value_V_ce0),
+    .out_value_V_we0(grp_sort_fu_379_out_value_V_we0),
+    .out_value_V_d0(grp_sort_fu_379_out_value_V_d0),
+    .out_frequency_V_address0(grp_sort_fu_379_out_frequency_V_address0),
+    .out_frequency_V_ce0(grp_sort_fu_379_out_frequency_V_ce0),
+    .out_frequency_V_we0(grp_sort_fu_379_out_frequency_V_we0),
+    .out_frequency_V_d0(grp_sort_fu_379_out_frequency_V_d0)
 );
 
-Loop_copy_sorted_pro Loop_copy_sorted_pro_U0(
+truncate_tree grp_truncate_tree_fu_388(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(Loop_copy_sorted_pro_U0_ap_start),
-    .start_full_n(start_for_Block_proc_U0_full_n),
-    .ap_done(Loop_copy_sorted_pro_U0_ap_done),
-    .ap_continue(Loop_copy_sorted_pro_U0_ap_continue),
-    .ap_idle(Loop_copy_sorted_pro_U0_ap_idle),
-    .ap_ready(Loop_copy_sorted_pro_U0_ap_ready),
-    .start_out(Loop_copy_sorted_pro_U0_start_out),
-    .start_write(Loop_copy_sorted_pro_U0_start_write),
-    .n_dout(n_c16_dout),
-    .n_empty_n(n_c16_empty_n),
-    .n_read(Loop_copy_sorted_pro_U0_n_read),
-    .sorted_0_address0(Loop_copy_sorted_pro_U0_sorted_0_address0),
-    .sorted_0_ce0(Loop_copy_sorted_pro_U0_sorted_0_ce0),
-    .sorted_0_q0(sorted_0_t_q0),
-    .sorted_copy1_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_address0),
-    .sorted_copy1_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_ce0),
-    .sorted_copy1_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_we0),
-    .sorted_copy1_value_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_value_V_d0),
-    .sorted_1_address0(Loop_copy_sorted_pro_U0_sorted_1_address0),
-    .sorted_1_ce0(Loop_copy_sorted_pro_U0_sorted_1_ce0),
-    .sorted_1_q0(sorted_1_t_q0),
-    .sorted_copy1_frequency_V_address0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_address0),
-    .sorted_copy1_frequency_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_ce0),
-    .sorted_copy1_frequency_V_we0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_we0),
-    .sorted_copy1_frequency_V_d0(Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_d0),
-    .sorted_copy2_value_V_address0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_address0),
-    .sorted_copy2_value_V_ce0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_ce0),
-    .sorted_copy2_value_V_we0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_we0),
-    .sorted_copy2_value_V_d0(Loop_copy_sorted_pro_U0_sorted_copy2_value_V_d0),
-    .val_assign_out_out_din(Loop_copy_sorted_pro_U0_val_assign_out_out_din),
-    .val_assign_out_out_full_n(val_assign_loc_c_full_n),
-    .val_assign_out_out_write(Loop_copy_sorted_pro_U0_val_assign_out_out_write),
-    .val_assign_out_out1_din(Loop_copy_sorted_pro_U0_val_assign_out_out1_din),
-    .val_assign_out_out1_full_n(val_assign_loc_c17_full_n),
-    .val_assign_out_out1_write(Loop_copy_sorted_pro_U0_val_assign_out_out1_write)
+    .ap_start(grp_truncate_tree_fu_388_ap_start),
+    .ap_done(grp_truncate_tree_fu_388_ap_done),
+    .ap_idle(grp_truncate_tree_fu_388_ap_idle),
+    .ap_ready(grp_truncate_tree_fu_388_ap_ready),
+    .input_length_histogram_V_address0(grp_truncate_tree_fu_388_input_length_histogram_V_address0),
+    .input_length_histogram_V_ce0(grp_truncate_tree_fu_388_input_length_histogram_V_ce0),
+    .input_length_histogram_V_q0(length_histogram_V_q0),
+    .output_length_histogram1_V_address0(grp_truncate_tree_fu_388_output_length_histogram1_V_address0),
+    .output_length_histogram1_V_ce0(grp_truncate_tree_fu_388_output_length_histogram1_V_ce0),
+    .output_length_histogram1_V_we0(grp_truncate_tree_fu_388_output_length_histogram1_V_we0),
+    .output_length_histogram1_V_d0(grp_truncate_tree_fu_388_output_length_histogram1_V_d0),
+    .output_length_histogram1_V_q0(truncated_length_his_q0),
+    .output_length_histogram1_V_address1(grp_truncate_tree_fu_388_output_length_histogram1_V_address1),
+    .output_length_histogram1_V_ce1(grp_truncate_tree_fu_388_output_length_histogram1_V_ce1),
+    .output_length_histogram1_V_we1(grp_truncate_tree_fu_388_output_length_histogram1_V_we1),
+    .output_length_histogram1_V_d1(grp_truncate_tree_fu_388_output_length_histogram1_V_d1),
+    .output_length_histogram1_V_q1(truncated_length_his_q1),
+    .output_length_histogram2_V_address0(grp_truncate_tree_fu_388_output_length_histogram2_V_address0),
+    .output_length_histogram2_V_ce0(grp_truncate_tree_fu_388_output_length_histogram2_V_ce0),
+    .output_length_histogram2_V_we0(grp_truncate_tree_fu_388_output_length_histogram2_V_we0),
+    .output_length_histogram2_V_d0(grp_truncate_tree_fu_388_output_length_histogram2_V_d0)
 );
 
-create_tree create_tree_U0(
+compute_bit_length grp_compute_bit_length_fu_395(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(create_tree_U0_ap_start),
-    .ap_done(create_tree_U0_ap_done),
-    .ap_continue(create_tree_U0_ap_continue),
-    .ap_idle(create_tree_U0_ap_idle),
-    .ap_ready(create_tree_U0_ap_ready),
-    .in_value_V_address0(create_tree_U0_in_value_V_address0),
-    .in_value_V_ce0(create_tree_U0_in_value_V_ce0),
-    .in_value_V_q0(sorted_copy1_value_V_t_q0),
-    .in_frequency_V_address0(create_tree_U0_in_frequency_V_address0),
-    .in_frequency_V_ce0(create_tree_U0_in_frequency_V_ce0),
-    .in_frequency_V_q0(sorted_copy1_frequen_t_q0),
-    .val_assign_loc_dout(val_assign_loc_c_dout),
-    .val_assign_loc_empty_n(val_assign_loc_c_empty_n),
-    .val_assign_loc_read(create_tree_U0_val_assign_loc_read),
-    .parent_V_address0(create_tree_U0_parent_V_address0),
-    .parent_V_ce0(create_tree_U0_parent_V_ce0),
-    .parent_V_we0(create_tree_U0_parent_V_we0),
-    .parent_V_d0(create_tree_U0_parent_V_d0),
-    .left_V_address0(create_tree_U0_left_V_address0),
-    .left_V_ce0(create_tree_U0_left_V_ce0),
-    .left_V_we0(create_tree_U0_left_V_we0),
-    .left_V_d0(create_tree_U0_left_V_d0),
-    .right_V_address0(create_tree_U0_right_V_address0),
-    .right_V_ce0(create_tree_U0_right_V_ce0),
-    .right_V_we0(create_tree_U0_right_V_we0),
-    .right_V_d0(create_tree_U0_right_V_d0),
-    .val_assign_loc_out_din(create_tree_U0_val_assign_loc_out_din),
-    .val_assign_loc_out_full_n(val_assign_loc_c18_full_n),
-    .val_assign_loc_out_write(create_tree_U0_val_assign_loc_out_write)
+    .ap_start(grp_compute_bit_length_fu_395_ap_start),
+    .ap_done(grp_compute_bit_length_fu_395_ap_done),
+    .ap_idle(grp_compute_bit_length_fu_395_ap_idle),
+    .ap_ready(grp_compute_bit_length_fu_395_ap_ready),
+    .parent_V_address0(grp_compute_bit_length_fu_395_parent_V_address0),
+    .parent_V_ce0(grp_compute_bit_length_fu_395_parent_V_ce0),
+    .parent_V_q0(parent_V_q0),
+    .left_V_address0(grp_compute_bit_length_fu_395_left_V_address0),
+    .left_V_ce0(grp_compute_bit_length_fu_395_left_V_ce0),
+    .left_V_q0(left_V_q0),
+    .right_V_address0(grp_compute_bit_length_fu_395_right_V_address0),
+    .right_V_ce0(grp_compute_bit_length_fu_395_right_V_ce0),
+    .right_V_q0(right_V_q0),
+    .num_symbols(reg_425),
+    .length_histogram_V_address0(grp_compute_bit_length_fu_395_length_histogram_V_address0),
+    .length_histogram_V_ce0(grp_compute_bit_length_fu_395_length_histogram_V_ce0),
+    .length_histogram_V_we0(grp_compute_bit_length_fu_395_length_histogram_V_we0),
+    .length_histogram_V_d0(grp_compute_bit_length_fu_395_length_histogram_V_d0)
 );
 
-compute_bit_length compute_bit_length_U0(
+create_codeword grp_create_codeword_fu_404(
     .ap_clk(ap_clk),
     .ap_rst(ap_rst),
-    .ap_start(compute_bit_length_U0_ap_start),
-    .ap_done(compute_bit_length_U0_ap_done),
-    .ap_continue(compute_bit_length_U0_ap_continue),
-    .ap_idle(compute_bit_length_U0_ap_idle),
-    .ap_ready(compute_bit_length_U0_ap_ready),
-    .parent_V_address0(compute_bit_length_U0_parent_V_address0),
-    .parent_V_ce0(compute_bit_length_U0_parent_V_ce0),
-    .parent_V_q0(parent_V_t_q0),
-    .left_V_address0(compute_bit_length_U0_left_V_address0),
-    .left_V_ce0(compute_bit_length_U0_left_V_ce0),
-    .left_V_q0(left_V_t_q0),
-    .right_V_address0(compute_bit_length_U0_right_V_address0),
-    .right_V_ce0(compute_bit_length_U0_right_V_ce0),
-    .right_V_q0(right_V_t_q0),
-    .val_assign_loc_dout(val_assign_loc_c18_dout),
-    .val_assign_loc_empty_n(val_assign_loc_c18_empty_n),
-    .val_assign_loc_read(compute_bit_length_U0_val_assign_loc_read),
-    .length_histogram_V_address0(compute_bit_length_U0_length_histogram_V_address0),
-    .length_histogram_V_ce0(compute_bit_length_U0_length_histogram_V_ce0),
-    .length_histogram_V_we0(compute_bit_length_U0_length_histogram_V_we0),
-    .length_histogram_V_d0(compute_bit_length_U0_length_histogram_V_d0),
-    .val_assign_loc_out_din(compute_bit_length_U0_val_assign_loc_out_din),
-    .val_assign_loc_out_full_n(val_assign_loc_c19_full_n),
-    .val_assign_loc_out_write(compute_bit_length_U0_val_assign_loc_out_write)
-);
-
-truncate_tree truncate_tree_U0(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(truncate_tree_U0_ap_start),
-    .ap_done(truncate_tree_U0_ap_done),
-    .ap_continue(truncate_tree_U0_ap_continue),
-    .ap_idle(truncate_tree_U0_ap_idle),
-    .ap_ready(truncate_tree_U0_ap_ready),
-    .input_length_histogram_V_address0(truncate_tree_U0_input_length_histogram_V_address0),
-    .input_length_histogram_V_ce0(truncate_tree_U0_input_length_histogram_V_ce0),
-    .input_length_histogram_V_q0(length_histogram_V_t_q0),
-    .output_length_histogram1_V_address0(truncate_tree_U0_output_length_histogram1_V_address0),
-    .output_length_histogram1_V_ce0(truncate_tree_U0_output_length_histogram1_V_ce0),
-    .output_length_histogram1_V_we0(truncate_tree_U0_output_length_histogram1_V_we0),
-    .output_length_histogram1_V_d0(truncate_tree_U0_output_length_histogram1_V_d0),
-    .output_length_histogram1_V_q0(truncated_length_his_i_q0),
-    .output_length_histogram1_V_address1(truncate_tree_U0_output_length_histogram1_V_address1),
-    .output_length_histogram1_V_ce1(truncate_tree_U0_output_length_histogram1_V_ce1),
-    .output_length_histogram1_V_we1(truncate_tree_U0_output_length_histogram1_V_we1),
-    .output_length_histogram1_V_d1(truncate_tree_U0_output_length_histogram1_V_d1),
-    .output_length_histogram1_V_q1(truncated_length_his_i_q1),
-    .output_length_histogram2_V_address0(truncate_tree_U0_output_length_histogram2_V_address0),
-    .output_length_histogram2_V_ce0(truncate_tree_U0_output_length_histogram2_V_ce0),
-    .output_length_histogram2_V_we0(truncate_tree_U0_output_length_histogram2_V_we0),
-    .output_length_histogram2_V_d0(truncate_tree_U0_output_length_histogram2_V_d0)
-);
-
-canonize_tree canonize_tree_U0(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(canonize_tree_U0_ap_start),
-    .ap_done(canonize_tree_U0_ap_done),
-    .ap_continue(canonize_tree_U0_ap_continue),
-    .ap_idle(canonize_tree_U0_ap_idle),
-    .ap_ready(canonize_tree_U0_ap_ready),
-    .sorted_value_V_address0(canonize_tree_U0_sorted_value_V_address0),
-    .sorted_value_V_ce0(canonize_tree_U0_sorted_value_V_ce0),
-    .sorted_value_V_q0(sorted_copy2_value_V_t_q0),
-    .val_assign_loc_dout(val_assign_loc_c19_dout),
-    .val_assign_loc_empty_n(val_assign_loc_c19_empty_n),
-    .val_assign_loc_read(canonize_tree_U0_val_assign_loc_read),
-    .codeword_length_histogram_V_address0(canonize_tree_U0_codeword_length_histogram_V_address0),
-    .codeword_length_histogram_V_ce0(canonize_tree_U0_codeword_length_histogram_V_ce0),
-    .codeword_length_histogram_V_q0(truncated_length_his_t_q0),
-    .symbol_bits_V_address0(canonize_tree_U0_symbol_bits_V_address0),
-    .symbol_bits_V_ce0(canonize_tree_U0_symbol_bits_V_ce0),
-    .symbol_bits_V_we0(canonize_tree_U0_symbol_bits_V_we0),
-    .symbol_bits_V_d0(canonize_tree_U0_symbol_bits_V_d0)
-);
-
-create_codeword create_codeword_U0(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(create_codeword_U0_ap_start),
-    .ap_done(create_codeword_U0_ap_done),
-    .ap_continue(create_codeword_U0_ap_continue),
-    .ap_idle(create_codeword_U0_ap_idle),
-    .ap_ready(create_codeword_U0_ap_ready),
-    .symbol_bits_V_address0(create_codeword_U0_symbol_bits_V_address0),
-    .symbol_bits_V_ce0(create_codeword_U0_symbol_bits_V_ce0),
-    .symbol_bits_V_q0(symbol_bits_V_t_q0),
-    .codeword_length_histogram_V_address0(create_codeword_U0_codeword_length_histogram_V_address0),
-    .codeword_length_histogram_V_ce0(create_codeword_U0_codeword_length_histogram_V_ce0),
-    .codeword_length_histogram_V_q0(truncated_length_his_1_t_q0),
-    .encoding_V_address0(create_codeword_U0_encoding_V_address0),
-    .encoding_V_ce0(create_codeword_U0_encoding_V_ce0),
-    .encoding_V_we0(create_codeword_U0_encoding_V_we0),
-    .encoding_V_d0(create_codeword_U0_encoding_V_d0)
-);
-
-Block_proc Block_proc_U0(
-    .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(Block_proc_U0_ap_start),
-    .ap_done(Block_proc_U0_ap_done),
-    .ap_continue(Block_proc_U0_ap_continue),
-    .ap_idle(Block_proc_U0_ap_idle),
-    .ap_ready(Block_proc_U0_ap_ready),
-    .val_assign_loc_dout(val_assign_loc_c17_dout),
-    .val_assign_loc_empty_n(val_assign_loc_c17_empty_n),
-    .val_assign_loc_read(Block_proc_U0_val_assign_loc_read),
-    .num_nonzero_symbols(Block_proc_U0_num_nonzero_symbols),
-    .num_nonzero_symbols_ap_vld(Block_proc_U0_num_nonzero_symbols_ap_vld)
-);
-
-fifo_w32_d2_A n_c_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(filter_U0_n_out_din),
-    .if_full_n(n_c_full_n),
-    .if_write(filter_U0_n_out_write),
-    .if_dout(n_c_dout),
-    .if_empty_n(n_c_empty_n),
-    .if_read(sort_U0_n_read)
-);
-
-fifo_w32_d2_A n_c16_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(sort_U0_n_out_din),
-    .if_full_n(n_c16_full_n),
-    .if_write(sort_U0_n_out_write),
-    .if_dout(n_c16_dout),
-    .if_empty_n(n_c16_empty_n),
-    .if_read(Loop_copy_sorted_pro_U0_n_read)
-);
-
-fifo_w32_d2_A val_assign_loc_c_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(Loop_copy_sorted_pro_U0_val_assign_out_out_din),
-    .if_full_n(val_assign_loc_c_full_n),
-    .if_write(Loop_copy_sorted_pro_U0_val_assign_out_out_write),
-    .if_dout(val_assign_loc_c_dout),
-    .if_empty_n(val_assign_loc_c_empty_n),
-    .if_read(create_tree_U0_val_assign_loc_read)
-);
-
-fifo_w32_d2_A val_assign_loc_c17_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(Loop_copy_sorted_pro_U0_val_assign_out_out1_din),
-    .if_full_n(val_assign_loc_c17_full_n),
-    .if_write(Loop_copy_sorted_pro_U0_val_assign_out_out1_write),
-    .if_dout(val_assign_loc_c17_dout),
-    .if_empty_n(val_assign_loc_c17_empty_n),
-    .if_read(Block_proc_U0_val_assign_loc_read)
-);
-
-fifo_w32_d2_A val_assign_loc_c18_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(create_tree_U0_val_assign_loc_out_din),
-    .if_full_n(val_assign_loc_c18_full_n),
-    .if_write(create_tree_U0_val_assign_loc_out_write),
-    .if_dout(val_assign_loc_c18_dout),
-    .if_empty_n(val_assign_loc_c18_empty_n),
-    .if_read(compute_bit_length_U0_val_assign_loc_read)
-);
-
-fifo_w32_d3_A val_assign_loc_c19_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(compute_bit_length_U0_val_assign_loc_out_din),
-    .if_full_n(val_assign_loc_c19_full_n),
-    .if_write(compute_bit_length_U0_val_assign_loc_out_write),
-    .if_dout(val_assign_loc_c19_dout),
-    .if_empty_n(val_assign_loc_c19_empty_n),
-    .if_read(canonize_tree_U0_val_assign_loc_read)
-);
-
-start_for_Block_pzec start_for_Block_pzec_U(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .if_read_ce(1'b1),
-    .if_write_ce(1'b1),
-    .if_din(start_for_Block_proc_U0_din),
-    .if_full_n(start_for_Block_proc_U0_full_n),
-    .if_write(Loop_copy_sorted_pro_U0_start_write),
-    .if_dout(start_for_Block_proc_U0_dout),
-    .if_empty_n(start_for_Block_proc_U0_empty_n),
-    .if_read(Block_proc_U0_ap_ready)
+    .ap_start(grp_create_codeword_fu_404_ap_start),
+    .ap_done(grp_create_codeword_fu_404_ap_done),
+    .ap_idle(grp_create_codeword_fu_404_ap_idle),
+    .ap_ready(grp_create_codeword_fu_404_ap_ready),
+    .symbol_bits_V_address0(grp_create_codeword_fu_404_symbol_bits_V_address0),
+    .symbol_bits_V_ce0(grp_create_codeword_fu_404_symbol_bits_V_ce0),
+    .symbol_bits_V_q0(symbol_bits_V_q0),
+    .codeword_length_histogram_V_address0(grp_create_codeword_fu_404_codeword_length_histogram_V_address0),
+    .codeword_length_histogram_V_ce0(grp_create_codeword_fu_404_codeword_length_histogram_V_ce0),
+    .codeword_length_histogram_V_q0(truncated_length_his_1_q0),
+    .encoding_V_address0(grp_create_codeword_fu_404_encoding_V_address0),
+    .encoding_V_ce0(grp_create_codeword_fu_404_encoding_V_ce0),
+    .encoding_V_we0(grp_create_codeword_fu_404_encoding_V_we0),
+    .encoding_V_d0(grp_create_codeword_fu_404_encoding_V_d0)
 );
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_filtered_frequency_V <= 1'b0;
+        ap_CS_fsm <= ap_ST_fsm_state1;
     end else begin
-        if (((filter_U0_ap_done & filter_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_filtered_frequency_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_filtered_frequency_V <= ap_sync_channel_write_filtered_frequency_V;
+        ap_CS_fsm <= ap_NS_fsm;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (ap_rst == 1'b1) begin
+        grp_compute_bit_length_fu_395_ap_start_reg <= 1'b0;
+    end else begin
+        if ((1'b1 == ap_CS_fsm_state9)) begin
+            grp_compute_bit_length_fu_395_ap_start_reg <= 1'b1;
+        end else if ((grp_compute_bit_length_fu_395_ap_ready == 1'b1)) begin
+            grp_compute_bit_length_fu_395_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_filtered_value_V <= 1'b0;
+        grp_create_codeword_fu_404_ap_start_reg <= 1'b0;
     end else begin
-        if (((filter_U0_ap_done & filter_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_filtered_value_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_filtered_value_V <= ap_sync_channel_write_filtered_value_V;
+        if (((icmp_ln41_fu_521_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state14))) begin
+            grp_create_codeword_fu_404_ap_start_reg <= 1'b1;
+        end else if ((grp_create_codeword_fu_404_ap_ready == 1'b1)) begin
+            grp_create_codeword_fu_404_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_left_V <= 1'b0;
+        grp_create_tree_fu_369_ap_start_reg <= 1'b0;
     end else begin
-        if (((create_tree_U0_ap_done & create_tree_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_left_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_left_V <= ap_sync_channel_write_left_V;
+        if (((icmp_ln40_fu_481_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state6))) begin
+            grp_create_tree_fu_369_ap_start_reg <= 1'b1;
+        end else if ((grp_create_tree_fu_369_ap_ready == 1'b1)) begin
+            grp_create_tree_fu_369_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_parent_V <= 1'b0;
+        grp_sort_fu_379_ap_start_reg <= 1'b0;
     end else begin
-        if (((create_tree_U0_ap_done & create_tree_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_parent_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_parent_V <= ap_sync_channel_write_parent_V;
+        if (((icmp_ln10_fu_437_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+            grp_sort_fu_379_ap_start_reg <= 1'b1;
+        end else if ((grp_sort_fu_379_ap_ready == 1'b1)) begin
+            grp_sort_fu_379_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
     if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_right_V <= 1'b0;
+        grp_truncate_tree_fu_388_ap_start_reg <= 1'b0;
     end else begin
-        if (((create_tree_U0_ap_done & create_tree_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_right_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_right_V <= ap_sync_channel_write_right_V;
+        if ((1'b1 == ap_CS_fsm_state11)) begin
+            grp_truncate_tree_fu_388_ap_start_reg <= 1'b1;
+        end else if ((grp_truncate_tree_fu_388_ap_ready == 1'b1)) begin
+            grp_truncate_tree_fu_388_ap_start_reg <= 1'b0;
         end
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_0 <= 1'b0;
-    end else begin
-        if (((sort_U0_ap_done & sort_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_0 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_0 <= ap_sync_channel_write_sorted_0;
-        end
+    if (((grp_truncate_tree_fu_388_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+        i_0_i1_reg_324 <= 9'd0;
+    end else if (((icmp_ln13_fu_499_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state13))) begin
+        i_0_i1_reg_324 <= i_5_fu_505_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_1 <= 1'b0;
-    end else begin
-        if (((sort_U0_ap_done & sort_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_1 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_1 <= ap_sync_channel_write_sorted_1;
-        end
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        i_0_i_reg_302 <= i_4_reg_587;
+    end else if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+        i_0_i_reg_302 <= 9'd0;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy1_frequen <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy1_frequen <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy1_frequen <= ap_sync_channel_write_sorted_copy1_frequen;
-        end
+    if (((grp_sort_fu_379_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+        i_0_reg_313 <= 31'd0;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        i_0_reg_313 <= i_reg_619;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy1_value_V <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy1_value_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy1_value_V <= ap_sync_channel_write_sorted_copy1_value_V;
-        end
+    if (((icmp_ln13_fu_499_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state13))) begin
+        i_op_assign_reg_347 <= 32'd0;
+    end else if ((1'b1 == ap_CS_fsm_state17)) begin
+        i_op_assign_reg_347 <= k_reg_659;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_sorted_copy2_value_V <= 1'b0;
-    end else begin
-        if (((Loop_copy_sorted_pro_U0_ap_done & Loop_copy_sorted_pro_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_sorted_copy2_value_V <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_sorted_copy2_value_V <= ap_sync_channel_write_sorted_copy2_value_V;
-        end
+    if ((((icmp_ln879_2_fu_550_p2 == 1'd1) & (icmp_ln879_reg_664 == 1'd1) & (1'b1 == ap_CS_fsm_state16)) | ((icmp_ln879_2_fu_550_p2 == 1'd0) & (icmp_ln879_reg_664 == 1'd1) & (1'b1 == ap_CS_fsm_state16)))) begin
+        length_V_1_fu_138 <= length_V_reg_668;
+    end else if (((icmp_ln13_fu_499_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state13))) begin
+        length_V_1_fu_138 <= 32'd64;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_truncated_length_his <= 1'b0;
-    end else begin
-        if (((truncate_tree_U0_ap_done & truncate_tree_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_truncated_length_his <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_truncated_length_his <= ap_sync_channel_write_truncated_length_his;
-        end
+    if (((icmp_ln13_fu_499_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state13))) begin
+        p_066_0_i_reg_335 <= 32'd0;
+    end else if ((1'b1 == ap_CS_fsm_state17)) begin
+        p_066_0_i_reg_335 <= count_V_1_fu_571_p2;
     end
 end
 
 always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_sync_reg_channel_write_truncated_length_his_1 <= 1'b0;
-    end else begin
-        if (((truncate_tree_U0_ap_done & truncate_tree_U0_ap_continue) == 1'b1)) begin
-            ap_sync_reg_channel_write_truncated_length_his_1 <= 1'b0;
-        end else begin
-            ap_sync_reg_channel_write_truncated_length_his_1 <= ap_sync_channel_write_truncated_length_his_1;
-        end
+    if (((icmp_ln879_2_fu_550_p2 == 1'd0) & (icmp_ln879_reg_664 == 1'd1) & (1'b1 == ap_CS_fsm_state16))) begin
+        t_V_3_reg_359 <= truncated_length_his_q0;
+    end else if (((icmp_ln41_fu_521_p2 == 1'd0) & (icmp_ln879_fu_533_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state14))) begin
+        t_V_3_reg_359 <= p_066_0_i_reg_335;
     end
 end
 
-assign Block_proc_U0_ap_continue = ap_sync_done;
-
-assign Block_proc_U0_ap_start = start_for_Block_proc_U0_empty_n;
-
-assign Block_proc_U0_start_full_n = 1'b1;
-
-assign Block_proc_U0_start_write = 1'b0;
-
-assign Loop_copy_sorted_pro_U0_ap_continue = (ap_sync_channel_write_sorted_copy2_value_V & ap_sync_channel_write_sorted_copy1_value_V & ap_sync_channel_write_sorted_copy1_frequen);
-
-assign Loop_copy_sorted_pro_U0_ap_start = (sorted_1_t_empty_n & sorted_0_t_empty_n);
-
-assign Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n = sorted_copy1_frequen_i_full_n;
-
-assign Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n = sorted_copy1_value_V_i_full_n;
-
-assign Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n = sorted_copy2_value_V_i_full_n;
-
-assign ap_channel_done_filtered_frequency_V = (filter_U0_ap_done & (ap_sync_reg_channel_write_filtered_frequency_V ^ 1'b1));
-
-assign ap_channel_done_filtered_value_V = (filter_U0_ap_done & (ap_sync_reg_channel_write_filtered_value_V ^ 1'b1));
-
-assign ap_channel_done_left_V = ((ap_sync_reg_channel_write_left_V ^ 1'b1) & create_tree_U0_ap_done);
-
-assign ap_channel_done_length_histogram_V = compute_bit_length_U0_ap_done;
-
-assign ap_channel_done_parent_V = ((ap_sync_reg_channel_write_parent_V ^ 1'b1) & create_tree_U0_ap_done);
-
-assign ap_channel_done_right_V = ((ap_sync_reg_channel_write_right_V ^ 1'b1) & create_tree_U0_ap_done);
-
-assign ap_channel_done_sorted_0 = (sort_U0_ap_done & (ap_sync_reg_channel_write_sorted_0 ^ 1'b1));
-
-assign ap_channel_done_sorted_1 = (sort_U0_ap_done & (ap_sync_reg_channel_write_sorted_1 ^ 1'b1));
-
-assign ap_channel_done_sorted_copy1_frequen = ((ap_sync_reg_channel_write_sorted_copy1_frequen ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
-
-assign ap_channel_done_sorted_copy1_value_V = ((ap_sync_reg_channel_write_sorted_copy1_value_V ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
-
-assign ap_channel_done_sorted_copy2_value_V = ((ap_sync_reg_channel_write_sorted_copy2_value_V ^ 1'b1) & Loop_copy_sorted_pro_U0_ap_done);
-
-assign ap_channel_done_symbol_bits_V = canonize_tree_U0_ap_done;
-
-assign ap_channel_done_truncated_length_his = (truncate_tree_U0_ap_done & (ap_sync_reg_channel_write_truncated_length_his ^ 1'b1));
-
-assign ap_channel_done_truncated_length_his_1 = (truncate_tree_U0_ap_done & (ap_sync_reg_channel_write_truncated_length_his_1 ^ 1'b1));
-
-assign ap_done = ap_sync_done;
-
-assign ap_idle = (truncate_tree_U0_ap_idle & sort_U0_ap_idle & filter_U0_ap_idle & (symbol_bits_V_t_empty_n ^ 1'b1) & (truncated_length_his_1_t_empty_n ^ 1'b1) & (truncated_length_his_t_empty_n ^ 1'b1) & (length_histogram_V_t_empty_n ^ 1'b1) & (right_V_t_empty_n ^ 1'b1) & (left_V_t_empty_n ^ 1'b1) & (parent_V_t_empty_n ^ 1'b1) & (sorted_copy2_value_V_t_empty_n ^ 1'b1) & (sorted_copy1_frequen_t_empty_n ^ 1'b1) & (sorted_copy1_value_V_t_empty_n ^ 1'b1) & (sorted_1_t_empty_n ^ 1'b1) & (sorted_0_t_empty_n ^ 1'b1) & (filtered_frequency_V_t_empty_n ^ 1'b1) & (filtered_value_V_t_empty_n ^ 1'b1) & create_tree_U0_ap_idle & create_codeword_U0_ap_idle & compute_bit_length_U0_ap_idle & canonize_tree_U0_ap_idle & Loop_copy_sorted_pro_U0_ap_idle & Block_proc_U0_ap_idle);
-
-assign ap_ready = filter_U0_ap_ready;
-
-assign ap_sync_channel_write_filtered_frequency_V = ((filter_U0_out_frequency_V_full_n & ap_channel_done_filtered_frequency_V) | ap_sync_reg_channel_write_filtered_frequency_V);
-
-assign ap_sync_channel_write_filtered_value_V = ((filter_U0_out_value_V_full_n & ap_channel_done_filtered_value_V) | ap_sync_reg_channel_write_filtered_value_V);
-
-assign ap_sync_channel_write_left_V = ((create_tree_U0_left_V_full_n & ap_channel_done_left_V) | ap_sync_reg_channel_write_left_V);
-
-assign ap_sync_channel_write_parent_V = ((create_tree_U0_parent_V_full_n & ap_channel_done_parent_V) | ap_sync_reg_channel_write_parent_V);
-
-assign ap_sync_channel_write_right_V = ((create_tree_U0_right_V_full_n & ap_channel_done_right_V) | ap_sync_reg_channel_write_right_V);
-
-assign ap_sync_channel_write_sorted_0 = ((sort_U0_out_value_V_full_n & ap_channel_done_sorted_0) | ap_sync_reg_channel_write_sorted_0);
-
-assign ap_sync_channel_write_sorted_1 = ((sort_U0_out_frequency_V_full_n & ap_channel_done_sorted_1) | ap_sync_reg_channel_write_sorted_1);
-
-assign ap_sync_channel_write_sorted_copy1_frequen = ((ap_channel_done_sorted_copy1_frequen & Loop_copy_sorted_pro_U0_sorted_copy1_frequency_V_full_n) | ap_sync_reg_channel_write_sorted_copy1_frequen);
-
-assign ap_sync_channel_write_sorted_copy1_value_V = ((ap_channel_done_sorted_copy1_value_V & Loop_copy_sorted_pro_U0_sorted_copy1_value_V_full_n) | ap_sync_reg_channel_write_sorted_copy1_value_V);
-
-assign ap_sync_channel_write_sorted_copy2_value_V = ((ap_channel_done_sorted_copy2_value_V & Loop_copy_sorted_pro_U0_sorted_copy2_value_V_full_n) | ap_sync_reg_channel_write_sorted_copy2_value_V);
-
-assign ap_sync_channel_write_truncated_length_his = ((truncate_tree_U0_output_length_histogram1_V_full_n & ap_channel_done_truncated_length_his) | ap_sync_reg_channel_write_truncated_length_his);
-
-assign ap_sync_channel_write_truncated_length_his_1 = ((truncate_tree_U0_output_length_histogram2_V_full_n & ap_channel_done_truncated_length_his_1) | ap_sync_reg_channel_write_truncated_length_his_1);
-
-assign ap_sync_continue = ap_sync_done;
-
-assign ap_sync_done = (create_codeword_U0_ap_done & Block_proc_U0_ap_done);
-
-assign ap_sync_ready = filter_U0_ap_ready;
-
-assign canonize_tree_U0_ap_continue = symbol_bits_V_i_full_n;
-
-assign canonize_tree_U0_ap_start = (truncated_length_his_t_empty_n & sorted_copy2_value_V_t_empty_n);
-
-assign canonize_tree_U0_start_full_n = 1'b1;
-
-assign canonize_tree_U0_start_write = 1'b0;
-
-assign canonize_tree_U0_symbol_bits_V_full_n = symbol_bits_V_i_full_n;
-
-assign compute_bit_length_U0_ap_continue = length_histogram_V_i_full_n;
-
-assign compute_bit_length_U0_ap_start = (right_V_t_empty_n & parent_V_t_empty_n & left_V_t_empty_n);
-
-assign compute_bit_length_U0_length_histogram_V_full_n = length_histogram_V_i_full_n;
-
-assign compute_bit_length_U0_start_full_n = 1'b1;
-
-assign compute_bit_length_U0_start_write = 1'b0;
-
-assign create_codeword_U0_ap_continue = ap_sync_done;
-
-assign create_codeword_U0_ap_start = (truncated_length_his_1_t_empty_n & symbol_bits_V_t_empty_n);
-
-assign create_codeword_U0_start_full_n = 1'b1;
-
-assign create_codeword_U0_start_write = 1'b0;
-
-assign create_tree_U0_ap_continue = (ap_sync_channel_write_right_V & ap_sync_channel_write_parent_V & ap_sync_channel_write_left_V);
-
-assign create_tree_U0_ap_start = (sorted_copy1_value_V_t_empty_n & sorted_copy1_frequen_t_empty_n);
-
-assign create_tree_U0_left_V_full_n = left_V_i_full_n;
-
-assign create_tree_U0_parent_V_full_n = parent_V_i_full_n;
-
-assign create_tree_U0_right_V_full_n = right_V_i_full_n;
-
-assign create_tree_U0_start_full_n = 1'b1;
-
-assign create_tree_U0_start_write = 1'b0;
-
-assign encoding_V_address0 = create_codeword_U0_encoding_V_address0;
-
-assign encoding_V_address1 = 8'd0;
-
-assign encoding_V_ce0 = create_codeword_U0_encoding_V_ce0;
-
-assign encoding_V_ce1 = 1'b0;
-
-assign encoding_V_d0 = create_codeword_U0_encoding_V_d0;
-
-assign encoding_V_d1 = 32'd0;
-
-assign encoding_V_we0 = create_codeword_U0_encoding_V_we0;
-
-assign encoding_V_we1 = 1'b0;
-
-assign filter_U0_ap_continue = (ap_sync_channel_write_filtered_value_V & ap_sync_channel_write_filtered_frequency_V);
-
-assign filter_U0_ap_start = ap_start;
-
-assign filter_U0_out_frequency_V_full_n = filtered_frequency_V_i_full_n;
-
-assign filter_U0_out_value_V_full_n = filtered_value_V_i_full_n;
-
-assign filter_U0_start_full_n = 1'b1;
-
-assign filter_U0_start_write = 1'b0;
-
-assign num_nonzero_symbols = Block_proc_U0_num_nonzero_symbols;
-
-assign num_nonzero_symbols_ap_vld = Block_proc_U0_num_nonzero_symbols_ap_vld;
-
-assign sort_U0_ap_continue = (ap_sync_channel_write_sorted_1 & ap_sync_channel_write_sorted_0);
-
-assign sort_U0_ap_start = (filtered_value_V_t_empty_n & filtered_frequency_V_t_empty_n);
-
-assign sort_U0_out_frequency_V_full_n = sorted_1_i_full_n;
-
-assign sort_U0_out_value_V_full_n = sorted_0_i_full_n;
-
-assign sort_U0_start_full_n = 1'b1;
-
-assign sort_U0_start_write = 1'b0;
-
-assign start_for_Block_proc_U0_din = 1'b1;
-
-assign symbol_histogram_frequency_V_address0 = filter_U0_in_frequency_V_address0;
-
-assign symbol_histogram_frequency_V_address1 = 8'd0;
-
-assign symbol_histogram_frequency_V_ce0 = filter_U0_in_frequency_V_ce0;
-
-assign symbol_histogram_frequency_V_ce1 = 1'b0;
-
-assign symbol_histogram_frequency_V_d0 = 32'd0;
-
-assign symbol_histogram_frequency_V_d1 = 32'd0;
-
-assign symbol_histogram_frequency_V_we0 = 1'b0;
-
-assign symbol_histogram_frequency_V_we1 = 1'b0;
-
-assign symbol_histogram_value_V_address0 = filter_U0_in_value_V_address0;
-
-assign symbol_histogram_value_V_address1 = 8'd0;
-
-assign symbol_histogram_value_V_ce0 = filter_U0_in_value_V_ce0;
-
-assign symbol_histogram_value_V_ce1 = 1'b0;
-
-assign symbol_histogram_value_V_d0 = 32'd0;
-
-assign symbol_histogram_value_V_d1 = 32'd0;
-
-assign symbol_histogram_value_V_we0 = 1'b0;
-
-assign symbol_histogram_value_V_we1 = 1'b0;
-
-assign truncate_tree_U0_ap_continue = (ap_sync_channel_write_truncated_length_his_1 & ap_sync_channel_write_truncated_length_his);
-
-assign truncate_tree_U0_ap_start = length_histogram_V_t_empty_n;
-
-assign truncate_tree_U0_output_length_histogram1_V_full_n = truncated_length_his_i_full_n;
-
-assign truncate_tree_U0_output_length_histogram2_V_full_n = truncated_length_his_1_i_full_n;
-
-assign truncate_tree_U0_start_full_n = 1'b1;
-
-assign truncate_tree_U0_start_write = 1'b0;
+always @ (posedge ap_clk) begin
+    if (((icmp_ln883_reg_607 == 1'd0) & (1'b1 == ap_CS_fsm_state4))) begin
+        t_V_4_fu_78 <= j_V_fu_466_p2;
+    end else if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+        t_V_4_fu_78 <= 32'd0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        i_4_reg_587 <= i_4_fu_443_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state6)) begin
+        i_reg_619 <= i_fu_487_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln41_fu_521_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state14))) begin
+        icmp_ln879_reg_664 <= icmp_ln879_fu_533_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state3)) begin
+        icmp_ln883_reg_607 <= icmp_ln883_fu_454_p2;
+        symbol_histogram_fre_1_reg_602 <= symbol_histogram_frequency_V_q0;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state14)) begin
+        k_reg_659 <= k_fu_527_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        length_V_reg_668 <= length_V_fu_539_p2;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((1'b1 == ap_CS_fsm_state6) | ((icmp_ln10_fu_437_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2)))) begin
+        reg_425 <= t_V_4_fu_78;
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln10_fu_437_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state2))) begin
+        zext_ln12_reg_592[8 : 0] <= zext_ln12_fu_449_p1[8 : 0];
+    end
+end
+
+always @ (posedge ap_clk) begin
+    if (((icmp_ln40_fu_481_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state6))) begin
+        zext_ln41_reg_624[30 : 0] <= zext_ln41_fu_493_p1[30 : 0];
+    end
+end
+
+always @ (*) begin
+    if (((grp_create_codeword_fu_404_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state18))) begin
+        ap_done = 1'b1;
+    end else begin
+        ap_done = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1))) begin
+        ap_idle = 1'b1;
+    end else begin
+        ap_idle = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((grp_create_codeword_fu_404_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state18))) begin
+        ap_ready = 1'b1;
+    end else begin
+        ap_ready = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        filtered_frequency_V_address0 = zext_ln544_fu_460_p1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        filtered_frequency_V_address0 = grp_sort_fu_379_in_frequency_V_address0;
+    end else begin
+        filtered_frequency_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        filtered_frequency_V_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        filtered_frequency_V_ce0 = grp_sort_fu_379_in_frequency_V_ce0;
+    end else begin
+        filtered_frequency_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((icmp_ln883_reg_607 == 1'd0) & (1'b1 == ap_CS_fsm_state4))) begin
+        filtered_frequency_V_we0 = 1'b1;
+    end else begin
+        filtered_frequency_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        filtered_value_V_address0 = zext_ln544_fu_460_p1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        filtered_value_V_address0 = grp_sort_fu_379_in_value_V_address0;
+    end else begin
+        filtered_value_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state4)) begin
+        filtered_value_V_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        filtered_value_V_ce0 = grp_sort_fu_379_in_value_V_ce0;
+    end else begin
+        filtered_value_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((icmp_ln883_reg_607 == 1'd0) & (1'b1 == ap_CS_fsm_state4))) begin
+        filtered_value_V_we0 = 1'b1;
+    end else begin
+        filtered_value_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        left_V_address0 = grp_compute_bit_length_fu_395_left_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        left_V_address0 = grp_create_tree_fu_369_left_V_address0;
+    end else begin
+        left_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        left_V_ce0 = grp_compute_bit_length_fu_395_left_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        left_V_ce0 = grp_create_tree_fu_369_left_V_ce0;
+    end else begin
+        left_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state8)) begin
+        left_V_we0 = grp_create_tree_fu_369_left_V_we0;
+    end else begin
+        left_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        length_histogram_V_address0 = grp_compute_bit_length_fu_395_length_histogram_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        length_histogram_V_address0 = grp_truncate_tree_fu_388_input_length_histogram_V_address0;
+    end else begin
+        length_histogram_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        length_histogram_V_ce0 = grp_compute_bit_length_fu_395_length_histogram_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        length_histogram_V_ce0 = grp_truncate_tree_fu_388_input_length_histogram_V_ce0;
+    end else begin
+        length_histogram_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        length_histogram_V_we0 = grp_compute_bit_length_fu_395_length_histogram_V_we0;
+    end else begin
+        length_histogram_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if (((icmp_ln41_fu_521_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state14))) begin
+        num_nonzero_symbols_ap_vld = 1'b1;
+    end else begin
+        num_nonzero_symbols_ap_vld = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        parent_V_address0 = grp_compute_bit_length_fu_395_parent_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        parent_V_address0 = grp_create_tree_fu_369_parent_V_address0;
+    end else begin
+        parent_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        parent_V_ce0 = grp_compute_bit_length_fu_395_parent_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        parent_V_ce0 = grp_create_tree_fu_369_parent_V_ce0;
+    end else begin
+        parent_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state8)) begin
+        parent_V_we0 = grp_create_tree_fu_369_parent_V_we0;
+    end else begin
+        parent_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        right_V_address0 = grp_compute_bit_length_fu_395_right_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        right_V_address0 = grp_create_tree_fu_369_right_V_address0;
+    end else begin
+        right_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state10)) begin
+        right_V_ce0 = grp_compute_bit_length_fu_395_right_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        right_V_ce0 = grp_create_tree_fu_369_right_V_ce0;
+    end else begin
+        right_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state8)) begin
+        right_V_we0 = grp_create_tree_fu_369_right_V_we0;
+    end else begin
+        right_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state6)) begin
+        sorted_0_address0 = zext_ln41_fu_493_p1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_0_address0 = grp_sort_fu_379_out_value_V_address0;
+    end else begin
+        sorted_0_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state6)) begin
+        sorted_0_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_0_ce0 = grp_sort_fu_379_out_value_V_ce0;
+    end else begin
+        sorted_0_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_0_we0 = grp_sort_fu_379_out_value_V_we0;
+    end else begin
+        sorted_0_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state6)) begin
+        sorted_1_address0 = zext_ln41_fu_493_p1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_1_address0 = grp_sort_fu_379_out_frequency_V_address0;
+    end else begin
+        sorted_1_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state6)) begin
+        sorted_1_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_1_ce0 = grp_sort_fu_379_out_frequency_V_ce0;
+    end else begin
+        sorted_1_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state5)) begin
+        sorted_1_we0 = grp_sort_fu_379_out_frequency_V_we0;
+    end else begin
+        sorted_1_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_frequen_address0 = zext_ln41_reg_624;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        sorted_copy1_frequen_address0 = grp_create_tree_fu_369_in_frequency_V_address0;
+    end else begin
+        sorted_copy1_frequen_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_frequen_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        sorted_copy1_frequen_ce0 = grp_create_tree_fu_369_in_frequency_V_ce0;
+    end else begin
+        sorted_copy1_frequen_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_frequen_we0 = 1'b1;
+    end else begin
+        sorted_copy1_frequen_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_value_V_address0 = zext_ln41_reg_624;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        sorted_copy1_value_V_address0 = grp_create_tree_fu_369_in_value_V_address0;
+    end else begin
+        sorted_copy1_value_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_value_V_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state8)) begin
+        sorted_copy1_value_V_ce0 = grp_create_tree_fu_369_in_value_V_ce0;
+    end else begin
+        sorted_copy1_value_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy1_value_V_we0 = 1'b1;
+    end else begin
+        sorted_copy1_value_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state16)) begin
+        sorted_copy2_value_V_address0 = zext_ln53_fu_556_p1;
+    end else if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy2_value_V_address0 = zext_ln41_reg_624;
+    end else begin
+        sorted_copy2_value_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state7) | (1'b1 == ap_CS_fsm_state16))) begin
+        sorted_copy2_value_V_ce0 = 1'b1;
+    end else begin
+        sorted_copy2_value_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state7)) begin
+        sorted_copy2_value_V_we0 = 1'b1;
+    end else begin
+        sorted_copy2_value_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state17)) begin
+        symbol_bits_V_address0 = sext_ln54_fu_561_p1;
+    end else if ((1'b1 == ap_CS_fsm_state13)) begin
+        symbol_bits_V_address0 = zext_ln14_fu_511_p1;
+    end else if ((1'b1 == ap_CS_fsm_state18)) begin
+        symbol_bits_V_address0 = grp_create_codeword_fu_404_symbol_bits_V_address0;
+    end else begin
+        symbol_bits_V_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state17) | (1'b1 == ap_CS_fsm_state13))) begin
+        symbol_bits_V_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state18)) begin
+        symbol_bits_V_ce0 = grp_create_codeword_fu_404_symbol_bits_V_ce0;
+    end else begin
+        symbol_bits_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state17)) begin
+        symbol_bits_V_d0 = trunc_ln209_fu_566_p1;
+    end else if ((1'b1 == ap_CS_fsm_state13)) begin
+        symbol_bits_V_d0 = 5'd0;
+    end else begin
+        symbol_bits_V_d0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if (((1'b1 == ap_CS_fsm_state17) | ((icmp_ln13_fu_499_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state13)))) begin
+        symbol_bits_V_we0 = 1'b1;
+    end else begin
+        symbol_bits_V_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state2)) begin
+        symbol_histogram_frequency_V_ce0 = 1'b1;
+    end else begin
+        symbol_histogram_frequency_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state3)) begin
+        symbol_histogram_value_V_ce0 = 1'b1;
+    end else begin
+        symbol_histogram_value_V_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state18)) begin
+        truncated_length_his_1_address0 = grp_create_codeword_fu_404_codeword_length_histogram_V_address0;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_1_address0 = grp_truncate_tree_fu_388_output_length_histogram2_V_address0;
+    end else begin
+        truncated_length_his_1_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state18)) begin
+        truncated_length_his_1_ce0 = grp_create_codeword_fu_404_codeword_length_histogram_V_ce0;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_1_ce0 = grp_truncate_tree_fu_388_output_length_histogram2_V_ce0;
+    end else begin
+        truncated_length_his_1_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_1_we0 = grp_truncate_tree_fu_388_output_length_histogram2_V_we0;
+    end else begin
+        truncated_length_his_1_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        truncated_length_his_address0 = zext_ln544_5_fu_545_p1;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_address0 = grp_truncate_tree_fu_388_output_length_histogram1_V_address0;
+    end else begin
+        truncated_length_his_address0 = 'bx;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state15)) begin
+        truncated_length_his_ce0 = 1'b1;
+    end else if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_ce0 = grp_truncate_tree_fu_388_output_length_histogram1_V_ce0;
+    end else begin
+        truncated_length_his_ce0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_ce1 = grp_truncate_tree_fu_388_output_length_histogram1_V_ce1;
+    end else begin
+        truncated_length_his_ce1 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_we0 = grp_truncate_tree_fu_388_output_length_histogram1_V_we0;
+    end else begin
+        truncated_length_his_we0 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    if ((1'b1 == ap_CS_fsm_state12)) begin
+        truncated_length_his_we1 = grp_truncate_tree_fu_388_output_length_histogram1_V_we1;
+    end else begin
+        truncated_length_his_we1 = 1'b0;
+    end
+end
+
+always @ (*) begin
+    case (ap_CS_fsm)
+        ap_ST_fsm_state1 : begin
+            if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
+                ap_NS_fsm = ap_ST_fsm_state2;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state1;
+            end
+        end
+        ap_ST_fsm_state2 : begin
+            if (((icmp_ln10_fu_437_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state2))) begin
+                ap_NS_fsm = ap_ST_fsm_state5;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state3;
+            end
+        end
+        ap_ST_fsm_state3 : begin
+            ap_NS_fsm = ap_ST_fsm_state4;
+        end
+        ap_ST_fsm_state4 : begin
+            ap_NS_fsm = ap_ST_fsm_state2;
+        end
+        ap_ST_fsm_state5 : begin
+            if (((grp_sort_fu_379_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state5))) begin
+                ap_NS_fsm = ap_ST_fsm_state6;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state5;
+            end
+        end
+        ap_ST_fsm_state6 : begin
+            if (((icmp_ln40_fu_481_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state6))) begin
+                ap_NS_fsm = ap_ST_fsm_state8;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state7;
+            end
+        end
+        ap_ST_fsm_state7 : begin
+            ap_NS_fsm = ap_ST_fsm_state6;
+        end
+        ap_ST_fsm_state8 : begin
+            if (((grp_create_tree_fu_369_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state8))) begin
+                ap_NS_fsm = ap_ST_fsm_state9;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state8;
+            end
+        end
+        ap_ST_fsm_state9 : begin
+            ap_NS_fsm = ap_ST_fsm_state10;
+        end
+        ap_ST_fsm_state10 : begin
+            if (((grp_compute_bit_length_fu_395_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state10))) begin
+                ap_NS_fsm = ap_ST_fsm_state11;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state10;
+            end
+        end
+        ap_ST_fsm_state11 : begin
+            ap_NS_fsm = ap_ST_fsm_state12;
+        end
+        ap_ST_fsm_state12 : begin
+            if (((grp_truncate_tree_fu_388_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state12))) begin
+                ap_NS_fsm = ap_ST_fsm_state13;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state12;
+            end
+        end
+        ap_ST_fsm_state13 : begin
+            if (((icmp_ln13_fu_499_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state13))) begin
+                ap_NS_fsm = ap_ST_fsm_state14;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state13;
+            end
+        end
+        ap_ST_fsm_state14 : begin
+            if (((icmp_ln41_fu_521_p2 == 1'd0) & (icmp_ln879_fu_533_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state14))) begin
+                ap_NS_fsm = ap_ST_fsm_state15;
+            end else if (((icmp_ln41_fu_521_p2 == 1'd0) & (icmp_ln879_fu_533_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state14))) begin
+                ap_NS_fsm = ap_ST_fsm_state16;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state18;
+            end
+        end
+        ap_ST_fsm_state15 : begin
+            ap_NS_fsm = ap_ST_fsm_state16;
+        end
+        ap_ST_fsm_state16 : begin
+            if (((1'b1 == ap_CS_fsm_state16) & ((icmp_ln879_2_fu_550_p2 == 1'd0) | (icmp_ln879_reg_664 == 1'd0)))) begin
+                ap_NS_fsm = ap_ST_fsm_state17;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state15;
+            end
+        end
+        ap_ST_fsm_state17 : begin
+            ap_NS_fsm = ap_ST_fsm_state14;
+        end
+        ap_ST_fsm_state18 : begin
+            if (((grp_create_codeword_fu_404_ap_done == 1'b1) & (1'b1 == ap_CS_fsm_state18))) begin
+                ap_NS_fsm = ap_ST_fsm_state1;
+            end else begin
+                ap_NS_fsm = ap_ST_fsm_state18;
+            end
+        end
+        default : begin
+            ap_NS_fsm = 'bx;
+        end
+    endcase
+end
+
+assign ap_CS_fsm_state1 = ap_CS_fsm[32'd0];
+
+assign ap_CS_fsm_state10 = ap_CS_fsm[32'd9];
+
+assign ap_CS_fsm_state11 = ap_CS_fsm[32'd10];
+
+assign ap_CS_fsm_state12 = ap_CS_fsm[32'd11];
+
+assign ap_CS_fsm_state13 = ap_CS_fsm[32'd12];
+
+assign ap_CS_fsm_state14 = ap_CS_fsm[32'd13];
+
+assign ap_CS_fsm_state15 = ap_CS_fsm[32'd14];
+
+assign ap_CS_fsm_state16 = ap_CS_fsm[32'd15];
+
+assign ap_CS_fsm_state17 = ap_CS_fsm[32'd16];
+
+assign ap_CS_fsm_state18 = ap_CS_fsm[32'd17];
+
+assign ap_CS_fsm_state2 = ap_CS_fsm[32'd1];
+
+assign ap_CS_fsm_state3 = ap_CS_fsm[32'd2];
+
+assign ap_CS_fsm_state4 = ap_CS_fsm[32'd3];
+
+assign ap_CS_fsm_state5 = ap_CS_fsm[32'd4];
+
+assign ap_CS_fsm_state6 = ap_CS_fsm[32'd5];
+
+assign ap_CS_fsm_state7 = ap_CS_fsm[32'd6];
+
+assign ap_CS_fsm_state8 = ap_CS_fsm[32'd7];
+
+assign ap_CS_fsm_state9 = ap_CS_fsm[32'd8];
+
+assign count_V_1_fu_571_p2 = ($signed(32'd4294967295) + $signed(t_V_3_reg_359));
+
+assign encoding_V_address0 = grp_create_codeword_fu_404_encoding_V_address0;
+
+assign encoding_V_ce0 = grp_create_codeword_fu_404_encoding_V_ce0;
+
+assign encoding_V_d0 = grp_create_codeword_fu_404_encoding_V_d0;
+
+assign encoding_V_we0 = grp_create_codeword_fu_404_encoding_V_we0;
+
+assign grp_compute_bit_length_fu_395_ap_start = grp_compute_bit_length_fu_395_ap_start_reg;
+
+assign grp_create_codeword_fu_404_ap_start = grp_create_codeword_fu_404_ap_start_reg;
+
+assign grp_create_tree_fu_369_ap_start = grp_create_tree_fu_369_ap_start_reg;
+
+assign grp_sort_fu_379_ap_start = grp_sort_fu_379_ap_start_reg;
+
+assign grp_truncate_tree_fu_388_ap_start = grp_truncate_tree_fu_388_ap_start_reg;
+
+assign i_4_fu_443_p2 = (i_0_i_reg_302 + 9'd1);
+
+assign i_5_fu_505_p2 = (i_0_i1_reg_324 + 9'd1);
+
+assign i_fu_487_p2 = (i_0_reg_313 + 31'd1);
+
+assign icmp_ln10_fu_437_p2 = ((i_0_i_reg_302 == 9'd256) ? 1'b1 : 1'b0);
+
+assign icmp_ln13_fu_499_p2 = ((i_0_i1_reg_324 == 9'd256) ? 1'b1 : 1'b0);
+
+assign icmp_ln40_fu_481_p2 = (($signed(zext_ln40_fu_477_p1) < $signed(t_V_4_fu_78)) ? 1'b1 : 1'b0);
+
+assign icmp_ln41_fu_521_p2 = ((i_op_assign_reg_347 == t_V_4_fu_78) ? 1'b1 : 1'b0);
+
+assign icmp_ln879_2_fu_550_p2 = ((truncated_length_his_q0 == 32'd0) ? 1'b1 : 1'b0);
+
+assign icmp_ln879_fu_533_p2 = ((p_066_0_i_reg_335 == 32'd0) ? 1'b1 : 1'b0);
+
+assign icmp_ln883_fu_454_p2 = ((symbol_histogram_frequency_V_q0 == 32'd0) ? 1'b1 : 1'b0);
+
+assign j_V_fu_466_p2 = (t_V_4_fu_78 + 32'd1);
+
+assign k_fu_527_p2 = (i_op_assign_reg_347 + 32'd1);
+
+assign length_V_fu_539_p2 = ($signed(length_V_1_fu_138) + $signed(32'd4294967295));
+
+assign num_nonzero_symbols = t_V_4_fu_78;
+
+assign sext_ln54_fu_561_p1 = $signed(sorted_copy2_value_V_q0);
+
+assign symbol_histogram_frequency_V_address0 = zext_ln12_fu_449_p1;
+
+assign symbol_histogram_value_V_address0 = zext_ln12_reg_592;
+
+assign trunc_ln209_fu_566_p1 = length_V_1_fu_138[4:0];
+
+assign zext_ln12_fu_449_p1 = i_0_i_reg_302;
+
+assign zext_ln14_fu_511_p1 = i_0_i1_reg_324;
+
+assign zext_ln40_fu_477_p1 = i_0_reg_313;
+
+assign zext_ln41_fu_493_p1 = i_0_reg_313;
+
+assign zext_ln53_fu_556_p1 = i_op_assign_reg_347;
+
+assign zext_ln544_5_fu_545_p1 = length_V_fu_539_p2;
+
+assign zext_ln544_fu_460_p1 = t_V_4_fu_78;
+
+always @ (posedge ap_clk) begin
+    zext_ln12_reg_592[63:9] <= 55'b0000000000000000000000000000000000000000000000000000000;
+    zext_ln41_reg_624[63:31] <= 33'b000000000000000000000000000000000;
+end
 
 endmodule //huffman_encoding

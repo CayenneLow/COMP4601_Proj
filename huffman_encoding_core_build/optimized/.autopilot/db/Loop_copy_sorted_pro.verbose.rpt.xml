@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'Loop_copy_sorted_pro'" level="0">
-<item name = "Date">Tue Aug  3 15:38:34 2021
+<item name = "Date">Wed Aug  4 17:59:02 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -79,7 +79,7 @@
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
 <column name="i_fu_162_p2">+, 0, 0, 38, 31, 1</column>
-<column name="icmp_ln42_fu_157_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln40_fu_157_p2">icmp, 0, 0, 18, 32, 32</column>
 <column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
 <column name="ap_block_state2">or, 0, 0, 2, 1, 1</column>
 </table>
@@ -103,7 +103,7 @@
 <column name="i_reg_184">31, 0, 31, 0</column>
 <column name="n_read_reg_174">32, 0, 32, 0</column>
 <column name="start_once_reg">1, 0, 1, 0</column>
-<column name="zext_ln43_reg_189">31, 0, 64, 33</column>
+<column name="zext_ln41_reg_189">31, 0, 64, 33</column>
 </table>
 </item>
 </section>

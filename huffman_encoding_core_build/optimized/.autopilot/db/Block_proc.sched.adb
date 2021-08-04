@@ -110,10 +110,10 @@
 					<Obj>
 						<type>0</type>
 						<id>5</id>
-						<name>num_nonzero_symbols_write_ln74</name>
+						<name>num_nonzero_symbols_write_ln71</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>74</lineNumber>
+						<lineNumber>71</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -128,7 +128,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>74</second>
+										<second>71</second>
 									</item>
 								</second>
 							</item>

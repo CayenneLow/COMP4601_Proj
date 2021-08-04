@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -7190,10 +7191,11 @@ void huffman_encoding(
                Symbol symbol_histogram[INPUT_SYMBOL_SIZE],
                PackedCodewordAndLength encoding[INPUT_SYMBOL_SIZE],
                int *num_nonzero_symbols) {_ssdm_SpecArrayDimSize(symbol_histogram, 256);_ssdm_SpecArrayDimSize(encoding, 256);
-# 21 "./hls-src/huffman_encoding.cpp"
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
+# 7 "./hls-src/huffman_encoding.cpp"
 
- Symbol filtered[INPUT_SYMBOL_SIZE];
+# 22 "./hls-src/huffman_encoding.cpp"
+  Symbol filtered[INPUT_SYMBOL_SIZE];
   Symbol sorted[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy1[INPUT_SYMBOL_SIZE];
   Symbol sorted_copy2[INPUT_SYMBOL_SIZE];
@@ -7211,23 +7213,22 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
   CodewordLength symbol_bits[INPUT_SYMBOL_SIZE];
 
   int previous_frequency = -1;
-copy_sorted:
-  for(int i = 0; i < n; i++) {
+  copy_sorted:for(int i = 0; i < n; i++) {
 _ssdm_op_SpecLoopTripCount(256, 256, 256, "");
-# 42 "./hls-src/huffman_encoding.cpp"
+# 40 "./hls-src/huffman_encoding.cpp"
 
     sorted_copy1[i].value = sorted[i].value;
     sorted_copy1[i].frequency = sorted[i].frequency;
     sorted_copy2[i].value = sorted[i].value;
     sorted_copy2[i].frequency = sorted[i].frequency;
 
-    (void) ((!!(previous_frequency <= (int)sorted[i].frequency)) || (_assert("previous_frequency <= (int)sorted[i].frequency","./hls-src/huffman_encoding.cpp",48),0));
+    (void) ((!!(previous_frequency <= (int)sorted[i].frequency)) || (_assert("previous_frequency <= (int)sorted[i].frequency","./hls-src/huffman_encoding.cpp",46),0));
     previous_frequency = sorted[i].frequency;
   }
 
   create_tree(sorted_copy1, n, parent, left, right);
   compute_bit_length(parent, left, right, n, length_histogram);
-# 70 "./hls-src/huffman_encoding.cpp"
+# 67 "./hls-src/huffman_encoding.cpp"
   truncate_tree(length_histogram, truncated_length_histogram1, truncated_length_histogram2);
   canonize_tree(sorted_copy2, n, truncated_length_histogram1, symbol_bits);
   create_codeword(symbol_bits, truncated_length_histogram2, encoding);

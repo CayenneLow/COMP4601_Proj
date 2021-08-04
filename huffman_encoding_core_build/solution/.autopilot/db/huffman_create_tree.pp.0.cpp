@@ -6452,8 +6452,7 @@ static unsigned int bit_reverse32(unsigned int input) {
  }
  return rev;
 }
-# 1 "./hls-src/huffman_create_tree.cpp" 2
-
+# 2 "./hls-src/huffman_create_tree.cpp" 2
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 1 3
 # 15 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\assert.h" 3
 # 1 "D:/Xilinx/Vivado/2020.1/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\_mingw.h" 1 3
@@ -7186,8 +7185,7 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
 
 
 }
-# 2 "./hls-src/huffman_create_tree.cpp" 2
-
+# 3 "./hls-src/huffman_create_tree.cpp" 2
 void create_tree (
                 Symbol in[INPUT_SYMBOL_SIZE],
                 int num_symbols,
@@ -7200,15 +7198,14 @@ void create_tree (
 
     (void) ((!!(num_symbols > 0)) || (_assert("num_symbols > 0","./hls-src/huffman_create_tree.cpp",13),0));
     (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_create_tree.cpp",14),0));
-    for(int i = 0; i < (num_symbols-1); i++) {
-#pragma HLS PIPELINE II=5
- Frequency node_freq = 0;
+    create_tree_label5:for(int i = 0; i < (num_symbols-1); i++) {
+        Frequency node_freq = 0;
 
 
 
 
 
-        (void) ((!!(in_count < num_symbols || tree_count < i)) || (_assert("in_count < num_symbols || tree_count < i","./hls-src/huffman_create_tree.cpp",23),0));
+        (void) ((!!(in_count < num_symbols || tree_count < i)) || (_assert("in_count < num_symbols || tree_count < i","./hls-src/huffman_create_tree.cpp",22),0));
         Frequency intermediate_freq = frequency[tree_count];
         Symbol s = in[in_count];
         if((in_count < num_symbols && s.frequency <= intermediate_freq) || tree_count == i) {
@@ -7224,7 +7221,7 @@ void create_tree (
             tree_count++;
         }
 
-        (void) ((!!(in_count < num_symbols || tree_count < i)) || (_assert("in_count < num_symbols || tree_count < i","./hls-src/huffman_create_tree.cpp",39),0));
+        (void) ((!!(in_count < num_symbols || tree_count < i)) || (_assert("in_count < num_symbols || tree_count < i","./hls-src/huffman_create_tree.cpp",38),0));
         intermediate_freq = frequency[tree_count];
         s = in[in_count];
         if((in_count < num_symbols && s.frequency <= intermediate_freq) || tree_count == i) {
@@ -7240,7 +7237,7 @@ void create_tree (
             tree_count++;
         }
 
-        (void) ((!!(i == 0 || frequency[i] >= frequency[i-1])) || (_assert("i == 0 || frequency[i] >= frequency[i-1]","./hls-src/huffman_create_tree.cpp",55),0));
+        (void) ((!!(i == 0 || frequency[i] >= frequency[i-1])) || (_assert("i == 0 || frequency[i] >= frequency[i-1]","./hls-src/huffman_create_tree.cpp",54),0));
     }
 
     parent[tree_count] = 0;

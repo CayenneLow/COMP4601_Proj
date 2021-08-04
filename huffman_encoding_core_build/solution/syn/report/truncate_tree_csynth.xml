@@ -64,11 +64,11 @@
 <max>10</max>
 </range>
 </IterationLatency>
-<reorder.1>
+<truncate_tree_label4>
 <TripCount>1</TripCount>
 <Latency>1</Latency>
 <IterationLatency>2</IterationLatency>
-</reorder.1>
+</truncate_tree_label4>
 </reorder>
 </move_nodes>
 <copy_output>
@@ -81,8 +81,8 @@
 
 <AreaEstimates>
 <Resources>
-<FF>256</FF>
-<LUT>649</LUT>
+<FF>255</FF>
+<LUT>638</LUT>
 <BRAM_18K>0</BRAM_18K>
 <DSP48E>0</DSP48E>
 <URAM>0</URAM>
@@ -138,17 +138,6 @@
 <IOProtocol>ap_ctrl_hs</IOProtocol>
 <IOConfig></IOConfig>
 <Dir>out</Dir>
-<Bits>1</Bits>
-<Attribute>control</Attribute>
-</RtlPorts>
-<RtlPorts>
-<name>ap_continue</name>
-<Object>truncate_tree</Object>
-<Type>return value</Type>
-<Scope></Scope>
-<IOProtocol>ap_ctrl_hs</IOProtocol>
-<IOConfig></IOConfig>
-<Dir>in</Dir>
 <Bits>1</Bits>
 <Attribute>control</Attribute>
 </RtlPorts>

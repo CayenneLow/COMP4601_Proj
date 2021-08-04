@@ -72,18 +72,18 @@ struct Loop_copy_sorted_pro : public sc_module {
     sc_signal< sc_logic > n_blk_n;
     sc_signal< sc_logic > val_assign_out_out_blk_n;
     sc_signal< sc_logic > ap_CS_fsm_state2;
-    sc_signal< sc_lv<1> > icmp_ln42_fu_157_p2;
+    sc_signal< sc_lv<1> > icmp_ln40_fu_157_p2;
     sc_signal< sc_logic > val_assign_out_out1_blk_n;
     sc_signal< sc_lv<32> > n_read_reg_174;
     sc_signal< bool > ap_block_state1;
     sc_signal< sc_lv<31> > i_fu_162_p2;
     sc_signal< sc_lv<31> > i_reg_184;
     sc_signal< bool > ap_block_state2;
-    sc_signal< sc_lv<64> > zext_ln43_fu_168_p1;
-    sc_signal< sc_lv<64> > zext_ln43_reg_189;
+    sc_signal< sc_lv<64> > zext_ln41_fu_168_p1;
+    sc_signal< sc_lv<64> > zext_ln41_reg_189;
     sc_signal< sc_lv<31> > i_0_i_reg_142;
     sc_signal< sc_logic > ap_CS_fsm_state3;
-    sc_signal< sc_lv<32> > zext_ln42_fu_153_p1;
+    sc_signal< sc_lv<32> > zext_ln40_fu_153_p1;
     sc_signal< sc_lv<3> > ap_NS_fsm;
     static const sc_logic ap_const_logic_1;
     static const sc_logic ap_const_logic_0;
@@ -109,7 +109,7 @@ struct Loop_copy_sorted_pro : public sc_module {
     void thread_ap_idle();
     void thread_ap_ready();
     void thread_i_fu_162_p2();
-    void thread_icmp_ln42_fu_157_p2();
+    void thread_icmp_ln40_fu_157_p2();
     void thread_internal_ap_ready();
     void thread_n_blk_n();
     void thread_n_read();
@@ -138,8 +138,8 @@ struct Loop_copy_sorted_pro : public sc_module {
     void thread_val_assign_out_out_blk_n();
     void thread_val_assign_out_out_din();
     void thread_val_assign_out_out_write();
-    void thread_zext_ln42_fu_153_p1();
-    void thread_zext_ln43_fu_168_p1();
+    void thread_zext_ln40_fu_153_p1();
+    void thread_zext_ln41_fu_168_p1();
     void thread_ap_NS_fsm();
 };
 

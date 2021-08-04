@@ -246,7 +246,7 @@
 						<name>n_read</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -261,7 +261,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -292,10 +292,10 @@
 					<Obj>
 						<type>0</type>
 						<id>11</id>
-						<name>_ln42</name>
+						<name>_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -310,7 +310,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -377,10 +377,10 @@
 					<Obj>
 						<type>0</type>
 						<id>14</id>
-						<name>zext_ln42</name>
+						<name>zext_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -395,7 +395,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -425,10 +425,10 @@
 					<Obj>
 						<type>0</type>
 						<id>15</id>
-						<name>icmp_ln42</name>
+						<name>icmp_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -443,7 +443,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -477,7 +477,7 @@
 						<name>i</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -492,7 +492,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -523,10 +523,10 @@
 					<Obj>
 						<type>0</type>
 						<id>17</id>
-						<name>_ln42</name>
+						<name>_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -541,7 +541,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -573,10 +573,10 @@
 					<Obj>
 						<type>0</type>
 						<id>22</id>
-						<name>zext_ln43</name>
+						<name>zext_ln41</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>43</lineNumber>
+						<lineNumber>41</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -591,7 +591,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>43</second>
+										<second>41</second>
 									</item>
 								</second>
 							</item>
@@ -624,7 +624,7 @@
 						<name>sorted_0_addr</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>43</lineNumber>
+						<lineNumber>41</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -639,7 +639,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>43</second>
+										<second>41</second>
 									</item>
 								</second>
 							</item>
@@ -674,7 +674,7 @@
 						<name>sorted_0_load</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>43</lineNumber>
+						<lineNumber>41</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -689,7 +689,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>43</second>
+										<second>41</second>
 									</item>
 								</second>
 							</item>
@@ -722,7 +722,7 @@
 						<name>sorted_copy1_value_V_1</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>43</lineNumber>
+						<lineNumber>41</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -737,7 +737,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>43</second>
+										<second>41</second>
 									</item>
 								</second>
 							</item>
@@ -769,10 +769,10 @@
 					<Obj>
 						<type>0</type>
 						<id>26</id>
-						<name>sorted_copy1_value_V_1_write_ln43</name>
+						<name>sorted_copy1_value_V_1_write_ln41</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>43</lineNumber>
+						<lineNumber>41</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -787,7 +787,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>43</second>
+										<second>41</second>
 									</item>
 								</second>
 							</item>
@@ -821,7 +821,7 @@
 						<name>sorted_1_addr</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>44</lineNumber>
+						<lineNumber>42</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -836,7 +836,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>44</second>
+										<second>42</second>
 									</item>
 								</second>
 							</item>
@@ -871,7 +871,7 @@
 						<name>previous_frequency</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>44</lineNumber>
+						<lineNumber>42</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -886,7 +886,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>44</second>
+										<second>42</second>
 									</item>
 								</second>
 							</item>
@@ -919,7 +919,7 @@
 						<name>sorted_copy1_frequen</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>44</lineNumber>
+						<lineNumber>42</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -934,7 +934,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>44</second>
+										<second>42</second>
 									</item>
 								</second>
 							</item>
@@ -966,10 +966,10 @@
 					<Obj>
 						<type>0</type>
 						<id>30</id>
-						<name>sorted_copy1_frequen_write_ln44</name>
+						<name>sorted_copy1_frequen_write_ln42</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>44</lineNumber>
+						<lineNumber>42</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -984,7 +984,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>44</second>
+										<second>42</second>
 									</item>
 								</second>
 							</item>
@@ -1018,7 +1018,7 @@
 						<name>sorted_copy2_value_V_1</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>45</lineNumber>
+						<lineNumber>43</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1033,7 +1033,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>45</second>
+										<second>43</second>
 									</item>
 								</second>
 							</item>
@@ -1065,10 +1065,10 @@
 					<Obj>
 						<type>0</type>
 						<id>32</id>
-						<name>sorted_copy2_value_V_1_write_ln45</name>
+						<name>sorted_copy2_value_V_1_write_ln43</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>45</lineNumber>
+						<lineNumber>43</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1083,7 +1083,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>45</second>
+										<second>43</second>
 									</item>
 								</second>
 							</item>
@@ -1114,10 +1114,10 @@
 					<Obj>
 						<type>0</type>
 						<id>34</id>
-						<name>_ln42</name>
+						<name>_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1132,7 +1132,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -1162,10 +1162,10 @@
 					<Obj>
 						<type>0</type>
 						<id>37</id>
-						<name>val_assign_out_out_write_ln42</name>
+						<name>val_assign_out_out_write_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1180,7 +1180,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -1212,10 +1212,10 @@
 					<Obj>
 						<type>0</type>
 						<id>39</id>
-						<name>val_assign_out_out1_write_ln42</name>
+						<name>val_assign_out_out1_write_ln40</name>
 						<fileName>./hls-src/huffman_encoding.cpp</fileName>
 						<fileDirectory>D:\UNSW\21T2\COMP4601\Project</fileDirectory>
-						<lineNumber>42</lineNumber>
+						<lineNumber>40</lineNumber>
 						<contextFuncName>huffman_encoding</contextFuncName>
 						<inlineStackInfo>
 							<count>1</count>
@@ -1230,7 +1230,7 @@
 											<first>./hls-src/huffman_encoding.cpp</first>
 											<second>huffman_encoding</second>
 										</first>
-										<second>42</second>
+										<second>40</second>
 									</item>
 								</second>
 							</item>
@@ -2510,7 +2510,7 @@
 			</second>
 		</item>
 		<item>
-			<first>icmp_ln42_fu_157</first>
+			<first>icmp_ln40_fu_157</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
@@ -2558,7 +2558,7 @@
 			</second>
 		</item>
 		<item>
-			<first>zext_ln42_fu_153</first>
+			<first>zext_ln40_fu_153</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
@@ -2566,7 +2566,7 @@
 			</second>
 		</item>
 		<item>
-			<first>zext_ln43_fu_168</first>
+			<first>zext_ln41_fu_168</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
@@ -2590,7 +2590,7 @@
 			</second>
 		</item>
 		<item>
-			<first>write_ln42_write_fu_60</first>
+			<first>write_ln40_write_fu_60</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
@@ -2598,7 +2598,7 @@
 			</second>
 		</item>
 		<item>
-			<first>write_ln42_write_fu_67</first>
+			<first>write_ln40_write_fu_67</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>
@@ -2767,7 +2767,7 @@
 			</second>
 		</item>
 		<item>
-			<first>zext_ln43_reg_189</first>
+			<first>zext_ln41_reg_189</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>

@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'create_tree'
 ================================================================
-* Date:           Tue Aug  3 21:42:42 2021
+* Date:           Wed Aug  4 18:02:14 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  | 10.00 ns | 8.661 ns |   1.25 ns  |
+    |ap_clk  | 10.00 ns | 7.575 ns |   1.25 ns  |
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |   Latency (absolute)  |  Interval  | Pipeline|
     |   min   |   max   |    min    |    max    | min |  max |   Type  |
     +---------+---------+-----------+-----------+-----+------+---------+
-    |        2|     1022| 20.000 ns | 10.220 us |    2|  1022|   none  |
+    |        1|     1021| 10.000 ns | 10.210 us |    1|  1021|   none  |
     +---------+---------+-----------+-----------+-----+------+---------+
 
     + Detail: 
@@ -37,12 +37,12 @@
         N/A
 
         * Loop: 
-        +----------+---------+---------+----------+-----------+-----------+---------+----------+
-        |          |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
-        | Loop Name|   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
-        +----------+---------+---------+----------+-----------+-----------+---------+----------+
-        |- Loop 1  |        0|     1020|         4|          4|          5| 0 ~ 255 |    yes   |
-        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |                      |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip  |          |
+        |       Loop Name      |   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
+        |- create_tree_label5  |        0|     1020|         4|          -|          -| 0 ~ 255 |    no    |
+        +----------------------+---------+---------+----------+-----------+-----------+---------+----------+
 
 
 
@@ -54,14 +54,14 @@
 |       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
 +-----------------+---------+-------+--------+-------+-----+
 |DSP              |        -|      -|       -|      -|    -|
-|Expression       |        -|      -|       0|    473|    -|
+|Expression       |        -|      -|       0|    467|    -|
 |FIFO             |        -|      -|       -|      -|    -|
 |Instance         |        -|      -|       -|      -|    -|
 |Memory           |        1|      -|       0|      0|    0|
-|Multiplexer      |        -|      -|       -|    347|    -|
-|Register         |        -|      -|     518|      -|    -|
+|Multiplexer      |        -|      -|       -|    315|    -|
+|Register         |        -|      -|     453|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |        1|      0|     518|    820|    0|
+|Total            |        1|      0|     453|    782|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -79,7 +79,7 @@
     +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
     |     Memory    |        Module        | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
     +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
-    |frequency_V_U  |create_tree_frequhbi  |        1|  0|   0|    0|   255|   32|     1|         8160|
+    |frequency_V_U  |create_tree_frequibs  |        1|  0|   0|    0|   255|   32|     1|         8160|
     +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
     |Total          |                      |        1|  0|   0|    0|   255|   32|     1|         8160|
     +---------------+----------------------+---------+---+----+-----+------+-----+------+-------------+
@@ -91,96 +91,86 @@
     +--------------------------+----------+-------+---+----+------------+------------+
     |       Variable Name      | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +--------------------------+----------+-------+---+----+------------+------------+
-    |add_ln15_fu_327_p2        |     +    |      0|  0|  39|          32|           2|
-    |add_ln209_1_fu_452_p2     |     +    |      0|  0|  39|          32|          32|
-    |add_ln209_fu_441_p2       |     +    |      0|  0|  39|          32|          32|
-    |i_fu_342_p2               |     +    |      0|  0|  38|          31|           1|
-    |in_count_V_1_fu_458_p2    |     +    |      0|  0|  39|          32|           1|
-    |in_count_V_fu_385_p2      |     +    |      0|  0|  39|          32|           1|
-    |tree_count_V_1_fu_465_p2  |     +    |      0|  0|  39|          32|           1|
-    |tree_count_V_fu_397_p2    |     +    |      0|  0|  39|          32|           1|
-    |and_ln26_fu_374_p2        |    and   |      0|  0|   2|           1|           1|
-    |and_ln42_fu_430_p2        |    and   |      0|  0|   2|           1|           1|
-    |grp_fu_321_p2             |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln15_fu_337_p2       |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln879_2_fu_364_p2    |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln879_3_fu_425_p2    |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln879_4_fu_420_p2    |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln879_fu_369_p2      |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln887_1_fu_404_p2    |   icmp   |      0|  0|  18|          32|          32|
-    |icmp_ln887_fu_359_p2      |   icmp   |      0|  0|  18|          32|          32|
-    |ap_block_state1           |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_156          |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_166          |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_201          |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_208          |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_222          |    or    |      0|  0|   2|           1|           1|
-    |ap_condition_229          |    or    |      0|  0|   2|           1|           1|
+    |add_ln15_fu_294_p2        |     +    |      0|  0|  39|          32|           2|
+    |add_ln209_1_fu_414_p2     |     +    |      0|  0|  39|          32|          32|
+    |add_ln209_fu_408_p2       |     +    |      0|  0|  39|          32|          32|
+    |i_fu_309_p2               |     +    |      0|  0|  38|          31|           1|
+    |in_count_V_1_fu_426_p2    |     +    |      0|  0|  39|          32|           1|
+    |in_count_V_fu_357_p2      |     +    |      0|  0|  39|          32|           1|
+    |tree_count_V_1_fu_439_p2  |     +    |      0|  0|  39|          32|           1|
+    |tree_count_V_fu_369_p2    |     +    |      0|  0|  39|          32|           1|
+    |and_ln25_fu_346_p2        |    and   |      0|  0|   2|           1|           1|
+    |and_ln41_fu_402_p2        |    and   |      0|  0|   2|           1|           1|
+    |grp_fu_288_p2             |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln15_fu_304_p2       |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln879_2_fu_336_p2    |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln879_3_fu_397_p2    |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln879_4_fu_392_p2    |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln879_fu_341_p2      |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln887_1_fu_376_p2    |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln887_fu_331_p2      |   icmp   |      0|  0|  18|          32|          32|
+    |ap_condition_169          |    or    |      0|  0|   2|           1|           1|
+    |ap_condition_176          |    or    |      0|  0|   2|           1|           1|
+    |ap_condition_188          |    or    |      0|  0|   2|           1|           1|
+    |ap_condition_195          |    or    |      0|  0|   2|           1|           1|
     +--------------------------+----------+-------+---+----+------------+------------+
-    |Total                     |          |      0|  0| 473|         520|         336|
+    |Total                     |          |      0|  0| 467|         517|         333|
     +--------------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
-    +---------------------------------------+----+-----------+-----+-----------+
-    |                  Name                 | LUT| Input Size| Bits| Total Bits|
-    +---------------------------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm                              |  38|          7|    1|          7|
-    |ap_done                                |   9|          2|    1|          2|
-    |ap_phi_mux_p_0168_2_i_i_phi_fu_301_p4  |  15|          3|   32|         96|
-    |ap_phi_mux_p_094_2_i_i_phi_fu_313_p4   |  15|          3|   32|         96|
-    |ap_phi_mux_t_V_4_phi_fu_280_p4         |  15|          3|   32|         96|
-    |ap_phi_mux_t_V_5_phi_fu_269_p4         |  15|          3|   32|         96|
-    |frequency_V_address0                   |  27|          5|    8|         40|
-    |frequency_V_d0                         |  15|          3|   32|         96|
-    |in_frequency_V_address0                |  15|          3|    8|         24|
-    |in_value_V_address0                    |  15|          3|    8|         24|
-    |left_V_address0                        |  15|          3|    8|         24|
-    |left_V_d0                              |  15|          3|   32|         96|
-    |op2_assign_reg_253                     |   9|          2|   31|         62|
-    |p_090_0_i_i_reg_288                    |   9|          2|   32|         64|
-    |parent_V_address0                      |  21|          4|    8|         32|
-    |parent_V_d0                            |  15|          3|   31|         93|
-    |right_V_address0                       |  15|          3|    8|         24|
-    |right_V_d0                             |  15|          3|   32|         96|
-    |t_V_3_reg_229                          |   9|          2|   32|         64|
-    |t_V_4_reg_277                          |   9|          2|   32|         64|
-    |t_V_5_reg_266                          |   9|          2|   32|         64|
-    |t_V_reg_241                            |   9|          2|   32|         64|
-    |val_assign_loc_blk_n                   |   9|          2|    1|          2|
-    |val_assign_loc_out_blk_n               |   9|          2|    1|          2|
-    +---------------------------------------+----+-----------+-----+-----------+
-    |Total                                  | 347|         70|  498|       1328|
-    +---------------------------------------+----+-----------+-----+-----------+
+    +-----------------------------------+----+-----------+-----+-----------+
+    |                Name               | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                          |  33|          6|    1|          6|
+    |ap_phi_mux_t_V_3_be_phi_fu_268_p4  |  15|          3|   32|         96|
+    |ap_phi_mux_t_V_4_phi_fu_247_p4     |  15|          3|   32|         96|
+    |ap_phi_mux_t_V_5_phi_fu_236_p4     |  15|          3|   32|         96|
+    |ap_phi_mux_t_V_be_phi_fu_280_p4    |  15|          3|   32|         96|
+    |frequency_V_address0               |  27|          5|    8|         40|
+    |frequency_V_d0                     |  15|          3|   32|         96|
+    |in_frequency_V_address0            |  15|          3|    8|         24|
+    |in_value_V_address0                |  15|          3|    8|         24|
+    |left_V_address0                    |  15|          3|    8|         24|
+    |left_V_d0                          |  15|          3|   32|         96|
+    |op2_assign_reg_220                 |   9|          2|   31|         62|
+    |p_090_0_reg_255                    |   9|          2|   32|         64|
+    |parent_V_address0                  |  21|          4|    8|         32|
+    |parent_V_d0                        |  15|          3|   31|         93|
+    |right_V_address0                   |  15|          3|    8|         24|
+    |right_V_d0                         |  15|          3|   32|         96|
+    |t_V_3_reg_196                      |   9|          2|   32|         64|
+    |t_V_4_reg_244                      |   9|          2|   32|         64|
+    |t_V_5_reg_233                      |   9|          2|   32|         64|
+    |t_V_reg_208                        |   9|          2|   32|         64|
+    +-----------------------------------+----+-----------+-----+-----------+
+    |Total                              | 315|         63|  495|       1321|
+    +-----------------------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +-----------------------------+----+----+-----+-----------+
-    |             Name            | FF | LUT| Bits| Const Bits|
-    +-----------------------------+----+----+-----+-----------+
-    |add_ln15_reg_483             |  32|   0|   32|          0|
-    |add_ln209_1_reg_594          |  32|   0|   32|          0|
-    |add_ln209_reg_584            |  32|   0|   32|          0|
-    |and_ln42_reg_575             |   1|   0|    1|          0|
-    |ap_CS_fsm                    |   6|   0|    6|          0|
-    |ap_done_reg                  |   1|   0|    1|          0|
-    |i_reg_500                    |  31|   0|   31|          0|
-    |icmp_ln15_reg_496            |   1|   0|    1|          0|
-    |icmp_ln879_4_reg_571         |   1|   0|    1|          0|
-    |icmp_ln887_1_reg_547         |   1|   0|    1|          0|
-    |op2_assign_reg_253           |  31|   0|   31|          0|
-    |p_090_0_i_i_reg_288          |  32|   0|   32|          0|
-    |t_V_3_reg_229                |  32|   0|   32|          0|
-    |t_V_4_reg_277                |  32|   0|   32|          0|
-    |t_V_5_reg_266                |  32|   0|   32|          0|
-    |t_V_reg_241                  |  32|   0|   32|          0|
-    |val_assign_loc_read_reg_477  |  32|   0|   32|          0|
-    |zext_ln15_reg_488            |  31|   0|   32|          1|
-    |zext_ln44_reg_579            |  31|   0|   64|         33|
-    |zext_ln49_reg_589            |  31|   0|   64|         33|
-    |zext_ln544_5_reg_551         |  32|   0|   64|         32|
-    |zext_ln544_reg_505           |  32|   0|   64|         32|
-    +-----------------------------+----+----+-----+-----------+
-    |Total                        | 518|   0|  649|        131|
-    +-----------------------------+----+----+-----+-----------+
+    +---------------------------+----+----+-----+-----------+
+    |            Name           | FF | LUT| Bits| Const Bits|
+    +---------------------------+----+----+-----+-----------+
+    |add_ln15_reg_452           |  32|   0|   32|          0|
+    |add_ln209_1_reg_554        |  32|   0|   32|          0|
+    |add_ln209_reg_549          |  32|   0|   32|          0|
+    |and_ln41_reg_545           |   1|   0|    1|          0|
+    |ap_CS_fsm                  |   5|   0|    5|          0|
+    |i_reg_468                  |  31|   0|   31|          0|
+    |icmp_ln879_4_reg_541       |   1|   0|    1|          0|
+    |icmp_ln887_1_reg_512       |   1|   0|    1|          0|
+    |in_value_V_load_1_reg_536  |  32|   0|   32|          0|
+    |op2_assign_reg_220         |  31|   0|   31|          0|
+    |p_090_0_reg_255            |  32|   0|   32|          0|
+    |t_V_3_reg_196              |  32|   0|   32|          0|
+    |t_V_4_reg_244              |  32|   0|   32|          0|
+    |t_V_5_reg_233              |  32|   0|   32|          0|
+    |t_V_reg_208                |  32|   0|   32|          0|
+    |zext_ln15_reg_457          |  31|   0|   32|          1|
+    |zext_ln544_5_reg_473       |  32|   0|   64|         32|
+    |zext_ln544_7_reg_516       |  32|   0|   64|         32|
+    +---------------------------+----+----+-----+-----------+
+    |Total                      | 453|   0|  518|         65|
+    +---------------------------+----+----+-----+-----------+
 
 
 
@@ -188,39 +178,33 @@
 == Interface
 ================================================================
 * Summary: 
-+---------------------------+-----+-----+------------+--------------------+--------------+
-|         RTL Ports         | Dir | Bits|  Protocol  |    Source Object   |    C Type    |
-+---------------------------+-----+-----+------------+--------------------+--------------+
-|ap_clk                     |  in |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_rst                     |  in |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_start                   |  in |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_done                    | out |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_continue                |  in |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_idle                    | out |    1| ap_ctrl_hs |     create_tree    | return value |
-|ap_ready                   | out |    1| ap_ctrl_hs |     create_tree    | return value |
-|in_value_V_address0        | out |    8|  ap_memory |     in_value_V     |     array    |
-|in_value_V_ce0             | out |    1|  ap_memory |     in_value_V     |     array    |
-|in_value_V_q0              |  in |   32|  ap_memory |     in_value_V     |     array    |
-|in_frequency_V_address0    | out |    8|  ap_memory |   in_frequency_V   |     array    |
-|in_frequency_V_ce0         | out |    1|  ap_memory |   in_frequency_V   |     array    |
-|in_frequency_V_q0          |  in |   32|  ap_memory |   in_frequency_V   |     array    |
-|val_assign_loc_dout        |  in |   32|   ap_fifo  |   val_assign_loc   |    pointer   |
-|val_assign_loc_empty_n     |  in |    1|   ap_fifo  |   val_assign_loc   |    pointer   |
-|val_assign_loc_read        | out |    1|   ap_fifo  |   val_assign_loc   |    pointer   |
-|parent_V_address0          | out |    8|  ap_memory |      parent_V      |     array    |
-|parent_V_ce0               | out |    1|  ap_memory |      parent_V      |     array    |
-|parent_V_we0               | out |    1|  ap_memory |      parent_V      |     array    |
-|parent_V_d0                | out |   31|  ap_memory |      parent_V      |     array    |
-|left_V_address0            | out |    8|  ap_memory |       left_V       |     array    |
-|left_V_ce0                 | out |    1|  ap_memory |       left_V       |     array    |
-|left_V_we0                 | out |    1|  ap_memory |       left_V       |     array    |
-|left_V_d0                  | out |   32|  ap_memory |       left_V       |     array    |
-|right_V_address0           | out |    8|  ap_memory |       right_V      |     array    |
-|right_V_ce0                | out |    1|  ap_memory |       right_V      |     array    |
-|right_V_we0                | out |    1|  ap_memory |       right_V      |     array    |
-|right_V_d0                 | out |   32|  ap_memory |       right_V      |     array    |
-|val_assign_loc_out_din     | out |   32|   ap_fifo  | val_assign_loc_out |    pointer   |
-|val_assign_loc_out_full_n  |  in |    1|   ap_fifo  | val_assign_loc_out |    pointer   |
-|val_assign_loc_out_write   | out |    1|   ap_fifo  | val_assign_loc_out |    pointer   |
-+---------------------------+-----+-----+------------+--------------------+--------------+
++-------------------------+-----+-----+------------+----------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-------------------------+-----+-----+------------+----------------+--------------+
+|ap_clk                   |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_rst                   |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_start                 |  in |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_done                  | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_idle                  | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|ap_ready                 | out |    1| ap_ctrl_hs |   create_tree  | return value |
+|in_value_V_address0      | out |    8|  ap_memory |   in_value_V   |     array    |
+|in_value_V_ce0           | out |    1|  ap_memory |   in_value_V   |     array    |
+|in_value_V_q0            |  in |   32|  ap_memory |   in_value_V   |     array    |
+|in_frequency_V_address0  | out |    8|  ap_memory | in_frequency_V |     array    |
+|in_frequency_V_ce0       | out |    1|  ap_memory | in_frequency_V |     array    |
+|in_frequency_V_q0        |  in |   32|  ap_memory | in_frequency_V |     array    |
+|num_symbols              |  in |   32|   ap_none  |   num_symbols  |    scalar    |
+|parent_V_address0        | out |    8|  ap_memory |    parent_V    |     array    |
+|parent_V_ce0             | out |    1|  ap_memory |    parent_V    |     array    |
+|parent_V_we0             | out |    1|  ap_memory |    parent_V    |     array    |
+|parent_V_d0              | out |   31|  ap_memory |    parent_V    |     array    |
+|left_V_address0          | out |    8|  ap_memory |     left_V     |     array    |
+|left_V_ce0               | out |    1|  ap_memory |     left_V     |     array    |
+|left_V_we0               | out |    1|  ap_memory |     left_V     |     array    |
+|left_V_d0                | out |   32|  ap_memory |     left_V     |     array    |
+|right_V_address0         | out |    8|  ap_memory |     right_V    |     array    |
+|right_V_ce0              | out |    1|  ap_memory |     right_V    |     array    |
+|right_V_we0              | out |    1|  ap_memory |     right_V    |     array    |
+|right_V_d0               | out |   32|  ap_memory |     right_V    |     array    |
++-------------------------+-----+-----+------------+----------------+--------------+
 

@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -7209,23 +7210,26 @@ init_bits:
 
 
 
+
   int k = 0;
 process_symbols:
   for(length = TREE_DEPTH; length >= 0; length--) {
 #pragma HLS LOOP_TRIPCOUNT min=64 max=64 avg=64
-# 26 "./hls-src/huffman_canonize_tree.cpp"
+# 27 "./hls-src/huffman_canonize_tree.cpp"
 
     count = codeword_length_histogram[length];
     canonize_tree_label0:for(int i = 0; i < count; i++) {
 #pragma HLS LOOP_TRIPCOUNT min=25 max=25 avg=25
-# 28 "./hls-src/huffman_canonize_tree.cpp"
+# 29 "./hls-src/huffman_canonize_tree.cpp"
 
-#pragma HLS pipeline II=1
- int val = (int) sorted[k++].value;
+#pragma HLS PIPELINE II=1
+# 29 "./hls-src/huffman_canonize_tree.cpp"
+
+      int val = (int) sorted[k++].value;
       symbol_bits[val] = length;
       if (k >= num_symbols) break;
     }
     if (k >= num_symbols) break;
   }
-# 58 "./hls-src/huffman_canonize_tree.cpp"
+# 57 "./hls-src/huffman_canonize_tree.cpp"
 }

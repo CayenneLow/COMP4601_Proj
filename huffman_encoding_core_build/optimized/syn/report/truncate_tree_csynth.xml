@@ -59,11 +59,11 @@
 <max>10</max>
 </range>
 </IterationLatency>
-<reorder.1>
+<truncate_tree_label4>
 <TripCount>1</TripCount>
 <Latency>1</Latency>
 <IterationLatency>2</IterationLatency>
-</reorder.1>
+</truncate_tree_label4>
 </reorder>
 </move_nodes>
 </SummaryOfLoopLatency>

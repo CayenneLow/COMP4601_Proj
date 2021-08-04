@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -7195,16 +7196,22 @@ void sort(
                  Symbol out[INPUT_SYMBOL_SIZE]) {_ssdm_SpecArrayDimSize(in, 256);_ssdm_SpecArrayDimSize(out, 256);
     Symbol previous_sorting[INPUT_SYMBOL_SIZE], sorting[INPUT_SYMBOL_SIZE];
     ap_uint<SYMBOL_BITS> digit_histogram[RADIX], digit_location[RADIX];
-_ssdm_SpecArrayPartition( digit_location, 1, "COMPLETE", 0, "");
 _ssdm_SpecArrayPartition( digit_histogram, 1, "COMPLETE", 0, "");
- Digit current_digit[INPUT_SYMBOL_SIZE];
+# 12 "./hls-src/huffman_sort.cpp"
 
-    (void) ((!!(num_symbols >= 0)) || (_assert("num_symbols >= 0","./hls-src/huffman_sort.cpp",17),0));
-    (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_sort.cpp",18),0));
+_ssdm_SpecArrayPartition( digit_location, 1, "COMPLETE", 0, "");
+# 12 "./hls-src/huffman_sort.cpp"
+
+    Digit current_digit[INPUT_SYMBOL_SIZE];
+
+    (void) ((!!(num_symbols >= 0)) || (_assert("num_symbols >= 0","./hls-src/huffman_sort.cpp",15),0));
+    (void) ((!!(num_symbols <= INPUT_SYMBOL_SIZE)) || (_assert("num_symbols <= INPUT_SYMBOL_SIZE","./hls-src/huffman_sort.cpp",16),0));
  copy_in_to_sorting:
     for(int j = 0; j < num_symbols; j++) {
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- sorting[j] = in[j];
+# 18 "./hls-src/huffman_sort.cpp"
+
+        sorting[j] = in[j];
     }
 
  radix_sort:
@@ -7212,13 +7219,17 @@ _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
     init_histogram:
         for(int i = 0; i < RADIX; i++) {
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- digit_histogram[i] = 0;
+# 25 "./hls-src/huffman_sort.cpp"
+
+            digit_histogram[i] = 0;
         }
 
     compute_histogram:
         for(int j = 0; j < num_symbols; j++) {
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1);
+# 30 "./hls-src/huffman_sort.cpp"
+
+            Digit digit = (sorting[j].frequency >> shift) & (RADIX - 1);
             current_digit[j] = digit;
             digit_histogram[digit]++;
             previous_sorting[j] = sorting[j];
@@ -7228,12 +7239,16 @@ _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
     find_digit_location:
         for(int i = 1; i < RADIX; i++)
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
+# 39 "./hls-src/huffman_sort.cpp"
+
+            digit_location[i] = digit_location[i-1] + digit_histogram[i-1];
 
     re_sort:
         for(int j = 0; j < num_symbols; j++) {
 _ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- Digit digit = current_digit[j];
+# 43 "./hls-src/huffman_sort.cpp"
+
+            Digit digit = current_digit[j];
             sorting[digit_location[digit]] = previous_sorting[j];
             out[digit_location[digit]] = previous_sorting[j];
             digit_location[digit]++;

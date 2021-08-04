@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -22409,16 +22410,14 @@ void create_codeword(
     first_codeword[0] = 0;
  first_codewords:
     for(int i = 1; i < MAX_CODEWORD_LENGTH; i++) {
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- first_codeword[i] = (first_codeword[i-1] + codeword_length_histogram[i-1]) << 1;
+        first_codeword[i] = (first_codeword[i-1] + codeword_length_histogram[i-1]) << 1;
         Codeword c = first_codeword[i];
 
     }
 
  assign_codewords:
   for (int i = 0; i < INPUT_SYMBOL_SIZE; ++i) {
-_ssdm_op_SpecPipeline(5, 1, 1, 0, "");
- CodewordLength length = symbol_bits[i];
+      CodewordLength length = symbol_bits[i];
 
   make_codeword:
       if(length != 0) {

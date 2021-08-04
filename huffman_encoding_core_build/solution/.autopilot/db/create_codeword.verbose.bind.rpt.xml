@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'create_codeword'" level="0">
-<item name = "Date">Tue Aug  3 21:42:40 2021
+<item name = "Date">Wed Aug  4 18:02:12 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">1080, 1080, 10.800 us, 10.800 us, 1080, 1080, none</column>
+<column name="">822, 1078, 8.220 us, 10.780 us, 822, 1078, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,8 +35,8 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- first_codewords">52, 52, 2, 2, 1, 26, yes</column>
-<column name="- assign_codewords">1024, 1024, 4, 4, 5, 256, yes</column>
+<column name="- first_codewords">52, 52, 2, -, -, 26, no</column>
+<column name="- assign_codewords">768, 1024, 3 ~ 4, -, -, 256, no</column>
 </table>
 </item>
 </section>

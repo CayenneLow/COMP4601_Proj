@@ -12,7 +12,6 @@ module truncate_tree (
         ap_rst,
         ap_start,
         ap_done,
-        ap_continue,
         ap_idle,
         ap_ready,
         input_length_histogram_V_address0,
@@ -55,7 +54,6 @@ input   ap_clk;
 input   ap_rst;
 input   ap_start;
 output   ap_done;
-input   ap_continue;
 output   ap_idle;
 output   ap_ready;
 output  [5:0] input_length_histogram_V_address0;
@@ -91,7 +89,6 @@ reg[31:0] output_length_histogram1_V_d1;
 reg output_length_histogram2_V_ce0;
 reg output_length_histogram2_V_we0;
 
-reg    ap_done_reg;
 (* fsm_encoding = "none" *) reg   [15:0] ap_CS_fsm;
 wire    ap_CS_fsm_state1;
 reg   [31:0] reg_206;
@@ -123,11 +120,10 @@ reg   [5:0] output_length_histog_8_reg_428;
 wire   [6:0] i_2_fu_346_p2;
 reg   [6:0] i_2_reg_437;
 wire    ap_CS_fsm_state15;
-wire   [63:0] zext_ln45_fu_352_p1;
-reg   [63:0] zext_ln45_reg_442;
-wire   [0:0] icmp_ln44_fu_340_p2;
+wire   [63:0] zext_ln43_fu_352_p1;
+reg   [63:0] zext_ln43_reg_442;
+wire   [0:0] icmp_ln42_fu_340_p2;
 reg   [6:0] i_0_reg_153;
-reg    ap_block_state1;
 wire    ap_CS_fsm_state3;
 reg   [5:0] i1_0_reg_164;
 reg   [31:0] t_V_reg_175;
@@ -135,7 +131,7 @@ wire    ap_CS_fsm_state8;
 reg   [6:0] i2_0_reg_186;
 wire    ap_CS_fsm_state16;
 wire   [63:0] zext_ln19_fu_244_p1;
-wire   [63:0] zext_ln32_fu_255_p1;
+wire   [63:0] zext_ln30_fu_255_p1;
 wire   [63:0] zext_ln544_fu_272_p1;
 wire   [63:0] zext_ln544_1_fu_281_p1;
 wire   [63:0] zext_ln544_2_fu_296_p1;
@@ -155,7 +151,6 @@ reg   [15:0] ap_NS_fsm;
 
 // power-on initialization
 initial begin
-#0 ap_done_reg = 1'b0;
 #0 ap_CS_fsm = 16'd1;
 end
 
@@ -164,18 +159,6 @@ always @ (posedge ap_clk) begin
         ap_CS_fsm <= ap_ST_fsm_state1;
     end else begin
         ap_CS_fsm <= ap_NS_fsm;
-    end
-end
-
-always @ (posedge ap_clk) begin
-    if (ap_rst == 1'b1) begin
-        ap_done_reg <= 1'b0;
-    end else begin
-        if ((ap_continue == 1'b1)) begin
-            ap_done_reg <= 1'b0;
-        end else if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
-            ap_done_reg <= 1'b1;
-        end
     end
 end
 
@@ -198,7 +181,7 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state3)) begin
         i_0_reg_153 <= i_reg_360;
-    end else if ((~((ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+    end else if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
         i_0_reg_153 <= 7'd0;
     end
 end
@@ -241,7 +224,7 @@ always @ (posedge ap_clk) begin
     if (((icmp_ln16_fu_238_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state4))) begin
         i_1_reg_391 <= i_1_fu_249_p2;
         output_length_histog_1_reg_386 <= zext_ln19_fu_244_p1;
-        output_length_histog_2_reg_396 <= zext_ln32_fu_255_p1;
+        output_length_histog_2_reg_396 <= zext_ln30_fu_255_p1;
     end
 end
 
@@ -283,16 +266,16 @@ always @ (posedge ap_clk) begin
 end
 
 always @ (posedge ap_clk) begin
-    if (((icmp_ln44_fu_340_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
-        zext_ln45_reg_442[6 : 0] <= zext_ln45_fu_352_p1[6 : 0];
+    if (((icmp_ln42_fu_340_p2 == 1'd0) & (1'b1 == ap_CS_fsm_state15))) begin
+        zext_ln43_reg_442[6 : 0] <= zext_ln43_fu_352_p1[6 : 0];
     end
 end
 
 always @ (*) begin
-    if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+    if ((((ap_start == 1'b0) & (1'b1 == ap_CS_fsm_state1)) | ((icmp_ln42_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15)))) begin
         ap_done = 1'b1;
     end else begin
-        ap_done = ap_done_reg;
+        ap_done = 1'b0;
     end
 end
 
@@ -305,7 +288,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+    if (((icmp_ln42_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
         ap_ready = 1'b1;
     end else begin
         ap_ready = 1'b0;
@@ -338,7 +321,7 @@ end
 
 always @ (*) begin
     if ((1'b1 == ap_CS_fsm_state15)) begin
-        output_length_histogram1_V_address1 = zext_ln45_fu_352_p1;
+        output_length_histogram1_V_address1 = zext_ln43_fu_352_p1;
     end else if (((1'b1 == ap_CS_fsm_state14) | (1'b1 == ap_CS_fsm_state12))) begin
         output_length_histogram1_V_address1 = output_length_histog_2_reg_396;
     end else if ((1'b1 == ap_CS_fsm_state11)) begin
@@ -423,7 +406,7 @@ end
 always @ (*) begin
     case (ap_CS_fsm)
         ap_ST_fsm_state1 : begin
-            if ((~((ap_start == 1'b0) | (ap_done_reg == 1'b1)) & (1'b1 == ap_CS_fsm_state1))) begin
+            if (((ap_start == 1'b1) & (1'b1 == ap_CS_fsm_state1))) begin
                 ap_NS_fsm = ap_ST_fsm_state2;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state1;
@@ -487,7 +470,7 @@ always @ (*) begin
             ap_NS_fsm = ap_ST_fsm_state5;
         end
         ap_ST_fsm_state15 : begin
-            if (((icmp_ln44_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
+            if (((icmp_ln42_fu_340_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state15))) begin
                 ap_NS_fsm = ap_ST_fsm_state1;
             end else begin
                 ap_NS_fsm = ap_ST_fsm_state16;
@@ -542,10 +525,6 @@ assign ap_CS_fsm_state8 = ap_CS_fsm[32'd7];
 
 assign ap_CS_fsm_state9 = ap_CS_fsm[32'd8];
 
-always @ (*) begin
-    ap_block_state1 = ((ap_start == 1'b0) | (ap_done_reg == 1'b1));
-end
-
 assign grp_fu_197_p2 = ((output_length_histogram1_V_q0 == 32'd0) ? 1'b1 : 1'b0);
 
 assign i_1_fu_249_p2 = ($signed(i1_0_reg_164) + $signed(6'd63));
@@ -558,7 +537,7 @@ assign icmp_ln10_fu_216_p2 = ((i_0_reg_153 == 7'd64) ? 1'b1 : 1'b0);
 
 assign icmp_ln16_fu_238_p2 = ((i1_0_reg_164 > 6'd27) ? 1'b1 : 1'b0);
 
-assign icmp_ln44_fu_340_p2 = ((i2_0_reg_186 == 7'd64) ? 1'b1 : 1'b0);
+assign icmp_ln42_fu_340_p2 = ((i2_0_reg_186 == 7'd64) ? 1'b1 : 1'b0);
 
 assign icmp_ln879_fu_260_p2 = ((j_V_2_fu_58 == 32'd27) ? 1'b1 : 1'b0);
 
@@ -568,7 +547,7 @@ assign j_V_3_fu_301_p2 = (j_V_2_fu_58 + 32'd1);
 
 assign j_V_fu_266_p2 = ($signed(t_V_reg_175) + $signed(32'd4294967295));
 
-assign output_length_histogram2_V_address0 = zext_ln45_reg_442;
+assign output_length_histogram2_V_address0 = zext_ln43_reg_442;
 
 assign output_length_histogram2_V_d0 = output_length_histogram1_V_q1;
 
@@ -580,9 +559,9 @@ assign zext_ln19_fu_244_p1 = i1_0_reg_164;
 
 assign zext_ln215_fu_286_p1 = j_V_2_fu_58;
 
-assign zext_ln32_fu_255_p1 = i_1_fu_249_p2;
+assign zext_ln30_fu_255_p1 = i_1_fu_249_p2;
 
-assign zext_ln45_fu_352_p1 = i2_0_reg_186;
+assign zext_ln43_fu_352_p1 = i2_0_reg_186;
 
 assign zext_ln544_1_fu_281_p1 = j_V_2_fu_58;
 
@@ -592,7 +571,7 @@ assign zext_ln544_fu_272_p1 = j_V_fu_266_p2;
 
 always @ (posedge ap_clk) begin
     zext_ln11_reg_365[63:7] <= 57'b000000000000000000000000000000000000000000000000000000000;
-    zext_ln45_reg_442[63:7] <= 57'b000000000000000000000000000000000000000000000000000000000;
+    zext_ln43_reg_442[63:7] <= 57'b000000000000000000000000000000000000000000000000000000000;
 end
 
 endmodule //truncate_tree

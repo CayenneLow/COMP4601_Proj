@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -6457,12 +6458,18 @@ void filter(
                Symbol in[INPUT_SYMBOL_SIZE],
                Symbol out[INPUT_SYMBOL_SIZE],
                int *n) {_ssdm_SpecArrayDimSize(in, 256);_ssdm_SpecArrayDimSize(out, 256);
-
 #pragma HLS INLINE off
- ap_uint<SYMBOL_BITS> j=0;
-  for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
-#pragma HLS pipeline II=1
- if(in[i].frequency != 0) {
+# 6 "./hls-src/huffman_filter.cpp"
+
+
+
+  ap_uint<SYMBOL_BITS> j=0;
+  filter_label3:for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
+#pragma HLS PIPELINE II=1
+# 10 "./hls-src/huffman_filter.cpp"
+
+
+    if(in[i].frequency != 0) {
       out[j].frequency = in[i].frequency;
       out[j].value = in[i].value;
       j++;

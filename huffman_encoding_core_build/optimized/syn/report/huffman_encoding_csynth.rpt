@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'huffman_encoding'
 ================================================================
-* Date:           Tue Aug  3 15:38:38 2021
+* Date:           Wed Aug  4 17:59:05 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -29,7 +29,7 @@
     |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
     |   min   |   max   |    min    |    max    |  min |  max |   Type   |
     +---------+---------+-----------+-----------+------+------+----------+
-    |     4263|     9668| 42.630 us | 96.680 us |  2053|  4708| dataflow |
+    |     4005|     9666| 40.050 us | 96.660 us |  2053|  4708| dataflow |
     +---------+---------+-----------+-----------+------+------+----------+
 
     + Detail: 
@@ -43,7 +43,7 @@
         |canonize_tree_U0         |canonize_tree         |     2052|     2052| 20.520 us | 20.520 us |  2052|  2052|   none  |
         |create_tree_U0           |create_tree           |        2|     1022| 20.000 ns | 10.220 us |     2|  1022|   none  |
         |compute_bit_length_U0    |compute_bit_length    |      828|      828|  8.280 us |  8.280 us |   828|   828|   none  |
-        |create_codeword_U0       |create_codeword       |     1080|     1080| 10.800 us | 10.800 us |  1080|  1080|   none  |
+        |create_codeword_U0       |create_codeword       |      822|     1078|  8.220 us | 10.780 us |   822|  1078|   none  |
         |filter_U0                |filter                |      259|      259|  2.590 us |  2.590 us |   259|   259|   none  |
         |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |      513|      513|  5.130 us |  5.130 us |   513|   513|   none  |
         |Block_proc_U0            |Block_proc            |        0|        0|    0 ns   |    0 ns   |     0|     0|   none  |
@@ -64,12 +64,12 @@
 |DSP              |        -|      -|       -|      -|    -|
 |Expression       |        -|      -|       0|     74|    -|
 |FIFO             |        0|      -|      30|    264|    -|
-|Instance         |        8|      -|    5083|   8662|    0|
+|Instance         |        8|      -|    5080|   8656|    0|
 |Memory           |       17|      -|       0|      0|    0|
 |Multiplexer      |        -|      -|       -|    108|    -|
 |Register         |        -|      -|      12|      -|    -|
 +-----------------+---------+-------+--------+-------+-----+
-|Total            |       25|      0|    5125|   9108|    0|
+|Total            |       25|      0|    5122|   9102|    0|
 +-----------------+---------+-------+--------+-------+-----+
 |Available        |      280|    220|  106400|  53200|    0|
 +-----------------+---------+-------+--------+-------+-----+
@@ -85,13 +85,13 @@
     |Loop_copy_sorted_pro_U0  |Loop_copy_sorted_pro  |        0|      0|   130|   135|    0|
     |canonize_tree_U0         |canonize_tree         |        0|      0|   393|  2038|    0|
     |compute_bit_length_U0    |compute_bit_length    |        2|      0|   194|   422|    0|
-    |create_codeword_U0       |create_codeword       |        0|      0|   130|   530|    0|
+    |create_codeword_U0       |create_codeword       |        0|      0|   127|   524|    0|
     |create_tree_U0           |create_tree           |        1|      0|   518|   820|    0|
     |filter_U0                |filter                |        0|      0|    90|   166|    0|
     |sort_U0                  |sort                  |        5|      0|  3320|  2527|    0|
     |truncate_tree_U0         |truncate_tree         |        0|      0|   274|  1995|    0|
     +-------------------------+----------------------+---------+-------+------+------+-----+
-    |Total                    |                      |        8|      0|  5083|  8662|    0|
+    |Total                    |                      |        8|      0|  5080|  8656|    0|
     +-------------------------+----------------------+---------+-------+------+------+-----+
 
     * DSP48E: 

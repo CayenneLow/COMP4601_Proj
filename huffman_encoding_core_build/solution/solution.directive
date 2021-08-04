@@ -1,2 +1,47 @@
-<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView"/>
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="compute_bit_length" label="traverse_tree" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="253"/>
+                <option name="max" value="253"/>
+                <option name="avg" value="253"/>
+            </pragma>
+        </directive>
+        <directive functionName="canonize_tree" label="process_symbols" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="64"/>
+                <option name="max" value="64"/>
+                <option name="avg" value="64"/>
+            </pragma>
+        </directive>
+        <directive functionName="canonize_tree" label="canonize_tree_label0" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="25"/>
+                <option name="max" value="25"/>
+                <option name="avg" value="25"/>
+            </pragma>
+        </directive>
+        <directive functionName="huffman_encoding" label="copy_sorted" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="256"/>
+                <option name="max" value="256"/>
+                <option name="avg" value="256"/>
+            </pragma>
+        </directive>
+        <directive functionName="truncate_tree" label="reorder" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="3"/>
+                <option name="max" value="3"/>
+                <option name="avg" value="3"/>
+            </pragma>
+        </directive>
+        <directive functionName="truncate_tree" label="truncate_tree_label4" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="1"/>
+                <option name="max" value="1"/>
+                <option name="avg" value="1"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
 

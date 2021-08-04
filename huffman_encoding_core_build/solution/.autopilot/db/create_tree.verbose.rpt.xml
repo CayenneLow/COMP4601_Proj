@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'create_tree'" level="0">
-<item name = "Date">Tue Aug  3 21:42:42 2021
+<item name = "Date">Wed Aug  4 18:02:14 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00 ns, 8.661 ns, 1.25 ns</column>
+<column name="ap_clk">10.00 ns, 7.575 ns, 1.25 ns</column>
 </table>
 </item>
 </section>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">2, 1022, 20.000 ns, 10.220 us, 2, 1022, none</column>
+<column name="">1, 1021, 10.000 ns, 10.210 us, 1, 1021, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,7 +35,7 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- Loop 1">0, 1020, 4, 4, 5, 0 ~ 255, yes</column>
+<column name="- create_tree_label5">0, 1020, 4, -, -, 0 ~ 255, no</column>
 </table>
 </item>
 </section>
@@ -48,12 +48,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 473, -</column>
+<column name="Expression">-, -, 0, 467, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, -, -, -</column>
 <column name="Memory">1, -, 0, 0, 0</column>
-<column name="Multiplexer">-, -, -, 347, -</column>
-<column name="Register">-, -, 518, -, -</column>
+<column name="Multiplexer">-, -, -, 315, -</column>
+<column name="Register">-, -, 453, -, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
 <specialColumn name="Utilization (%)">~0, 0, ~0, 1, 0</specialColumn>
 </table>
@@ -70,7 +70,7 @@
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
 <keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
-<column name="frequency_V_U">create_tree_frequhbi, 1, 0, 0, 0, 255, 32, 1, 8160</column>
+<column name="frequency_V_U">create_tree_frequibs, 1, 0, 0, 0, 255, 32, 1, 8160</column>
 </table>
 </item>
 <item name = "FIFO"><table name="" hasTotal="1">
@@ -79,85 +79,75 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="add_ln15_fu_327_p2">+, 0, 0, 39, 32, 2</column>
-<column name="add_ln209_1_fu_452_p2">+, 0, 0, 39, 32, 32</column>
-<column name="add_ln209_fu_441_p2">+, 0, 0, 39, 32, 32</column>
-<column name="i_fu_342_p2">+, 0, 0, 38, 31, 1</column>
-<column name="in_count_V_1_fu_458_p2">+, 0, 0, 39, 32, 1</column>
-<column name="in_count_V_fu_385_p2">+, 0, 0, 39, 32, 1</column>
-<column name="tree_count_V_1_fu_465_p2">+, 0, 0, 39, 32, 1</column>
-<column name="tree_count_V_fu_397_p2">+, 0, 0, 39, 32, 1</column>
-<column name="and_ln26_fu_374_p2">and, 0, 0, 2, 1, 1</column>
-<column name="and_ln42_fu_430_p2">and, 0, 0, 2, 1, 1</column>
-<column name="grp_fu_321_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln15_fu_337_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln879_2_fu_364_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln879_3_fu_425_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln879_4_fu_420_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln879_fu_369_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln887_1_fu_404_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln887_fu_359_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_156">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_166">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_201">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_208">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_222">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_229">or, 0, 0, 2, 1, 1</column>
+<column name="add_ln15_fu_294_p2">+, 0, 0, 39, 32, 2</column>
+<column name="add_ln209_1_fu_414_p2">+, 0, 0, 39, 32, 32</column>
+<column name="add_ln209_fu_408_p2">+, 0, 0, 39, 32, 32</column>
+<column name="i_fu_309_p2">+, 0, 0, 38, 31, 1</column>
+<column name="in_count_V_1_fu_426_p2">+, 0, 0, 39, 32, 1</column>
+<column name="in_count_V_fu_357_p2">+, 0, 0, 39, 32, 1</column>
+<column name="tree_count_V_1_fu_439_p2">+, 0, 0, 39, 32, 1</column>
+<column name="tree_count_V_fu_369_p2">+, 0, 0, 39, 32, 1</column>
+<column name="and_ln25_fu_346_p2">and, 0, 0, 2, 1, 1</column>
+<column name="and_ln41_fu_402_p2">and, 0, 0, 2, 1, 1</column>
+<column name="grp_fu_288_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln15_fu_304_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln879_2_fu_336_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln879_3_fu_397_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln879_4_fu_392_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln879_fu_341_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln887_1_fu_376_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln887_fu_331_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="ap_condition_169">or, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_176">or, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_188">or, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_195">or, 0, 0, 2, 1, 1</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="ap_NS_fsm">38, 7, 1, 7</column>
-<column name="ap_done">9, 2, 1, 2</column>
-<column name="ap_phi_mux_p_0168_2_i_i_phi_fu_301_p4">15, 3, 32, 96</column>
-<column name="ap_phi_mux_p_094_2_i_i_phi_fu_313_p4">15, 3, 32, 96</column>
-<column name="ap_phi_mux_t_V_4_phi_fu_280_p4">15, 3, 32, 96</column>
-<column name="ap_phi_mux_t_V_5_phi_fu_269_p4">15, 3, 32, 96</column>
+<column name="ap_NS_fsm">33, 6, 1, 6</column>
+<column name="ap_phi_mux_t_V_3_be_phi_fu_268_p4">15, 3, 32, 96</column>
+<column name="ap_phi_mux_t_V_4_phi_fu_247_p4">15, 3, 32, 96</column>
+<column name="ap_phi_mux_t_V_5_phi_fu_236_p4">15, 3, 32, 96</column>
+<column name="ap_phi_mux_t_V_be_phi_fu_280_p4">15, 3, 32, 96</column>
 <column name="frequency_V_address0">27, 5, 8, 40</column>
 <column name="frequency_V_d0">15, 3, 32, 96</column>
 <column name="in_frequency_V_address0">15, 3, 8, 24</column>
 <column name="in_value_V_address0">15, 3, 8, 24</column>
 <column name="left_V_address0">15, 3, 8, 24</column>
 <column name="left_V_d0">15, 3, 32, 96</column>
-<column name="op2_assign_reg_253">9, 2, 31, 62</column>
-<column name="p_090_0_i_i_reg_288">9, 2, 32, 64</column>
+<column name="op2_assign_reg_220">9, 2, 31, 62</column>
+<column name="p_090_0_reg_255">9, 2, 32, 64</column>
 <column name="parent_V_address0">21, 4, 8, 32</column>
 <column name="parent_V_d0">15, 3, 31, 93</column>
 <column name="right_V_address0">15, 3, 8, 24</column>
 <column name="right_V_d0">15, 3, 32, 96</column>
-<column name="t_V_3_reg_229">9, 2, 32, 64</column>
-<column name="t_V_4_reg_277">9, 2, 32, 64</column>
-<column name="t_V_5_reg_266">9, 2, 32, 64</column>
-<column name="t_V_reg_241">9, 2, 32, 64</column>
-<column name="val_assign_loc_blk_n">9, 2, 1, 2</column>
-<column name="val_assign_loc_out_blk_n">9, 2, 1, 2</column>
+<column name="t_V_3_reg_196">9, 2, 32, 64</column>
+<column name="t_V_4_reg_244">9, 2, 32, 64</column>
+<column name="t_V_5_reg_233">9, 2, 32, 64</column>
+<column name="t_V_reg_208">9, 2, 32, 64</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
-<column name="add_ln15_reg_483">32, 0, 32, 0</column>
-<column name="add_ln209_1_reg_594">32, 0, 32, 0</column>
-<column name="add_ln209_reg_584">32, 0, 32, 0</column>
-<column name="and_ln42_reg_575">1, 0, 1, 0</column>
-<column name="ap_CS_fsm">6, 0, 6, 0</column>
-<column name="ap_done_reg">1, 0, 1, 0</column>
-<column name="i_reg_500">31, 0, 31, 0</column>
-<column name="icmp_ln15_reg_496">1, 0, 1, 0</column>
-<column name="icmp_ln879_4_reg_571">1, 0, 1, 0</column>
-<column name="icmp_ln887_1_reg_547">1, 0, 1, 0</column>
-<column name="op2_assign_reg_253">31, 0, 31, 0</column>
-<column name="p_090_0_i_i_reg_288">32, 0, 32, 0</column>
-<column name="t_V_3_reg_229">32, 0, 32, 0</column>
-<column name="t_V_4_reg_277">32, 0, 32, 0</column>
-<column name="t_V_5_reg_266">32, 0, 32, 0</column>
-<column name="t_V_reg_241">32, 0, 32, 0</column>
-<column name="val_assign_loc_read_reg_477">32, 0, 32, 0</column>
-<column name="zext_ln15_reg_488">31, 0, 32, 1</column>
-<column name="zext_ln44_reg_579">31, 0, 64, 33</column>
-<column name="zext_ln49_reg_589">31, 0, 64, 33</column>
-<column name="zext_ln544_5_reg_551">32, 0, 64, 32</column>
-<column name="zext_ln544_reg_505">32, 0, 64, 32</column>
+<column name="add_ln15_reg_452">32, 0, 32, 0</column>
+<column name="add_ln209_1_reg_554">32, 0, 32, 0</column>
+<column name="add_ln209_reg_549">32, 0, 32, 0</column>
+<column name="and_ln41_reg_545">1, 0, 1, 0</column>
+<column name="ap_CS_fsm">5, 0, 5, 0</column>
+<column name="i_reg_468">31, 0, 31, 0</column>
+<column name="icmp_ln879_4_reg_541">1, 0, 1, 0</column>
+<column name="icmp_ln887_1_reg_512">1, 0, 1, 0</column>
+<column name="in_value_V_load_1_reg_536">32, 0, 32, 0</column>
+<column name="op2_assign_reg_220">31, 0, 31, 0</column>
+<column name="p_090_0_reg_255">32, 0, 32, 0</column>
+<column name="t_V_3_reg_196">32, 0, 32, 0</column>
+<column name="t_V_4_reg_244">32, 0, 32, 0</column>
+<column name="t_V_5_reg_233">32, 0, 32, 0</column>
+<column name="t_V_reg_208">32, 0, 32, 0</column>
+<column name="zext_ln15_reg_457">31, 0, 32, 1</column>
+<column name="zext_ln544_5_reg_473">32, 0, 64, 32</column>
+<column name="zext_ln544_7_reg_516">32, 0, 64, 32</column>
 </table>
 </item>
 </section>
@@ -171,7 +161,6 @@
 <column name="ap_rst">in, 1, ap_ctrl_hs, create_tree, return value</column>
 <column name="ap_start">in, 1, ap_ctrl_hs, create_tree, return value</column>
 <column name="ap_done">out, 1, ap_ctrl_hs, create_tree, return value</column>
-<column name="ap_continue">in, 1, ap_ctrl_hs, create_tree, return value</column>
 <column name="ap_idle">out, 1, ap_ctrl_hs, create_tree, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, create_tree, return value</column>
 <column name="in_value_V_address0">out, 8, ap_memory, in_value_V, array</column>
@@ -180,9 +169,7 @@
 <column name="in_frequency_V_address0">out, 8, ap_memory, in_frequency_V, array</column>
 <column name="in_frequency_V_ce0">out, 1, ap_memory, in_frequency_V, array</column>
 <column name="in_frequency_V_q0">in, 32, ap_memory, in_frequency_V, array</column>
-<column name="val_assign_loc_dout">in, 32, ap_fifo, val_assign_loc, pointer</column>
-<column name="val_assign_loc_empty_n">in, 1, ap_fifo, val_assign_loc, pointer</column>
-<column name="val_assign_loc_read">out, 1, ap_fifo, val_assign_loc, pointer</column>
+<column name="num_symbols">in, 32, ap_none, num_symbols, scalar</column>
 <column name="parent_V_address0">out, 8, ap_memory, parent_V, array</column>
 <column name="parent_V_ce0">out, 1, ap_memory, parent_V, array</column>
 <column name="parent_V_we0">out, 1, ap_memory, parent_V, array</column>
@@ -195,9 +182,6 @@
 <column name="right_V_ce0">out, 1, ap_memory, right_V, array</column>
 <column name="right_V_we0">out, 1, ap_memory, right_V, array</column>
 <column name="right_V_d0">out, 32, ap_memory, right_V, array</column>
-<column name="val_assign_loc_out_din">out, 32, ap_fifo, val_assign_loc_out, pointer</column>
-<column name="val_assign_loc_out_full_n">in, 1, ap_fifo, val_assign_loc_out, pointer</column>
-<column name="val_assign_loc_out_write">out, 1, ap_fifo, val_assign_loc_out, pointer</column>
 </table>
 </item>
 </section>

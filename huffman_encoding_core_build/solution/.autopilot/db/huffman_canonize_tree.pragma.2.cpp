@@ -7202,23 +7202,25 @@ init_bits:
 
   ap_uint<SYMBOL_BITS> length = TREE_DEPTH;
   ap_uint<SYMBOL_BITS> count = 0;
-
-
-
-
-
-
-  int k = 0;
+# 40 "./hls-src/huffman_canonize_tree.cpp"
 process_symbols:
-  for(length = TREE_DEPTH; length >= 0; length--) {
-    count = codeword_length_histogram[length];
-    canonize_tree_label0:for(int i = 0; i < count; i++) {
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- int val = (int) sorted[k++].value;
-      symbol_bits[val] = length;
-      if (k >= num_symbols) break;
+  for(int k = 0; k < num_symbols; k++) {
+_ssdm_op_SpecLoopTripCount(64, 64, 64, "");
+# 41 "./hls-src/huffman_canonize_tree.cpp"
+
+    if (count == 0) {
+
+      do {
+_ssdm_op_SpecLoopTripCount(1, 2, 1, "");
+ length--;
+
+        count = codeword_length_histogram[length];
+      }
+      while (count == 0);
     }
-    if (k >= num_symbols) break;
+
+    int val = (int) sorted[k].value;
+    symbol_bits[val] = length;
+    count--;
   }
-# 58 "./hls-src/huffman_canonize_tree.cpp"
 }

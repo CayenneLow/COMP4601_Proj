@@ -37,6 +37,97 @@
                 <option name="avg" value="25"/>
             </pragma>
         </directive>
+        <directive functionName="compute_bit_length" label="init_histogram" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="compute_bit_length" label="traverse_tree" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="3"/>
+            </pragma>
+        </directive>
+        <directive functionName="canonize_tree" label="canonize_tree_label0" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="huffman_encoding" label="merge_bit_length" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="huffman_encoding" label="" functionLabel="">
+            <pragma name="DATAFLOW"/>
+        </directive>
+        <directive functionName="filter" label="filter_label3" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="filter" label="" functionLabel="">
+            <pragma name="INLINE">
+                <option name="off" value="" positionalBoolean="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="digit_histogram" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="digit_location" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="copy_in_to_sorting" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="init_histogram" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="compute_histogram" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="find_digit_location" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="sort" label="re_sort" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="truncate_tree" label="reorder" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="3"/>
+                <option name="max" value="3"/>
+                <option name="avg" value="3"/>
+            </pragma>
+        </directive>
+        <directive functionName="truncate_tree" label="truncate_tree_label4" functionLabel="">
+            <pragma name="LOOP_TRIPCOUNT">
+                <option name="min" value="1"/>
+                <option name="max" value="1"/>
+                <option name="avg" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="create_tree" label="create_tree_label5" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="II" value="5"/>
+            </pragma>
+        </directive>
     </sourceFile>
 </AutoPilot:ProjectResources>
 

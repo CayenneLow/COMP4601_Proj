@@ -31,7 +31,7 @@
 <Interval-max>1022</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<Loop1>
+<create_tree_label5>
 <TripCount>
 <range>
 <min>0</min>
@@ -46,7 +46,7 @@
 </Latency>
 <PipelineII>4</PipelineII>
 <PipelineDepth>4</PipelineDepth>
-</Loop1>
+</create_tree_label5>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 

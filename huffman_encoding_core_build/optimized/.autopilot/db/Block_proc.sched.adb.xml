@@ -52,7 +52,7 @@ entry:1  %val_assign_loc_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %val_a
 entry:2  call void @_ssdm_op_Write.ap_auto.i32P(i32* %num_nonzero_symbols, i32 %val_assign_loc_read)
 
 ]]></Node>
-<StgValue><ssdm name="write_ln74"/></StgValue>
+<StgValue><ssdm name="write_ln71"/></StgValue>
 </operation>
 
 <operation id="5" st_id="1" stage="1" lat="1">

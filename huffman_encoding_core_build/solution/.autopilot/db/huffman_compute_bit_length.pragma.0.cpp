@@ -7197,17 +7197,19 @@ void compute_bit_length (
     ap_uint<TREE_DEPTH_BITS> child_depth[INPUT_SYMBOL_SIZE-1];
     ap_uint<SYMBOL_BITS> internal_length_histogram[TREE_DEPTH];
  init_histogram:
-    for(int i = 0; i < TREE_DEPTH; i++) {
-#pragma HLS pipeline II=1
- internal_length_histogram[i] = 0;
+  for(int i = 0; i < TREE_DEPTH; i++) {
+
+        internal_length_histogram[i] = 0;
     }
 
     child_depth[num_symbols-2] = 1;
 
 traverse_tree:
     for(int i = num_symbols-3; i >= 0; i--) {
-#pragma HLS pipeline II=3
- ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
+#pragma HLS LOOP_TRIPCOUNT min=253 max=253 avg=253
+# 22 "./hls-src/huffman_compute_bit_length.cpp"
+
+        ap_uint<TREE_DEPTH_BITS> length = child_depth[parent[i]] + 1;
         child_depth[i] = length;
         if(left[i] != INTERNAL_NODE || right[i] != INTERNAL_NODE){
             int children;

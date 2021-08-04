@@ -22,21 +22,21 @@ init_bits:
 
 
   /* ====== IMPROVED LOOP ====== */
+  /*
   int k = 0;
 process_symbols:
   for(length = TREE_DEPTH; length >= 0; length--) {
     count = codeword_length_histogram[length];
     canonize_tree_label0:for(int i = 0; i < count; i++) {
-      #pragma HLS pipeline II=1
       int val = (int) sorted[k++].value;
       symbol_bits[val] = length;
       if (k >= num_symbols) break;
     }
     if (k >= num_symbols) break;
   }
+  */
 
   /* ====== Base LOOP ====== */
-  /*
 process_symbols:
   for(int k = 0; k < num_symbols; k++) {
     if (count == 0) {
@@ -54,5 +54,4 @@ process_symbols:
     symbol_bits[val] = length; //assign symbol k to have length bits
     count--; //keep assigning i bits until we have counted off n symbols
   }
-  */
 }

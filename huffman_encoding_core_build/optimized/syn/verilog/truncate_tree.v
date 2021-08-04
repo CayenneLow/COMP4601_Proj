@@ -297,7 +297,7 @@ reg   [31:0] t_V_reg_1982;
 wire    ap_CS_fsm_state38;
 wire   [0:0] icmp_ln879_1_fu_2054_p2;
 wire   [63:0] zext_ln19_fu_2015_p1;
-wire   [63:0] zext_ln32_fu_2026_p1;
+wire   [63:0] zext_ln30_fu_2026_p1;
 wire   [63:0] zext_ln544_fu_2049_p1;
 wire   [63:0] zext_ln544_1_fu_2064_p1;
 wire   [63:0] zext_ln544_2_fu_2079_p1;
@@ -403,7 +403,7 @@ always @ (posedge ap_clk) begin
     if (((icmp_ln16_fu_2009_p2 == 1'd1) & (1'b1 == ap_CS_fsm_state34))) begin
         i_reg_2780 <= i_fu_2020_p2;
         output_length_histog_64_reg_2774 <= zext_ln19_fu_2015_p1;
-        output_length_histog_65_reg_2785 <= zext_ln32_fu_2026_p1;
+        output_length_histog_65_reg_2785 <= zext_ln30_fu_2026_p1;
     end
 end
 
@@ -1695,7 +1695,7 @@ assign zext_ln19_fu_2015_p1 = i1_0_reg_1971;
 
 assign zext_ln215_fu_2069_p1 = j_V_2_fu_170;
 
-assign zext_ln32_fu_2026_p1 = i_fu_2020_p2;
+assign zext_ln30_fu_2026_p1 = i_fu_2020_p2;
 
 assign zext_ln544_1_fu_2064_p1 = j_V_2_fu_170;
 

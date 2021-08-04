@@ -17,11 +17,9 @@ void truncate_tree(
         // Look to see if there is any nodes at lengths greater than target depth
     reorder:
         while(output_length_histogram1[i] != 0) {
-#pragma HLS LOOP_TRIPCOUNT min=3 max=3 avg=3
             if (j == MAX_CODEWORD_LENGTH) {
                 // Find deepest leaf with codeword length < target depth
-                do {
-#pragma HLS LOOP_TRIPCOUNT min=1 max=1 avg=1
+                truncate_tree_label4:do {
                     j--;
                 } while(output_length_histogram1[j] == 0);
             }

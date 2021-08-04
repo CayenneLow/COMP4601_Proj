@@ -182,7 +182,7 @@ struct truncate_tree : public sc_module {
     sc_signal< sc_logic > ap_CS_fsm_state38;
     sc_signal< sc_lv<1> > icmp_ln879_1_fu_2054_p2;
     sc_signal< sc_lv<64> > zext_ln19_fu_2015_p1;
-    sc_signal< sc_lv<64> > zext_ln32_fu_2026_p1;
+    sc_signal< sc_lv<64> > zext_ln30_fu_2026_p1;
     sc_signal< sc_lv<64> > zext_ln544_fu_2049_p1;
     sc_signal< sc_lv<64> > zext_ln544_1_fu_2064_p1;
     sc_signal< sc_lv<64> > zext_ln544_2_fu_2079_p1;
@@ -637,7 +637,7 @@ struct truncate_tree : public sc_module {
     void thread_ret_V_fu_2073_p2();
     void thread_zext_ln19_fu_2015_p1();
     void thread_zext_ln215_fu_2069_p1();
-    void thread_zext_ln32_fu_2026_p1();
+    void thread_zext_ln30_fu_2026_p1();
     void thread_zext_ln544_1_fu_2064_p1();
     void thread_zext_ln544_2_fu_2079_p1();
     void thread_zext_ln544_fu_2049_p1();

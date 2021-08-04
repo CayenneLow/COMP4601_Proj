@@ -6459,11 +6459,11 @@ void filter(
                Symbol out[INPUT_SYMBOL_SIZE],
                int *n) {_ssdm_SpecArrayDimSize(in, 256);_ssdm_SpecArrayDimSize(out, 256);
 
-#pragma HLS INLINE off
- ap_uint<SYMBOL_BITS> j=0;
-  for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
-#pragma HLS pipeline II=1
- if(in[i].frequency != 0) {
+
+  ap_uint<SYMBOL_BITS> j=0;
+  filter_label3:for(int i = 0; i < INPUT_SYMBOL_SIZE; i++) {
+
+    if(in[i].frequency != 0) {
       out[j].frequency = in[i].frequency;
       out[j].value = in[i].value;
       j++;

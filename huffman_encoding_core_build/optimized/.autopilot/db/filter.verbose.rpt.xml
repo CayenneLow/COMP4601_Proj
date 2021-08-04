@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'filter'" level="0">
-<item name = "Date">Tue Aug  3 15:38:33 2021
+<item name = "Date">Wed Aug  4 17:59:00 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -35,7 +35,7 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- Loop 1">257, 257, 3, 1, 1, 256, yes</column>
+<column name="- filter_label3">257, 257, 3, 1, 1, 256, yes</column>
 </table>
 </item>
 </section>
@@ -78,10 +78,10 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="i_fu_141_p2">+, 0, 0, 15, 9, 1</column>
-<column name="j_V_fu_163_p2">+, 0, 0, 39, 32, 1</column>
-<column name="icmp_ln10_fu_135_p2">icmp, 0, 0, 13, 9, 10</column>
-<column name="icmp_ln883_fu_152_p2">icmp, 0, 0, 18, 32, 1</column>
+<column name="i_fu_143_p2">+, 0, 0, 15, 9, 1</column>
+<column name="j_V_fu_165_p2">+, 0, 0, 39, 32, 1</column>
+<column name="icmp_ln10_fu_137_p2">icmp, 0, 0, 13, 9, 10</column>
+<column name="icmp_ln883_fu_154_p2">icmp, 0, 0, 18, 32, 1</column>
 <column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
 <column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
 <column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
@@ -93,9 +93,9 @@
 <column name="ap_done">9, 2, 1, 2</column>
 <column name="ap_enable_reg_pp0_iter1">9, 2, 1, 2</column>
 <column name="ap_enable_reg_pp0_iter2">9, 2, 1, 2</column>
-<column name="i_0_i_reg_115">9, 2, 9, 18</column>
+<column name="i_0_i_reg_117">9, 2, 9, 18</column>
 <column name="n_out_blk_n">9, 2, 1, 2</column>
-<column name="t_V_fu_50">9, 2, 32, 64</column>
+<column name="t_V_fu_52">9, 2, 32, 64</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
@@ -105,11 +105,11 @@
 <column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
 <column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
-<column name="i_0_i_reg_115">9, 0, 9, 0</column>
-<column name="icmp_ln883_reg_200">1, 0, 1, 0</column>
-<column name="t_V_fu_50">32, 0, 32, 0</column>
-<column name="zext_ln12_reg_190">9, 0, 64, 55</column>
-<column name="zext_ln544_reg_204">32, 0, 64, 32</column>
+<column name="i_0_i_reg_117">9, 0, 9, 0</column>
+<column name="icmp_ln883_reg_202">1, 0, 1, 0</column>
+<column name="t_V_fu_52">32, 0, 32, 0</column>
+<column name="zext_ln12_reg_192">9, 0, 64, 55</column>
+<column name="zext_ln544_reg_206">32, 0, 64, 32</column>
 </table>
 </item>
 </section>

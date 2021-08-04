@@ -212,7 +212,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -267,7 +267,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -300,7 +300,7 @@
               <name>val_assign_loc_read</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>53</lineNumber>
+              <lineNumber>51</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -315,7 +315,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -346,10 +346,10 @@
             <Obj>
               <type>0</type>
               <id>12</id>
-              <name>val_assign_loc_out_write_ln53</name>
+              <name>val_assign_loc_out_write_ln51</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>53</lineNumber>
+              <lineNumber>51</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -364,7 +364,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -421,7 +421,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -513,7 +513,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -569,7 +569,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -625,7 +625,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -682,7 +682,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -737,7 +737,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -794,7 +794,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -850,7 +850,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -905,7 +905,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -961,7 +961,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1016,7 +1016,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1073,7 +1073,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1129,7 +1129,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1185,7 +1185,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1277,7 +1277,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1334,7 +1334,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1366,10 +1366,10 @@
             <Obj>
               <type>0</type>
               <id>45</id>
-              <name>zext_ln24</name>
+              <name>zext_ln23</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1384,20 +1384,20 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
               </inlineStackInfo>
               <originalName/>
-              <rtlName>zext_ln24_fu_275_p1</rtlName>
+              <rtlName>zext_ln23_fu_275_p1</rtlName>
               <coreName/>
             </Obj>
             <bitwidth>64</bitwidth>
@@ -1424,7 +1424,7 @@
               <name>parent_V_addr</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1439,14 +1439,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1481,7 +1481,7 @@
               <name>parent_V_load</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1496,14 +1496,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1536,7 +1536,7 @@
               <name>zext_ln544</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1551,14 +1551,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1591,7 +1591,7 @@
               <name>child_depth_V_addr_1</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1606,14 +1606,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1648,7 +1648,7 @@
               <name>child_depth_V_load</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1663,14 +1663,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1703,7 +1703,7 @@
               <name>length_V</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>24</lineNumber>
+              <lineNumber>23</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1718,14 +1718,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>24</second>
+                      <second>23</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1759,7 +1759,7 @@
               <name>child_depth_V_addr_2</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>25</lineNumber>
+              <lineNumber>24</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1774,14 +1774,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>25</second>
+                      <second>24</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1813,10 +1813,10 @@
             <Obj>
               <type>0</type>
               <id>53</id>
-              <name>child_depth_V_addr_2_write_ln25</name>
+              <name>child_depth_V_addr_2_write_ln24</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>25</lineNumber>
+              <lineNumber>24</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1831,14 +1831,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>25</second>
+                      <second>24</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1873,7 +1873,7 @@
               <name>left_V_addr</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1888,14 +1888,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1930,7 +1930,7 @@
               <name>left_V_load</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1945,14 +1945,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1985,7 +1985,7 @@
               <name>icmp_ln883</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2000,14 +2000,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2041,7 +2041,7 @@
               <name>right_V_addr</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2056,14 +2056,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2098,7 +2098,7 @@
               <name>right_V_load</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2113,14 +2113,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2153,7 +2153,7 @@
               <name>icmp_ln883_1</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2168,14 +2168,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2206,10 +2206,10 @@
             <Obj>
               <type>0</type>
               <id>60</id>
-              <name>_ln26</name>
+              <name>_ln25</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2224,14 +2224,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2263,10 +2263,10 @@
             <Obj>
               <type>0</type>
               <id>62</id>
-              <name>_ln28</name>
+              <name>_ln27</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>28</lineNumber>
+              <lineNumber>27</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2281,14 +2281,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>28</second>
+                      <second>27</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2320,10 +2320,10 @@
             <Obj>
               <type>0</type>
               <id>64</id>
-              <name>_ln26</name>
+              <name>_ln25</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2338,14 +2338,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2451,7 +2451,7 @@
               <name>zext_ln544_7</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>35</lineNumber>
+              <lineNumber>34</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2466,14 +2466,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>35</second>
+                      <second>34</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2506,7 +2506,7 @@
               <name>zext_ln544_8</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>35</lineNumber>
+              <lineNumber>34</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2521,14 +2521,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>35</second>
+                      <second>34</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2561,7 +2561,7 @@
               <name>internal_length_hist_2</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>35</lineNumber>
+              <lineNumber>34</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2576,14 +2576,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>35</second>
+                      <second>34</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2618,7 +2618,7 @@
               <name>count_V</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>35</lineNumber>
+              <lineNumber>34</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2633,14 +2633,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>35</second>
+                      <second>34</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2673,7 +2673,7 @@
               <name>count_V_1</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>36</lineNumber>
+              <lineNumber>35</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2688,14 +2688,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>36</second>
+                      <second>35</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2726,10 +2726,10 @@
             <Obj>
               <type>0</type>
               <id>74</id>
-              <name>internal_length_hist_2_write_ln37</name>
+              <name>internal_length_hist_2_write_ln36</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>37</lineNumber>
+              <lineNumber>36</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2744,14 +2744,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>37</second>
+                      <second>36</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2786,7 +2786,7 @@
               <name>length_histogram_V_a</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>38</lineNumber>
+              <lineNumber>37</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2801,14 +2801,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>38</second>
+                      <second>37</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2840,10 +2840,10 @@
             <Obj>
               <type>0</type>
               <id>76</id>
-              <name>length_histogram_V_a_write_ln38</name>
+              <name>length_histogram_V_a_write_ln37</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>38</lineNumber>
+              <lineNumber>37</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2858,14 +2858,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>38</second>
+                      <second>37</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2896,10 +2896,10 @@
             <Obj>
               <type>0</type>
               <id>77</id>
-              <name>_ln39</name>
+              <name>_ln38</name>
               <fileName>./hls-src/huffman_compute_bit_length.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>39</lineNumber>
+              <lineNumber>38</lineNumber>
               <contextFuncName>compute_bit_length</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -2914,14 +2914,14 @@
                         <first>./hls-src/huffman_compute_bit_length.cpp</first>
                         <second>compute_bit_length</second>
                       </first>
-                      <second>39</second>
+                      <second>38</second>
                     </item>
                     <item>
                       <first>
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -2976,7 +2976,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -3032,7 +3032,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -6263,7 +6263,7 @@
           </second>
         </item>
         <item>
-          <first>zext_ln24_reg_351</first>
+          <first>zext_ln23_reg_351</first>
           <second>
             <count>3</count>
             <item_version>0</item_version>
@@ -7452,7 +7452,7 @@
         </second>
       </item>
       <item>
-        <first>zext_ln24_fu_275</first>
+        <first>zext_ln23_fu_275</first>
         <second>
           <count>1</count>
           <item_version>0</item_version>
@@ -7500,7 +7500,7 @@
         </second>
       </item>
       <item>
-        <first>write_ln53_write_fu_94</first>
+        <first>write_ln51_write_fu_94</first>
         <second>
           <count>1</count>
           <item_version>0</item_version>
@@ -7871,7 +7871,7 @@
         </second>
       </item>
       <item>
-        <first>zext_ln24_reg_351</first>
+        <first>zext_ln23_reg_351</first>
         <second>
           <count>1</count>
           <item_version>0</item_version>

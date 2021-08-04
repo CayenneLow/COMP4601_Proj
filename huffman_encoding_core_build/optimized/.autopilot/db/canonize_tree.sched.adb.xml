@@ -8922,7 +8922,7 @@ entry:513  store i5 0, i5* %symbol_bits_V_addr_255, align 1
 entry:514  br label %process_symbols_begin
 
 ]]></Node>
-<StgValue><ssdm name="br_ln26"/></StgValue>
+<StgValue><ssdm name="br_ln27"/></StgValue>
 </operation>
 </state>
 
@@ -9015,10 +9015,10 @@ process_symbols_begin:1  %k_0_i_i = phi i32 [ %i_op_assign_1, %process_symbols_e
 
 <Node id="523" bw="0" op_0_bw="0" op_1_bw="0">
 <![CDATA[
-process_symbols_begin:2  call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str485) nounwind
+process_symbols_begin:2  call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str484) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specloopname_ln26"/></StgValue>
+<StgValue><ssdm name="specloopname_ln27"/></StgValue>
 </operation>
 
 <operation id="655" st_id="130" stage="1" lat="1">
@@ -9030,7 +9030,7 @@ process_symbols_begin:2  call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_s
 
 <Node id="524" bw="32" op_0_bw="32" op_1_bw="0">
 <![CDATA[
-process_symbols_begin:3  %tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([16 x i8]* @p_str485)
+process_symbols_begin:3  %tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([16 x i8]* @p_str484)
 
 ]]></Node>
 <StgValue><ssdm name="tmp_i_i"/></StgValue>
@@ -9045,10 +9045,10 @@ process_symbols_begin:3  %tmp_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([1
 
 <Node id="525" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="0">
 <![CDATA[
-process_symbols_begin:4  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 64, i32 64, i32 64, [1 x i8]* @p_str384) nounwind
+process_symbols_begin:4  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 64, i32 64, i32 64, [1 x i8]* @p_str383) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="speclooptripcount_ln27"/></StgValue>
+<StgValue><ssdm name="speclooptripcount_ln28"/></StgValue>
 </operation>
 
 <operation id="657" st_id="130" stage="1" lat="2">
@@ -9078,7 +9078,7 @@ process_symbols_begin:7  %count_V = load i32* %codeword_length_hist, align 4
 process_symbols_begin:8  br label %0
 
 ]]></Node>
-<StgValue><ssdm name="br_ln28"/></StgValue>
+<StgValue><ssdm name="br_ln29"/></StgValue>
 </operation>
 </state>
 
@@ -9156,7 +9156,7 @@ process_symbols_begin:8  br label %0
 :4  br i1 %icmp_ln887, label %canonize_tree_label0_begin, label %.loopexit.i.i
 
 ]]></Node>
-<StgValue><ssdm name="br_ln28"/></StgValue>
+<StgValue><ssdm name="br_ln29"/></StgValue>
 </operation>
 
 <operation id="664" st_id="131" stage="1" lat="1">
@@ -9169,10 +9169,10 @@ process_symbols_begin:8  br label %0
 
 <Node id="538" bw="32" op_0_bw="32" op_1_bw="0">
 <![CDATA[
-canonize_tree_label0_begin:1  %tmp_14_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([21 x i8]* @p_str586)
+canonize_tree_label0_begin:1  %tmp_12_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([21 x i8]* @p_str585)
 
 ]]></Node>
-<StgValue><ssdm name="tmp_14_i_i"/></StgValue>
+<StgValue><ssdm name="tmp_12_i_i"/></StgValue>
 </operation>
 
 <operation id="665" st_id="131" stage="1" lat="1">
@@ -9266,10 +9266,10 @@ canonize_tree_label0_begin:12  %icmp_ln891 = icmp ult i32 %k, %val_assign_loc_re
 
 <Node id="552" bw="32" op_0_bw="32" op_1_bw="0" op_2_bw="32">
 <![CDATA[
-canonize_tree_label0_end:0  %empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd([21 x i8]* @p_str586, i32 %tmp_14_i_i)
+canonize_tree_label0_end:0  %empty_32 = call i32 (...)* @_ssdm_op_SpecRegionEnd([21 x i8]* @p_str585, i32 %tmp_12_i_i)
 
 ]]></Node>
-<StgValue><ssdm name="empty_33"/></StgValue>
+<StgValue><ssdm name="empty_32"/></StgValue>
 </operation>
 
 <operation id="671" st_id="131" stage="1" lat="1">
@@ -9286,7 +9286,7 @@ canonize_tree_label0_end:0  %empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd(
 canonize_tree_label0_end:1  br label %0
 
 ]]></Node>
-<StgValue><ssdm name="br_ln28"/></StgValue>
+<StgValue><ssdm name="br_ln29"/></StgValue>
 </operation>
 </state>
 
@@ -9302,10 +9302,10 @@ canonize_tree_label0_end:1  br label %0
 
 <Node id="537" bw="0" op_0_bw="0" op_1_bw="0">
 <![CDATA[
-canonize_tree_label0_begin:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @p_str586) nounwind
+canonize_tree_label0_begin:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]* @p_str585) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specloopname_ln28"/></StgValue>
+<StgValue><ssdm name="specloopname_ln29"/></StgValue>
 </operation>
 
 <operation id="673" st_id="132" stage="1" lat="1">
@@ -9318,10 +9318,10 @@ canonize_tree_label0_begin:0  call void (...)* @_ssdm_op_SpecLoopName([21 x i8]*
 
 <Node id="539" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="0">
 <![CDATA[
-canonize_tree_label0_begin:2  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 25, i32 25, i32 25, [1 x i8]* @p_str384) nounwind
+canonize_tree_label0_begin:2  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 25, i32 25, i32 25, [1 x i8]* @p_str383) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="speclooptripcount_ln29"/></StgValue>
+<StgValue><ssdm name="speclooptripcount_ln30"/></StgValue>
 </operation>
 
 <operation id="674" st_id="132" stage="1" lat="1">
@@ -9334,10 +9334,10 @@ canonize_tree_label0_begin:2  call void (...)* @_ssdm_op_SpecLoopTripCount(i32 2
 
 <Node id="540" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32" op_3_bw="32" op_4_bw="32" op_5_bw="0">
 <![CDATA[
-canonize_tree_label0_begin:3  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str384) nounwind
+canonize_tree_label0_begin:3  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str383) nounwind
 
 ]]></Node>
-<StgValue><ssdm name="specpipeline_ln29"/></StgValue>
+<StgValue><ssdm name="specpipeline_ln30"/></StgValue>
 </operation>
 
 <operation id="675" st_id="132" stage="1" lat="2">
@@ -9494,10 +9494,10 @@ canonize_tree_label0_begin:13  br i1 %icmp_ln891, label %canonize_tree_label0_en
 
 <Node id="559" bw="32" op_0_bw="32" op_1_bw="0" op_2_bw="32">
 <![CDATA[
-process_symbols_end:0  %empty_34 = call i32 (...)* @_ssdm_op_SpecRegionEnd([16 x i8]* @p_str485, i32 %tmp_i_i)
+process_symbols_end:0  %empty_33 = call i32 (...)* @_ssdm_op_SpecRegionEnd([16 x i8]* @p_str484, i32 %tmp_i_i)
 
 ]]></Node>
-<StgValue><ssdm name="empty_34"/></StgValue>
+<StgValue><ssdm name="empty_33"/></StgValue>
 </operation>
 
 <operation id="685" st_id="133" stage="1" lat="1">
@@ -9529,7 +9529,7 @@ process_symbols_end:1  %length_V = add i32 %t_V, -1
 process_symbols_end:2  br label %process_symbols_begin
 
 ]]></Node>
-<StgValue><ssdm name="br_ln26"/></StgValue>
+<StgValue><ssdm name="br_ln27"/></StgValue>
 </operation>
 
 <operation id="687" st_id="133" stage="1" lat="1">

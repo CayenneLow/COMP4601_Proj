@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'huffman_encoding'" level="0">
-<item name = "Date">Tue Aug  3 15:38:38 2021
+<item name = "Date">Wed Aug  4 17:59:05 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">4263, 9668, 42.630 us, 96.680 us, 2053, 4708, dataflow</column>
+<column name="">4005, 9666, 40.050 us, 96.660 us, 2053, 4708, dataflow</column>
 </table>
 </item>
 <item name = "Detail">
@@ -36,7 +36,7 @@
 <column name="canonize_tree_U0">canonize_tree, 2052, 2052, 20.520 us, 20.520 us, 2052, 2052, none</column>
 <column name="create_tree_U0">create_tree, 2, 1022, 20.000 ns, 10.220 us, 2, 1022, none</column>
 <column name="compute_bit_length_U0">compute_bit_length, 828, 828, 8.280 us, 8.280 us, 828, 828, none</column>
-<column name="create_codeword_U0">create_codeword, 1080, 1080, 10.800 us, 10.800 us, 1080, 1080, none</column>
+<column name="create_codeword_U0">create_codeword, 822, 1078, 8.220 us, 10.780 us, 822, 1078, none</column>
 <column name="filter_U0">filter, 259, 259, 2.590 us, 2.590 us, 259, 259, none</column>
 <column name="Loop_copy_sorted_pro_U0">Loop_copy_sorted_pro, 513, 513, 5.130 us, 5.130 us, 513, 513, none</column>
 <column name="Block_proc_U0">Block_proc, 0, 0, 0 ns, 0 ns, 0, 0, none</column>
@@ -58,7 +58,7 @@
 <column name="DSP">-, -, -, -, -</column>
 <column name="Expression">-, -, 0, 74, -</column>
 <column name="FIFO">0, -, 30, 264, -</column>
-<column name="Instance">8, -, 5083, 8662, 0</column>
+<column name="Instance">8, -, 5080, 8656, 0</column>
 <column name="Memory">17, -, 0, 0, 0</column>
 <column name="Multiplexer">-, -, -, 108, -</column>
 <column name="Register">-, -, 12, -, -</column>
@@ -74,7 +74,7 @@
 <column name="Loop_copy_sorted_pro_U0">Loop_copy_sorted_pro, 0, 0, 130, 135, 0</column>
 <column name="canonize_tree_U0">canonize_tree, 0, 0, 393, 2038, 0</column>
 <column name="compute_bit_length_U0">compute_bit_length, 2, 0, 194, 422, 0</column>
-<column name="create_codeword_U0">create_codeword, 0, 0, 130, 530, 0</column>
+<column name="create_codeword_U0">create_codeword, 0, 0, 127, 524, 0</column>
 <column name="create_tree_U0">create_tree, 1, 0, 518, 820, 0</column>
 <column name="filter_U0">filter, 0, 0, 90, 166, 0</column>
 <column name="sort_U0">sort, 5, 0, 3320, 2527, 0</column>

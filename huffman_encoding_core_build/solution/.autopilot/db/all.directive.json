@@ -1,3 +1,137 @@
-{
-  
-}
+{"sourceFile": [{
+      "name": "",
+      "directive": [
+        {
+          "functionName": "compute_bit_length",
+          "label": "traverse_tree",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "253"
+              },
+              {
+                "name": "max",
+                "value": "253"
+              },
+              {
+                "name": "avg",
+                "value": "253"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "canonize_tree",
+          "label": "process_symbols",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "64"
+              },
+              {
+                "name": "max",
+                "value": "64"
+              },
+              {
+                "name": "avg",
+                "value": "64"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "canonize_tree",
+          "label": "canonize_tree_label0",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "25"
+              },
+              {
+                "name": "max",
+                "value": "25"
+              },
+              {
+                "name": "avg",
+                "value": "25"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "huffman_encoding",
+          "label": "copy_sorted",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "256"
+              },
+              {
+                "name": "max",
+                "value": "256"
+              },
+              {
+                "name": "avg",
+                "value": "256"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "truncate_tree",
+          "label": "reorder",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "3"
+              },
+              {
+                "name": "max",
+                "value": "3"
+              },
+              {
+                "name": "avg",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "truncate_tree",
+          "label": "truncate_tree_label4",
+          "functionLabel": "",
+          "pragma": {
+            "name": "LOOP_TRIPCOUNT",
+            "option": [
+              {
+                "name": "min",
+                "value": "1"
+              },
+              {
+                "name": "max",
+                "value": "1"
+              },
+              {
+                "name": "avg",
+                "value": "1"
+              }
+            ]
+          }
+        }
+      ]
+    }]}

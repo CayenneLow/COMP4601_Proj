@@ -2,170 +2,111 @@
 -- Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2020.1 (64-bit)
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- ==============================================================
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+--
+library ieee; 
+use ieee.std_logic_1164.all; 
+use ieee.std_logic_unsigned.all;
 
-entity huffman_encoding_tde  is
-    generic (
-        DataWidth    : integer := 32;
-        AddressRange : integer := 32;
-        AddressWidth : integer := 8;
-        BufferCount  : integer := 2;
-        IndexWidth   : integer := 1
-    );
+entity huffman_encoding_tde_ram is 
+    generic(
+            MEM_TYPE    : string := "block"; 
+            DWIDTH     : integer := 31; 
+            AWIDTH     : integer := 8; 
+            MEM_SIZE    : integer := 255
+    ); 
     port (
-        -- system signals
-        clk        : in std_logic;
-        reset      : in std_logic;
-        -- initiator
-        i_ce       : in  std_logic;
-        i_write    : in  std_logic;
-        i_full_n   : out std_logic;
-        i_ce0      : in  std_logic;
-        i_we0      : in  std_logic;
-        i_address0 : in  std_logic_vector(AddressWidth-1 downto 0);
-        i_d0       : in  std_logic_vector(DataWidth-1 downto 0);
-        i_q0       : out std_logic_vector(DataWidth-1 downto 0);
-        -- target
-        t_ce       : in  std_logic;
-        t_read     : in  std_logic;
-        t_empty_n  : out std_logic;
-        t_ce0      : in  std_logic;
-        t_we0      : in  std_logic;
-        t_address0 : in  std_logic_vector(AddressWidth-1 downto 0);
-        t_d0       : in  std_logic_vector(DataWidth-1 downto 0);
-        t_q0       : out std_logic_vector(DataWidth-1 downto 0)
-    );
+          addr0     : in std_logic_vector(AWIDTH-1 downto 0); 
+          ce0       : in std_logic; 
+          d0        : in std_logic_vector(DWIDTH-1 downto 0); 
+          we0       : in std_logic; 
+          q0        : out std_logic_vector(DWIDTH-1 downto 0);
+          clk        : in std_logic 
+    ); 
+end entity; 
+
+
+architecture rtl of huffman_encoding_tde_ram is 
+
+signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
+type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
+shared variable ram : mem_array;
+
+attribute syn_ramstyle : string; 
+attribute syn_ramstyle of ram : variable is "block_ram";
+attribute ram_style : string;
+attribute ram_style of ram : variable is MEM_TYPE;
+
+begin 
+
+
+memory_access_guard_0: process (addr0) 
+begin
+      addr0_tmp <= addr0;
+--synthesis translate_off
+      if (CONV_INTEGER(addr0) > mem_size-1) then
+           addr0_tmp <= (others => '0');
+      else 
+           addr0_tmp <= addr0;
+      end if;
+--synthesis translate_on
+end process;
+
+p_memory_access_0: process (clk)  
+begin 
+    if (clk'event and clk = '1') then
+        if (ce0 = '1') then 
+            q0 <= ram(CONV_INTEGER(addr0_tmp));
+            if (we0 = '1') then 
+                ram(CONV_INTEGER(addr0_tmp)) := d0; 
+            end if;
+        end if;
+    end if;
+end process;
+
+
+end rtl;
+
+Library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity huffman_encoding_tde is
+    generic (
+        DataWidth : INTEGER := 31;
+        AddressRange : INTEGER := 255;
+        AddressWidth : INTEGER := 8);
+    port (
+        reset : IN STD_LOGIC;
+        clk : IN STD_LOGIC;
+        address0 : IN STD_LOGIC_VECTOR(AddressWidth - 1 DOWNTO 0);
+        ce0 : IN STD_LOGIC;
+        we0 : IN STD_LOGIC;
+        d0 : IN STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0);
+        q0 : OUT STD_LOGIC_VECTOR(DataWidth - 1 DOWNTO 0));
 end entity;
 
-architecture rtl of huffman_encoding_tde is
+architecture arch of huffman_encoding_tde is
+    component huffman_encoding_tde_ram is
+        port (
+            clk : IN STD_LOGIC;
+            addr0 : IN STD_LOGIC_VECTOR;
+            ce0 : IN STD_LOGIC;
+            we0 : IN STD_LOGIC;
+            d0 : IN STD_LOGIC_VECTOR;
+            q0 : OUT STD_LOGIC_VECTOR);
+    end component;
 
-component huffman_encoding_tde_memcore is
-port (
-    clk      : in  std_logic;
-    reset    : in  std_logic;
-    ce0      : in  std_logic;
-    we0      : in  std_logic;
-    address0 : in  std_logic_vector(8 downto 0);
-    d0       : in  std_logic_vector(31 downto 0);
-    q0       : out std_logic_vector(31 downto 0);
-    ce1      : in  std_logic;
-    we1      : in  std_logic;
-    address1 : in  std_logic_vector(8 downto 0);
-    d1       : in  std_logic_vector(31 downto 0);
-    q1       : out std_logic_vector(31 downto 0)
-);
-end component;
 
--- control/status
-signal iptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- initiator index
-signal tptr     : unsigned(IndexWidth-1 downto 0) := (others => '0'); -- target index
-signal count    : unsigned(IndexWidth downto 0)   := (others => '0'); -- count of written buffers
-signal full_n   : std_logic := '1'; -- whether all buffers are written
-signal empty_n  : std_logic := '0'; -- whether none of the buffers is written
-signal push_buf : std_logic;        -- finish writing a buffer
-signal pop_buf  : std_logic;        -- finish reading a buffer
-signal memcore_iaddr: std_logic_vector(AddressWidth+IndexWidth-1 downto 0);
-signal memcore_taddr: std_logic_vector(AddressWidth+IndexWidth-1 downto 0);
 
 begin
-
-    memcore_iaddr <= i_address0 & std_logic_vector(iptr);
-    memcore_taddr <= t_address0 & std_logic_vector(tptr);
-    huffman_encoding_tde_memcore_U : component huffman_encoding_tde_memcore
+    huffman_encoding_tde_ram_U :  component huffman_encoding_tde_ram
     port map (
-        clk      => clk,
-        reset    => reset,
-        ce0      => i_ce0,
-        we0      => i_we0,
-        address0 => memcore_iaddr,
-        d0       => i_d0,
-        q0       => i_q0,
-
-        ce1      => t_ce0,
-        we1      => t_we0,
-        address1 => memcore_taddr,
-        d1       => t_d0,
-        q1       => t_q0
-        );
-
-    ----------------- output ------------------------------
-    i_full_n  <= full_n;
-    t_empty_n <= empty_n;
-
-    ----------------- control/status ----------------------
-    push_buf <= i_ce and i_write and full_n;
-    pop_buf  <= t_ce and t_read and empty_n;
-
-    -- iptr
-    process(clk) begin
-        if (clk'event and clk='1') then
-            if (reset = '1') then
-                iptr <= (others => '0');
-            elsif (push_buf = '1') then
-                if (iptr = BufferCount - 1) then
-                    iptr <= (others => '0');
-                else
-                    iptr <= iptr + 1;
-                end if;
-            end if;
-        end if;
-    end process;
-
-    -- tptr
-    process(clk) begin
-        if (clk'event and clk='1') then
-            if (reset = '1') then
-                tptr <= (others => '0');
-            elsif (pop_buf = '1') then
-                if (tptr = BufferCount - 1) then
-                    tptr <= (others => '0');
-                else
-                    tptr <= tptr + 1;
-                end if;
-            end if;
-        end if;
-    end process;
-
-    -- count
-    process(clk) begin
-        if (clk'event and clk='1') then
-            if (reset = '1') then
-                count <= (others => '0');
-            elsif (push_buf = '1' and pop_buf = '0') then
-                count <= count + 1;
-            elsif (push_buf = '0' and pop_buf = '1') then
-                count <= count - 1;
-            end if;
-        end if;
-    end process;
-
-    -- full_n
-    process(clk) begin
-        if (clk'event and clk='1') then
-            if (reset = '1') then
-                full_n <= '1';
-            elsif (push_buf = '1' and pop_buf = '0' and count = BufferCount - 2) then
-                full_n <= '0';
-            elsif (push_buf = '0' and pop_buf = '1') then
-                full_n <= '1';
-            end if;
-        end if;
-    end process;
-
-    -- empty_n
-    process(clk) begin
-        if (clk'event and clk='1') then
-            if (reset = '1') then
-                empty_n <= '0';
-            elsif (push_buf = '1' and pop_buf = '0') then
-                empty_n <= '1';
-            elsif (push_buf = '0' and pop_buf = '1' and count = 1) then
-                empty_n <= '0';
-            end if;
-        end if;
-    end process;
+        clk => clk,
+        addr0 => address0,
+        ce0 => ce0,
+        we0 => we0,
+        d0 => d0,
+        q0 => q0);
 
 end architecture;
+
 

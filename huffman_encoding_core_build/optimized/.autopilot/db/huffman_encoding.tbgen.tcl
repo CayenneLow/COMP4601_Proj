@@ -113,7 +113,7 @@ set RtlHierarchyInfo {[
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
 		"Pipeline" : "Dataflow", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "1",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "4263", "EstimateLatencyMax" : "9668",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "4005", "EstimateLatencyMax" : "9666",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -328,7 +328,7 @@ set RtlHierarchyInfo {[
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1080", "EstimateLatencyMax" : "1080",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "822", "EstimateLatencyMax" : "1078",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -373,7 +373,7 @@ set ArgLastReadFirstWriteLatency {
 	huffman_encoding {
 		symbol_histogram_value_V {Type I LastRead 2 FirstWrite -1}
 		symbol_histogram_frequency_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 4}
+		encoding_V {Type O LastRead -1 FirstWrite 3}
 		num_nonzero_symbols {Type O LastRead -1 FirstWrite 0}}
 	filter {
 		in_value_V {Type I LastRead 2 FirstWrite -1}
@@ -422,9 +422,9 @@ set ArgLastReadFirstWriteLatency {
 		codeword_length_histogram_V {Type I LastRead 128 FirstWrite -1}
 		symbol_bits_V {Type O LastRead -1 FirstWrite 0}}
 	create_codeword {
-		symbol_bits_V {Type I LastRead 3 FirstWrite -1}
+		symbol_bits_V {Type I LastRead 2 FirstWrite -1}
 		codeword_length_histogram_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 4}}
+		encoding_V {Type O LastRead -1 FirstWrite 3}}
 	Block_proc {
 		val_assign_loc {Type I LastRead 0 FirstWrite -1}
 		num_nonzero_symbols {Type O LastRead -1 FirstWrite 0}}}
@@ -432,7 +432,7 @@ set ArgLastReadFirstWriteLatency {
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "4263", "Max" : "9668"}
+	{"Name" : "Latency", "Min" : "4005", "Max" : "9666"}
 	, {"Name" : "Interval", "Min" : "2053", "Max" : "4708"}
 ]}
 

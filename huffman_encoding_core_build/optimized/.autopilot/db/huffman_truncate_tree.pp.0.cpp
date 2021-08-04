@@ -6361,7 +6361,8 @@ inline bool operator!=(
 }
 # 399 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_fixed.h" 2
 # 368 "D:/Xilinx/Vivado/2020.1/common/technology/autopilot\\ap_int.h" 2
-# 2 "./hls-src/huffman.h" 2
+# 1 "./hls-src/huffman.h" 2
+
 
 
 const static int INPUT_SYMBOL_SIZE = 256;
@@ -7206,11 +7207,15 @@ void truncate_tree(
     reorder:
         while(output_length_histogram1[i] != 0) {
 #pragma HLS LOOP_TRIPCOUNT min=3 max=3 avg=3
- if (j == MAX_CODEWORD_LENGTH) {
+# 19 "./hls-src/huffman_truncate_tree.cpp"
 
-                do {
+            if (j == MAX_CODEWORD_LENGTH) {
+
+                truncate_tree_label4:do {
 #pragma HLS LOOP_TRIPCOUNT min=1 max=1 avg=1
- j--;
+# 22 "./hls-src/huffman_truncate_tree.cpp"
+
+                    j--;
                 } while(output_length_histogram1[j] == 0);
             }
 
@@ -7231,11 +7236,11 @@ void truncate_tree(
  copy_output:
     for(int i = 0; i < TREE_DEPTH; i++) {
 #pragma HLS UNROLL
-# 44 "./hls-src/huffman_truncate_tree.cpp"
+# 42 "./hls-src/huffman_truncate_tree.cpp"
 
         output_length_histogram2[i] = output_length_histogram1[i];
-        (void) ((!!(output_length_histogram1[i] >= 0)) || (_assert("output_length_histogram1[i] >= 0","./hls-src/huffman_truncate_tree.cpp",46),0));
-        (void) ((!!(output_length_histogram1[i] <= limit)) || (_assert("output_length_histogram1[i] <= limit","./hls-src/huffman_truncate_tree.cpp",47),0));
+        (void) ((!!(output_length_histogram1[i] >= 0)) || (_assert("output_length_histogram1[i] >= 0","./hls-src/huffman_truncate_tree.cpp",44),0));
+        (void) ((!!(output_length_histogram1[i] <= limit)) || (_assert("output_length_histogram1[i] <= limit","./hls-src/huffman_truncate_tree.cpp",45),0));
         limit *= 2;
     }
 }

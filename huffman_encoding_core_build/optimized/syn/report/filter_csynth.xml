@@ -31,12 +31,12 @@
 <Interval-max>259</Interval-max>
 </SummaryOfOverallLatency>
 <SummaryOfLoopLatency>
-<Loop1>
+<filter_label3>
 <TripCount>256</TripCount>
 <Latency>257</Latency>
 <PipelineII>1</PipelineII>
 <PipelineDepth>3</PipelineDepth>
-</Loop1>
+</filter_label3>
 </SummaryOfLoopLatency>
 </PerformanceEstimates>
 

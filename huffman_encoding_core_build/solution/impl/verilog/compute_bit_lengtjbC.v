@@ -5,9 +5,9 @@
 `timescale 1 ns / 1 ps
 module compute_bit_lengtjbC_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 32;
-parameter AWIDTH = 6;
-parameter MEM_SIZE = 64;
+parameter DWIDTH = 6;
+parameter AWIDTH = 8;
+parameter MEM_SIZE = 255;
 
 input[AWIDTH-1:0] addr0;
 input ce0;
@@ -43,9 +43,9 @@ module compute_bit_lengtjbC(
     d0,
     q0);
 
-parameter DataWidth = 32'd32;
-parameter AddressRange = 32'd64;
-parameter AddressWidth = 32'd6;
+parameter DataWidth = 32'd6;
+parameter AddressRange = 32'd255;
+parameter AddressWidth = 32'd8;
 input reset;
 input clk;
 input[AddressWidth - 1:0] address0;

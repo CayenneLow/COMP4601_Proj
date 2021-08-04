@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'compute_bit_length'" level="0">
-<item name = "Date">Tue Aug  3 21:42:39 2021
+<item name = "Date">Wed Aug  4 18:02:12 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">?, ?, ?, ?, ?, ?, none</column>
+<column name="">1078, 1331, 10.780 us, 13.310 us, 1078, 1331, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,8 +35,8 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- init_histogram">64, 64, 1, 1, 1, 64, yes</column>
-<column name="- traverse_tree">?, ?, 5, 3, 3, ?, yes</column>
+<column name="- init_histogram">64, 64, 1, -, -, 64, no</column>
+<column name="- traverse_tree">1012, 1265, 4 ~ 5, -, -, 253, no</column>
 </table>
 </item>
 </section>

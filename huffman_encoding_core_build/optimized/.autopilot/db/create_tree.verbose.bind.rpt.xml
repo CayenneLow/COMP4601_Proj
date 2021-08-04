@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'create_tree'" level="0">
-<item name = "Date">Tue Aug  3 15:38:29 2021
+<item name = "Date">Wed Aug  4 17:58:56 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -35,7 +35,7 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- Loop 1">0, 1020, 4, 4, 5, 0 ~ 255, yes</column>
+<column name="- create_tree_label5">0, 1020, 4, 4, 5, 0 ~ 255, yes</column>
 </table>
 </item>
 </section>

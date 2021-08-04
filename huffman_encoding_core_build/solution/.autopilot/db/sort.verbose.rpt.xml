@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'sort'" level="0">
-<item name = "Date">Tue Aug  3 21:42:41 2021
+<item name = "Date">Wed Aug  4 18:02:13 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">355, 4707, 3.550 us, 47.070 us, 355, 4707, none</column>
+<column name="">410, 15258, 4.100 us, 0.153 ms, 410, 15258, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,12 +35,12 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- copy_in_to_sorting">0, 256, 2, 1, 1, 0 ~ 256, yes</column>
-<column name="- radix_sort">352, 4448, 44 ~ 556, -, -, 8, no</column>
-<column name=" + init_histogram">16, 16, 1, 1, 1, 16, yes</column>
-<column name=" + compute_histogram">2, 258, 3, 1, 1, 0 ~ 256, yes</column>
-<column name=" + find_digit_location">15, 15, 1, 1, 1, 15, yes</column>
-<column name=" + re_sort">2, 258, 3, 1, 1, 0 ~ 256, yes</column>
+<column name="- copy_in_to_sorting">0, 512, 2, -, -, 0 ~ 256, no</column>
+<column name="- radix_sort">408, 14744, 51 ~ 1843, -, -, 8, no</column>
+<column name=" + init_histogram">16, 16, 1, -, -, 16, no</column>
+<column name=" + compute_histogram">0, 1024, 4, -, -, 0 ~ 256, no</column>
+<column name=" + find_digit_location">30, 30, 2, -, -, 15, no</column>
+<column name=" + re_sort">0, 768, 3, -, -, 0 ~ 256, no</column>
 </table>
 </item>
 </section>
@@ -53,23 +53,20 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
 <column name="DSP">-, -, -, -, -</column>
-<column name="Expression">-, -, 0, 468, -</column>
+<column name="Expression">-, -, 0, 471, -</column>
 <column name="FIFO">-, -, -, -, -</column>
-<column name="Instance">-, -, 0, 195, -</column>
-<column name="Memory">5, -, 0, 0, 0</column>
-<column name="Multiplexer">-, -, -, 1864, -</column>
-<column name="Register">-, -, 3320, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">5, -, 128, 16, 0</column>
+<column name="Multiplexer">-, -, -, 329, -</column>
+<column name="Register">-, -, 336, -, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
-<specialColumn name="Utilization (%)">1, 0, 3, 4, 0</specialColumn>
+<specialColumn name="Utilization (%)">1, 0, ~0, 1, 0</specialColumn>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
-<column name="huffman_encoding_g8j_U6">huffman_encoding_g8j, 0, 0, 0, 65, 0</column>
-<column name="huffman_encoding_g8j_U7">huffman_encoding_g8j, 0, 0, 0, 65, 0</column>
-<column name="huffman_encoding_g8j_U8">huffman_encoding_g8j, 0, 0, 0, 65, 0</column>
 </table>
 </item>
 <item name = "DSP48E"><table name="" hasTotal="0">
@@ -78,7 +75,9 @@
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
 <keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
-<column name="current_digit_V_U">sort_current_digifYi, 1, 0, 0, 0, 256, 4, 1, 1024</column>
+<column name="current_digit_V_U">sort_current_digihbi, 1, 0, 0, 0, 256, 4, 1, 1024</column>
+<column name="digit_histogram_V_U">sort_digit_histogfYi, 0, 64, 8, 0, 16, 32, 1, 512</column>
+<column name="digit_location_V_U">sort_digit_histogfYi, 0, 64, 8, 0, 16, 32, 1, 512</column>
 <column name="previous_sorting_val_U">sort_previous_sorbkb, 1, 0, 0, 0, 256, 32, 1, 8192</column>
 <column name="previous_sorting_fre_U">sort_previous_sorbkb, 1, 0, 0, 0, 256, 32, 1, 8192</column>
 <column name="sorting_value_V_U">sort_previous_sorbkb, 1, 0, 0, 0, 256, 32, 1, 8192</column>
@@ -91,172 +90,38 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="digit_histogram_0_V_fu_5013_p2">+, 0, 0, 39, 1, 32</column>
-<column name="digit_location_0_V_fu_5171_p2">+, 0, 0, 39, 32, 1</column>
-<column name="digit_location_1_V_fu_5083_p2">+, 0, 0, 39, 32, 32</column>
-<column name="i_3_fu_5104_p2">+, 0, 0, 15, 5, 1</column>
-<column name="i_fu_4940_p2">+, 0, 0, 15, 5, 1</column>
-<column name="j_1_fu_4955_p2">+, 0, 0, 39, 32, 1</column>
-<column name="j_2_fu_5115_p2">+, 0, 0, 39, 32, 1</column>
-<column name="j_fu_4910_p2">+, 0, 0, 39, 32, 1</column>
-<column name="shift_fu_5193_p2">+, 0, 0, 15, 6, 3</column>
-<column name="icmp_ln20_fu_4905_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln28_fu_4934_p2">icmp, 0, 0, 11, 5, 6</column>
-<column name="icmp_ln34_fu_4950_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="icmp_ln44_fu_5035_p2">icmp, 0, 0, 11, 5, 6</column>
-<column name="icmp_ln49_fu_5110_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="lshr_ln1503_fu_4967_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
-<column name="ap_condition_1249">or, 0, 0, 2, 1, 1</column>
-<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
-<column name="ap_enable_pp2">xor, 0, 0, 2, 1, 2</column>
-<column name="ap_enable_pp4">xor, 0, 0, 2, 1, 2</column>
-<column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
+<column name="add_ln209_fu_501_p2">+, 0, 0, 39, 32, 32</column>
+<column name="add_ln40_fu_484_p2">+, 0, 0, 15, 5, 2</column>
+<column name="add_ln700_3_fu_549_p2">+, 0, 0, 39, 32, 1</column>
+<column name="add_ln700_fu_471_p2">+, 0, 0, 39, 1, 32</column>
+<column name="i_3_fu_508_p2">+, 0, 0, 15, 5, 1</column>
+<column name="i_fu_431_p2">+, 0, 0, 15, 5, 1</column>
+<column name="j_1_fu_447_p2">+, 0, 0, 39, 32, 1</column>
+<column name="j_2_fu_519_p2">+, 0, 0, 39, 32, 1</column>
+<column name="j_fu_401_p2">+, 0, 0, 39, 32, 1</column>
+<column name="shift_fu_530_p2">+, 0, 0, 15, 6, 3</column>
+<column name="icmp_ln18_fu_396_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln25_fu_425_p2">icmp, 0, 0, 11, 5, 6</column>
+<column name="icmp_ln30_fu_442_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="icmp_ln39_fu_478_p2">icmp, 0, 0, 11, 5, 6</column>
+<column name="icmp_ln43_fu_514_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="lshr_ln1503_fu_458_p2">lshr, 0, 0, 101, 32, 32</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="ap_NS_fsm">56, 13, 1, 13</column>
-<column name="ap_done">9, 2, 1, 2</column>
-<column name="ap_enable_reg_pp0_iter1">15, 3, 1, 3</column>
-<column name="ap_enable_reg_pp2_iter2">9, 2, 1, 2</column>
-<column name="ap_enable_reg_pp4_iter2">9, 2, 1, 2</column>
-<column name="ap_phi_mux_digit_histogram_0_V_21_phi_fu_1730_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_0_V_4_phi_fu_2798_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_10_2_phi_fu_1180_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_10_4_phi_fu_2258_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_11_2_phi_fu_1125_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_11_4_phi_fu_2204_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_12_2_phi_fu_1070_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_12_4_phi_fu_2150_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_13_2_phi_fu_1015_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_13_4_phi_fu_2096_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_14_2_phi_fu_960_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_14_4_phi_fu_2042_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_15_2_phi_fu_905_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_15_4_phi_fu_1988_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_1_V_2_phi_fu_1675_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_1_V_4_phi_fu_2744_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_2_V_2_phi_fu_1620_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_2_V_4_phi_fu_2690_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_3_V_2_phi_fu_1565_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_3_V_4_phi_fu_2636_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_4_V_2_phi_fu_1510_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_4_V_4_phi_fu_2582_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_5_V_2_phi_fu_1455_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_5_V_4_phi_fu_2528_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_6_V_2_phi_fu_1400_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_6_V_4_phi_fu_2474_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_7_V_2_phi_fu_1345_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_7_V_4_phi_fu_2420_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_8_V_2_phi_fu_1290_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_8_V_4_phi_fu_2366_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_9_V_2_phi_fu_1235_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_histogram_9_V_4_phi_fu_2312_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_0_V_1_phi_fu_4855_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_10_V_2_phi_fu_3333_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_10_V_4_phi_fu_4315_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_11_V_2_phi_fu_3282_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_11_V_4_phi_fu_4261_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_12_V_2_phi_fu_3231_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_12_V_4_phi_fu_4207_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_13_V_2_phi_fu_3180_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_13_V_4_phi_fu_4153_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_14_V_2_phi_fu_3129_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_14_V_4_phi_fu_4099_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_15_V_2_phi_fu_3078_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_15_V_4_phi_fu_4045_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_1_V_2_phi_fu_3792_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_1_V_4_phi_fu_4801_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_2_V_2_phi_fu_3741_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_2_V_4_phi_fu_4747_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_3_V_2_phi_fu_3690_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_3_V_4_phi_fu_4693_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_4_V_2_phi_fu_3639_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_4_V_4_phi_fu_4639_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_5_V_2_phi_fu_3588_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_5_V_4_phi_fu_4585_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_6_V_2_phi_fu_3537_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_6_V_4_phi_fu_4531_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_7_V_2_phi_fu_3486_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_7_V_4_phi_fu_4477_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_8_V_2_phi_fu_3435_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_8_V_4_phi_fu_4423_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_9_V_2_phi_fu_3384_p30">15, 3, 32, 96</column>
-<column name="ap_phi_mux_digit_location_9_V_4_phi_fu_4369_p32">15, 3, 32, 96</column>
-<column name="ap_phi_mux_phi_ln215_phi_fu_3027_p30">65, 16, 32, 512</column>
+<column name="ap_NS_fsm">62, 15, 1, 15</column>
 <column name="current_digit_V_address0">15, 3, 8, 24</column>
-<column name="digit_histogram_0_V_1_reg_879">9, 2, 32, 64</column>
-<column name="digit_histogram_0_V_3_reg_1972">9, 2, 32, 64</column>
-<column name="digit_histogram_10_1_reg_769">9, 2, 32, 64</column>
-<column name="digit_histogram_10_3_reg_1852">9, 2, 32, 64</column>
-<column name="digit_histogram_11_1_reg_758">9, 2, 32, 64</column>
-<column name="digit_histogram_11_3_reg_1840">9, 2, 32, 64</column>
-<column name="digit_histogram_12_1_reg_747">9, 2, 32, 64</column>
-<column name="digit_histogram_12_3_reg_1828">9, 2, 32, 64</column>
-<column name="digit_histogram_13_1_reg_736">9, 2, 32, 64</column>
-<column name="digit_histogram_13_3_reg_1816">9, 2, 32, 64</column>
-<column name="digit_histogram_14_1_reg_725">9, 2, 32, 64</column>
-<column name="digit_histogram_14_3_reg_1804">9, 2, 32, 64</column>
-<column name="digit_histogram_15_1_reg_714">9, 2, 32, 64</column>
-<column name="digit_histogram_15_3_reg_1792">9, 2, 32, 64</column>
-<column name="digit_histogram_1_V_1_reg_868">9, 2, 32, 64</column>
-<column name="digit_histogram_1_V_3_reg_1960">9, 2, 32, 64</column>
-<column name="digit_histogram_2_V_1_reg_857">9, 2, 32, 64</column>
-<column name="digit_histogram_2_V_3_reg_1948">9, 2, 32, 64</column>
-<column name="digit_histogram_3_V_1_reg_846">9, 2, 32, 64</column>
-<column name="digit_histogram_3_V_3_reg_1936">9, 2, 32, 64</column>
-<column name="digit_histogram_4_V_1_reg_835">9, 2, 32, 64</column>
-<column name="digit_histogram_4_V_3_reg_1924">9, 2, 32, 64</column>
-<column name="digit_histogram_5_V_1_reg_824">9, 2, 32, 64</column>
-<column name="digit_histogram_5_V_3_reg_1912">9, 2, 32, 64</column>
-<column name="digit_histogram_6_V_1_reg_813">9, 2, 32, 64</column>
-<column name="digit_histogram_6_V_3_reg_1900">9, 2, 32, 64</column>
-<column name="digit_histogram_7_V_1_reg_802">9, 2, 32, 64</column>
-<column name="digit_histogram_7_V_3_reg_1888">9, 2, 32, 64</column>
-<column name="digit_histogram_8_V_1_reg_791">9, 2, 32, 64</column>
-<column name="digit_histogram_8_V_3_reg_1876">9, 2, 32, 64</column>
-<column name="digit_histogram_9_V_1_reg_780">9, 2, 32, 64</column>
-<column name="digit_histogram_9_V_3_reg_1864">9, 2, 32, 64</column>
-<column name="digit_location_0_V_s_reg_4030">9, 2, 32, 64</column>
-<column name="digit_location_10_V_1_reg_2903">9, 2, 32, 64</column>
-<column name="digit_location_10_V_3_reg_3910">9, 2, 32, 64</column>
-<column name="digit_location_11_V_1_reg_2892">9, 2, 32, 64</column>
-<column name="digit_location_11_V_3_reg_3898">9, 2, 32, 64</column>
-<column name="digit_location_12_V_1_reg_2881">9, 2, 32, 64</column>
-<column name="digit_location_12_V_3_reg_3886">9, 2, 32, 64</column>
-<column name="digit_location_13_V_1_reg_2870">9, 2, 32, 64</column>
-<column name="digit_location_13_V_3_reg_3874">9, 2, 32, 64</column>
-<column name="digit_location_14_V_1_reg_2859">9, 2, 32, 64</column>
-<column name="digit_location_14_V_3_reg_3862">9, 2, 32, 64</column>
-<column name="digit_location_15_V_1_reg_2848">9, 2, 32, 64</column>
-<column name="digit_location_15_V_3_reg_3850">9, 2, 32, 64</column>
-<column name="digit_location_1_V_1_reg_3002">9, 2, 32, 64</column>
-<column name="digit_location_1_V_32_reg_4018">9, 2, 32, 64</column>
-<column name="digit_location_2_V_1_reg_2991">9, 2, 32, 64</column>
-<column name="digit_location_2_V_3_reg_4006">9, 2, 32, 64</column>
-<column name="digit_location_3_V_1_reg_2980">9, 2, 32, 64</column>
-<column name="digit_location_3_V_3_reg_3994">9, 2, 32, 64</column>
-<column name="digit_location_4_V_1_reg_2969">9, 2, 32, 64</column>
-<column name="digit_location_4_V_3_reg_3982">9, 2, 32, 64</column>
-<column name="digit_location_5_V_1_reg_2958">9, 2, 32, 64</column>
-<column name="digit_location_5_V_3_reg_3970">9, 2, 32, 64</column>
-<column name="digit_location_6_V_1_reg_2947">9, 2, 32, 64</column>
-<column name="digit_location_6_V_3_reg_3958">9, 2, 32, 64</column>
-<column name="digit_location_7_V_1_reg_2936">9, 2, 32, 64</column>
-<column name="digit_location_7_V_3_reg_3946">9, 2, 32, 64</column>
-<column name="digit_location_8_V_1_reg_2925">9, 2, 32, 64</column>
-<column name="digit_location_8_V_3_reg_3934">9, 2, 32, 64</column>
-<column name="digit_location_9_V_1_reg_2914">9, 2, 32, 64</column>
-<column name="digit_location_9_V_3_reg_3922">9, 2, 32, 64</column>
-<column name="i6_0_i_i_reg_3013">9, 2, 5, 10</column>
-<column name="i_0_i_i_reg_890">9, 2, 5, 10</column>
-<column name="j5_0_i_i_reg_1781">9, 2, 32, 64</column>
-<column name="j7_0_i_i_reg_3839">9, 2, 32, 64</column>
-<column name="j_0_i_i_reg_319">9, 2, 32, 64</column>
-<column name="n_blk_n">9, 2, 1, 2</column>
-<column name="n_out_blk_n">9, 2, 1, 2</column>
-<column name="op2_assign_reg_702">9, 2, 6, 12</column>
+<column name="digit_histogram_V_address0">27, 5, 4, 20</column>
+<column name="digit_histogram_V_d0">15, 3, 32, 96</column>
+<column name="digit_location_V_address0">33, 6, 4, 24</column>
+<column name="digit_location_V_d0">21, 4, 32, 128</column>
+<column name="i6_0_reg_373">9, 2, 5, 10</column>
+<column name="i_0_reg_351">9, 2, 5, 10</column>
+<column name="j5_0_reg_362">9, 2, 32, 64</column>
+<column name="j7_0_reg_385">9, 2, 32, 64</column>
+<column name="j_0_reg_328">9, 2, 32, 64</column>
+<column name="op2_assign_reg_339">9, 2, 6, 12</column>
 <column name="previous_sorting_fre_address0">15, 3, 8, 24</column>
 <column name="previous_sorting_val_address0">15, 3, 8, 24</column>
 <column name="sorting_frequency_V_address0">21, 4, 8, 32</column>
@@ -267,129 +132,23 @@
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
-<column name="ap_CS_fsm">12, 0, 12, 0</column>
-<column name="ap_done_reg">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp2_iter0">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp2_iter1">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp2_iter2">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp4_iter0">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp4_iter1">1, 0, 1, 0</column>
-<column name="ap_enable_reg_pp4_iter2">1, 0, 1, 0</column>
-<column name="digit_V_1_reg_5314">4, 0, 4, 0</column>
-<column name="digit_V_reg_5277">4, 0, 4, 0</column>
-<column name="digit_histogram_0_V_1_reg_879">32, 0, 32, 0</column>
-<column name="digit_histogram_0_V_2_reg_690">32, 0, 32, 0</column>
-<column name="digit_histogram_0_V_3_reg_1972">32, 0, 32, 0</column>
-<column name="digit_histogram_10_1_reg_769">32, 0, 32, 0</column>
-<column name="digit_histogram_10_3_reg_1852">32, 0, 32, 0</column>
-<column name="digit_histogram_10_s_reg_570">32, 0, 32, 0</column>
-<column name="digit_histogram_11_1_reg_758">32, 0, 32, 0</column>
-<column name="digit_histogram_11_3_reg_1840">32, 0, 32, 0</column>
-<column name="digit_histogram_11_s_reg_558">32, 0, 32, 0</column>
-<column name="digit_histogram_12_1_reg_747">32, 0, 32, 0</column>
-<column name="digit_histogram_12_3_reg_1828">32, 0, 32, 0</column>
-<column name="digit_histogram_12_s_reg_546">32, 0, 32, 0</column>
-<column name="digit_histogram_13_1_reg_736">32, 0, 32, 0</column>
-<column name="digit_histogram_13_3_reg_1816">32, 0, 32, 0</column>
-<column name="digit_histogram_13_s_reg_534">32, 0, 32, 0</column>
-<column name="digit_histogram_14_1_reg_725">32, 0, 32, 0</column>
-<column name="digit_histogram_14_3_reg_1804">32, 0, 32, 0</column>
-<column name="digit_histogram_14_s_reg_522">32, 0, 32, 0</column>
-<column name="digit_histogram_15_1_reg_714">32, 0, 32, 0</column>
-<column name="digit_histogram_15_3_reg_1792">32, 0, 32, 0</column>
-<column name="digit_histogram_15_s_reg_510">32, 0, 32, 0</column>
-<column name="digit_histogram_1_V_1_reg_868">32, 0, 32, 0</column>
-<column name="digit_histogram_1_V_3_reg_1960">32, 0, 32, 0</column>
-<column name="digit_histogram_1_V_reg_678">32, 0, 32, 0</column>
-<column name="digit_histogram_2_V_1_reg_857">32, 0, 32, 0</column>
-<column name="digit_histogram_2_V_3_reg_1948">32, 0, 32, 0</column>
-<column name="digit_histogram_2_V_reg_666">32, 0, 32, 0</column>
-<column name="digit_histogram_3_V_1_reg_846">32, 0, 32, 0</column>
-<column name="digit_histogram_3_V_3_reg_1936">32, 0, 32, 0</column>
-<column name="digit_histogram_3_V_reg_654">32, 0, 32, 0</column>
-<column name="digit_histogram_4_V_1_reg_835">32, 0, 32, 0</column>
-<column name="digit_histogram_4_V_3_reg_1924">32, 0, 32, 0</column>
-<column name="digit_histogram_4_V_reg_642">32, 0, 32, 0</column>
-<column name="digit_histogram_5_V_1_reg_824">32, 0, 32, 0</column>
-<column name="digit_histogram_5_V_3_reg_1912">32, 0, 32, 0</column>
-<column name="digit_histogram_5_V_reg_630">32, 0, 32, 0</column>
-<column name="digit_histogram_6_V_1_reg_813">32, 0, 32, 0</column>
-<column name="digit_histogram_6_V_3_reg_1900">32, 0, 32, 0</column>
-<column name="digit_histogram_6_V_reg_618">32, 0, 32, 0</column>
-<column name="digit_histogram_7_V_1_reg_802">32, 0, 32, 0</column>
-<column name="digit_histogram_7_V_3_reg_1888">32, 0, 32, 0</column>
-<column name="digit_histogram_7_V_reg_606">32, 0, 32, 0</column>
-<column name="digit_histogram_8_V_1_reg_791">32, 0, 32, 0</column>
-<column name="digit_histogram_8_V_3_reg_1876">32, 0, 32, 0</column>
-<column name="digit_histogram_8_V_reg_594">32, 0, 32, 0</column>
-<column name="digit_histogram_9_V_1_reg_780">32, 0, 32, 0</column>
-<column name="digit_histogram_9_V_3_reg_1864">32, 0, 32, 0</column>
-<column name="digit_histogram_9_V_reg_582">32, 0, 32, 0</column>
-<column name="digit_location_0_V_s_reg_4030">32, 0, 32, 0</column>
-<column name="digit_location_10_V_1_reg_2903">32, 0, 32, 0</column>
-<column name="digit_location_10_V_3_reg_3910">32, 0, 32, 0</column>
-<column name="digit_location_10_V_reg_390">32, 0, 32, 0</column>
-<column name="digit_location_11_V_1_reg_2892">32, 0, 32, 0</column>
-<column name="digit_location_11_V_3_reg_3898">32, 0, 32, 0</column>
-<column name="digit_location_11_V_reg_378">32, 0, 32, 0</column>
-<column name="digit_location_12_V_1_reg_2881">32, 0, 32, 0</column>
-<column name="digit_location_12_V_3_reg_3886">32, 0, 32, 0</column>
-<column name="digit_location_12_V_reg_366">32, 0, 32, 0</column>
-<column name="digit_location_13_V_1_reg_2870">32, 0, 32, 0</column>
-<column name="digit_location_13_V_3_reg_3874">32, 0, 32, 0</column>
-<column name="digit_location_13_V_reg_354">32, 0, 32, 0</column>
-<column name="digit_location_14_V_1_reg_2859">32, 0, 32, 0</column>
-<column name="digit_location_14_V_3_reg_3862">32, 0, 32, 0</column>
-<column name="digit_location_14_V_reg_342">32, 0, 32, 0</column>
-<column name="digit_location_15_V_1_reg_2848">32, 0, 32, 0</column>
-<column name="digit_location_15_V_3_reg_3850">32, 0, 32, 0</column>
-<column name="digit_location_15_V_reg_330">32, 0, 32, 0</column>
-<column name="digit_location_1_V_1_reg_3002">32, 0, 32, 0</column>
-<column name="digit_location_1_V_32_reg_4018">32, 0, 32, 0</column>
-<column name="digit_location_1_V_s_reg_498">32, 0, 32, 0</column>
-<column name="digit_location_2_V_1_reg_2991">32, 0, 32, 0</column>
-<column name="digit_location_2_V_3_reg_4006">32, 0, 32, 0</column>
-<column name="digit_location_2_V_s_reg_486">32, 0, 32, 0</column>
-<column name="digit_location_3_V_1_reg_2980">32, 0, 32, 0</column>
-<column name="digit_location_3_V_3_reg_3994">32, 0, 32, 0</column>
-<column name="digit_location_3_V_s_reg_474">32, 0, 32, 0</column>
-<column name="digit_location_4_V_1_reg_2969">32, 0, 32, 0</column>
-<column name="digit_location_4_V_3_reg_3982">32, 0, 32, 0</column>
-<column name="digit_location_4_V_s_reg_462">32, 0, 32, 0</column>
-<column name="digit_location_5_V_1_reg_2958">32, 0, 32, 0</column>
-<column name="digit_location_5_V_3_reg_3970">32, 0, 32, 0</column>
-<column name="digit_location_5_V_s_reg_450">32, 0, 32, 0</column>
-<column name="digit_location_6_V_1_reg_2947">32, 0, 32, 0</column>
-<column name="digit_location_6_V_3_reg_3958">32, 0, 32, 0</column>
-<column name="digit_location_6_V_s_reg_438">32, 0, 32, 0</column>
-<column name="digit_location_7_V_1_reg_2936">32, 0, 32, 0</column>
-<column name="digit_location_7_V_3_reg_3946">32, 0, 32, 0</column>
-<column name="digit_location_7_V_s_reg_426">32, 0, 32, 0</column>
-<column name="digit_location_8_V_1_reg_2925">32, 0, 32, 0</column>
-<column name="digit_location_8_V_3_reg_3934">32, 0, 32, 0</column>
-<column name="digit_location_8_V_s_reg_414">32, 0, 32, 0</column>
-<column name="digit_location_9_V_1_reg_2914">32, 0, 32, 0</column>
-<column name="digit_location_9_V_3_reg_3922">32, 0, 32, 0</column>
-<column name="digit_location_9_V_s_reg_402">32, 0, 32, 0</column>
-<column name="i6_0_i_i_reg_3013">5, 0, 5, 0</column>
-<column name="i_0_i_i_reg_890">5, 0, 5, 0</column>
-<column name="icmp_ln20_reg_5206">1, 0, 1, 0</column>
-<column name="icmp_ln34_reg_5251">1, 0, 1, 0</column>
-<column name="icmp_ln34_reg_5251_pp2_iter1_reg">1, 0, 1, 0</column>
-<column name="icmp_ln49_reg_5294">1, 0, 1, 0</column>
-<column name="icmp_ln49_reg_5294_pp4_iter1_reg">1, 0, 1, 0</column>
-<column name="j5_0_i_i_reg_1781">32, 0, 32, 0</column>
-<column name="j7_0_i_i_reg_3839">32, 0, 32, 0</column>
-<column name="j_0_i_i_reg_319">32, 0, 32, 0</column>
-<column name="n_read_reg_5199">32, 0, 32, 0</column>
-<column name="op2_assign_reg_702">6, 0, 6, 0</column>
-<column name="zext_ln22_reg_5215">32, 0, 64, 32</column>
-<column name="zext_ln26_reg_5235">6, 0, 32, 26</column>
-<column name="zext_ln36_reg_5260">32, 0, 64, 32</column>
-<column name="zext_ln36_reg_5260_pp2_iter1_reg">32, 0, 64, 32</column>
-<column name="zext_ln51_reg_5303">32, 0, 64, 32</column>
+<column name="ap_CS_fsm">14, 0, 14, 0</column>
+<column name="digit_V_reg_629">4, 0, 4, 0</column>
+<column name="digit_histogram_V_ad_1_reg_640">4, 0, 4, 0</column>
+<column name="digit_location_V_add_3_reg_687">4, 0, 4, 0</column>
+<column name="i6_0_reg_373">5, 0, 5, 0</column>
+<column name="i_0_reg_351">5, 0, 5, 0</column>
+<column name="j5_0_reg_362">32, 0, 32, 0</column>
+<column name="j7_0_reg_385">32, 0, 32, 0</column>
+<column name="j_0_reg_328">32, 0, 32, 0</column>
+<column name="j_1_reg_611">32, 0, 32, 0</column>
+<column name="j_2_reg_666">32, 0, 32, 0</column>
+<column name="j_reg_566">32, 0, 32, 0</column>
+<column name="op2_assign_reg_339">6, 0, 6, 0</column>
+<column name="zext_ln19_reg_571">32, 0, 64, 32</column>
+<column name="zext_ln23_reg_592">6, 0, 32, 26</column>
+<column name="zext_ln31_reg_616">32, 0, 64, 32</column>
+<column name="zext_ln44_reg_671">32, 0, 64, 32</column>
 </table>
 </item>
 </section>
@@ -403,7 +162,6 @@
 <column name="ap_rst">in, 1, ap_ctrl_hs, sort, return value</column>
 <column name="ap_start">in, 1, ap_ctrl_hs, sort, return value</column>
 <column name="ap_done">out, 1, ap_ctrl_hs, sort, return value</column>
-<column name="ap_continue">in, 1, ap_ctrl_hs, sort, return value</column>
 <column name="ap_idle">out, 1, ap_ctrl_hs, sort, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, sort, return value</column>
 <column name="in_value_V_address0">out, 8, ap_memory, in_value_V, array</column>
@@ -412,9 +170,7 @@
 <column name="in_frequency_V_address0">out, 8, ap_memory, in_frequency_V, array</column>
 <column name="in_frequency_V_ce0">out, 1, ap_memory, in_frequency_V, array</column>
 <column name="in_frequency_V_q0">in, 32, ap_memory, in_frequency_V, array</column>
-<column name="n_dout">in, 32, ap_fifo, n, pointer</column>
-<column name="n_empty_n">in, 1, ap_fifo, n, pointer</column>
-<column name="n_read">out, 1, ap_fifo, n, pointer</column>
+<column name="num_symbols">in, 32, ap_none, num_symbols, scalar</column>
 <column name="out_value_V_address0">out, 8, ap_memory, out_value_V, array</column>
 <column name="out_value_V_ce0">out, 1, ap_memory, out_value_V, array</column>
 <column name="out_value_V_we0">out, 1, ap_memory, out_value_V, array</column>
@@ -423,9 +179,6 @@
 <column name="out_frequency_V_ce0">out, 1, ap_memory, out_frequency_V, array</column>
 <column name="out_frequency_V_we0">out, 1, ap_memory, out_frequency_V, array</column>
 <column name="out_frequency_V_d0">out, 32, ap_memory, out_frequency_V, array</column>
-<column name="n_out_din">out, 32, ap_fifo, n_out, pointer</column>
-<column name="n_out_full_n">in, 1, ap_fifo, n_out, pointer</column>
-<column name="n_out_write">out, 1, ap_fifo, n_out, pointer</column>
 </table>
 </item>
 </section>

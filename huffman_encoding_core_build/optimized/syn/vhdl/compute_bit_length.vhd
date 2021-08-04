@@ -96,8 +96,8 @@ architecture behav of compute_bit_length is
     signal ap_block_state4_pp1_stage0_iter0 : BOOLEAN;
     signal ap_block_state7_pp1_stage0_iter1 : BOOLEAN;
     signal ap_block_pp1_stage0_11001 : BOOLEAN;
-    signal zext_ln24_fu_275_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln24_reg_351 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln23_fu_275_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln23_reg_351 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_CS_fsm_pp1_stage1 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_pp1_stage1 : signal is "none";
     signal ap_block_state5_pp1_stage1_iter0 : BOOLEAN;
@@ -366,11 +366,11 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((tmp_fu_267_p3 = ap_const_lv1_0) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage0) and (ap_const_boolean_0 = ap_block_pp1_stage0_11001))) then
-                    zext_ln24_reg_351(31 downto 0) <= zext_ln24_fu_275_p1(31 downto 0);
+                    zext_ln23_reg_351(31 downto 0) <= zext_ln23_fu_275_p1(31 downto 0);
             end if;
         end if;
     end process;
-    zext_ln24_reg_351(63 downto 32) <= "00000000000000000000000000000000";
+    zext_ln23_reg_351(63 downto 32) <= "00000000000000000000000000000000";
     zext_ln544_8_reg_384(63 downto 6) <= "0000000000000000000000000000000000000000000000000000000000";
 
     ap_NS_fsm_assign_proc : process (ap_start, ap_done_reg, ap_CS_fsm, ap_CS_fsm_state1, val_assign_loc_empty_n, val_assign_loc_out_full_n, ap_CS_fsm_state2, tmp_fu_267_p3, ap_CS_fsm_pp1_stage1, ap_enable_reg_pp1_iter0, ap_enable_reg_pp1_iter1, ap_block_pp1_stage0_subdone, ap_block_pp1_stage2_subdone, ap_block_pp1_stage1_subdone, icmp_ln14_fu_235_p2)
@@ -509,10 +509,10 @@ begin
     end process;
 
 
-    child_depth_V_address0_assign_proc : process(ap_CS_fsm_state3, zext_ln24_reg_351, ap_CS_fsm_pp1_stage1, ap_CS_fsm_pp1_stage2, ap_enable_reg_pp1_iter0, sext_ln19_fu_257_p1, zext_ln544_fu_282_p1, ap_block_pp1_stage1, ap_block_pp1_stage2)
+    child_depth_V_address0_assign_proc : process(ap_CS_fsm_state3, zext_ln23_reg_351, ap_CS_fsm_pp1_stage1, ap_CS_fsm_pp1_stage2, ap_enable_reg_pp1_iter0, sext_ln19_fu_257_p1, zext_ln544_fu_282_p1, ap_block_pp1_stage1, ap_block_pp1_stage2)
     begin
         if (((ap_const_boolean_0 = ap_block_pp1_stage2) and (ap_enable_reg_pp1_iter0 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage2))) then 
-            child_depth_V_address0 <= zext_ln24_reg_351(8 - 1 downto 0);
+            child_depth_V_address0 <= zext_ln23_reg_351(8 - 1 downto 0);
         elsif (((ap_const_boolean_0 = ap_block_pp1_stage1) and (ap_enable_reg_pp1_iter0 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage1))) then 
             child_depth_V_address0 <= zext_ln544_fu_282_p1(8 - 1 downto 0);
         elsif ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
@@ -607,7 +607,7 @@ begin
         end if; 
     end process;
 
-    left_V_address0 <= zext_ln24_fu_275_p1(8 - 1 downto 0);
+    left_V_address0 <= zext_ln23_fu_275_p1(8 - 1 downto 0);
 
     left_V_ce0_assign_proc : process(ap_CS_fsm_pp1_stage0, ap_block_pp1_stage0_11001, ap_enable_reg_pp1_iter0)
     begin
@@ -641,7 +641,7 @@ begin
         end if; 
     end process;
 
-    parent_V_address0 <= zext_ln24_fu_275_p1(8 - 1 downto 0);
+    parent_V_address0 <= zext_ln23_fu_275_p1(8 - 1 downto 0);
 
     parent_V_ce0_assign_proc : process(ap_CS_fsm_pp1_stage0, ap_block_pp1_stage0_11001, ap_enable_reg_pp1_iter0)
     begin
@@ -652,7 +652,7 @@ begin
         end if; 
     end process;
 
-    right_V_address0 <= zext_ln24_fu_275_p1(8 - 1 downto 0);
+    right_V_address0 <= zext_ln23_fu_275_p1(8 - 1 downto 0);
 
     right_V_ce0_assign_proc : process(ap_CS_fsm_pp1_stage0, ap_block_pp1_stage0_11001, ap_enable_reg_pp1_iter0)
     begin
@@ -708,7 +708,7 @@ begin
     end process;
 
     zext_ln16_fu_247_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_0_i_i_reg_201),64));
-    zext_ln24_fu_275_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ap_phi_mux_i2_0_i_i_phi_fu_215_p4),64));
+    zext_ln23_fu_275_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ap_phi_mux_i2_0_i_i_phi_fu_215_p4),64));
     zext_ln544_7_fu_317_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ap_phi_reg_pp1_iter1_op2_assign_reg_222),32));
     zext_ln544_8_fu_306_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(length_V_fu_299_p2),64));
     zext_ln544_fu_282_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(parent_V_q0),64));

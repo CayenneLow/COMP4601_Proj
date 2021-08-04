@@ -1648,7 +1648,7 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     SC_METHOD(thread_zext_ln215_fu_2069_p1);
     sensitive << ( j_V_2_fu_170 );
 
-    SC_METHOD(thread_zext_ln32_fu_2026_p1);
+    SC_METHOD(thread_zext_ln30_fu_2026_p1);
     sensitive << ( i_fu_2020_p2 );
 
     SC_METHOD(thread_zext_ln544_1_fu_2064_p1);
@@ -1842,7 +1842,7 @@ truncate_tree::truncate_tree(sc_module_name name) : sc_module(name), mVcdFile(0)
     sc_trace(mVcdFile, ap_CS_fsm_state38, "ap_CS_fsm_state38");
     sc_trace(mVcdFile, icmp_ln879_1_fu_2054_p2, "icmp_ln879_1_fu_2054_p2");
     sc_trace(mVcdFile, zext_ln19_fu_2015_p1, "zext_ln19_fu_2015_p1");
-    sc_trace(mVcdFile, zext_ln32_fu_2026_p1, "zext_ln32_fu_2026_p1");
+    sc_trace(mVcdFile, zext_ln30_fu_2026_p1, "zext_ln30_fu_2026_p1");
     sc_trace(mVcdFile, zext_ln544_fu_2049_p1, "zext_ln544_fu_2049_p1");
     sc_trace(mVcdFile, zext_ln544_1_fu_2064_p1, "zext_ln544_1_fu_2064_p1");
     sc_trace(mVcdFile, zext_ln544_2_fu_2079_p1, "zext_ln544_2_fu_2079_p1");
@@ -1945,7 +1945,7 @@ void truncate_tree::thread_ap_clk_no_reset_() {
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state34.read()) && esl_seteq<1,1,1>(icmp_ln16_fu_2009_p2.read(), ap_const_lv1_1))) {
         i_reg_2780 = i_fu_2020_p2.read();
         output_length_histog_64_reg_2774 =  (sc_lv<6>) (zext_ln19_fu_2015_p1.read());
-        output_length_histog_65_reg_2785 =  (sc_lv<6>) (zext_ln32_fu_2026_p1.read());
+        output_length_histog_65_reg_2785 =  (sc_lv<6>) (zext_ln30_fu_2026_p1.read());
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state36.read()) && esl_seteq<1,1,1>(icmp_ln883_fu_2031_p2.read(), ap_const_lv1_0))) {
         icmp_ln879_reg_2793 = icmp_ln879_fu_2037_p2.read();
@@ -3738,8 +3738,8 @@ void truncate_tree::thread_zext_ln215_fu_2069_p1() {
     zext_ln215_fu_2069_p1 = esl_zext<33,32>(j_V_2_fu_170.read());
 }
 
-void truncate_tree::thread_zext_ln32_fu_2026_p1() {
-    zext_ln32_fu_2026_p1 = esl_zext<64,6>(i_fu_2020_p2.read());
+void truncate_tree::thread_zext_ln30_fu_2026_p1() {
+    zext_ln30_fu_2026_p1 = esl_zext<64,6>(i_fu_2020_p2.read());
 }
 
 void truncate_tree::thread_zext_ln544_1_fu_2064_p1() {

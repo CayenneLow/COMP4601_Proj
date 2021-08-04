@@ -20,7 +20,24 @@
       "set_directive_unroll truncate_tree\/copy_output ",
       "set_directive_unroll canonize_tree\/init_bits ",
       "set_directive_loop_tripcount canonize_tree\/process_symbols -min 64 -max 64 -avg 64",
-      "set_directive_loop_tripcount canonize_tree\/canonize_tree_label0 -min 25 -max 25 -avg 25"
+      "set_directive_loop_tripcount canonize_tree\/canonize_tree_label0 -min 25 -max 25 -avg 25",
+      "set_directive_pipeline compute_bit_length\/init_histogram -II 1",
+      "set_directive_pipeline compute_bit_length\/traverse_tree -II 3",
+      "set_directive_pipeline canonize_tree\/canonize_tree_label0 -II 1",
+      "set_directive_pipeline huffman_encoding\/merge_bit_length -II 1",
+      "set_directive_dataflow huffman_encoding ",
+      "set_directive_pipeline filter\/filter_label3 -II 1",
+      "set_directive_inline filter -off",
+      "set_directive_array_partition sort ",
+      "set_directive_array_partition sort ",
+      "set_directive_pipeline sort\/copy_in_to_sorting -II 1",
+      "set_directive_pipeline sort\/init_histogram -II 1",
+      "set_directive_pipeline sort\/compute_histogram -II 1",
+      "set_directive_pipeline sort\/find_digit_location -II 1",
+      "set_directive_pipeline sort\/re_sort -II 1",
+      "set_directive_loop_tripcount truncate_tree\/reorder -min 3 -max 3 -avg 3",
+      "set_directive_loop_tripcount truncate_tree\/truncate_tree_label4 -min 1 -max 1 -avg 1",
+      "set_directive_pipeline create_tree\/create_tree_label5 -II 5"
     ],
     "DirectiveInfo": [
       "loop_tripcount huffman_encoding\/copy_sorted {{tripcount positionBooleanCmd} {min 256} {max 256} {avg 256}} {}",
@@ -29,7 +46,24 @@
       "unroll truncate_tree\/copy_output {} {}",
       "unroll canonize_tree\/init_bits {} {}",
       "loop_tripcount canonize_tree\/process_symbols {{tripcount positionBooleanCmd} {min 64} {max 64} {avg 64}} {}",
-      "loop_tripcount canonize_tree\/canonize_tree_label0 {{tripcount positionBooleanCmd} {min 25} {max 25} {avg 25}} {}"
+      "loop_tripcount canonize_tree\/canonize_tree_label0 {{tripcount positionBooleanCmd} {min 25} {max 25} {avg 25}} {}",
+      "pipeline compute_bit_length\/init_histogram {{II 1}} {}",
+      "pipeline compute_bit_length\/traverse_tree {{II 3}} {}",
+      "pipeline canonize_tree\/canonize_tree_label0 {{II 1}} {}",
+      "pipeline huffman_encoding\/merge_bit_length {{II 1}} {}",
+      "dataflow huffman_encoding {} {}",
+      "pipeline filter\/filter_label3 {{II 1}} {}",
+      "inline filter {{off positionBoolean1}} {}",
+      "array_partition sort {{partition positionBooleanCmd} {variable positionBooleanTextRequireddigit_histogram} {complete positionBoolean0type} {dim 1}} {}",
+      "array_partition sort {{partition positionBooleanCmd} {variable positionBooleanTextRequireddigit_location} {complete positionBoolean0type} {dim 1}} {}",
+      "pipeline sort\/copy_in_to_sorting {{II 1}} {}",
+      "pipeline sort\/init_histogram {{II 1}} {}",
+      "pipeline sort\/compute_histogram {{II 1}} {}",
+      "pipeline sort\/find_digit_location {{II 1}} {}",
+      "pipeline sort\/re_sort {{II 1}} {}",
+      "loop_tripcount truncate_tree\/reorder {{tripcount positionBooleanCmd} {min 3} {max 3} {avg 3}} {}",
+      "loop_tripcount truncate_tree\/truncate_tree_label4 {{tripcount positionBooleanCmd} {min 1} {max 1} {avg 1}} {}",
+      "pipeline create_tree\/create_tree_label5 {{II 5}} {}"
     ]
   },
   "Args": {
@@ -110,7 +144,7 @@
     "ClockPeriod": "10",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "4263",
+    "Latency": "4005",
     "Uncertainty": "1.25"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
@@ -737,7 +771,7 @@
           "Estimate": "6.705"
         },
         "Loops": [{
-            "Name": "Loop 1",
+            "Name": "filter_label3",
             "TripCount": "256",
             "Latency": "257",
             "PipelineII": "1",
@@ -877,7 +911,7 @@
           "Estimate": "8.661"
         },
         "Loops": [{
-            "Name": "Loop 1",
+            "Name": "create_tree_label5",
             "TripCount": "",
             "LatencyMin": "0",
             "LatencyMax": "1020",
@@ -968,7 +1002,7 @@
                 "PipelineDepthMax": "10",
                 "PipelineDepth": "9 ~ 10",
                 "Loops": [{
-                    "Name": "reorder.1",
+                    "Name": "truncate_tree_label4",
                     "TripCount": "1",
                     "Latency": "1",
                     "PipelineII": "",
@@ -1022,10 +1056,12 @@
       },
       "create_codeword": {
         "Latency": {
-          "LatencyBest": "1080",
-          "LatencyAvg": "1080",
-          "LatencyWorst": "1080",
-          "PipelineII": "1080",
+          "LatencyBest": "822",
+          "LatencyAvg": "1078",
+          "LatencyWorst": "1078",
+          "PipelineIIMin": "822",
+          "PipelineIIMax": "1078",
+          "PipelineII": "822 ~ 1078",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -1039,21 +1075,25 @@
             "Name": "first_codewords",
             "TripCount": "26",
             "Latency": "52",
-            "PipelineII": "2",
+            "PipelineII": "",
             "PipelineDepth": "2"
           },
           {
             "Name": "assign_codewords",
             "TripCount": "256",
-            "Latency": "1024",
-            "PipelineII": "4",
-            "PipelineDepth": "4"
+            "LatencyMin": "768",
+            "LatencyMax": "1024",
+            "Latency": "768 ~ 1024",
+            "PipelineII": "",
+            "PipelineDepthMin": "3",
+            "PipelineDepthMax": "4",
+            "PipelineDepth": "3 ~ 4"
           }
         ],
         "Area": {
           "BRAM_18K": "0",
-          "FF": "130",
-          "LUT": "530",
+          "FF": "127",
+          "LUT": "524",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1082,9 +1122,9 @@
       },
       "huffman_encoding": {
         "Latency": {
-          "LatencyBest": "4263",
+          "LatencyBest": "4005",
           "LatencyAvg": "",
-          "LatencyWorst": "9668",
+          "LatencyWorst": "9666",
           "PipelineIIMin": "2053",
           "PipelineIIMax": "4708",
           "PipelineII": "2053 ~ 4708",
@@ -1098,8 +1138,8 @@
         },
         "Area": {
           "BRAM_18K": "25",
-          "FF": "5125",
-          "LUT": "9108",
+          "FF": "5122",
+          "LUT": "9102",
           "URAM": "0",
           "DSP48E": "0"
         }
@@ -1116,7 +1156,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2021-08-03 15:38:41 +1000",
+    "Time": "2021-08-04 17:59:08 +1000",
     "ToolName": "vivado_hls",
     "ToolVersion": "2020.1"
   }

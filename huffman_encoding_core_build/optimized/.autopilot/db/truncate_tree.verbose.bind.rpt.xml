@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'truncate_tree'" level="0">
-<item name = "Date">Tue Aug  3 15:38:30 2021
+<item name = "Date">Wed Aug  4 17:58:57 2021
 </item>
 <item name = "Version">2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)</item>
 <item name = "Project">huffman_encoding_core_build</item>
@@ -37,7 +37,7 @@
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
 <column name="- move_nodes">1080, 1188, 30 ~ 33, -, -, 36, no</column>
 <column name=" + reorder">28, 31, 9 ~ 10, -, -, 3, no</column>
-<column name="  ++ reorder.1">1, 1, 2, -, -, 1, no</column>
+<column name="  ++ truncate_tree_label4">1, 1, 2, -, -, 1, no</column>
 </table>
 </item>
 </section>

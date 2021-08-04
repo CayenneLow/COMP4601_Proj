@@ -338,7 +338,7 @@
               <name>filtered_value_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>23</lineNumber>
+              <lineNumber>22</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -353,7 +353,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>23</second>
+                      <second>22</second>
                     </item>
                   </second>
                 </item>
@@ -386,7 +386,7 @@
               <name>filtered_frequency_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>23</lineNumber>
+              <lineNumber>22</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -401,7 +401,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>23</second>
+                      <second>22</second>
                     </item>
                   </second>
                 </item>
@@ -502,7 +502,7 @@
               <name>sorted_copy1_value_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>25</lineNumber>
+              <lineNumber>24</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -517,7 +517,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>25</second>
+                      <second>24</second>
                     </item>
                   </second>
                 </item>
@@ -550,7 +550,7 @@
               <name>sorted_copy1_frequen</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>25</lineNumber>
+              <lineNumber>24</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -565,7 +565,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>25</second>
+                      <second>24</second>
                     </item>
                   </second>
                 </item>
@@ -598,7 +598,7 @@
               <name>sorted_copy2_value_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>26</lineNumber>
+              <lineNumber>25</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -613,7 +613,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>26</second>
+                      <second>25</second>
                     </item>
                   </second>
                 </item>
@@ -646,7 +646,7 @@
               <name>parent_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>27</lineNumber>
+              <lineNumber>26</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -661,7 +661,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>27</second>
+                      <second>26</second>
                     </item>
                   </second>
                 </item>
@@ -694,7 +694,7 @@
               <name>left_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>28</lineNumber>
+              <lineNumber>27</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -709,7 +709,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>28</second>
+                      <second>27</second>
                     </item>
                   </second>
                 </item>
@@ -742,7 +742,7 @@
               <name>right_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>29</lineNumber>
+              <lineNumber>28</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -757,7 +757,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>29</second>
+                      <second>28</second>
                     </item>
                   </second>
                 </item>
@@ -790,7 +790,7 @@
               <name>length_histogram_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>35</lineNumber>
+              <lineNumber>34</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -805,7 +805,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>35</second>
+                      <second>34</second>
                     </item>
                   </second>
                 </item>
@@ -838,7 +838,7 @@
               <name>truncated_length_his</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>36</lineNumber>
+              <lineNumber>35</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -853,7 +853,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>36</second>
+                      <second>35</second>
                     </item>
                   </second>
                 </item>
@@ -886,7 +886,7 @@
               <name>truncated_length_his_1</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>37</lineNumber>
+              <lineNumber>36</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -901,7 +901,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>37</second>
+                      <second>36</second>
                     </item>
                   </second>
                 </item>
@@ -934,7 +934,7 @@
               <name>symbol_bits_V</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>38</lineNumber>
+              <lineNumber>37</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -949,7 +949,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>38</second>
+                      <second>37</second>
                     </item>
                   </second>
                 </item>
@@ -979,10 +979,10 @@
             <Obj>
               <type>0</type>
               <id>33</id>
-              <name>_ln32</name>
+              <name>_ln31</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>32</lineNumber>
+              <lineNumber>31</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -997,7 +997,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>32</second>
+                      <second>31</second>
                     </item>
                   </second>
                 </item>
@@ -1032,10 +1032,10 @@
             <Obj>
               <type>0</type>
               <id>36</id>
-              <name>_ln33</name>
+              <name>_ln32</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>33</lineNumber>
+              <lineNumber>32</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1050,7 +1050,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>33</second>
+                      <second>32</second>
                     </item>
                   </second>
                 </item>
@@ -1134,10 +1134,10 @@
             <Obj>
               <type>0</type>
               <id>44</id>
-              <name>_ln52</name>
+              <name>_ln50</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>52</lineNumber>
+              <lineNumber>50</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1152,7 +1152,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>52</second>
+                      <second>50</second>
                     </item>
                   </second>
                 </item>
@@ -1192,10 +1192,10 @@
             <Obj>
               <type>0</type>
               <id>47</id>
-              <name>_ln53</name>
+              <name>_ln51</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>53</lineNumber>
+              <lineNumber>51</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1210,7 +1210,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>53</second>
+                      <second>51</second>
                     </item>
                   </second>
                 </item>
@@ -1249,10 +1249,10 @@
             <Obj>
               <type>0</type>
               <id>48</id>
-              <name>_ln70</name>
+              <name>_ln67</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>70</lineNumber>
+              <lineNumber>67</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1267,7 +1267,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>70</second>
+                      <second>67</second>
                     </item>
                   </second>
                 </item>
@@ -1302,10 +1302,10 @@
             <Obj>
               <type>0</type>
               <id>49</id>
-              <name>_ln71</name>
+              <name>_ln68</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>71</lineNumber>
+              <lineNumber>68</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1320,7 +1320,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>71</second>
+                      <second>68</second>
                     </item>
                   </second>
                 </item>
@@ -1357,10 +1357,10 @@
             <Obj>
               <type>0</type>
               <id>50</id>
-              <name>_ln72</name>
+              <name>_ln69</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>72</lineNumber>
+              <lineNumber>69</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1375,7 +1375,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>72</second>
+                      <second>69</second>
                     </item>
                   </second>
                 </item>
@@ -1447,10 +1447,10 @@
             <Obj>
               <type>0</type>
               <id>52</id>
-              <name>_ln75</name>
+              <name>_ln72</name>
               <fileName>./hls-src/huffman_encoding.cpp</fileName>
               <fileDirectory>..</fileDirectory>
-              <lineNumber>75</lineNumber>
+              <lineNumber>72</lineNumber>
               <contextFuncName>huffman_encoding</contextFuncName>
               <inlineStackInfo>
                 <count>1</count>
@@ -1465,7 +1465,7 @@
                         <first>./hls-src/huffman_encoding.cpp</first>
                         <second>huffman_encoding</second>
                       </first>
-                      <second>75</second>
+                      <second>72</second>
                     </item>
                   </second>
                 </item>
@@ -2456,8 +2456,8 @@
         <mDepth>-1</mDepth>
         <mMinTripCount>-1</mMinTripCount>
         <mMaxTripCount>-1</mMaxTripCount>
-        <mMinLatency>4263</mMinLatency>
-        <mMaxLatency>9668</mMaxLatency>
+        <mMinLatency>4005</mMinLatency>
+        <mMaxLatency>9666</mMaxLatency>
         <mIsDfPipe>1</mIsDfPipe>
         <mDfPipe class_id="23" tracking_level="1" version="0" object_id="_140">
           <port_list class_id="24" tracking_level="0" version="0">
@@ -4138,11 +4138,11 @@
             </item>
             <item>
               <first>FF</first>
-              <second>130</second>
+              <second>127</second>
             </item>
             <item>
               <first>LUT</first>
-              <second>530</second>
+              <second>524</second>
             </item>
             <item>
               <first>URAM</first>

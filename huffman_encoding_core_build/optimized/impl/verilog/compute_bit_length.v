@@ -100,8 +100,8 @@ wire    ap_CS_fsm_pp1_stage0;
 wire    ap_block_state4_pp1_stage0_iter0;
 wire    ap_block_state7_pp1_stage0_iter1;
 wire    ap_block_pp1_stage0_11001;
-wire   [63:0] zext_ln24_fu_275_p1;
-reg   [63:0] zext_ln24_reg_351;
+wire   [63:0] zext_ln23_fu_275_p1;
+reg   [63:0] zext_ln23_reg_351;
 wire    ap_CS_fsm_pp1_stage1;
 wire    ap_block_state5_pp1_stage1_iter0;
 wire    ap_block_state8_pp1_stage1_iter1;
@@ -299,7 +299,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((tmp_fu_267_p3 == 1'd0) & (1'b1 == ap_CS_fsm_pp1_stage0) & (1'b0 == ap_block_pp1_stage0_11001))) begin
-        zext_ln24_reg_351[31 : 0] <= zext_ln24_fu_275_p1[31 : 0];
+        zext_ln23_reg_351[31 : 0] <= zext_ln23_fu_275_p1[31 : 0];
     end
 end
 
@@ -353,7 +353,7 @@ end
 
 always @ (*) begin
     if (((1'b0 == ap_block_pp1_stage2) & (ap_enable_reg_pp1_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage2))) begin
-        child_depth_V_address0 = zext_ln24_reg_351;
+        child_depth_V_address0 = zext_ln23_reg_351;
     end else if (((1'b0 == ap_block_pp1_stage1) & (ap_enable_reg_pp1_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage1))) begin
         child_depth_V_address0 = zext_ln544_fu_282_p1;
     end else if ((1'b1 == ap_CS_fsm_state3)) begin
@@ -618,7 +618,7 @@ assign icmp_ln883_1_fu_293_p2 = ((right_V_q0 == 32'd4294967295) ? 1'b1 : 1'b0);
 
 assign icmp_ln883_fu_287_p2 = ((left_V_q0 == 32'd4294967295) ? 1'b1 : 1'b0);
 
-assign left_V_address0 = zext_ln24_fu_275_p1;
+assign left_V_address0 = zext_ln23_fu_275_p1;
 
 assign length_V_fu_299_p2 = (child_depth_V_q0 + 6'd1);
 
@@ -626,9 +626,9 @@ assign length_histogram_V_address0 = zext_ln544_8_reg_384;
 
 assign length_histogram_V_d0 = (count_V_reg_399 + zext_ln544_7_fu_317_p1);
 
-assign parent_V_address0 = zext_ln24_fu_275_p1;
+assign parent_V_address0 = zext_ln23_fu_275_p1;
 
-assign right_V_address0 = zext_ln24_fu_275_p1;
+assign right_V_address0 = zext_ln23_fu_275_p1;
 
 assign sext_ln19_fu_257_p1 = $signed(add_ln19_fu_252_p2);
 
@@ -638,7 +638,7 @@ assign val_assign_loc_out_din = val_assign_loc_dout;
 
 assign zext_ln16_fu_247_p1 = i_0_i_i_reg_201;
 
-assign zext_ln24_fu_275_p1 = ap_phi_mux_i2_0_i_i_phi_fu_215_p4;
+assign zext_ln23_fu_275_p1 = ap_phi_mux_i2_0_i_i_phi_fu_215_p4;
 
 assign zext_ln544_7_fu_317_p1 = ap_phi_reg_pp1_iter1_op2_assign_reg_222;
 
@@ -647,7 +647,7 @@ assign zext_ln544_8_fu_306_p1 = length_V_fu_299_p2;
 assign zext_ln544_fu_282_p1 = parent_V_q0;
 
 always @ (posedge ap_clk) begin
-    zext_ln24_reg_351[63:32] <= 32'b00000000000000000000000000000000;
+    zext_ln23_reg_351[63:32] <= 32'b00000000000000000000000000000000;
     zext_ln544_8_reg_384[63:6] <= 58'b0000000000000000000000000000000000000000000000000000000000;
 end
 

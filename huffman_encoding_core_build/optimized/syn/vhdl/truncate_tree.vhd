@@ -440,7 +440,7 @@ architecture behav of truncate_tree is
     attribute fsm_encoding of ap_CS_fsm_state38 : signal is "none";
     signal icmp_ln879_1_fu_2054_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal zext_ln19_fu_2015_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln32_fu_2026_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln30_fu_2026_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_fu_2049_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_1_fu_2064_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal zext_ln544_2_fu_2079_p1 : STD_LOGIC_VECTOR (63 downto 0);
@@ -600,7 +600,7 @@ begin
             if (((icmp_ln16_fu_2009_p2 = ap_const_lv1_1) and (ap_const_logic_1 = ap_CS_fsm_state34))) then
                 i_reg_2780 <= i_fu_2020_p2;
                 output_length_histog_64_reg_2774 <= zext_ln19_fu_2015_p1(6 - 1 downto 0);
-                output_length_histog_65_reg_2785 <= zext_ln32_fu_2026_p1(6 - 1 downto 0);
+                output_length_histog_65_reg_2785 <= zext_ln30_fu_2026_p1(6 - 1 downto 0);
             end if;
         end if;
     end process;
@@ -1712,7 +1712,7 @@ begin
     ret_V_fu_2073_p2 <= std_logic_vector(unsigned(zext_ln215_fu_2069_p1) + unsigned(ap_const_lv33_1));
     zext_ln19_fu_2015_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i1_0_reg_1971),64));
     zext_ln215_fu_2069_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_2_fu_170),33));
-    zext_ln32_fu_2026_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_fu_2020_p2),64));
+    zext_ln30_fu_2026_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_fu_2020_p2),64));
     zext_ln544_1_fu_2064_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_2_fu_170),64));
     zext_ln544_2_fu_2079_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ret_V_fu_2073_p2),64));
     zext_ln544_fu_2049_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_V_fu_2043_p2),64));

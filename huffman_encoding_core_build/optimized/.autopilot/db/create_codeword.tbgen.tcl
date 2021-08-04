@@ -69,7 +69,7 @@ set RtlHierarchyInfo {[
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "1", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "1080", "EstimateLatencyMax" : "1080",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "822", "EstimateLatencyMax" : "1078",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -85,15 +85,15 @@ set RtlHierarchyInfo {[
 
 set ArgLastReadFirstWriteLatency {
 	create_codeword {
-		symbol_bits_V {Type I LastRead 3 FirstWrite -1}
+		symbol_bits_V {Type I LastRead 2 FirstWrite -1}
 		codeword_length_histogram_V {Type I LastRead 1 FirstWrite -1}
-		encoding_V {Type O LastRead -1 FirstWrite 4}}}
+		encoding_V {Type O LastRead -1 FirstWrite 3}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "1080", "Max" : "1080"}
-	, {"Name" : "Interval", "Min" : "1080", "Max" : "1080"}
+	{"Name" : "Latency", "Min" : "822", "Max" : "1078"}
+	, {"Name" : "Interval", "Min" : "822", "Max" : "1078"}
 ]}
 
 set PipelineEnableSignalInfo {[

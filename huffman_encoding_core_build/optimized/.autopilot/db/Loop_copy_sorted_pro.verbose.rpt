@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'Loop_copy_sorted_pro'
 ================================================================
-* Date:           Tue Aug  3 15:38:34 2021
+* Date:           Wed Aug  4 17:59:02 2021
 
 * Version:        2020.1 (Build 2897737 on Wed May 27 20:21:37 MDT 2020)
 * Project:        huffman_encoding_core_build
@@ -86,7 +86,7 @@
     |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------+----------+-------+---+----+------------+------------+
     |i_fu_162_p2          |     +    |      0|  0|  38|          31|           1|
-    |icmp_ln42_fu_157_p2  |   icmp   |      0|  0|  18|          32|          32|
+    |icmp_ln40_fu_157_p2  |   icmp   |      0|  0|  18|          32|          32|
     |ap_block_state1      |    or    |      0|  0|   2|           1|           1|
     |ap_block_state2      |    or    |      0|  0|   2|           1|           1|
     +---------------------+----------+-------+---+----+------------+------------+
@@ -118,7 +118,7 @@
     |i_reg_184          |  31|   0|   31|          0|
     |n_read_reg_174     |  32|   0|   32|          0|
     |start_once_reg     |   1|   0|    1|          0|
-    |zext_ln43_reg_189  |  31|   0|   64|         33|
+    |zext_ln41_reg_189  |  31|   0|   64|         33|
     +-------------------+----+----+-----+-----------+
     |Total              | 130|   0|  163|         33|
     +-------------------+----+----+-----+-----------+
@@ -210,40 +210,40 @@ IsGatedGlobalClock: 0
 
 State 1 <SV = 0> <Delay = 3.63>
 ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecInterface(i32* %n, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 4 'specinterface' 'empty' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 5 [1/1] (3.63ns)   --->   "%n_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %n)" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 5 'read' 'n_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_1 : Operation 6 [1/1] (1.76ns)   --->   "br label %.preheader.i" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 6 'br' <Predicate = true> <Delay = 1.76>
+ST_1 : Operation 5 [1/1] (3.63ns)   --->   "%n_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %n)" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 5 'read' 'n_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 6 [1/1] (1.76ns)   --->   "br label %.preheader.i" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 6 'br' <Predicate = true> <Delay = 1.76>
 
 State 2 <SV = 1> <Delay = 3.63>
 ST_2 : Operation 7 [1/1] (0.00ns)   --->   "%i_0_i = phi i31 [ %i, %copy_sorted ], [ 0, %entry ]"   --->   Operation 7 'phi' 'i_0_i' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln42 = zext i31 %i_0_i to i32" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 8 'zext' 'zext_ln42' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 9 [1/1] (2.47ns)   --->   "%icmp_ln42 = icmp slt i32 %zext_ln42, %n_read" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 9 'icmp' 'icmp_ln42' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 10 [1/1] (2.52ns)   --->   "%i = add i31 %i_0_i, 1" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 10 'add' 'i' <Predicate = true> <Delay = 2.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 11 [1/1] (0.00ns)   --->   "br i1 %icmp_ln42, label %copy_sorted, label %.exit" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 11 'br' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 12 [1/1] (0.00ns)   --->   "%zext_ln43 = zext i31 %i_0_i to i64" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 12 'zext' 'zext_ln43' <Predicate = (icmp_ln42)> <Delay = 0.00>
-ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%sorted_0_addr = getelementptr [256 x i32]* %sorted_0, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 13 'getelementptr' 'sorted_0_addr' <Predicate = (icmp_ln42)> <Delay = 0.00>
-ST_2 : Operation 14 [2/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 14 'load' 'sorted_0_load' <Predicate = (icmp_ln42)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_2 : Operation 15 [1/1] (0.00ns)   --->   "%sorted_1_addr = getelementptr [256 x i32]* %sorted_1, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 15 'getelementptr' 'sorted_1_addr' <Predicate = (icmp_ln42)> <Delay = 0.00>
-ST_2 : Operation 16 [2/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 16 'load' 'previous_frequency' <Predicate = (icmp_ln42)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%empty_47 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_out_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 17 'specinterface' 'empty_47' <Predicate = (!icmp_ln42)> <Delay = 0.00>
-ST_2 : Operation 18 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %val_assign_out_out, i32 %n_read)" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 18 'write' <Predicate = (!icmp_ln42)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%empty_48 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_out_out1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 19 'specinterface' 'empty_48' <Predicate = (!icmp_ln42)> <Delay = 0.00>
-ST_2 : Operation 20 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %val_assign_out_out1, i32 %n_read)" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 20 'write' <Predicate = (!icmp_ln42)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
-ST_2 : Operation 21 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 21 'ret' <Predicate = (!icmp_ln42)> <Delay = 0.00>
+ST_2 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln40 = zext i31 %i_0_i to i32" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 8 'zext' 'zext_ln40' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 9 [1/1] (2.47ns)   --->   "%icmp_ln40 = icmp slt i32 %zext_ln40, %n_read" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 9 'icmp' 'icmp_ln40' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 10 [1/1] (2.52ns)   --->   "%i = add i31 %i_0_i, 1" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 10 'add' 'i' <Predicate = true> <Delay = 2.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 11 [1/1] (0.00ns)   --->   "br i1 %icmp_ln40, label %copy_sorted, label %.exit" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 11 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "%zext_ln41 = zext i31 %i_0_i to i64" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 12 'zext' 'zext_ln41' <Predicate = (icmp_ln40)> <Delay = 0.00>
+ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%sorted_0_addr = getelementptr [256 x i32]* %sorted_0, i64 0, i64 %zext_ln41" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 13 'getelementptr' 'sorted_0_addr' <Predicate = (icmp_ln40)> <Delay = 0.00>
+ST_2 : Operation 14 [2/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 14 'load' 'sorted_0_load' <Predicate = (icmp_ln40)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "%sorted_1_addr = getelementptr [256 x i32]* %sorted_1, i64 0, i64 %zext_ln41" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 15 'getelementptr' 'sorted_1_addr' <Predicate = (icmp_ln40)> <Delay = 0.00>
+ST_2 : Operation 16 [2/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 16 'load' 'previous_frequency' <Predicate = (icmp_ln40)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%empty_46 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_out_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 17 'specinterface' 'empty_46' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %val_assign_out_out, i32 %n_read)" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 18 'write' <Predicate = (!icmp_ln40)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%empty_47 = call i32 (...)* @_ssdm_op_SpecInterface(i32* %val_assign_out_out1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 19 'specinterface' 'empty_47' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %val_assign_out_out1, i32 %n_read)" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 20 'write' <Predicate = (!icmp_ln40)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 21 'ret' <Predicate = (!icmp_ln40)> <Delay = 0.00>
 
 State 3 <SV = 2> <Delay = 6.50>
-ST_3 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str135) nounwind" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 22 'specloopname' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str135)" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 23 'specregionbegin' 'tmp_i' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 256, i32 256, i32 256, [1 x i8]* @p_str34) nounwind" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 24 'speclooptripcount' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 25 [1/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 25 'load' 'sorted_0_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_3 : Operation 26 [1/1] (0.00ns)   --->   "%sorted_copy1_value_V_1 = getelementptr [256 x i32]* %sorted_copy1_value_V, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 26 'getelementptr' 'sorted_copy1_value_V_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 27 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy1_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 27 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_3 : Operation 28 [1/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 28 'load' 'previous_frequency' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_3 : Operation 29 [1/1] (0.00ns)   --->   "%sorted_copy1_frequen = getelementptr [256 x i32]* %sorted_copy1_frequency_V, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 29 'getelementptr' 'sorted_copy1_frequen' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 30 [1/1] (3.25ns)   --->   "store i32 %previous_frequency, i32* %sorted_copy1_frequen, align 4" [./hls-src/huffman_encoding.cpp:44]   --->   Operation 30 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V_1 = getelementptr [256 x i32]* %sorted_copy2_value_V, i64 0, i64 %zext_ln43" [./hls-src/huffman_encoding.cpp:45]   --->   Operation 31 'getelementptr' 'sorted_copy2_value_V_1' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 32 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy2_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:45]   --->   Operation 32 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
-ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%empty_46 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str135, i32 %tmp_i)" [./hls-src/huffman_encoding.cpp:50]   --->   Operation 33 'specregionend' 'empty_46' <Predicate = true> <Delay = 0.00>
-ST_3 : Operation 34 [1/1] (0.00ns)   --->   "br label %.preheader.i" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([12 x i8]* @p_str134) nounwind" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 22 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 23 [1/1] (0.00ns)   --->   "%tmp_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str134)" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 23 'specregionbegin' 'tmp_i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i32 256, i32 256, i32 256, [1 x i8]* @p_str33) nounwind" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 24 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 25 [1/2] (3.25ns)   --->   "%sorted_0_load = load i32* %sorted_0_addr, align 8" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 25 'load' 'sorted_0_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_3 : Operation 26 [1/1] (0.00ns)   --->   "%sorted_copy1_value_V_1 = getelementptr [256 x i32]* %sorted_copy1_value_V, i64 0, i64 %zext_ln41" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 26 'getelementptr' 'sorted_copy1_value_V_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 27 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy1_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:41]   --->   Operation 27 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_3 : Operation 28 [1/2] (3.25ns)   --->   "%previous_frequency = load i32* %sorted_1_addr, align 4" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 28 'load' 'previous_frequency' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_3 : Operation 29 [1/1] (0.00ns)   --->   "%sorted_copy1_frequen = getelementptr [256 x i32]* %sorted_copy1_frequency_V, i64 0, i64 %zext_ln41" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 29 'getelementptr' 'sorted_copy1_frequen' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 30 [1/1] (3.25ns)   --->   "store i32 %previous_frequency, i32* %sorted_copy1_frequen, align 4" [./hls-src/huffman_encoding.cpp:42]   --->   Operation 30 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%sorted_copy2_value_V_1 = getelementptr [256 x i32]* %sorted_copy2_value_V, i64 0, i64 %zext_ln41" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 31 'getelementptr' 'sorted_copy2_value_V_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 32 [1/1] (3.25ns)   --->   "store i32 %sorted_0_load, i32* %sorted_copy2_value_V_1, align 8" [./hls-src/huffman_encoding.cpp:43]   --->   Operation 32 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 4> <Depth = 256> <RAM>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%empty_45 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str134, i32 %tmp_i)" [./hls-src/huffman_encoding.cpp:48]   --->   Operation 33 'specregionend' 'empty_45' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "br label %.preheader.i" [./hls-src/huffman_encoding.cpp:40]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -273,33 +273,33 @@ Port [ val_assign_out_out1]:  wired=1; compound=1; hidden=0; nouse=0; global=0; 
 <method=bitvector/>
 empty                  (specinterface    ) [ 0000]
 n_read                 (read             ) [ 0011]
-br_ln42                (br               ) [ 0111]
+br_ln40                (br               ) [ 0111]
 i_0_i                  (phi              ) [ 0010]
-zext_ln42              (zext             ) [ 0000]
-icmp_ln42              (icmp             ) [ 0011]
+zext_ln40              (zext             ) [ 0000]
+icmp_ln40              (icmp             ) [ 0011]
 i                      (add              ) [ 0111]
-br_ln42                (br               ) [ 0000]
-zext_ln43              (zext             ) [ 0001]
+br_ln40                (br               ) [ 0000]
+zext_ln41              (zext             ) [ 0001]
 sorted_0_addr          (getelementptr    ) [ 0001]
 sorted_1_addr          (getelementptr    ) [ 0001]
+empty_46               (specinterface    ) [ 0000]
+write_ln40             (write            ) [ 0000]
 empty_47               (specinterface    ) [ 0000]
-write_ln42             (write            ) [ 0000]
-empty_48               (specinterface    ) [ 0000]
-write_ln42             (write            ) [ 0000]
+write_ln40             (write            ) [ 0000]
 ret_ln0                (ret              ) [ 0000]
-specloopname_ln42      (specloopname     ) [ 0000]
+specloopname_ln40      (specloopname     ) [ 0000]
 tmp_i                  (specregionbegin  ) [ 0000]
-speclooptripcount_ln43 (speclooptripcount) [ 0000]
+speclooptripcount_ln41 (speclooptripcount) [ 0000]
 sorted_0_load          (load             ) [ 0000]
 sorted_copy1_value_V_1 (getelementptr    ) [ 0000]
-store_ln43             (store            ) [ 0000]
+store_ln41             (store            ) [ 0000]
 previous_frequency     (load             ) [ 0000]
 sorted_copy1_frequen   (getelementptr    ) [ 0000]
-store_ln44             (store            ) [ 0000]
+store_ln42             (store            ) [ 0000]
 sorted_copy2_value_V_1 (getelementptr    ) [ 0000]
-store_ln45             (store            ) [ 0000]
-empty_46               (specregionend    ) [ 0000]
-br_ln42                (br               ) [ 0111]
+store_ln43             (store            ) [ 0000]
+empty_45               (specregionend    ) [ 0000]
+br_ln40                (br               ) [ 0111]
 </LifeTime>
 
 <model>
@@ -504,7 +504,7 @@ br_ln42                (br               ) [ 0111]
 <pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str135"/></StgValue>
+<StgValue><ssdm name="p_str134"/></StgValue>
 </bind>
 </comp>
 
@@ -540,7 +540,7 @@ br_ln42                (br               ) [ 0111]
 <pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str34"/></StgValue>
+<StgValue><ssdm name="p_str33"/></StgValue>
 </bind>
 </comp>
 
@@ -565,7 +565,7 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="60" class="1004" name="write_ln42_write_fu_60">
+<comp id="60" class="1004" name="write_ln40_write_fu_60">
 <pin_list>
 <pin id="61" dir="0" index="0" bw="0" slack="0"/>
 <pin id="62" dir="0" index="1" bw="32" slack="0"/>
@@ -574,11 +574,11 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="write(1151) " fcode="write"/>
-<opset="write_ln42/2 "/>
+<opset="write_ln40/2 "/>
 </bind>
 </comp>
 
-<comp id="67" class="1004" name="write_ln42_write_fu_67">
+<comp id="67" class="1004" name="write_ln40_write_fu_67">
 <pin_list>
 <pin id="68" dir="0" index="0" bw="0" slack="0"/>
 <pin id="69" dir="0" index="1" bw="32" slack="0"/>
@@ -587,7 +587,7 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="write(1151) " fcode="write"/>
-<opset="write_ln42/2 "/>
+<opset="write_ln40/2 "/>
 </bind>
 </comp>
 
@@ -656,7 +656,7 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="107" class="1004" name="store_ln43_access_fu_107">
+<comp id="107" class="1004" name="store_ln41_access_fu_107">
 <pin_list>
 <pin id="108" dir="0" index="0" bw="8" slack="0"/>
 <pin id="109" dir="0" index="1" bw="32" slack="0"/>
@@ -665,7 +665,7 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="store(28) " fcode="store"/>
-<opset="store_ln43/3 "/>
+<opset="store_ln41/3 "/>
 </bind>
 </comp>
 
@@ -682,7 +682,7 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="121" class="1004" name="store_ln44_access_fu_121">
+<comp id="121" class="1004" name="store_ln42_access_fu_121">
 <pin_list>
 <pin id="122" dir="0" index="0" bw="8" slack="0"/>
 <pin id="123" dir="0" index="1" bw="32" slack="0"/>
@@ -691,7 +691,7 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="store(28) " fcode="store"/>
-<opset="store_ln44/3 "/>
+<opset="store_ln42/3 "/>
 </bind>
 </comp>
 
@@ -708,7 +708,7 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="135" class="1004" name="store_ln45_access_fu_135">
+<comp id="135" class="1004" name="store_ln43_access_fu_135">
 <pin_list>
 <pin id="136" dir="0" index="0" bw="8" slack="0"/>
 <pin id="137" dir="0" index="1" bw="32" slack="0"/>
@@ -717,7 +717,7 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="store(28) " fcode="store"/>
-<opset="store_ln45/3 "/>
+<opset="store_ln43/3 "/>
 </bind>
 </comp>
 
@@ -745,18 +745,18 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="153" class="1004" name="zext_ln42_fu_153">
+<comp id="153" class="1004" name="zext_ln40_fu_153">
 <pin_list>
 <pin id="154" dir="0" index="0" bw="31" slack="0"/>
 <pin id="155" dir="1" index="1" bw="32" slack="0"/>
 </pin_list>
 <bind>
 <opcode="zext(34) " fcode="zext"/>
-<opset="zext_ln42/2 "/>
+<opset="zext_ln40/2 "/>
 </bind>
 </comp>
 
-<comp id="157" class="1004" name="icmp_ln42_fu_157">
+<comp id="157" class="1004" name="icmp_ln40_fu_157">
 <pin_list>
 <pin id="158" dir="0" index="0" bw="32" slack="0"/>
 <pin id="159" dir="0" index="1" bw="32" slack="1"/>
@@ -764,7 +764,7 @@ br_ln42                (br               ) [ 0111]
 </pin_list>
 <bind>
 <opcode="icmp(45) " fcode="icmp"/>
-<opset="icmp_ln42/2 "/>
+<opset="icmp_ln40/2 "/>
 </bind>
 </comp>
 
@@ -780,14 +780,14 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="168" class="1004" name="zext_ln43_fu_168">
+<comp id="168" class="1004" name="zext_ln41_fu_168">
 <pin_list>
 <pin id="169" dir="0" index="0" bw="31" slack="0"/>
 <pin id="170" dir="1" index="1" bw="64" slack="0"/>
 </pin_list>
 <bind>
 <opcode="zext(34) " fcode="zext"/>
-<opset="zext_ln43/2 "/>
+<opset="zext_ln41/2 "/>
 </bind>
 </comp>
 
@@ -811,13 +811,13 @@ br_ln42                (br               ) [ 0111]
 </bind>
 </comp>
 
-<comp id="189" class="1005" name="zext_ln43_reg_189">
+<comp id="189" class="1005" name="zext_ln41_reg_189">
 <pin_list>
 <pin id="190" dir="0" index="0" bw="64" slack="1"/>
 <pin id="191" dir="1" index="1" bw="64" slack="1"/>
 </pin_list>
 <bind>
-<opset="zext_ln43 "/>
+<opset="zext_ln41 "/>
 </bind>
 </comp>
 
@@ -957,20 +957,20 @@ br_ln42                (br               ) [ 0111]
   - Chain level:
 	State 1
 	State 2
-		zext_ln42 : 1
-		icmp_ln42 : 2
+		zext_ln40 : 1
+		icmp_ln40 : 2
 		i : 1
-		br_ln42 : 3
-		zext_ln43 : 1
+		br_ln40 : 3
+		zext_ln41 : 1
 		sorted_0_addr : 2
 		sorted_0_load : 3
 		sorted_1_addr : 2
 		previous_frequency : 3
 	State 3
+		store_ln41 : 1
+		store_ln42 : 1
 		store_ln43 : 1
-		store_ln44 : 1
-		store_ln45 : 1
-		empty_46 : 1
+		empty_45 : 1
 
 
 ============================================================
@@ -983,15 +983,15 @@ br_ln42                (br               ) [ 0111]
 |----------|------------------------|---------|---------|
 |    add   |        i_fu_162        |    0    |    38   |
 |----------|------------------------|---------|---------|
-|   icmp   |    icmp_ln42_fu_157    |    0    |    18   |
+|   icmp   |    icmp_ln40_fu_157    |    0    |    18   |
 |----------|------------------------|---------|---------|
 |   read   |    n_read_read_fu_54   |    0    |    0    |
 |----------|------------------------|---------|---------|
-|   write  | write_ln42_write_fu_60 |    0    |    0    |
-|          | write_ln42_write_fu_67 |    0    |    0    |
+|   write  | write_ln40_write_fu_60 |    0    |    0    |
+|          | write_ln40_write_fu_67 |    0    |    0    |
 |----------|------------------------|---------|---------|
-|   zext   |    zext_ln42_fu_153    |    0    |    0    |
-|          |    zext_ln43_fu_168    |    0    |    0    |
+|   zext   |    zext_ln40_fu_153    |    0    |    0    |
+|          |    zext_ln41_fu_168    |    0    |    0    |
 |----------|------------------------|---------|---------|
 |   Total  |                        |    0    |    56   |
 |----------|------------------------|---------|---------|
@@ -1008,7 +1008,7 @@ N/A
 |    n_read_reg_174   |   32   |
 |sorted_0_addr_reg_196|    8   |
 |sorted_1_addr_reg_201|    8   |
-|  zext_ln43_reg_189  |   64   |
+|  zext_ln41_reg_189  |   64   |
 +---------------------+--------+
 |        Total        |   174  |
 +---------------------+--------+
