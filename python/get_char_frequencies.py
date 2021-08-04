@@ -14,7 +14,7 @@ if __name__ == '__main__':
             chars[i] += 1
 
     with open('char_frequencies.txt', 'w') as f:
-        for i in range(255):
+        for i in range(256):
             char = chr(i)
             if char in chars:   n = chars[char]
             else:               n = 0
